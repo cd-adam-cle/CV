@@ -1,0 +1,9 @@
+# Source / design export files – nejsou potřeba pro hosting
+*.zip
+finalCV-WEB.html
+
+# OS
+.DS_Store
+
+# Vercel
+.vercel
