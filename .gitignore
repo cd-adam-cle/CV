@@ -7,3 +7,6 @@ finalCV-WEB.html
 
 # Vercel
 .vercel
+
+# Editor / local tooling
+.claude/
