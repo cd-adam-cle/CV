@@ -1,10 +1,9 @@
-/* Site behaviour: mobile nav, scroll-spy, compact header on scroll, gentle reveal (respects reduced motion). */
+/* Site behaviour: mobile nav and scroll-spy. No scroll animations. */
 (function () {
   'use strict';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.getElementById('nav-menu');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('js-ready');
 
   /* mobile menu: overlay with the page behind made inert */
@@ -46,18 +45,4 @@
     sections.forEach((s) => io.observe(s));
   }
 
-  /* reveal on scroll: opacity/translate only, once, skipped under reduced motion */
-  const revealables = document.querySelectorAll('.hero, .section');
-  const revealAll = () => revealables.forEach((el) => el.classList.add('is-revealed'));
-  if (!reduce && 'IntersectionObserver' in window) {
-    const ro = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-revealed'); ro.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    revealables.forEach((el) => ro.observe(el));
-    setTimeout(revealAll, 1500); // safety net: never leave content hidden
-  } else {
-    revealAll();
-  }
-
-  /* current year safety: nothing dynamic needed; keep static footer */
 })();

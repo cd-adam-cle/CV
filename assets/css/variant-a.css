@@ -1,0 +1,8 @@
+/* Variant A: the ledger on warm paper, set entirely in Source Sans 3 (Adobe). No monospace. */
+:root {
+  --bg: #f3f1ec; --surface: #faf9f6; --ink: #1a1917; --ink-2: #66625b;
+  --line: #d9d5cc; --line-strong: #c9c4b8; --grid: #e6e2da; --rule: var(--line);
+  --navy: #22395b; --oxide: #b4472b; --cloud: #a39e94;
+  --font-text: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-chart: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; --chart-fs: 13px;
+}

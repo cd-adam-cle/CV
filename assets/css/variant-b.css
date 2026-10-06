@@ -1,0 +1,42 @@
+/* Variant B: research note on white, set entirely in Literata (TypeTogether). Italic does the work of labels; ink rules under section heads, as in the CV. */
+:root {
+  --bg: #ffffff; --surface: #f5f6f8; --ink: #16181d; --ink-2: #5b616c;
+  --line: #e3e5e9; --line-strong: #c9ccd3; --grid: #eceef1; --rule: #16181d;
+  --navy: #1b2f55; --oxide: #a33a22; --cloud: #a7acb5;
+  --font-text: "Literata", Georgia, "Times New Roman", serif;
+  --font-chart: "Literata", Georgia, serif; --chart-fs: 13px;
+}
+body { font-optical-sizing: auto; }
+@media (min-width: 640px) { body { line-height: 1.62; } }
+.hero h1 { font-size: clamp(34px, 4.4vw, 58px); line-height: 1.08; max-width: 19ch; }
+.row-role { font-style: italic; }
+.sheet-row dt, .ro dt, .row-stack, .tool-spec, .legend, .chart-note, .assets th, .ro-table thead th, .weights thead th { font-size: 14px; letter-spacing: 0.01em; }
+.ro-title { font-weight: 600; }
+.row-head h3, .tool-title, .skill dt, .kv-block h3 { font-weight: 600; }
+.ro dd { font-size: 19px; }
+.ro-main dd { font-size: 26px; }
+.panel { border-top-color: var(--rule); }
+.section-heading { font-size: 22px; line-height: 1.45; max-width: 60ch; text-wrap: pretty; }
+@media (min-width: 1024px) { .section-heading { font-size: 22px; line-height: 1.45; } }
+/* one rule under each section head is enough */
+.ledger { border-top: 0; }
+.skills-grid { border-top: 0; padding-top: 0; }
+.contact-email { letter-spacing: -0.01em; }
+@media (min-width: 640px) { .contact-email { font-size: 36px; } }
+/* section heads sit above their content with a full-width ink rule, like the headings in the CV */
+.rail { padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+.rail h2 { font-size: 26px; font-weight: 500; letter-spacing: -0.005em; }
+@media (min-width: 1024px) {
+  .section { display: block; }
+  .rail { padding-top: 0; padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+  .section:has(.ledger) .rail { margin-bottom: 4px; }
+  .rail h2 { font-size: 28px; font-weight: 500; }
+  .content { max-width: none; }
+  .lead { max-width: 64ch; }
+  .ledger { margin-top: 0; }
+  .tools { margin-top: 48px; }
+  .kv-row { grid-template-columns: 260px 1fr; }
+}
+@media (min-width: 1024px) { .panel-body { grid-template-columns: 300px minmax(0, 1fr); } }
+@media (min-width: 1280px) { .panel-body { grid-template-columns: 300px minmax(0, 1fr) 290px; } }
+.ctl-label, .toggle legend { font-size: 15px; }

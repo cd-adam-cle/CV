@@ -1,8 +1,7 @@
 {
   "lang": "en",
-  "updated": "10/2026",
   "meta": {
-    "title": "Adam Zikmund — financial mathematics, software and risk",
+    "title": "Adam Zikmund – financial mathematics, software and risk",
     "description": "Financial Mathematics student at Charles University, previously co-founder and developer of products in production. Looking for an internship or part-time role in quantitative risk, quant research, VC/PE analytics or investment banking.",
     "siteUrl": "https://cv-seven-dusky-63.vercel.app",
     "path": "/en/",
@@ -30,43 +29,35 @@
     "links": [
       {
         "id": "profile",
-        "num": "01",
         "label": "Profile"
       },
       {
         "id": "experience",
-        "num": "02",
         "label": "Experience"
       },
       {
         "id": "tools",
-        "num": "03",
         "label": "Tools"
       },
       {
         "id": "projects",
-        "num": "04",
         "label": "Projects"
       },
       {
         "id": "education",
-        "num": "05",
         "label": "Education"
       },
       {
         "id": "skills",
-        "num": "06",
         "label": "Skills"
       },
       {
         "id": "contact",
-        "num": "07",
         "label": "Contact"
       }
     ]
   },
   "hero": {
-    "label": "Prague · Financial Mathematics, Charles University · since 09/2026",
     "title": [
       "I build software that gets used.",
       "Now I am learning how risk is measured and priced."
@@ -81,7 +72,7 @@
     "sheet": [
       {
         "k": "Study",
-        "v": "Charles University (MFF UK), BSc Financial Mathematics, 2026 – present"
+        "v": "Charles University in Prague (MFF UK), BSc Financial Mathematics, 2026 – present"
       },
       {
         "k": "Concurrently",
@@ -89,7 +80,7 @@
       },
       {
         "k": "Experience",
-        "v": "Valor Group (trainee) · Freio (co-founder) · Božííí (founder)"
+        "v": "Valor Group (trainee), Freio (co-founder), Božííí (founder)"
       },
       {
         "k": "Course",
@@ -97,27 +88,12 @@
       },
       {
         "k": "Languages",
-        "v": "Czech · English C1 (CAE) · German A2"
-      },
-      {
-        "k": "CV",
-        "links": [
-          {
-            "label": "PDF (EN)",
-            "href": "/cv/Adam-Zikmund-CV-EN.pdf"
-          },
-          {
-            "label": "PDF (CZ)",
-            "href": "/cv/Adam-Zikmund-CV-CZ.pdf"
-          }
-        ]
+        "v": "Czech, English C1 (CAE), German A2"
       }
-    ],
-    "updatedLabel": "Updated"
+    ]
   },
   "profile": {
     "id": "profile",
-    "num": "01",
     "title": "Profile",
     "lead": "While at grammar school I founded Božííí, a community site for Prague parishes, co-founded the EdTech platform Freio and freelanced on scraping, automation and LLM API integrations. My final-year research paper modelled how EU ETS 2 allowance costs pass through to households. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and analysing a six-fund portfolio. Since September I have been studying Financial Mathematics at Charles University, and in my first year I enrolled in a practitioner-led course on financial risk measurement and management.",
     "seeking": {
@@ -146,11 +122,11 @@
       "rows": [
         {
           "k": "Risk and simulation",
-          "v": "5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator (03.2); the NMFP463 course at Charles University"
+          "v": "5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator below; the NMFP463 course at Charles University"
         },
         {
           "k": "Pricing and optimisation",
-          "v": "Black–Scholes with Greeks and the Markowitz frontier programmed from scratch (03.1, 03.3)"
+          "v": "Black–Scholes with Greeks and the Markowitz frontier, programmed from scratch, see Tools"
         },
         {
           "k": "Fund analysis",
@@ -165,64 +141,63 @@
   },
   "experience": {
     "id": "experience",
-    "num": "02",
     "title": "Experience",
     "items": [
       {
         "period": "06/2026 – 09/2026",
         "org": "Valor Group",
-        "role": "Trainee, financial advisory · Prague",
+        "role": "Trainee, financial advisory",
         "results": [
           "Modelled client financial plans (insurance and investment products), prepared meeting materials and joined client meetings.",
           "Analysed a CZK 1,000,000 six-fund portfolio (50% bonds / 34% real estate / 16% equities): weighted TER ~1.35% p.a., duration, liquidity, risk types and rate scenarios, delivered as an interactive client presentation.",
           "Built the firm's content engine: a JSON-driven Python (PIL) carousel generator with automated QA checks and Remotion video templates."
         ],
-        "stack": "Python · PIL · Remotion · React · TypeScript"
+        "stack": "Python, PIL, Remotion, React, TypeScript"
       },
       {
         "period": "04/2026 – 05/2026",
         "org": "Cloudinfrastack",
-        "role": "DevOps and infrastructure, contract · Prague",
+        "role": "DevOps and infrastructure, contract",
         "results": [
           "Hardware and cloud virtualisation operations, CI/CD automation support and Linux server administration."
         ],
-        "stack": "Linux · CI/CD · virtualisation"
+        "stack": "Linux, CI/CD, virtualisation"
       },
       {
         "period": "02/2026 – 07/2026",
         "org": "Freio",
         "href": "https://freio.cz",
-        "role": "Co-founder, business and strategy · Prague",
+        "role": "Co-founder, business and strategy",
         "results": [
           "Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; business strategy, market validation, customer segmentation.",
           "Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project."
         ],
-        "stack": "EdTech · market validation · MVP"
+        "stack": "EdTech, market validation, MVP"
       },
       {
         "period": "01/2026 – present",
         "org": "Freelance",
-        "role": "Software and AI automation · Prague",
+        "role": "Software and AI automation",
         "results": [
           "Scraping and data pipelines (Playwright, BeautifulSoup) and LLM API integrations (OpenAI, Anthropic) for clients.",
           "Content and e-mail personalisation automation saved more than 60% of manual preparation time."
         ],
-        "stack": "Python · TypeScript · Playwright · BeautifulSoup · OpenAI API · Anthropic API"
+        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
       },
       {
         "period": "09/2025 – present",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder and full-stack developer · Prague",
+        "role": "Founder and full-stack developer",
         "results": [
           "Community site connecting Prague parishes with people arranging baptism, confirmation or first communion; automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%."
         ],
-        "stack": "Next.js 15 · React 19 · TypeScript · Tailwind 4 · Redis · Resend"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend"
       },
       {
         "period": "10/2024 – present",
         "org": "Sauna & Wellness Rooms Central",
-        "role": "Shift supervisor, part-time · Prague",
+        "role": "Shift supervisor, part-time",
         "results": [
           "Cash management, daily closings and till reconciliation; led the shift team."
         ],
@@ -232,7 +207,6 @@
   },
   "tools": {
     "id": "tools",
-    "num": "03",
     "title": "Tools",
     "heading": "Three models I programmed in order to understand them.",
     "common": {
@@ -247,9 +221,8 @@
     "items": [
       {
         "id": "bs",
-        "num": "03.1",
         "title": "Black–Scholes",
-        "summary": "European option · no dividends · constant σ",
+        "summary": "European option, no dividends, constant volatility σ.",
         "quote": "I built an option pricer to understand what risk managers look at, not to rediscover the formula.",
         "ui": {
           "type": "Type",
@@ -286,9 +259,8 @@
       },
       {
         "id": "mc",
-        "num": "03.2",
         "title": "Monte Carlo",
-        "summary": "geometric Brownian motion · daily steps · jumps = Merton crash model",
+        "summary": "Geometric Brownian motion with daily steps, jumps following Merton's crash model.",
         "quote": "I built it to get a feel for modelling uncertainty. What surprised me most was how badly the normal model underestimates crash risk.",
         "ui": {
           "S0": "Initial price S₀",
@@ -328,14 +300,12 @@
           "Both models are always computed from the same seed so the columns can be compared; the chart shows the selected model.",
           "Note: Student-t innovations on daily steps average out over longer horizons (CLT) and the terminal distribution approaches the normal one, which is why crashes are modelled as jumps."
         ],
-        "insight": "Same drift and volatility, plus only rare downward jumps (one every two years on average, typically around −14%). The median barely moves, but the 5% VaR and the expected shortfall grow substantially. The normal model would call such a drop practically impossible; the paths below its VaR level are drawn in oxide red.",
-        "what": ""
+        "insight": "Same drift and volatility, plus only rare downward jumps (one every two years on average, typically around −14%). The median barely moves, but the 5% VaR and the expected shortfall grow substantially. The normal model would call such a drop practically impossible; the paths below its VaR level are drawn in oxide red."
       },
       {
         "id": "mk",
-        "num": "03.3",
         "title": "Markowitz",
-        "summary": "single-period model · 3 assets · no transaction costs",
+        "summary": "Single-period model with three assets and no transaction costs.",
         "quote": "I programmed the efficient frontier to understand why diversification works, and above all where the model breaks down.",
         "ui": {
           "assets": "Assets",
@@ -389,20 +359,19 @@
   },
   "projects": {
     "id": "projects",
-    "num": "04",
     "title": "Projects",
     "items": [
       {
         "period": "09/2025 – present",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder and full-stack developer · web platform",
+        "role": "Founder and full-stack developer, web platform",
         "results": [
           "A guide to sacraments and a parish directory for the Archdiocese of Prague; participating parishes Dejvice, Hlubočepy and Chodov.",
           "Automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%, parish replies under 24 hours.",
           "Optimised for AI search engines (llms.txt) so the project is cited accurately."
         ],
-        "stack": "Next.js 15 · React 19 · TypeScript · Tailwind 4 · Redis · Resend · Leaflet"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend, Leaflet"
       },
       {
         "period": "08/2026 – present",
@@ -412,7 +381,7 @@
           "Daily telemetry sync from the Garmin Connect API via Vercel Cron (HRV, resting heart rate, Body Battery, sleep); ACWR and CTL/ATL load calculations.",
           "Fuelling model (carbohydrates g/h, hydration, sodium, pacing 6.706 km/h) and morning analyses with a weekly adaptive plan via the Anthropic API."
         ],
-        "stack": "Next.js 15 · TypeScript · Neon Postgres · Drizzle · Anthropic API"
+        "stack": "Next.js 15, TypeScript, Neon Postgres, Drizzle, Anthropic API"
       },
       {
         "period": "2025 – 2026",
@@ -422,26 +391,18 @@
           "Structured JSON becomes a series of 1080 × 1350 slides with dynamically measured typography; an automated QA enforcer checks types, required fields and text lengths against snapshots of rejected slides.",
           "Parametric video templates in Remotion (60 fps, 9:16 Reels, audio waveform analysis)."
         ],
-        "stack": "Python (PIL) · Remotion · React · TypeScript · FFmpeg"
+        "stack": "Python (PIL), Remotion, React, TypeScript, FFmpeg"
       }
-    ],
-    "toolsRef": {
-      "period": "2026",
-      "org": "Quantitative tools",
-      "role": "Black–Scholes · Monte Carlo · Markowitz",
-      "text": "see section 03",
-      "href": "#tools"
-    }
+    ]
   },
   "education": {
     "id": "education",
-    "num": "05",
     "title": "Education",
     "items": [
       {
         "period": "09/2026 – present",
         "org": "Charles University, Faculty of Mathematics and Physics",
-        "role": "BSc Financial Mathematics · Prague",
+        "role": "BSc Financial Mathematics",
         "results": [
           "First semester: Mathematical Analysis, Linear Algebra, Accounting, Programming, Mathematical Proseminar.",
           "Practical Aspects of Financial Risk Measurement and Management (NMFP463): an elective taught by practitioners, taken in year one; group financial statement analysis and an individual paper."
@@ -451,7 +412,7 @@
       {
         "period": "09/2026 – present",
         "org": "Czech Technical University, Faculty of Mechanical Engineering",
-        "role": "BSc Mechanical Engineering, concurrent · Prague",
+        "role": "BSc Mechanical Engineering, concurrent",
         "results": [
           "Participant in the selective CTU Mentoring Programme (strategy, project building, quantitative methods)."
         ],
@@ -460,9 +421,9 @@
       {
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
-        "role": "Mathematics, physics and computer science · Prague",
+        "role": "Mathematics, physics and computer science",
         "results": [
-          "Maturita (school-leaving exam) with distinction in mathematics, programming and English · Cambridge CAE (C1).",
+          "Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).",
           "Final-year research paper \"The impact of EU ETS 2 on ordinary people\" (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households."
         ],
         "stack": ""
@@ -471,7 +432,6 @@
   },
   "skills": {
     "id": "skills",
-    "num": "06",
     "title": "Skills",
     "groups": [
       {
@@ -498,7 +458,6 @@
   },
   "contact": {
     "id": "contact",
-    "num": "07",
     "title": "Contact",
     "email": "zikmundi@proton.me",
     "rows": [
@@ -530,12 +489,12 @@
           }
         ]
       }
-    ]
+    ],
+    "cvLabel": "CV as PDF"
   },
   "footer": {
-    "left": "Adam Zikmund · Prague",
-    "updatedLabel": "Updated",
-    "note": "The tools in section 03 are educational demonstrations, not investment advice."
+    "left": "© 2026 Adam Zikmund",
+    "note": "The tools on this page are educational demonstrations, not investment advice."
   },
   "cv": {
     "fileTitle": "Adam Zikmund — CV",

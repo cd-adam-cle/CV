@@ -4,7 +4,9 @@ export function typo(str, LANG = 'cs') {
   let t = String(str);
   t = t.replace(/(?<=\d) (?=\d{3}\b)/g, NBSP);                   // 1 000 000
   t = t.replace(/(\d) %/g, `$1${NBSP}%`);
-  t = t.replace(/ ([A-Za-zα-ωΑ-Ω](?:_[a-z]+|[₀-₉]+)?)(?=$| \()/g, `${NBSP}$1`);   // keep a trailing variable symbol (r, σ, S₀, r_f) with its label
+  t = t.replace(/(\S) ([ABC][12])\b/g, `$1${NBSP}$2`);                        // angličtina C1, German A2
+  t = t.replace(/\b(od|do|ze|v|in|since|from) (\d{4})\b/g, `$1${NBSP}$2`);       // od 2026, since 2026
+  t = t.replace(/ ([A-Za-zα-ωΑ-Ω](?:_[a-z]+|[₀-₉]+)?)(?=$| \(|[.,;:](?:\s|$))/g, `${NBSP}$1`);   // keep a trailing variable symbol (r, σ, S₀, r_f) with its label
   t = t.replace(/(\d(?:\u00a0| )?%) (VaR|ES)\b/g, `$1${NBSP}$2`);                 // 5% VaR                           // 1,35 %
   t = t.replace(/(\d) (Kč|p\. a\.|p\.a\.|p\. b\.|dní|hodin|let|km\/h|km|h|fps|scénářů|aktiva|fondech|funds|years|days|paths)(?=[\s,.;:)]|$)/g, `$1${NBSP}$2`); // 1 000 Kč, 5 % p. a., 24 hodin
   t = t.replace(/\bp\. a\./g, `p.${NBSP}a.`);

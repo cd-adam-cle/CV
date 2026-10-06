@@ -1,8 +1,7 @@
 {
   "lang": "cs",
-  "updated": "10/2026",
   "meta": {
-    "title": "Adam Zikmund — finanční matematika, software a riziko",
+    "title": "Adam Zikmund – finanční matematika, software a riziko",
     "description": "Student finanční matematiky na MFF UK, předtím co-founder a vývojář produktů v provozu. Hledám stáž nebo part-time v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví.",
     "siteUrl": "https://cv-seven-dusky-63.vercel.app",
     "path": "/",
@@ -30,43 +29,35 @@
     "links": [
       {
         "id": "profil",
-        "num": "01",
         "label": "Profil"
       },
       {
         "id": "zkusenosti",
-        "num": "02",
         "label": "Zkušenosti"
       },
       {
         "id": "nastroje",
-        "num": "03",
         "label": "Nástroje"
       },
       {
         "id": "projekty",
-        "num": "04",
         "label": "Projekty"
       },
       {
         "id": "vzdelani",
-        "num": "05",
         "label": "Vzdělání"
       },
       {
         "id": "dovednosti",
-        "num": "06",
         "label": "Dovednosti"
       },
       {
         "id": "kontakt",
-        "num": "07",
         "label": "Kontakt"
       }
     ]
   },
   "hero": {
-    "label": "Praha · Finanční matematika, MFF UK · od 09/2026",
     "title": [
       "Stavím software, který se používá.",
       "Teď se učím, jak se měří a oceňuje riziko."
@@ -81,7 +72,7 @@
     "sheet": [
       {
         "k": "Studium",
-        "v": "MFF UK, Bc. Finanční matematika, od 2026"
+        "v": "MFF UK v Praze, Bc. Finanční matematika, od 2026"
       },
       {
         "k": "Souběžně",
@@ -89,7 +80,7 @@
       },
       {
         "k": "Praxe",
-        "v": "Valor Group (trainee) · Freio (co-founder) · Božííí (founder)"
+        "v": "Valor Group (trainee), Freio (co-founder), Božííí (founder)"
       },
       {
         "k": "Kurz",
@@ -97,27 +88,12 @@
       },
       {
         "k": "Jazyky",
-        "v": "čeština · angličtina C1 (CAE) · němčina A2"
-      },
-      {
-        "k": "CV",
-        "links": [
-          {
-            "label": "PDF (CZ)",
-            "href": "/cv/Adam-Zikmund-CV-CZ.pdf"
-          },
-          {
-            "label": "PDF (EN)",
-            "href": "/cv/Adam-Zikmund-CV-EN.pdf"
-          }
-        ]
+        "v": "čeština, angličtina C1 (CAE), němčina A2"
       }
-    ],
-    "updatedLabel": "Aktualizováno"
+    ]
   },
   "profile": {
     "id": "profil",
-    "num": "01",
     "title": "Profil",
     "lead": "Na gymnáziu jsem založil komunitní web Božííí pro pražské farnosti, spoluzaložil EdTech platformu Freio a jako freelancer dělal scraping, automatizace a napojení na LLM API. Ročníkovou práci jsem psal o dopadu EU ETS 2 na domácnosti, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a analyzoval portfolio šesti fondů. Od září studuji finanční matematiku na MFF UK a hned v prvním ročníku jsem si zapsal předmět o praktickém měření a řízení finančních rizik.",
     "seeking": {
@@ -146,11 +122,11 @@
       "rows": [
         {
           "k": "Riziko a simulace",
-          "v": "5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru (03.2); předmět NMFP463 na MFF UK"
+          "v": "5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru níže; předmět NMFP463 na MFF UK"
         },
         {
           "k": "Oceňování a optimalizace",
-          "v": "Black–Scholes s Greeks a Markowitzova hranice naprogramované od nuly (03.1, 03.3)"
+          "v": "Black–Scholes s Greeks a Markowitzova hranice, naprogramované od nuly, viz Nástroje"
         },
         {
           "k": "Analýza fondů",
@@ -165,64 +141,63 @@
   },
   "experience": {
     "id": "zkusenosti",
-    "num": "02",
     "title": "Zkušenosti",
     "items": [
       {
         "period": "06/2026 – 09/2026",
         "org": "Valor Group",
-        "role": "Trainee, finanční poradenství · Praha",
+        "role": "Trainee, finanční poradenství",
         "results": [
           "Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty.",
           "Analýza portfolia 1 000 000 Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb, zpracovaná jako interaktivní klientská prezentace.",
           "Content engine firmy: generátor carouselů v Pythonu (PIL) řízený JSON s automatickou QA kontrolou a video šablony v Remotion."
         ],
-        "stack": "Python · PIL · Remotion · React · TypeScript"
+        "stack": "Python, PIL, Remotion, React, TypeScript"
       },
       {
         "period": "04/2026 – 05/2026",
         "org": "Cloudinfrastack",
-        "role": "DevOps a infrastruktura, kontrakt · Praha",
+        "role": "DevOps a infrastruktura, kontrakt",
         "results": [
           "Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů."
         ],
-        "stack": "Linux · CI/CD · virtualizace"
+        "stack": "Linux, CI/CD, virtualizace"
       },
       {
         "period": "02/2026 – 07/2026",
         "org": "Freio",
         "href": "https://freio.cz",
-        "role": "Co-founder, obchod a strategie · Praha",
+        "role": "Co-founder, obchod a strategie",
         "results": [
           "Spoluzaložení EdTech platformy pro přípravu na přijímací zkoušky SCIO; obchodní strategie, ověření zájmu trhu, segmentace zákazníků.",
           "První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner."
         ],
-        "stack": "EdTech · validace trhu · MVP"
+        "stack": "EdTech, validace trhu, MVP"
       },
       {
         "period": "01/2026 – dosud",
         "org": "Freelance",
-        "role": "Software a AI automatizace · Praha",
+        "role": "Software a AI automatizace",
         "results": [
           "Scrapovací a datové pipeline (Playwright, BeautifulSoup) a napojení na LLM API (OpenAI, Anthropic) pro klienty.",
           "Automatizace tvorby obsahu a personalizace e-mailů ušetřila přes 60 % času manuální přípravy."
         ],
-        "stack": "Python · TypeScript · Playwright · BeautifulSoup · OpenAI API · Anthropic API"
+        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
       },
       {
         "period": "09/2025 – dosud",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder a full-stack developer · Praha",
+        "role": "Founder a full-stack developer",
         "results": [
           "Komunitní web propojující pražské farnosti s lidmi, kteří vyřizují křest, biřmování nebo svaté přijímání; automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %."
         ],
-        "stack": "Next.js 15 · React 19 · TypeScript · Tailwind 4 · Redis · Resend"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend"
       },
       {
         "period": "10/2024 – dosud",
         "org": "Sauna & Wellness Rooms Central",
-        "role": "Vedoucí směny, part-time · Praha",
+        "role": "Vedoucí směny, part-time",
         "results": [
           "Hotovost na provozu, denní uzávěrky a kontrola pokladny; vedení týmu na směně."
         ],
@@ -232,7 +207,6 @@
   },
   "tools": {
     "id": "nastroje",
-    "num": "03",
     "title": "Nástroje",
     "heading": "Tři modely, které jsem naprogramoval, abych jim rozuměl.",
     "common": {
@@ -247,9 +221,8 @@
     "items": [
       {
         "id": "bs",
-        "num": "03.1",
         "title": "Black–Scholes",
-        "summary": "evropská opce · bez dividend · konstantní σ",
+        "summary": "Evropská opce bez dividend s konstantní volatilitou σ.",
         "quote": "Postavil jsem oceňovač opcí, abych rozuměl tomu, na co se dívají risk manažeři, ne abych znovu objevil vzorec.",
         "ui": {
           "type": "Typ",
@@ -286,9 +259,8 @@
       },
       {
         "id": "mc",
-        "num": "03.2",
         "title": "Monte Carlo",
-        "summary": "geometrický Brownův pohyb · denní kroky · skoky = Mertonův model krachů",
+        "summary": "Geometrický Brownův pohyb s denními kroky, skoky podle Mertonova modelu krachů.",
         "quote": "Postavil jsem ho, abych si vyzkoušel modelování nejistoty. Nejvíc mě překvapilo, jak moc normální model podceňuje riziko krachů.",
         "ui": {
           "S0": "Počáteční cena S₀",
@@ -328,14 +300,12 @@
           "Oba modely se počítají vždy, ze stejného semínka, aby šly sloupce porovnat; graf ukazuje zvolený model.",
           "Poznámka: Studentovo t na denních krocích se za delší horizont zprůměruje (CLT) a koncové rozdělení se blíží normálnímu; proto krachy modeluji skoky."
         ],
-        "insight": "Stejný drift i volatilita, navíc jen vzácné skoky dolů (v průměru jeden za dva roky, typicky kolem −14 %). Medián se skoro nepohne, ale 5% VaR a expected shortfall narostou výrazně. Normální model by takový propad označil za prakticky nemožný; cesty pod jeho hranicí VaR jsou v grafu oxidově červené.",
-        "what": ""
+        "insight": "Stejný drift i volatilita, navíc jen vzácné skoky dolů (v průměru jeden za dva roky, typicky kolem −14 %). Medián se skoro nepohne, ale 5% VaR a expected shortfall narostou výrazně. Normální model by takový propad označil za prakticky nemožný; cesty pod jeho hranicí VaR jsou v grafu oxidově červené."
       },
       {
         "id": "mk",
-        "num": "03.3",
         "title": "Markowitz",
-        "summary": "jednoperiodový model · 3 aktiva · bez transakčních nákladů",
+        "summary": "Jednoperiodový model se třemi aktivy, bez transakčních nákladů.",
         "quote": "Naprogramoval jsem efektivní hranici, abych pochopil, proč diverzifikace funguje, a hlavně kde model selhává.",
         "ui": {
           "assets": "Aktiva",
@@ -389,20 +359,19 @@
   },
   "projects": {
     "id": "projekty",
-    "num": "04",
     "title": "Projekty",
     "items": [
       {
         "period": "09/2025 – dosud",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder a full-stack developer · webová platforma",
+        "role": "Founder a full-stack developer, webová platforma",
         "results": [
           "Průvodce svátostmi a katalog farností pražské arcidiecéze; zapojené farnosti Dejvice, Hlubočepy a Chodov.",
           "Automatické přeposílání dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %, odezva farností pod 24 hodin.",
           "Optimalizace pro AI vyhledávače (llms.txt) kvůli přesným citacím."
         ],
-        "stack": "Next.js 15 · React 19 · TypeScript · Tailwind 4 · Redis · Resend · Leaflet"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend, Leaflet"
       },
       {
         "period": "08/2026 – dosud",
@@ -412,7 +381,7 @@
           "Denní synchronizace telemetrie z Garmin Connect API přes Vercel Cron (HRV, klidový tep, Body Battery, spánek); výpočty zátěže ACWR a CTL/ATL.",
           "Energetický model (sacharidy g/h, hydratace, sodík, pacing 6,706 km/h) a ranní rozbory s týdenním adaptivním plánem přes Anthropic API."
         ],
-        "stack": "Next.js 15 · TypeScript · Neon Postgres · Drizzle · Anthropic API"
+        "stack": "Next.js 15, TypeScript, Neon Postgres, Drizzle, Anthropic API"
       },
       {
         "period": "2025 – 2026",
@@ -422,26 +391,18 @@
           "Ze strukturovaného JSON vzniká série slidů 1080 × 1350 s dynamicky měřenou typografií; automatický QA enforcer kontroluje typy, povinná pole a délky textů proti snapshotům odmítnutých slidů.",
           "Parametrizované video šablony v Remotion (60 fps, Reels 9:16, analýza audio waveformu)."
         ],
-        "stack": "Python (PIL) · Remotion · React · TypeScript · FFmpeg"
+        "stack": "Python (PIL), Remotion, React, TypeScript, FFmpeg"
       }
-    ],
-    "toolsRef": {
-      "period": "2026",
-      "org": "Kvantitativní nástroje",
-      "role": "Black–Scholes · Monte Carlo · Markowitz",
-      "text": "viz sekci 03",
-      "href": "#nastroje"
-    }
+    ]
   },
   "education": {
     "id": "vzdelani",
-    "num": "05",
     "title": "Vzdělání",
     "items": [
       {
         "period": "09/2026 – dosud",
         "org": "Matematicko-fyzikální fakulta UK",
-        "role": "Bc. Finanční matematika · Praha",
+        "role": "Bc. Finanční matematika",
         "results": [
           "1. semestr: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář.",
           "Praktické aspekty měření a řízení finančních rizik (NMFP463): volitelný předmět s vyučujícími z praxe, zapsaný už v 1. ročníku; skupinová analýza výkazů a individuální práce."
@@ -451,7 +412,7 @@
       {
         "period": "09/2026 – dosud",
         "org": "Fakulta strojní ČVUT",
-        "role": "Bc. Strojní inženýrství, souběžně · Praha",
+        "role": "Bc. Strojní inženýrství, souběžně",
         "results": [
           "Účastník výběrového Mentoringového programu ČVUT (strategie, stavba projektů, kvantitativní metody)."
         ],
@@ -460,9 +421,9 @@
       {
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
-        "role": "Matematika, fyzika a informatika · Praha",
+        "role": "Matematika, fyzika a informatika",
         "results": [
-          "Maturita s vyznamenáním z matematiky, programování a angličtiny · Cambridge CAE (C1).",
+          "Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).",
           "Ročníková práce „Dopad EU ETS 2 na běžného člověka“ (hodnocena výborně): matematický model přenosu nákladů povolenek do cen paliv, rozbor LRF, MSR a front‑loadingu; Sociální klimatický fond pokryje jen asi 22 % reálného zdražení u zranitelných domácností."
         ],
         "stack": ""
@@ -471,7 +432,6 @@
   },
   "skills": {
     "id": "dovednosti",
-    "num": "06",
     "title": "Dovednosti",
     "groups": [
       {
@@ -498,7 +458,6 @@
   },
   "contact": {
     "id": "kontakt",
-    "num": "07",
     "title": "Kontakt",
     "email": "zikmundi@proton.me",
     "rows": [
@@ -530,12 +489,12 @@
           }
         ]
       }
-    ]
+    ],
+    "cvLabel": "CV v PDF"
   },
   "footer": {
-    "left": "Adam Zikmund · Praha",
-    "updatedLabel": "Aktualizováno",
-    "note": "Nástroje v sekci 03 jsou vzdělávací ukázky, ne investiční doporučení."
+    "left": "© 2026 Adam Zikmund",
+    "note": "Nástroje na této stránce jsou vzdělávací ukázky, ne investiční doporučení."
   },
   "cv": {
     "fileTitle": "Adam Zikmund — CV",

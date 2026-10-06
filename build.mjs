@@ -10,9 +10,13 @@ import { typo as typoFor } from './src/typo.mjs';
 let LANG = 'cs';
 const typo = (s) => typoFor(s, LANG);
 const esc = (s) => typo(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const rich = (s) => esc(s).replace(/([A-Za-zσμρ\]\)])_([A-Za-z]{1,3})\b/g, '$1<sub>$2</sub>');
 const ext = (href) => /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '';
-const G = '<span class="glyph" aria-hidden="true">↗</span>';
-const FONTS = 'https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap';
+const G = '';
+// Two design variants built from the same content. A is the production site, B is a noindex preview at /b/ for comparison.
+const VARIANTS = JSON.parse(readFileSync(join(root, 'src', 'variants.json'), 'utf8'));
+let V = VARIANTS[0];
+const P = (path) => (V.dir ? '/' + V.dir.replace(/\/$/, '') : '') + path;
 
 /* ---------- head / nav / footer ---------- */
 function head(c) {
@@ -26,8 +30,8 @@ function head(c) {
 <meta name="description" content="${esc(m.description)}">
 <meta name="author" content="Adam Zikmund">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f3f1ec">
-<link rel="canonical" href="${url}">
+<meta name="theme-color" content="${V.themeColor}">
+<link rel="canonical" href="${url}">${V.noindex ? '\n<meta name="robots" content="noindex">' : ''}
 <link rel="alternate" hreflang="${c.lang}" href="${url}">
 <link rel="alternate" hreflang="${m.altLang.lang}" href="${alt}">
 <link rel="alternate" hreflang="x-default" href="${m.siteUrl}/">
@@ -39,8 +43,9 @@ function head(c) {
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${FONTS}">
+<link rel="stylesheet" href="${V.fonts}">
 <link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="${V.css}">
 <script>document.documentElement.classList.add('js');</script>
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/quant.js" defer></script>
@@ -52,17 +57,17 @@ function nav(c) {
   return `<header class="site-header" id="top">
 <a class="skip" href="#main">${esc(n.skip)}</a>
 <nav class="nav" aria-label="${esc(n.ariaMain)}">
-  <a class="brand" href="${m.path}">${esc(n.brand)}</a>
+  <a class="brand" href="${P(m.path)}">${esc(n.brand)}</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"><span class="t-open">${esc(n.contents)}</span><span class="t-close">${esc(n.close)}</span></button>
   <div class="nav-menu" id="nav-menu">
     <ol class="nav-list">
-      ${n.links.map((l) => `<li><a href="#${l.id}" data-spy="${l.id}"><span class="num">${l.num}</span> ${esc(l.label)}</a></li>`).join('\n      ')}
+      ${n.links.map((l) => `<li><a href="#${l.id}" data-spy="${l.id}">${esc(l.label)}</a></li>`).join('\n      ')}
     </ol>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${m.altLang.path}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
+    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
   </div>
   <div class="nav-right">
-    <a class="nav-cv" href="${m.cvPdf}"><span class="t-long">${esc(n.cv)}</span><span class="t-short">${esc(n.cvShort)}</span> ${G}</a>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${m.altLang.path}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>
+    <a class="nav-cv" href="${m.cvPdf}"><span class="t-long">${esc(n.cv)}</span><span class="t-short">${esc(n.cvShort)}</span></a>
+    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>
   </div>
 </nav>
 </header>`;
@@ -71,29 +76,27 @@ function nav(c) {
 function footer(c) {
   const f = c.footer; const m = c.meta;
   return `<footer class="site-footer">
-  <p class="mono-line">${esc(f.left)} · ${esc(f.updatedLabel)} ${esc(c.updated)}</p>
+  <p>${esc(f.left)}</p>
   <p class="footer-note">${esc(f.note)}</p>
-  <p class="mono-line"><span class="is-current">${esc(m.thisLang.label)}</span> / <a href="${m.altLang.path}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></p>
+  <p class="footer-lang"><span class="is-current">${esc(m.thisLang.label)}</span> / <a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></p>
 </footer>`;
 }
 
 /* ---------- hero ---------- */
-function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)} ${G}</a>`).join('<span class="sep" aria-hidden="true"> · </span>'); }
+function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(', '); }
 function hero(c) {
   const h = c.hero;
   return `<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
-    <p class="label">${esc(h.label)}</p>
     <h1 id="hero-title">${h.title.map((t) => `<span class="line">${esc(t)}</span>`).join(' ')}</h1>
     <p class="deck">${esc(h.deck)}</p>
-    <p class="actions"><a class="cv-link" href="${h.actions.cvHref}">${esc(h.actions.cv)} ${G}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
+    <p class="actions"><a class="cv-link" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
   </div>
   <aside class="sheet" aria-labelledby="sheet-title">
     <h2 id="sheet-title" class="visually-hidden">${esc(h.sheetTitle)}</h2>
     <dl class="sheet-rows">
       ${h.sheet.map((r) => `<div class="sheet-row"><dt>${esc(r.k)}</dt><dd>${r.links ? links(r.links) : esc(r.v)}</dd></div>`).join('\n      ')}
     </dl>
-    <p class="sheet-updated">${esc(h.updatedLabel)} ${esc(c.updated)}</p>
   </aside>
 </section>`;
 }
@@ -101,7 +104,7 @@ function hero(c) {
 /* ---------- section scaffolding ---------- */
 function section(s, body, extraClass) {
   return `<section id="${s.id}" class="section${extraClass ? ' ' + extraClass : ''}" aria-labelledby="h-${s.id}">
-  <div class="rail"><span class="num" aria-hidden="true">${esc(s.num)}</span><h2 id="h-${s.id}">${esc(s.title)}</h2></div>
+  <div class="rail"><h2 id="h-${s.id}">${esc(s.title)}</h2></div>
   <div class="content">
 ${body}
   </div>
@@ -118,7 +121,7 @@ function kv(title, rows, id) {
 function ledger(items, extra) {
   const row = (e) => `<li class="row">
         <div class="row-date"><time>${esc(e.period)}</time></div>
-        <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)} ${G}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
+        <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
           <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
           ${e.stack ? `<p class="row-stack">${esc(e.stack)}</p>` : ''}
@@ -137,28 +140,23 @@ function profile(c) {
 }
 function experience(c) { return section(c.experience, '    ' + ledger(c.experience.items)); }
 function education(c) { return section(c.education, '    ' + ledger(c.education.items)); }
-function projects(c) {
-  const p = c.projects; const r = p.toolsRef;
-  const refRow = `<li class="row row-ref">
-        <div class="row-date"><time>${esc(r.period)}</time></div>
-        <div class="row-head"><h3><a href="${r.href}">${esc(r.org)}</a></h3><p class="row-role">${esc(r.role)}</p></div>
-        <div class="row-body"><p class="row-ref-text"><a href="${r.href}">${esc(r.text)} <span aria-hidden="true">↑</span></a></p></div>
-      </li>`;
-  return section(p, '    ' + ledger(p.items, refRow));
-}
+function projects(c) { return section(c.projects, '    ' + ledger(c.projects.items)); }
 function skills(c) {
   const s = c.skills;
   return section(s, `    <dl class="skills-grid">
       ${s.groups.map((g) => `<div class="skill"><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
     </dl>
-    <dl class="kv kv-single"><div class="kv-row"><dt>${esc(s.interests.k)}</dt><dd>${esc(s.interests.v)}</dd></div></dl>`);
+    <p class="interests"><strong>${esc(s.interests.k)}.</strong> ${esc(s.interests.v)}</p>`);
 }
 function contact(c) {
   const s = c.contact;
+  const items = s.rows.map((r) => r.links
+    ? `<li>${esc(s.cvLabel)}: ${links(r.links)}</li>`
+    : `<li><a href="${r.href}"${ext(r.href)}>${esc(/^https?:/.test(r.href) ? r.k : r.v)}</a></li>`).join('\n      ');
   return section(s, `    <p class="contact-email"><a href="mailto:${s.email}">${esc(s.email)}</a></p>
-    <dl class="kv">
-      ${s.rows.map((r) => `<div class="kv-row"><dt>${esc(r.k)}</dt><dd>${r.links ? links(r.links) : `<a href="${r.href}"${ext(r.href)}>${esc(r.v)}${/^https?:/.test(r.href) ? ' ' + G : ''}</a>`}</dd></div>`).join('\n      ')}
-    </dl>`, 'section-contact');
+    <ul class="contact-list">
+      ${items}
+    </ul>`, 'section-contact');
 }
 
 /* ---------- quant tools ---------- */
@@ -167,7 +165,7 @@ const numAttrs = (name, min, max, step, value, decimals) => `type="text" inputmo
 function ctl(tool, name, label, min, max, step, value, unit, decimals) {
   const id = `${tool}-${name}`;
   return `<div class="ctl">
-          <label class="ctl-label" id="${id}-label" for="${id}">${esc(label)}</label>
+          <label class="ctl-label" id="${id}-label" for="${id}">${rich(label)}</label>
           <span class="ctl-value"><input id="${id}" ${numAttrs(name, min, max, step, value, decimals)}><span class="unit"${unit ? '' : ' aria-hidden="true"'}>${unit ? esc(unit) : ''}</span></span>
           <input type="range" class="ctl-range" aria-labelledby="${id}-label" data-sync="${name}" min="${min}" max="${max}" step="${step}" value="${value}" tabindex="-1">
         </div>`;
@@ -178,31 +176,29 @@ function toggle(name, legend, options, def) {
 }
 function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><dt>${esc(label)}</dt><dd data-out="${key}">—</dd></div>`; }
 
-function toolShell(c, t, controls, chart, readouts) {
+function toolShell(c, t, controls, chart, readouts, extraBtns = '') {
   const cm = c.tools.common;
   return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}">
-        <h3 class="tool-title"><span class="num" aria-hidden="true">${esc(t.num)}</span> ${esc(t.title)}</h3>
+        <h3 class="tool-title">${esc(t.title)}</h3>
         <p class="tool-quote">${esc(t.quote)}</p>
+        <p class="tool-spec">${esc(t.summary)}</p>
         <div class="panel">
-          <div class="panel-head"><span class="panel-name">${esc(t.num)} ${esc(t.title)}</span><span class="panel-summary">${esc(t.summary)}</span></div>
           <div class="panel-body">
             <form class="controls" aria-label="${esc(cm.controls)}" onsubmit="return false">
-              <p class="zone-label" aria-hidden="true">${esc(cm.controls)}</p>
               ${controls}
-              <button type="button" class="text-btn" data-role="reset">${esc(cm.reset)}</button>
+              <div class="btn-row">${extraBtns}<button type="button" class="text-btn" data-role="reset">${esc(cm.reset)}</button></div>
             </form>
             <div class="chart">
               ${chart}
               <noscript><p class="chart-noscript">${esc(cm.noscript)}</p></noscript>
             </div>
             <div class="readouts">
-              <p class="zone-label" aria-hidden="true">${esc(cm.readouts)}</p>
               ${readouts}
             </div>
           </div>
           <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">${esc(t.insight)}</p>
-          <details class="method"><summary>${esc(cm.details)}</summary><ul>${t.details.map((d) => `<li>${esc(d)}</li>`).join('')}</ul></details>
+          <p class="insight">${rich(t.insight)}</p>
+          <details class="method"><summary>${esc(cm.details)}</summary><ul>${t.details.map((d) => `<li>${rich(d)}</li>`).join('')}</ul></details>
         </div>
       </article>`;
 }
@@ -233,7 +229,6 @@ function toolMC(c, t) {
     toggle('horizon', u.horizon, [['21', '21'], ['63', '63'], ['126', '126'], ['252', '252']], '252'),
     toggle('paths', u.paths, [['500', '500'], ['1000', c.lang === 'cs' ? '1 000' : '1,000'], ['2000', c.lang === 'cs' ? '2 000' : '2,000']], '1000'),
     toggle('dist', u.dist, [['normal', u.normal], ['jump', u.fat]]),
-    `<button type="button" class="text-btn" data-role="reseed">${esc(u.rerun)} <span aria-hidden="true">→</span></button>`,
   ].join('\n              ');
   const chart = `<canvas data-role="chart" role="img" aria-label="${esc(u.aria)}"></canvas>
               <p class="chart-note mono" data-out="shown"></p>
@@ -250,7 +245,7 @@ function toolMC(c, t) {
                   <tr class="row-delta" data-role="var-delta" hidden><th scope="row">${esc(u.esDelta)}</th><td></td><td data-out="esDelta">—</td></tr>
                 </tbody>
               </table>`;
-  return toolShell(c, t, controls, chart, readouts);
+  return toolShell(c, t, controls, chart, readouts, `<button type="button" class="text-btn" data-role="reseed">${esc(u.rerun)}</button>`);
 }
 function toolMK(c, t) {
   const u = t.ui; const N = u.names;
@@ -273,13 +268,12 @@ function toolMK(c, t) {
     assets,
     ctl('mk', 'rf', u.rf, 0, 6, 0.25, 2, u.unitPct, 2),
     toggle('short', u.short, [['none', u.noShort], ['short', u.withShort]]),
-    `<button type="button" class="text-btn btn-error" data-role="error" aria-pressed="false">${esc(u.error)}</button>`,
   ].join('\n              ');
   const chart = `<canvas data-role="chart" role="img" aria-label="${esc(u.aria)}"></canvas>
               <p class="chart-note" data-role="error-caption" hidden>${esc(u.caption)}</p>
               <p class="chart-note is-warn" data-role="psd-note" hidden></p>
               <p class="chart-note is-warn" data-role="no-tangency" hidden>${esc(u.noTangency)}</p>
-              <ul class="legend"><li><i class="sw sw-cloud"></i>${esc(u.legendCloud)}</li><li><i class="sw sw-ink"></i>${esc(u.legendFrontier)}</li><li><i class="sw sw-navy"></i>${esc(u.legendMax)} · ${esc(u.legendCml)}</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>${esc(u.legendGhost)}</li></ul>`;
+              <ul class="legend"><li><i class="sw sw-cloud"></i>${esc(u.legendCloud)}</li><li><i class="sw sw-ink"></i>${esc(u.legendFrontier)}</li><li><i class="sw sw-navy"></i>${esc(u.legendMax)} ${LANG === 'cs' ? 'a' : 'and'} ${esc(u.legendCml)}</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>${esc(u.legendGhost)}</li></ul>`;
   const readouts = `<p class="ro-title">${esc(u.maxSharpe)}</p>
               <dl class="ro-list">
                 ${ro(u.ret, 'ret', 'ro-main')}
@@ -292,7 +286,7 @@ function toolMK(c, t) {
                   ${N.map((n, i) => `<tr><th scope="row">${esc(n)}</th><td><span class="wbar" aria-hidden="true"><i data-bar="${i}"></i></span><span data-out="w${i + 1}">—</span></td><td class="col-err" hidden data-out="e${i + 1}">—</td></tr>`).join('\n                  ')}
                 </tbody>
               </table>`;
-  return toolShell(c, t, controls, chart, readouts);
+  return toolShell(c, t, controls, chart, readouts, `<button type="button" class="text-btn btn-error" data-role="error" aria-pressed="false">${esc(u.error)}</button>`);
 }
 function tools(c) {
   const s = c.tools; const r = { bs: toolBS, mc: toolMC, mk: toolMK };
@@ -323,13 +317,17 @@ ${footer(c)}
 `;
 }
 
-for (const [lang, out] of [['cs', 'index.html'], ['en', 'en/index.html']]) {
-  const c = JSON.parse(readFileSync(join(root, 'src', `content.${lang}.json`), 'utf8'));
-  LANG = lang;
-  const html = renderSite(c);
-  mkdirSync(dirname(join(root, out)), { recursive: true });
-  writeFileSync(join(root, out), html);
-  console.log('wrote', out, html.length, 'bytes');
+for (const variant of VARIANTS) {
+  V = variant;
+  for (const [lang, page] of [['cs', 'index.html'], ['en', 'en/index.html']]) {
+    const c = JSON.parse(readFileSync(join(root, 'src', `content.${lang}.json`), 'utf8'));
+    LANG = lang;
+    const out = (V.dir || '') + page;
+    const html = renderSite(c);
+    mkdirSync(dirname(join(root, out)), { recursive: true });
+    writeFileSync(join(root, out), html);
+    console.log('wrote', out, html.length, 'bytes', `(variant ${V.key})`);
+  }
 }
 if (process.argv.includes('--cv')) {
   const { renderCV, htmlToPdf } = await import('./src/cv.mjs');

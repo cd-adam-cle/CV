@@ -27,7 +27,7 @@
     const cs = getComputedStyle(el);
     const v = (name, fb) => (cs.getPropertyValue(name) || '').trim() || fb;
     return { ink: v('--ink', '#1a1917'), muted: v('--ink-2', '#6b6862'), line: v('--line', '#d9d5cc'), grid: v('--grid', '#e6e2da'),
-      navy: v('--navy', '#22395b'), oxide: v('--oxide', '#b4472b'), cloud: v('--cloud', '#a39e94'), surface: v('--surface', '#faf9f6'), font: v('--font-mono', 'ui-monospace, monospace') };
+      navy: v('--navy', '#22395b'), oxide: v('--oxide', '#b4472b'), cloud: v('--cloud', '#a39e94'), surface: v('--surface', '#faf9f6'), bg: v('--chart-bg', v('--bg', '#ffffff')), font: v('--font-chart', 'Georgia, serif'), fs: parseFloat(v('--chart-fs', '12')) || 12 };
   }
 
   /* ---------- canvas helpers ---------- */
@@ -48,7 +48,7 @@
   }
   function frame(ctx, t, box, xTicks, yTicks, xfmt, yfmt, xLabel, yLabel) {
     const { x0, y0, x1, y1, sx, sy } = box;
-    ctx.font = `11px ${t.font}`; ctx.lineWidth = 1;
+    ctx.font = `${t.fs}px ${t.font}`; ctx.lineWidth = 1;
     ctx.strokeStyle = t.grid;
     for (const yt of yTicks) { const py = Math.round(sy(yt)) + 0.5; if (py < y0 - 1 || py > y1 + 1) continue; ctx.beginPath(); ctx.moveTo(x0, py); ctx.lineTo(x1, py); ctx.stroke(); ctx.fillStyle = t.muted; ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(yfmt(yt), x0 - 6, py); }
     ctx.strokeStyle = t.line; ctx.beginPath(); ctx.moveTo(x0, y1 + 0.5); ctx.lineTo(x1, y1 + 0.5); ctx.stroke();
@@ -58,8 +58,8 @@
     if (yLabel) { ctx.textAlign = 'left'; ctx.textBaseline = 'bottom'; ctx.fillText(yLabel, x0, y0 - 6); }
   }
   function label(ctx, t, text, x, y, color, align, baseline) {
-    ctx.font = `11px ${t.font}`; ctx.textAlign = align || 'left'; ctx.textBaseline = baseline || 'bottom';
-    ctx.lineJoin = 'round'; ctx.strokeStyle = t.surface; ctx.lineWidth = 4; ctx.strokeText(text, x, y);
+    ctx.font = `${t.fs}px ${t.font}`; ctx.textAlign = align || 'left'; ctx.textBaseline = baseline || 'bottom';
+    ctx.lineJoin = 'round'; ctx.strokeStyle = t.bg; ctx.lineWidth = 4; ctx.strokeText(text, x, y);
     ctx.fillStyle = color; ctx.fillText(text, x, y);
   }
   function polyline(ctx, pts, color, width, dash) {
@@ -153,12 +153,13 @@
       ctx.strokeStyle = t.navy; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(Math.round(px) + 0.5, h - pad.b); ctx.lineTo(Math.round(px) + 0.5, py); ctx.stroke();
       ctx.fillStyle = t.ink; ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2); ctx.fill();
       const left = px < pad.l + 110;
-      label(ctx, t, `S ${fmt.int(s.S)} · ${fmt.n(s.g.price, 2)}`, px + (left ? 8 : -8), py - 8, t.ink, left ? 'left' : 'right', 'bottom');
+      label(ctx, t, `S = ${fmt.int(s.S)}: ${fmt.n(s.g.price, 2)}`, px + (left ? 8 : -8), py - 8, t.ink, left ? 'left' : 'right', 'bottom');
     };
     const recompute = onFrame(() => { compute(); draw(); }); const redraw = onFrame(draw);
     bindControls(form, recompute);
     root.querySelector('[data-role=reset]')?.addEventListener('click', () => { resetForm(form); compute(); draw(); });
     observe(canvas, redraw); compute(); draw();
+    return draw;
   }
 
   /* ================= 03.2 Monte Carlo ================= */
@@ -226,12 +227,12 @@
       const yv = Math.round(sy(sel.q05)) + 0.5; ctx.beginPath(); ctx.moveTo(pad.l, yv); ctx.lineTo(w - pad.r, yv); ctx.stroke();
       if (fat) {
         const yn = Math.round(sy(rn.q05)) + 0.5; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(pad.l, yn); ctx.lineTo(w - pad.r, yn); ctx.stroke(); ctx.setLineDash([]);
-        label(ctx, t, `${ui.legendVarNormal} · ${fmt.int(rn.q05)}`, pad.l + 4, yn - 3, t.oxide, 'left', 'bottom');
-        label(ctx, t, `${ui.legendVar} · ${fmt.int(sel.q05)}`, pad.l + 4, yv + 3, t.oxide, 'left', 'top');
+        label(ctx, t, `${ui.legendVarNormal}: ${fmt.int(rn.q05)}`, pad.l + 4, yn - 3, t.oxide, 'left', 'bottom');
+        label(ctx, t, `${ui.legendVar}: ${fmt.int(sel.q05)}`, pad.l + 4, yv + 3, t.oxide, 'left', 'top');
       } else {
-        label(ctx, t, `${ui.legendVar} · ${fmt.int(sel.q05)}`, pad.l + 4, yv - 3, t.oxide, 'left', 'bottom');
+        label(ctx, t, `${ui.legendVar}: ${fmt.int(sel.q05)}`, pad.l + 4, yv - 3, t.oxide, 'left', 'bottom');
       }
-      label(ctx, t, `${ui.legendMedian} · ${fmt.int(sel.median)}`, x1 - 4, Math.max(pad.t + 12, sy(sel.p50[sel.p50.length - 1]) - 6), t.ink, 'right', 'bottom');
+      label(ctx, t, `${ui.legendMedian}: ${fmt.int(sel.median)}`, x1 - 4, Math.max(pad.t + 12, sy(sel.p50[sel.p50.length - 1]) - 6), t.ink, 'right', 'bottom');
       // histogram
       const bins = 32; const counts = new Array(bins).fill(0);
       for (const v of sel.sorted) counts[clamp(Math.floor((v - yMin) / (yMax - yMin) * bins), 0, bins - 1)]++;
@@ -244,6 +245,7 @@
     root.querySelector('[data-role=reseed]')?.addEventListener('click', () => { seed = (seed * 1664525 + 1013904223) >>> 0; compute(); draw(); });
     root.querySelector('[data-role=reset]')?.addEventListener('click', () => { resetForm(form); seed = 20261005; compute(); draw(); });
     observe(canvas, redraw); compute(); draw();
+    return draw;
   }
 
   /* ================= 03.3 Markowitz ================= */
@@ -315,7 +317,7 @@
       ctx.globalAlpha = 0.3; for (const g of ghosts) polyline(ctx, g.map((q) => [sx(q.s), sy(q.r)]), t.oxide, 1); ctx.globalAlpha = 1;
       polyline(ctx, base.frontier.map((q) => [sx(q.s), sy(q.r)]), t.ink, 1.25);
       const ms = base.maxSharpe; const kx = sMax; if (tangency) polyline(ctx, [[sx(0), sy(rf)], [sx(kx), sy(rf + ms.sh * kx)]], t.navy, 1, [4, 3]);
-      ctx.font = `11px ${t.font}`;
+      ctx.font = `${t.fs}px ${t.font}`;
       for (let i = 0; i < 3; i++) { ctx.strokeStyle = t.ink; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(sx(sg[i]), sy(mu[i]), 3.5, 0, Math.PI * 2); ctx.stroke(); label(ctx, t, ui.names[i], sx(sg[i]) + 7, sy(mu[i]), t.ink, 'left', 'middle'); }
       const sq = (q, color, text) => { ctx.fillStyle = color; ctx.fillRect(sx(q.s) - 3.5, sy(q.r) - 3.5, 7, 7); label(ctx, t, text, sx(q.s) - 8, sy(q.r) - 5, color, 'right', 'bottom'); };
       sq(base.minRisk, t.ink, ui.legendMin); if (tangency) sq(ms, t.navy, ui.legendMax);
@@ -325,13 +327,20 @@
     errBtn?.addEventListener('click', () => { errBtn.setAttribute('aria-pressed', errBtn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); compute(); draw(); });
     root.querySelector('[data-role=reset]')?.addEventListener('click', () => { resetForm(form); compute(); draw(); });
     observe(canvas, redraw); compute(); draw();
+    return draw;
   }
 
   /* ---------- boot: UI strings come from a JSON block rendered by the build ---------- */
   const inits = { bs: initBS, mc: initMC, mk: initMK };
   function boot() {
     let dict = {}; const cfg = document.getElementById('quant-ui'); if (cfg) { try { dict = JSON.parse(cfg.textContent); } catch (e) { console.error('quant-ui JSON', e); } }
-    document.querySelectorAll('[data-tool]').forEach((el) => { const f = inits[el.dataset.tool]; if (!f) return; try { f(el, dict[el.dataset.tool] || {}); el.classList.add('is-ready'); } catch (e) { console.error('tool init failed', el.dataset.tool, e); } });
+    const redraws = [];
+    document.querySelectorAll('[data-tool]').forEach((el) => { const f = inits[el.dataset.tool]; if (!f) return; try { const d = f(el, dict[el.dataset.tool] || {}); if (d) redraws.push(d); el.classList.add('is-ready'); } catch (e) { console.error('tool init failed', el.dataset.tool, e); } });
+    // Canvas text does not trigger web-font loading: load the chart face explicitly, then redraw so labels use it.
+    if (document.fonts && document.fonts.load) {
+      const fam = getComputedStyle(document.documentElement).getPropertyValue('--font-chart').trim();
+      Promise.all([fam ? document.fonts.load(`13px ${fam}`) : null, document.fonts.ready]).then(() => redraws.forEach((d) => d())).catch(() => {});
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
