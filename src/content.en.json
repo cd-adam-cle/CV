@@ -90,7 +90,11 @@
         "k": "Languages",
         "v": "Czech, English C1 (CAE), German A2"
       }
-    ]
+    ],
+    "mark": "Zikmund",
+    "portalHint": "Scroll to enter",
+    "kicker": "Adam Zikmund, Prague",
+    "portalText": "Financial mathematics student at Charles University. Software that gets used. Interested in risk, investing and venture capital."
   },
   "profile": {
     "id": "profile",
@@ -150,7 +154,7 @@
         "results": [
           "Modelled client financial plans (insurance and investment products), prepared meeting materials and joined client meetings.",
           "Analysed a CZK 1,000,000 six-fund portfolio (50% bonds / 34% real estate / 16% equities): weighted TER ~1.35% p.a., duration, liquidity, risk types and rate scenarios, delivered as an interactive client presentation.",
-          "Built the firm's content engine: a JSON-driven Python (PIL) carousel generator with automated QA checks and Remotion video templates."
+          "A CNB exam trainer for advisers and a carousel generator with automated QA checks (see Projects)."
         ],
         "stack": "Python, PIL, Remotion, React, TypeScript"
       },
@@ -365,35 +369,92 @@
         "period": "09/2025 – present",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder and full-stack developer, web platform",
+        "role": "Community platform for Prague parishes",
+        "tag": "Product",
         "results": [
-          "A guide to sacraments and a parish directory for the Archdiocese of Prague; participating parishes Dejvice, Hlubočepy and Chodov.",
-          "Automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%, parish replies under 24 hours.",
-          "Optimised for AI search engines (llms.txt) so the project is cited accurately."
+          "A guide to sacraments and a parish directory; Dejvice, Hlubočepy and Chodov parishes on board.",
+          "Automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%.",
+          "Optimised for AI search engines (llms.txt)."
         ],
-        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend, Leaflet"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis"
+      },
+      {
+        "period": "07/2026 – 08/2026",
+        "org": "CNB exam trainer",
+        "role": "Internal study app for Valor Group advisers",
+        "tag": "For a client",
+        "results": [
+          "Two question banks for the Czech National Bank professional exams: insurance (1,980 questions) and investments (1,339), each with reasoning.",
+          "Mock exam scored by the official decree, spaced repetition of mistakes (1/3/7/14/30 days), readiness estimate, weak-section statistics.",
+          "A single HTML file with no dependencies, progress sync through a serverless function, 10 automated test suites."
+        ],
+        "stack": "Vanilla JS, Vercel Functions, jsdom"
+      },
+      {
+        "period": "2025 – 2026",
+        "org": "Carousel generator",
+        "role": "Content engine and user manual for Valor Group",
+        "tag": "For a client",
+        "results": [
+          "Structured JSON becomes a series of 1080 × 1350 slides with dynamically measured typography; a QA enforcer checks types, required fields and lengths.",
+          "Video templates in Remotion (60 fps, 9:16 Reels) and a web manual with a template gallery for the team."
+        ],
+        "stack": "Python (PIL), Remotion, React, Vite"
       },
       {
         "period": "08/2026 – present",
         "org": "Training operations centre",
         "role": "Private PWA for backyard-ultra preparation",
+        "tag": "Own",
         "results": [
-          "Daily telemetry sync from the Garmin Connect API via Vercel Cron (HRV, resting heart rate, Body Battery, sleep); ACWR and CTL/ATL load calculations.",
-          "Fuelling model (carbohydrates g/h, hydration, sodium, pacing 6.706 km/h) and morning analyses with a weekly adaptive plan via the Anthropic API."
+          "Daily telemetry sync from the Garmin Connect API via Vercel Cron; ACWR and CTL/ATL load calculations.",
+          "Fuelling model (carbohydrates, hydration, sodium, pacing) and a weekly adaptive plan via the Anthropic API."
         ],
-        "stack": "Next.js 15, TypeScript, Neon Postgres, Drizzle, Anthropic API"
+        "stack": "Next.js 15, Neon Postgres, Drizzle, Anthropic API"
       },
       {
-        "period": "2025 – 2026",
-        "org": "Content engine for Valor Group",
-        "role": "Custom tooling for client carousels and videos",
+        "period": "07/2026",
+        "org": "Portfolio investment analysis",
+        "role": "Client presentation for Valor Group",
+        "tag": "For a client",
         "results": [
-          "Structured JSON becomes a series of 1080 × 1350 slides with dynamically measured typography; an automated QA enforcer checks types, required fields and text lengths against snapshots of rejected slides.",
-          "Parametric video templates in Remotion (60 fps, 9:16 Reels, audio waveform analysis)."
+          "Six funds and the allocation of a CZK 1,000,000 portfolio: TER, duration, liquidity, risks, rate scenarios; data from KIDs and factsheets.",
+          "A single file that works offline and prints to an A4 PDF."
         ],
-        "stack": "Python (PIL), Remotion, React, TypeScript, FFmpeg"
+        "stack": "HTML, CSS, JS"
+      },
+      {
+        "period": "04/2026",
+        "org": "Cooperation proposal",
+        "role": "Interactive presentation for a prospective client",
+        "tag": "For a client",
+        "results": [
+          "Two ways of working together, questions to think through and a price calculator; the client clicks through and then gets in touch."
+        ],
+        "stack": "Next.js 16, TypeScript"
+      },
+      {
+        "period": "06/2026",
+        "org": "When and where do we go?",
+        "role": "Group trip planner",
+        "tag": "Own",
+        "results": [
+          "One shared calendar: everyone marks when they are free, the app finds the dates with the biggest overlap; ideas and votes in real time."
+        ],
+        "stack": "Next.js, Supabase"
+      },
+      {
+        "period": "06/2026",
+        "org": "Website for a home baker",
+        "role": "Showcase and cake builder",
+        "tag": "For a client",
+        "results": [
+          "Cake builder, gallery, reviews and blog; customers assemble a cake and send an enquiry."
+        ],
+        "stack": "Next.js, TypeScript"
       }
-    ]
+    ],
+    "intro": "Things I have built that are running. Most of them were made for real clients and users."
   },
   "education": {
     "id": "education",
@@ -621,6 +682,36 @@
       {
         "k": "Interests",
         "v": "half marathon 1:24 and backyard ultra training, 11 years of competitive baseball, poker and game theory"
+      }
+    ]
+  },
+  "numbers": {
+    "id": "numbers",
+    "title": "In numbers",
+    "items": [
+      {
+        "n": "8",
+        "l": "websites and apps in production"
+      },
+      {
+        "n": "3,319",
+        "l": "exam questions in the advisers' trainer"
+      },
+      {
+        "n": "CZK 1,000,000",
+        "l": "portfolio analysed across six funds"
+      },
+      {
+        "n": "3",
+        "l": "models programmed from scratch"
+      },
+      {
+        "n": "−58%",
+        "l": "parish response time after automation"
+      },
+      {
+        "n": "1:24",
+        "l": "half marathon"
       }
     ]
   }

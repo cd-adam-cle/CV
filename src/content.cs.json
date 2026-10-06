@@ -90,7 +90,11 @@
         "k": "Jazyky",
         "v": "čeština, angličtina C1 (CAE), němčina A2"
       }
-    ]
+    ],
+    "mark": "Zikmund",
+    "portalHint": "Scrollem dovnitř",
+    "kicker": "Adam Zikmund, Praha",
+    "portalText": "Student finanční matematiky na Matfyzu. Software, který se používá. Zájem o riziko, investice a venture kapitál."
   },
   "profile": {
     "id": "profil",
@@ -150,7 +154,7 @@
         "results": [
           "Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty.",
           "Analýza portfolia 1 000 000 Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb, zpracovaná jako interaktivní klientská prezentace.",
-          "Content engine firmy: generátor carouselů v Pythonu (PIL) řízený JSON s automatickou QA kontrolou a video šablony v Remotion."
+          "Trenažér odborných zkoušek ČNB pro poradce a generátor carouselů s automatickou QA kontrolou (viz Projekty)."
         ],
         "stack": "Python, PIL, Remotion, React, TypeScript"
       },
@@ -365,35 +369,92 @@
         "period": "09/2025 – dosud",
         "org": "Božííí",
         "href": "https://boziii.com",
-        "role": "Founder a full-stack developer, webová platforma",
+        "role": "Komunitní platforma pro pražské farnosti",
+        "tag": "Produkt",
         "results": [
-          "Průvodce svátostmi a katalog farností pražské arcidiecéze; zapojené farnosti Dejvice, Hlubočepy a Chodov.",
-          "Automatické přeposílání dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %, odezva farností pod 24 hodin.",
-          "Optimalizace pro AI vyhledávače (llms.txt) kvůli přesným citacím."
+          "Průvodce svátostmi a katalog farností; zapojené farnosti Dejvice, Hlubočepy a Chodov.",
+          "Automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %.",
+          "Optimalizace pro AI vyhledávače (llms.txt)."
         ],
-        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend, Leaflet"
+        "stack": "Next.js 15, React 19, TypeScript, Tailwind 4, Redis"
+      },
+      {
+        "period": "07/2026 – 08/2026",
+        "org": "Trenažér zkoušek ČNB",
+        "role": "Interní studijní aplikace pro poradce Valor Group",
+        "tag": "Pro klienta",
+        "results": [
+          "Dvě banky otázek k odborným zkouškám ČNB: pojišťovnictví (1 980 otázek) a investice (1 339 otázek), s odůvodněním u každé.",
+          "Zkouška nanečisto s bodováním podle vyhlášky, chytré opakování chyb (1/3/7/14/30 dní), odhad připravenosti, statistiky slabých sekcí.",
+          "Jeden HTML soubor bez závislostí, synchronizace postupu přes serverless funkci, 10 sad automatických testů."
+        ],
+        "stack": "Vanilla JS, Vercel Functions, jsdom"
+      },
+      {
+        "period": "2025 – 2026",
+        "org": "Generátor karuselů",
+        "role": "Content engine a uživatelský manuál pro Valor Group",
+        "tag": "Pro klienta",
+        "results": [
+          "Ze strukturovaného JSON vzniká série slidů 1080 × 1350 s dynamicky měřenou typografií; QA enforcer hlídá typy, povinná pole a délky.",
+          "Video šablony v Remotion (60 fps, Reels 9:16) a webový manuál s galerií šablon pro tým."
+        ],
+        "stack": "Python (PIL), Remotion, React, Vite"
       },
       {
         "period": "08/2026 – dosud",
         "org": "Tréninkové operační středisko",
         "role": "Privátní PWA pro přípravu na backyard ultra",
+        "tag": "Vlastní",
         "results": [
-          "Denní synchronizace telemetrie z Garmin Connect API přes Vercel Cron (HRV, klidový tep, Body Battery, spánek); výpočty zátěže ACWR a CTL/ATL.",
-          "Energetický model (sacharidy g/h, hydratace, sodík, pacing 6,706 km/h) a ranní rozbory s týdenním adaptivním plánem přes Anthropic API."
+          "Denní synchronizace telemetrie z Garmin Connect API přes Vercel Cron; výpočty zátěže ACWR a CTL/ATL.",
+          "Energetický model (sacharidy, hydratace, sodík, pacing) a týdenní adaptivní plán přes Anthropic API."
         ],
-        "stack": "Next.js 15, TypeScript, Neon Postgres, Drizzle, Anthropic API"
+        "stack": "Next.js 15, Neon Postgres, Drizzle, Anthropic API"
       },
       {
-        "period": "2025 – 2026",
-        "org": "Content engine pro Valor Group",
-        "role": "Zakázkový nástroj pro klientské carousely a videa",
+        "period": "07/2026",
+        "org": "Analýza investic v portfoliu",
+        "role": "Klientská prezentace pro Valor Group",
+        "tag": "Pro klienta",
         "results": [
-          "Ze strukturovaného JSON vzniká série slidů 1080 × 1350 s dynamicky měřenou typografií; automatický QA enforcer kontroluje typy, povinná pole a délky textů proti snapshotům odmítnutých slidů.",
-          "Parametrizované video šablony v Remotion (60 fps, Reels 9:16, analýza audio waveformu)."
+          "Rozbor šesti fondů a rozložení portfolia 1 000 000 Kč: TER, durace, likvidita, rizika, scénáře sazeb; data z KID a factsheetů.",
+          "Jeden soubor, funguje offline, tisk do PDF pro A4."
         ],
-        "stack": "Python (PIL), Remotion, React, TypeScript, FFmpeg"
+        "stack": "HTML, CSS, JS"
+      },
+      {
+        "period": "04/2026",
+        "org": "Nabídka spolupráce",
+        "role": "Interaktivní prezentace pro potenciálního klienta",
+        "tag": "Pro klienta",
+        "results": [
+          "Dvě cesty spolupráce, otázky k promyšlení a kalkulačka ceny; klient si stránku proklikává a pak se ozve."
+        ],
+        "stack": "Next.js 16, TypeScript"
+      },
+      {
+        "period": "06/2026",
+        "org": "Kdy a kam vyrazíme?",
+        "role": "Skupinový plánovač výletů",
+        "tag": "Vlastní",
+        "results": [
+          "Jeden sdílený kalendář: každý vyznačí, kdy má čas, aplikace najde termíny s největším překryvem; nápady a hlasování v reálném čase."
+        ],
+        "stack": "Next.js, Supabase"
+      },
+      {
+        "period": "06/2026",
+        "org": "Web pro domácí cukrářku",
+        "role": "Prezentace a skládačka dortů",
+        "tag": "Pro klienta",
+        "results": [
+          "Skládačka dortů, galerie, recenze a blog; zákazník si dort sestaví a poptá."
+        ],
+        "stack": "Next.js, TypeScript"
       }
-    ]
+    ],
+    "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele."
   },
   "education": {
     "id": "vzdelani",
@@ -621,6 +682,36 @@
       {
         "k": "Zájmy",
         "v": "půlmaraton 1:24 a příprava na backyard ultra, 11 let závodního baseballu, poker a teorie her"
+      }
+    ]
+  },
+  "numbers": {
+    "id": "cisla",
+    "title": "V číslech",
+    "items": [
+      {
+        "n": "8",
+        "l": "webů a aplikací v provozu"
+      },
+      {
+        "n": "3 319",
+        "l": "zkouškových otázek v trenažéru pro poradce"
+      },
+      {
+        "n": "1 000 000 Kč",
+        "l": "analyzované portfolio v šesti fondech"
+      },
+      {
+        "n": "3",
+        "l": "modely naprogramované od nuly"
+      },
+      {
+        "n": "−58 %",
+        "l": "čekání na odpověď farností po automatizaci"
+      },
+      {
+        "n": "1:24",
+        "l": "půlmaraton"
       }
     ]
   }

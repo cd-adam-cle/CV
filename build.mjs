@@ -48,7 +48,7 @@ function head(c) {
 <link rel="stylesheet" href="${V.css}">
 <script>document.documentElement.classList.add('js');</script>
 <script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/quant.js" defer></script>
+<script src="/assets/js/quant.js" defer></script>${V.layout === 'blocks' ? '\n<script src="/assets/js/motion.js" defer></script>' : ''}
 </head>`;
 }
 
@@ -84,7 +84,43 @@ function footer(c) {
 
 /* ---------- hero ---------- */
 function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(', '); }
+function heroBlocks(c) {
+  const h = c.hero;
+  return `<section class="portal" data-portal aria-label="${esc(h.kicker)}">
+  <div class="portal-pin">
+    <div class="portal-field" aria-hidden="true">
+      <p class="portal-lead">${esc(h.portalText)}</p>
+    </div>
+    <svg class="portal-art" aria-hidden="true" focusable="false"><defs><clipPath id="portal-clip" clipPathUnits="userSpaceOnUse"><text data-portal-glyph x="0" y="0">${esc(h.mark)}</text></clipPath></defs></svg>
+    <p class="portal-word" aria-hidden="true">${esc(h.mark)}</p>
+    <p class="portal-kicker">${esc(h.kicker)}</p>
+    <p class="portal-hint" aria-hidden="true">${esc(h.portalHint)} ↓</p>
+  </div>
+</section>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-text">
+    <h1 id="hero-title" data-split>${h.title.map((t) => `<span class="line">${esc(t)}</span>`).join(' ')}</h1>
+    <p class="deck" data-magic>${esc(h.deck)}</p>
+    <p class="actions"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
+  </div>
+  <aside class="sheet" aria-labelledby="sheet-title">
+    <h2 id="sheet-title" class="visually-hidden">${esc(h.sheetTitle)}</h2>
+    <dl class="sheet-rows">
+      ${h.sheet.map((r) => `<div class="sheet-row"><dt>${esc(r.k)}</dt><dd>${r.links ? links(r.links) : esc(r.v)}</dd></div>`).join('\n      ')}
+    </dl>
+  </aside>
+</section>`;
+}
+function numbers(c) {
+  const n = c.numbers; if (!n || V.layout !== 'blocks') return '';
+  return `<section id="${n.id}" class="numbers" aria-label="${esc(n.title)}">
+  <ul class="numbers-grid">
+    ${n.items.map((i) => `<li class="num-block" data-reveal><strong>${esc(i.n)}</strong><span>${esc(i.l)}</span></li>`).join('\n    ')}
+  </ul>
+</section>`;
+}
 function hero(c) {
+  if (V.layout === 'blocks') return heroBlocks(c);
   const h = c.hero;
   return `<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
@@ -119,7 +155,7 @@ function kv(title, rows, id) {
     </div>`;
 }
 function ledger(items, extra) {
-  const row = (e) => `<li class="row">
+  const row = (e) => `<li class="row" data-reveal>
         <div class="row-date"><time>${esc(e.period)}</time></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
@@ -134,13 +170,27 @@ function ledger(items, extra) {
 
 function profile(c) {
   const p = c.profile;
-  return section(p, `    <p class="lead">${esc(p.lead)}</p>
+  return section(p, `    <p class="lead" data-magic>${esc(p.lead)}</p>
     ${kv(p.seeking.title, p.seeking.rows, 'h-seeking')}
     ${kv(p.basis.title, p.basis.rows, 'h-basis')}`);
 }
 function experience(c) { return section(c.experience, '    ' + ledger(c.experience.items)); }
 function education(c) { return section(c.education, '    ' + ledger(c.education.items)); }
-function projects(c) { return section(c.projects, '    ' + ledger(c.projects.items)); }
+function projects(c) {
+  if (V.layout !== 'blocks') return section(c.projects, '    ' + ledger(c.projects.items));
+  const p = c.projects;
+  const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}" data-reveal>
+        <p class="pcard-meta"><span class="pcard-tag">${esc(e.tag)}</span><time>${esc(e.period)}</time></p>
+        <h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3>
+        <p class="pcard-role">${esc(e.role)}</p>
+        <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+        ${e.stack ? `<p class="row-stack">${esc(e.stack)}</p>` : ''}
+      </article>`;
+  return section(p, `    <p class="section-intro" data-magic>${esc(p.intro)}</p>
+    <div class="pgrid">
+      ${p.items.map(card).join('\n      ')}
+    </div>`);
+}
 function skills(c) {
   const s = c.skills;
   return section(s, `    <dl class="skills-grid">
@@ -178,7 +228,7 @@ function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><d
 
 function toolShell(c, t, controls, chart, readouts, extraBtns = '') {
   const cm = c.tools.common;
-  return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}">
+  return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}" data-reveal>
         <h3 class="tool-title">${esc(t.title)}</h3>
         <p class="tool-quote">${esc(t.quote)}</p>
         <p class="tool-spec">${esc(t.summary)}</p>
@@ -290,7 +340,7 @@ function toolMK(c, t) {
 }
 function tools(c) {
   const s = c.tools; const r = { bs: toolBS, mc: toolMC, mk: toolMK };
-  return section(s, `    <p class="section-heading">${esc(s.heading)}</p>
+  return section(s, `    <p class="section-heading" data-split>${esc(s.heading)}</p>
     <div class="tools">
       ${s.items.map((t) => r[t.id](c, t)).join('\n      ')}
     </div>
@@ -303,6 +353,7 @@ export function renderSite(c) {
 ${nav(c)}
 <main id="main">
 ${hero(c)}
+${numbers(c)}
 ${profile(c)}
 ${experience(c)}
 ${tools(c)}
