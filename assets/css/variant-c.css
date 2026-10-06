@@ -58,6 +58,8 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .hero-track { position: relative; height: calc(100svh + 85svh - var(--nav-h)); }
 .hero-pin { position: sticky; top: var(--nav-h); height: calc(100svh - var(--nav-h)); box-sizing: border-box; max-width: var(--max); margin-inline: auto; padding: 24px var(--gutter) 96px; display: flex; flex-direction: column; justify-content: center; }
 .hero-title { word-spacing: 0.09em; font-weight: 800; font-size: clamp(36px, min(5.9vw, 11svh), 98px); line-height: 0.97; letter-spacing: -0.04em; max-width: 20ch; text-wrap: pretty; }
+.hero-sentence { display: block; text-wrap: balance; }
+.hero-sentence + .hero-sentence { margin-top: 0.34em; }
 .hero-hint { position: absolute; left: var(--gutter); bottom: 28px; margin: 0; display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-2); opacity: var(--hero-hint, 1); }
 .hero-hint::before { content: ""; width: 1px; height: 30px; background: currentColor; transform-origin: top; }
 @media (prefers-reduced-motion: no-preference) { .hero-hint::before { animation: hint 2.4s var(--ease) 1.2s 3 both; } }

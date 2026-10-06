@@ -13,7 +13,7 @@
 
   /* ---------- words that light up ---------- */
   const magics = Array.from(document.querySelectorAll('[data-magic]')).map((el) => {
-    let spans = Array.from(el.querySelectorAll(':scope > .w'));
+    let spans = Array.from(el.querySelectorAll('.w'));
     if (!spans.length) { // markup without server-rendered words: wrap them now (plain spaces only, so non-breaking spaces stay inside words)
       const words = el.textContent.trim().split(/ +/);
       el.textContent = '';

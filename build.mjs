@@ -122,7 +122,7 @@ function heroBlocks(c) {
   const h = c.hero;
   return `<section class="hero-track" data-hero aria-labelledby="hero-title">
   <div class="hero-pin">
-    <h1 id="hero-title" class="hero-title" data-magic="hero">${magic(h.title.join(' '))}</h1>
+    <h1 id="hero-title" class="hero-title" data-magic="hero">${h.title.map((t) => `<span class="hero-sentence">${magic(t)}</span>`).join(' ')}</h1>
     <p class="hero-hint" aria-hidden="true">${esc(h.scrollHint)}</p>
   </div>
 </section>
