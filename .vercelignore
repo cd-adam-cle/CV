@@ -1,0 +1,7 @@
+# Nasazuje se jen to, co web opravdu servíruje (zdroje a build skripty zůstávají jen v repu)
+/*
+!index.html
+!en
+!assets
+!cv
+!vercel.json

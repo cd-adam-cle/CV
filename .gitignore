@@ -1,6 +1,6 @@
-# Source / design export files – nejsou potřeba pro hosting
+# Staré exporty a předchozí verze webu (nic z toho web nepotřebuje)
+_old/
 *.zip
-finalCV-WEB.html
 
 # OS
 .DS_Store
