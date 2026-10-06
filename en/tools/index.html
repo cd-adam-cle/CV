@@ -65,16 +65,16 @@
   <nav class="page-index" aria-label="Models"><ul><li><a href="#tool-bs">Black–Scholes</a></li><li><a href="#tool-mc">Monte Carlo</a></li><li><a href="#tool-mk">Markowitz</a></li></ul></nav>
   <p class="page-more">I am adding more models over time.</p>
 </section>
-<section class="section section-tools" aria-label="Tools">
+<section class="section section-tools">
   <div class="content">
     <div class="tools">
       <article class="tool" id="tool-bs" data-tool="bs" data-reveal="panel">
-        <h3 class="tool-title">Black–Scholes</h3>
+        <h2 class="tool-title">Black–Scholes</h2>
         <p class="tool-quote">I built an option pricer to understand what risk managers look at, not to rediscover the formula.</p>
         <p class="tool-spec">European option, no dividends, constant volatility σ.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Black–Scholes" onsubmit="return false">
               <fieldset class="toggle" data-role="seg" data-name="type" data-default="call"><legend>Type</legend><div class="toggle-options"><button type="button" data-value="call" aria-pressed="true">call</button><button type="button" data-value="put" aria-pressed="false">put</button></div></fieldset>
               <div class="ctl">
           <label class="ctl-label" id="bs-S-label" for="bs-S">Underlying price S</label>
@@ -126,12 +126,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mc" data-tool="mc" data-reveal="panel">
-        <h3 class="tool-title">Monte Carlo</h3>
+        <h2 class="tool-title">Monte Carlo</h2>
         <p class="tool-quote">I built it to get a feel for modelling uncertainty. What surprised me most was how badly the normal model underestimates crash risk.</p>
         <p class="tool-spec">Geometric Brownian motion with daily steps, jumps following Merton's crash model.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Monte Carlo" onsubmit="return false">
               <div class="ctl">
           <label class="ctl-label" id="mc-S0-label" for="mc-S0">Initial price S₀</label>
           <span class="ctl-value"><input id="mc-S0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S0" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
@@ -179,12 +179,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mk" data-tool="mk" data-reveal="panel">
-        <h3 class="tool-title">Markowitz</h3>
+        <h2 class="tool-title">Markowitz</h2>
         <p class="tool-quote">I programmed the efficient frontier to understand why diversification works, and above all where the model breaks down.</p>
         <p class="tool-spec">Single-period model with three assets and no transaction costs.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Markowitz" onsubmit="return false">
               <table class="assets"><caption class="visually-hidden">Assets</caption>
                 <thead><tr><th scope="col">Asset</th><th scope="col">μ %</th><th scope="col">σ %</th></tr></thead>
                 <tbody>

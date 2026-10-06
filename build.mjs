@@ -43,8 +43,8 @@ function head(c, pg) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(pg.title)}</title>
-<meta name="description" content="${esc(pg.description)}">
+<title>${esc(pg.title).replace(/\u2011/g, '-')}</title>
+<meta name="description" content="${esc(pg.description).replace(/\u2011/g, '-')}">
 <meta name="author" content="Adam Zikmund">
 ${colour}
 <link rel="canonical" href="${url}">${V.noindex ? '\n<meta name="robots" content="noindex">' : ''}
@@ -52,8 +52,8 @@ ${colour}
 <link rel="alternate" hreflang="${m.altLang.lang}" href="${alt}">
 <link rel="alternate" hreflang="x-default" href="${c.lang === 'cs' ? url : alt}">
 <meta property="og:type" content="${pg.kind === 'home' ? 'profile' : 'website'}">
-<meta property="og:title" content="${esc(pg.title)}">
-<meta property="og:description" content="${esc(pg.description)}">
+<meta property="og:title" content="${esc(pg.title).replace(/\u2011/g, '-')}">
+<meta property="og:description" content="${esc(pg.description).replace(/\u2011/g, '-')}">
 <meta property="og:url" content="${url}">
 <meta property="og:locale" content="${c.lang === 'cs' ? 'cs_CZ' : 'en_GB'}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -285,12 +285,12 @@ function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><d
 function toolShell(c, t, controls, chart, readouts, extraBtns = '') {
   const cm = c.tools.common;
   return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}" data-reveal="panel">
-        <h3 class="tool-title">${esc(t.title)}</h3>
+        <h2 class="tool-title">${esc(t.title)}</h2>
         <p class="tool-quote">${esc(t.quote)}</p>
         <p class="tool-spec">${esc(t.summary)}</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="${esc(cm.controls)}" onsubmit="return false">
+            <form class="controls" aria-label="${esc(cm.controls)}: ${esc(t.title)}" onsubmit="return false">
               ${controls}
               <div class="btn-row">${extraBtns}<button type="button" class="text-btn" data-role="reset">${esc(cm.reset)}</button></div>
             </form>
@@ -428,7 +428,7 @@ function toolsPage(c) {
   <nav class="page-index" aria-label="${esc(p.index)}"><ul>${t.items.map((i) => `<li><a href="#tool-${i.id}">${esc(i.title)}</a></li>`).join('')}</ul></nav>
   <p class="page-more">${esc(p.more)}</p>
 </section>
-<section class="section section-tools" aria-label="${esc(t.title)}">
+<section class="section section-tools">
   <div class="content">
     <div class="tools">
       ${t.items.map((i) => r[i.id](c, i)).join('\n      ')}

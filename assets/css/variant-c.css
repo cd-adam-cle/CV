@@ -3,7 +3,7 @@
 :root {
   --bg: #f6f5f2; --surface: #ffffff; --ink: #121212; --ink-2: #5c5c57;
   --line: #dddbd5; --line-strong: #c6c4bd; --grid: #ebeae5; --rule: #121212;
-  --navy: #1b2d4f; --on-accent: #ffffff; --oxide: #b4472b; --cloud: #a3a19b; --chart-bg: var(--surface);
+  --navy: #1b2d4f; --on-accent: #ffffff; --oxide: #b4472b; --cloud: #8c8a84; --chart-bg: var(--surface);
   --card-border: transparent;
   --sky-empty: #ebe9e4; --sky-1: #9be9a8; --sky-2: #40c463; --sky-3: #30a14e; --sky-4: #216e39;
   --font-text: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -60,7 +60,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .hero-title { word-spacing: 0.09em; font-weight: 800; font-size: clamp(40px, min(7.2vw, 13svh), 118px); line-height: 0.97; letter-spacing: -0.04em; max-width: 20ch; text-wrap: pretty; }
 .hero-sentence { display: block; text-wrap: balance; }
 /* the second sentence is the subtitle: much smaller than the title, still lit word by word with it */
-.hero-sentence + .hero-sentence { margin-top: clamp(16px, 3.2svh, 30px); font-size: clamp(20px, min(2.35vw, 3.8svh), 34px); font-weight: 600; line-height: 1.28; letter-spacing: -0.015em; word-spacing: 0; max-width: 36ch; }
+.hero-sentence + .hero-sentence { margin-top: clamp(16px, 3.2svh, 30px); font-size: clamp(24px, min(2.35vw, 3.8svh), 34px); font-weight: 600; line-height: 1.28; letter-spacing: -0.015em; word-spacing: 0; max-width: 36ch; }
 .hero-hint { position: absolute; left: var(--gutter); bottom: 28px; margin: 0; display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-2); opacity: var(--hero-hint, 1); }
 .hero-hint::before { content: ""; width: 1px; height: 30px; background: currentColor; transform-origin: top; }
 @media (prefers-reduced-motion: no-preference) { .hero-hint::before { animation: hint 2.4s var(--ease) 1.2s 3 both; } }
@@ -78,15 +78,37 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
   .hero-rest { padding-top: 24px; padding-bottom: 96px; }
   .hero-text { grid-column: 1 / span 8; } .sheet { grid-column: 9 / span 4; padding-top: 8px; }
 }
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce), (prefers-contrast: more), (forced-colors: active) {
   .hero-track { height: auto; }
   .hero-pin { position: static; height: auto; min-height: 62svh; padding-top: 56px; padding-bottom: 56px; }
   .hero-hint { display: none; }
+}
+:root.motion-fail .hero-track { height: auto; }
+:root.motion-fail .hero-pin { position: static; height: auto; min-height: 62svh; padding-top: 56px; padding-bottom: 56px; }
+:root.motion-fail .hero-hint { display: none; }
+/* very short viewports (large zoom): no pinning, the whole headline is visible */
+@media (max-height: 520px) {
+  .hero-track { height: auto; }
+  .hero-pin { position: static; height: auto; min-height: 0; padding-top: 40px; padding-bottom: 40px; }
+  .hero-hint { display: none; }
+  .hero-title .w { opacity: 1 !important; }
 }
 /* without JavaScript nothing lights up, so the headline is a plain block */
 :root:not(.js) .hero-track { height: auto; }
 :root:not(.js) .hero-pin { position: static; height: auto; min-height: 62svh; padding-top: 56px; padding-bottom: 56px; }
 :root:not(.js) .hero-hint { display: none; }
+
+/* without JavaScript the phone menu cannot open, so the links sit in a row under the brand and the theme toggle (which needs a script) is hidden */
+:root:not(.js) .nav-toggle, :root:not(.js) .theme-toggle { display: none; }
+@media (max-width: 1023px) {
+  :root:not(.js) .site-header { position: static; }
+  :root:not(.js) .nav { flex-wrap: wrap; }
+  :root:not(.js) .nav-menu { position: static; display: block; order: 3; width: 100%; padding: 0 0 12px; overflow: visible; }
+  :root:not(.js) .nav-list { display: flex; flex-wrap: wrap; gap: 0 18px; }
+  :root:not(.js) .nav-list li { border-bottom: 0; }
+  :root:not(.js) .nav-list a { font-size: 16px; padding: 6px 0; }
+  :root:not(.js) .nav-menu .nav-lang { display: none; }
+}
 
 /* ---------- sections: big display titles as blocks ---------- */
 .section { display: block; }
@@ -198,7 +220,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
    The hidden states below apply only while the page runs motion.js (html.js, no html.motion-fail) and the visitor allows motion.
    motion.js adds .in when an element scrolls into view; the delay of stacked items comes from --i. */
 [data-magic] .w { transition: none; }
-:root.js:not(.motion-ready):not(.motion-fail) [data-magic] .w { opacity: 0.4; }
+:root.js:not(.motion-ready):not(.motion-fail) [data-magic] .w { opacity: 0.5; }
 :root.js:not(.motion-ready):not(.motion-fail) .hero-sentence:first-child .w { opacity: 1; }
 :root.motion-fail [data-magic] .w { opacity: 1 !important; }
 @media (prefers-reduced-motion: reduce), (prefers-contrast: more), (forced-colors: active) { [data-magic] .w { opacity: 1 !important; } }
@@ -233,7 +255,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
   :root.js:not(.motion-fail) [data-reveal="panel"] { transition: opacity 900ms var(--ease), transform 1100ms var(--ease); }
   :root.js:not(.motion-fail) [data-reveal="panel"]:not(.in) { opacity: 0; transform: translateY(44px) scale(0.985); }
   /* the target of a #hash link is shown in place at once, so the browser scrolls to its final position and the header does not cover it */
-  :root.js:not(.motion-fail) [data-reveal]:target { opacity: 1 !important; transform: none !important; transition: none !important; }
+  :root.js:not(.motion-fail) [data-reveal]:target, :root.js:not(.motion-fail) [data-reveal]:focus-within { opacity: 1 !important; transform: none !important; transition: none !important; }
   /* tool thumbnails draw themselves */
   :root.js:not(.motion-fail) [data-reveal="kv"], :root.js:not(.motion-fail) [data-reveal="rise"], :root.js:not(.motion-fail) [data-reveal="card"], :root.js:not(.motion-fail) [data-reveal="panel"] { transition-delay: calc(var(--i, 0) * 90ms); }
   :root.js:not(.motion-fail) .tcard .th-draw { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1800ms var(--ease) 250ms; }

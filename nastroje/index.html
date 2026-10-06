@@ -65,16 +65,16 @@
   <nav class="page-index" aria-label="Modely"><ul><li><a href="#tool-bs">Black–Scholes</a></li><li><a href="#tool-mc">Monte Carlo</a></li><li><a href="#tool-mk">Markowitz</a></li></ul></nav>
   <p class="page-more">Další modely postupně přidávám.</p>
 </section>
-<section class="section section-tools" aria-label="Nástroje">
+<section class="section section-tools">
   <div class="content">
     <div class="tools">
       <article class="tool" id="tool-bs" data-tool="bs" data-reveal="panel">
-        <h3 class="tool-title">Black–Scholes</h3>
+        <h2 class="tool-title">Black–Scholes</h2>
         <p class="tool-quote">Postavil jsem oceňovač opcí, abych rozuměl tomu, na co se dívají risk manažeři, ne abych znovu objevil vzorec.</p>
         <p class="tool-spec">Evropská opce bez dividend s konstantní volatilitou σ.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
+            <form class="controls" aria-label="Vstupy: Black–Scholes" onsubmit="return false">
               <fieldset class="toggle" data-role="seg" data-name="type" data-default="call"><legend>Typ</legend><div class="toggle-options"><button type="button" data-value="call" aria-pressed="true">call</button><button type="button" data-value="put" aria-pressed="false">put</button></div></fieldset>
               <div class="ctl">
           <label class="ctl-label" id="bs-S-label" for="bs-S">Cena podkladu S</label>
@@ -126,12 +126,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mc" data-tool="mc" data-reveal="panel">
-        <h3 class="tool-title">Monte Carlo</h3>
+        <h2 class="tool-title">Monte Carlo</h2>
         <p class="tool-quote">Postavil jsem ho, abych si vyzkoušel modelování nejistoty. Nejvíc mě překvapilo, jak moc normální model podceňuje riziko krachů.</p>
         <p class="tool-spec">Geometrický Brownův pohyb s denními kroky, skoky podle Mertonova modelu krachů.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
+            <form class="controls" aria-label="Vstupy: Monte Carlo" onsubmit="return false">
               <div class="ctl">
           <label class="ctl-label" id="mc-S0-label" for="mc-S0">Počáteční cena S₀</label>
           <span class="ctl-value"><input id="mc-S0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S0" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
@@ -179,12 +179,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mk" data-tool="mk" data-reveal="panel">
-        <h3 class="tool-title">Markowitz</h3>
+        <h2 class="tool-title">Markowitz</h2>
         <p class="tool-quote">Naprogramoval jsem efektivní hranici, abych pochopil, proč diverzifikace funguje, a hlavně kde model selhává.</p>
         <p class="tool-spec">Jednoperiodový model se třemi aktivy, bez transakčních nákladů.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
+            <form class="controls" aria-label="Vstupy: Markowitz" onsubmit="return false">
               <table class="assets"><caption class="visually-hidden">Aktiva</caption>
                 <thead><tr><th scope="col">Aktivum</th><th scope="col">μ %</th><th scope="col">σ %</th></tr></thead>
                 <tbody>

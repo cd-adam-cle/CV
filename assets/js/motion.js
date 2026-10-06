@@ -21,7 +21,7 @@
     }
     return { el, spans, hero: el.dataset.magic === 'hero', last: new Float32Array(spans.length).fill(-1) };
   });
-  const FLOOR = 0.4; // dim words keep enough contrast to be read before they are lit
+  const FLOOR = 0.5; // dim words keep enough contrast to be read before they are lit
   const setWords = (m, lit) => { // lit = number of fully lit words, fractional for the word being lit
     for (let i = 0; i < m.spans.length; i++) {
       const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
@@ -59,6 +59,8 @@
   /* ---------- reveals ---------- */
   const targets = Array.from(document.querySelectorAll('[data-reveal]'));
   const show = (el) => { el.classList.add('in'); setTimeout(() => el.style.removeProperty('--i'), 2400); };
+  // an element that receives keyboard focus is shown at once, so the focus ring is never on something invisible
+  document.addEventListener('focusin', (e) => { const t = e.target.closest && e.target.closest('[data-reveal]:not(.in)'); if (t) show(t); });
   if (reduce || !('IntersectionObserver' in window)) targets.forEach((t) => t.classList.add('in'));
   else {
     const io = new IntersectionObserver((entries) => {

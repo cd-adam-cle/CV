@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Adam Zikmund – financial mathematics, software and risk</title>
-<meta name="description" content="Financial Mathematics student at Charles University, previously co‑founder and developer of products in production. Looking for an internship or part‑time role in quantitative risk, quant research, VC/PE analytics or investment banking.">
+<meta name="description" content="Financial Mathematics student at Charles University, previously co-founder and developer of products in production. Looking for an internship or part-time role in quantitative risk, quant research, VC/PE analytics or investment banking.">
 <meta name="author" content="Adam Zikmund">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f3f1ec">
@@ -15,7 +15,7 @@
 <link rel="alternate" hreflang="x-default" href="https://cv-seven-dusky-63.vercel.app/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Adam Zikmund – financial mathematics, software and risk">
-<meta property="og:description" content="Financial Mathematics student at Charles University, previously co‑founder and developer of products in production. Looking for an internship or part‑time role in quantitative risk, quant research, VC/PE analytics or investment banking.">
+<meta property="og:description" content="Financial Mathematics student at Charles University, previously co-founder and developer of products in production. Looking for an internship or part-time role in quantitative risk, quant research, VC/PE analytics or investment banking.">
 <meta property="og:url" content="https://cv-seven-dusky-63.vercel.app/en/">
 <meta property="og:locale" content="en_GB">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -154,12 +154,12 @@
     <p class="section-heading" data-split>Three models I programmed in order to understand them.</p>
     <div class="tools">
       <article class="tool" id="tool-bs" data-tool="bs" data-reveal="panel">
-        <h3 class="tool-title">Black–Scholes</h3>
+        <h2 class="tool-title">Black–Scholes</h2>
         <p class="tool-quote">I built an option pricer to understand what risk managers look at, not to rediscover the formula.</p>
         <p class="tool-spec">European option, no dividends, constant volatility σ.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Black–Scholes" onsubmit="return false">
               <fieldset class="toggle" data-role="seg" data-name="type" data-default="call"><legend>Type</legend><div class="toggle-options"><button type="button" data-value="call" aria-pressed="true">call</button><button type="button" data-value="put" aria-pressed="false">put</button></div></fieldset>
               <div class="ctl">
           <label class="ctl-label" id="bs-S-label" for="bs-S">Underlying price S</label>
@@ -211,12 +211,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mc" data-tool="mc" data-reveal="panel">
-        <h3 class="tool-title">Monte Carlo</h3>
+        <h2 class="tool-title">Monte Carlo</h2>
         <p class="tool-quote">I built it to get a feel for modelling uncertainty. What surprised me most was how badly the normal model underestimates crash risk.</p>
         <p class="tool-spec">Geometric Brownian motion with daily steps, jumps following Merton's crash model.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Monte Carlo" onsubmit="return false">
               <div class="ctl">
           <label class="ctl-label" id="mc-S0-label" for="mc-S0">Initial price S₀</label>
           <span class="ctl-value"><input id="mc-S0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S0" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
@@ -264,12 +264,12 @@
         </div>
       </article>
       <article class="tool" id="tool-mk" data-tool="mk" data-reveal="panel">
-        <h3 class="tool-title">Markowitz</h3>
+        <h2 class="tool-title">Markowitz</h2>
         <p class="tool-quote">I programmed the efficient frontier to understand why diversification works, and above all where the model breaks down.</p>
         <p class="tool-spec">Single-period model with three assets and no transaction costs.</p>
         <div class="panel">
           <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
+            <form class="controls" aria-label="Inputs: Markowitz" onsubmit="return false">
               <table class="assets"><caption class="visually-hidden">Assets</caption>
                 <thead><tr><th scope="col">Asset</th><th scope="col">μ %</th><th scope="col">σ %</th></tr></thead>
                 <tbody>
