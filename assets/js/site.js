@@ -1,4 +1,4 @@
-/* Site behaviour: mobile nav and scroll-spy. No scroll animations. */
+/* Site behaviour: mobile nav, theme toggle and scroll-spy. Scroll animations live in motion.js (variant C only). */
 (function () {
   'use strict';
   const header = document.querySelector('.site-header');
@@ -21,6 +21,30 @@
     const wide = window.matchMedia('(min-width: 1024px)');
     const onWide = () => { if (wide.matches && isOpen()) setOpen(false); };
     if (wide.addEventListener) wide.addEventListener('change', onWide); else if (wide.addListener) wide.addListener(onWide);
+  }
+
+  /* theme: follows the system unless the visitor picks one (stored as "light" or "dark"); charts and the contribution graph listen for "themechange" */
+  const themeBtn = document.querySelector('[data-theme-toggle]');
+  if (themeBtn) {
+    const root = document.documentElement;
+    const mqDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const metas = Array.from(document.querySelectorAll('meta[name="theme-color"]'));
+    const colorOf = (dark) => { const m = metas.find((x) => /dark/.test(x.media || '') === dark); return m ? m.getAttribute('content') : null; };
+    const current = () => root.getAttribute('data-theme') || (mqDark.matches ? 'dark' : 'light');
+    const sync = () => themeBtn.setAttribute('aria-pressed', String(current() === 'dark'));
+    const announce = () => window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: current() } }));
+    let animTimer = 0;
+    themeBtn.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      root.classList.add('theme-anim'); clearTimeout(animTimer); animTimer = setTimeout(() => root.classList.remove('theme-anim'), 450);
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* private mode: the choice just lasts for this visit */ }
+      const c = colorOf(next === 'dark'); if (c) metas.forEach((m) => m.setAttribute('content', c));
+      sync(); announce();
+    });
+    const onSystem = () => { if (!root.getAttribute('data-theme')) { sync(); announce(); } };
+    if (mqDark.addEventListener) mqDark.addEventListener('change', onSystem); else if (mqDark.addListener) mqDark.addListener(onSystem);
+    sync();
   }
 
   /* compact header after scrolling past the hero */

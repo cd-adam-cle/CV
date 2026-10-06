@@ -341,6 +341,8 @@
       const fam = getComputedStyle(document.documentElement).getPropertyValue('--font-chart').trim();
       Promise.all([fam ? document.fonts.load(`13px ${fam}`) : null, document.fonts.ready]).then(() => redraws.forEach((d) => d())).catch(() => {});
     }
+    // The site dispatches "themechange" after the visitor flips light/dark; the charts read their colours from CSS custom properties on every draw.
+    window.addEventListener('themechange', () => redraws.forEach((d) => d()));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

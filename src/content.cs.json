@@ -37,7 +37,8 @@
       },
       {
         "id": "nastroje",
-        "label": "Nástroje"
+        "label": "Nástroje",
+        "href": "/nastroje/"
       },
       {
         "id": "projekty",
@@ -55,12 +56,13 @@
         "id": "kontakt",
         "label": "Kontakt"
       }
-    ]
+    ],
+    "theme": "Tmavý režim"
   },
   "hero": {
     "title": [
-      "Stavím software, který se používá.",
-      "Teď se učím, jak se měří a oceňuje riziko."
+      "Stavím software, který lidé chtějí používat, a AI jim ulehčuje práci.",
+      "Teď s tím vším jdu tam, kde se měří a oceňuje riziko."
     ],
     "deck": "Co-founder a vývojář produktů v provozu (Božííí, Freio), od září 2026 student finanční matematiky na MFF UK. Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví.",
     "actions": {
@@ -75,10 +77,6 @@
         "v": "MFF UK v Praze, Bc. Finanční matematika, od 2026"
       },
       {
-        "k": "Souběžně",
-        "v": "FS ČVUT, Strojní inženýrství"
-      },
-      {
         "k": "Praxe",
         "v": "Valor Group (trainee), Freio (co-founder), Božííí (founder)"
       },
@@ -91,16 +89,12 @@
         "v": "čeština, angličtina C1 (CAE), němčina A2"
       }
     ],
-    "mark": "Zikmund",
-    "portalHint": "Scrollem dovnitř",
-    "kicker": "Adam Zikmund, Praha",
-    "portalText": "Student finanční matematiky na Matfyzu. Software, který se používá. Zájem o riziko, investice a venture kapitál.",
-    "intro": "Student finanční matematiky na MFF UK, předtím spoluzakladatel dvou produktů v provozu. Hledám stáž nebo part-time v řízení rizik, investicích a venture kapitálu."
+    "scrollHint": "Scrollujte dolů"
   },
   "profile": {
     "id": "profil",
     "title": "Profil",
-    "lead": "Na gymnáziu jsem založil komunitní web Božííí pro pražské farnosti, spoluzaložil EdTech platformu Freio a jako freelancer dělal scraping, automatizace a napojení na LLM API. Ročníkovou práci jsem psal o dopadu EU ETS 2 na domácnosti, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a analyzoval portfolio šesti fondů. Od září studuji finanční matematiku na MFF UK a hned v prvním ročníku jsem si zapsal předmět o praktickém měření a řízení finančních rizik.",
+    "lead": "Na gymnáziu jsem založil komunitní web Božííí pro pražské farnosti, spoluzaložil EdTech platformu Freio a jako freelancer dělal automatizace, scraping a napojení na LLM API. Ročníkovou práci jsem psal o dopadu EU ETS 2 na domácnosti, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a analyzoval portfolio. Od září studuji finanční matematiku na MFF UK.",
     "seeking": {
       "title": "Co hledám",
       "rows": [
@@ -160,6 +154,16 @@
         "stack": "Python, PIL, Remotion, React, TypeScript"
       },
       {
+        "period": "01/2026 – dosud",
+        "org": "Freelance",
+        "role": "Software a AI automatizace",
+        "results": [
+          "Scrapovací a datové pipeline (Playwright, BeautifulSoup) a napojení na LLM API (OpenAI, Anthropic) pro klienty.",
+          "Automatizace tvorby obsahu a personalizace e-mailů ušetřila přes 60 % času manuální přípravy."
+        ],
+        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
+      },
+      {
         "period": "04/2026 – 05/2026",
         "org": "Cloudinfrastack",
         "role": "DevOps a infrastruktura, kontrakt",
@@ -178,16 +182,6 @@
           "První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner."
         ],
         "stack": "EdTech, validace trhu, MVP"
-      },
-      {
-        "period": "01/2026 – dosud",
-        "org": "Freelance",
-        "role": "Software a AI automatizace",
-        "results": [
-          "Scrapovací a datové pipeline (Playwright, BeautifulSoup) a napojení na LLM API (OpenAI, Anthropic) pro klienty.",
-          "Automatizace tvorby obsahu a personalizace e-mailů ušetřila přes 60 % času manuální přípravy."
-        ],
-        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
       },
       {
         "period": "09/2025 – dosud",
@@ -360,7 +354,42 @@
         ],
         "insight": "Model je citlivý na vstupy: posun očekávaných výnosů o 1–2 procentní body „optimální“ portfolio výrazně přeskládá. Proto se Markowitzův model v základní podobě v praxi nepoužívá samostatně; přidávají se omezení, shrinkage odhadů nebo pohledy Black–Litterman."
       }
-    ]
+    ],
+    "teaser": {
+      "title": "Nástroje",
+      "lead": "Tři modely, které jsem naprogramoval, abych jim rozuměl. Běží přímo v prohlížeči a další postupně přidávám.",
+      "cta": "Otevřít nástroje",
+      "cards": [
+        {
+          "id": "bs",
+          "title": "Black–Scholes",
+          "text": "Ocenění evropské opce s citlivostmi Greeks."
+        },
+        {
+          "id": "mc",
+          "title": "Monte Carlo",
+          "text": "Simulace cest ceny s modelem skoků, 5% VaR a expected shortfall."
+        },
+        {
+          "id": "mk",
+          "title": "Markowitz",
+          "text": "Efektivní hranice tří aktiv a citlivost na chybu odhadu."
+        }
+      ]
+    },
+    "page": {
+      "title": "Nástroje",
+      "intro": "Tři modely, které jsem naprogramoval, abych jim rozuměl. Všechny běží přímo v prohlížeči, bez serveru.",
+      "more": "Další modely postupně přidávám.",
+      "back": "Zpět na hlavní stránku",
+      "index": "Modely",
+      "meta": {
+        "title": "Nástroje – Adam Zikmund",
+        "description": "Interaktivní modely v prohlížeči: Black–Scholes s Greeks, Monte Carlo s 5% VaR a expected shortfall, Markowitzova efektivní hranice. Vzdělávací ukázky.",
+        "path": "/nastroje/",
+        "altPath": "/en/tools/"
+      }
+    }
   },
   "projects": {
     "id": "projekty",
@@ -455,7 +484,49 @@
         "stack": "Next.js, TypeScript"
       }
     ],
-    "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele."
+    "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele.",
+    "activity": {
+      "labels": {
+        "aria": "Přehled commitů v mých repozitářích za poslední rok",
+        "title": {
+          "one": "{total} commit za poslední rok",
+          "few": "{total} commity za poslední rok",
+          "many": "{total} commitu za poslední rok",
+          "other": "{total} commitů za poslední rok"
+        },
+        "unit": {
+          "one": "commit",
+          "few": "commity",
+          "many": "commitu",
+          "other": "commitů"
+        },
+        "dayWithCount": "{count} {unit}, {date}",
+        "dayEmpty": "Žádné commity, {date}",
+        "viewGroup": "Zobrazení",
+        "view2d": "Mřížka",
+        "view3d": "Panorama",
+        "less": "Méně",
+        "more": "Více",
+        "statTotal": "Celkem",
+        "statBusiest": "Nejaktivnější den",
+        "statLongest": "Nejdelší série",
+        "statCurrent": "Aktuální série",
+        "daysUnit": {
+          "one": "den",
+          "few": "dny",
+          "many": "dne",
+          "other": "dnů"
+        },
+        "hint": "Najeďte na den nebo použijte šipky. Ve 3D otáčíte pohled tažením, dvojklik ho vrátí.",
+        "levelNames": [
+          "Žádné commity",
+          "Málo commitů",
+          "Středně commitů",
+          "Hodně commitů",
+          "Nejvíc commitů"
+        ]
+      }
+    }
   },
   "education": {
     "id": "vzdelani",
@@ -472,15 +543,6 @@
         "stack": ""
       },
       {
-        "period": "09/2026 – dosud",
-        "org": "Fakulta strojní ČVUT",
-        "role": "Bc. Strojní inženýrství, souběžně",
-        "results": [
-          "Účastník výběrového Mentoringového programu ČVUT (strategie, stavba projektů, kvantitativní metody)."
-        ],
-        "stack": ""
-      },
-      {
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "role": "Matematika, fyzika a informatika",
@@ -490,7 +552,11 @@
         ],
         "stack": ""
       }
-    ]
+    ],
+    "note": {
+      "k": "Zajímavost",
+      "v": "Přijat na pět fakult: MFF UK (Finanční matematika), FJFI ČVUT (Aplikované matematicko-stochastické metody), FIT ČVUT, FS ČVUT a FIS VŠE."
+    }
   },
   "skills": {
     "id": "dovednosti",
@@ -515,7 +581,11 @@
     ],
     "interests": {
       "k": "Zájmy",
-      "v": "11 let závodního baseballu (Kotlářka Praha), půlmaraton 1:24, trénink na backyard ultra, cíl dokončit half-Ironman, poker a teorie her, stavění produktů."
+      "v": "11 let závodního baseballu (Kotlářka Praha), půlmaraton 1:24, trénink na backyard ultra, cíl dokončit half-Ironman, poker a teorie her, stavění produktů.",
+      "link": {
+        "text": "stavění produktů",
+        "href": "#projekty"
+      }
     }
   },
   "contact": {
@@ -575,8 +645,7 @@
         "degree": "Bc. Finanční matematika",
         "period": "09/2026 – 06/2029 (předpoklad)",
         "bullets": [
-          "Předměty 1. semestru: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář; už v 1. ročníku volitelný předmět Praktické aspekty měření a řízení finančních rizik (NMFP463, vyučující z praxe).",
-          "Souběžně Bc. Strojní inženýrství na Fakultě strojní ČVUT; účastník výběrového Mentoringového programu ČVUT (strategie, stavba projektů, kvantitativní metody)."
+          "Předměty 1. semestru: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář; už v 1. ročníku volitelný předmět Praktické aspekty měření a řízení finančních rizik (NMFP463, vyučující z praxe)."
         ]
       },
       {
@@ -683,36 +752,6 @@
       {
         "k": "Zájmy",
         "v": "půlmaraton 1:24 a příprava na backyard ultra, 11 let závodního baseballu, poker a teorie her"
-      }
-    ]
-  },
-  "numbers": {
-    "id": "cisla",
-    "title": "V číslech",
-    "items": [
-      {
-        "n": "8",
-        "l": "webů a aplikací v provozu"
-      },
-      {
-        "n": "3 319",
-        "l": "zkouškových otázek v trenažéru pro poradce"
-      },
-      {
-        "n": "1 000 000 Kč",
-        "l": "analyzované portfolio v šesti fondech"
-      },
-      {
-        "n": "3",
-        "l": "modely naprogramované od nuly"
-      },
-      {
-        "n": "−58 %",
-        "l": "čekání na odpověď farností po automatizaci"
-      },
-      {
-        "n": "1:24",
-        "l": "půlmaraton"
       }
     ]
   }

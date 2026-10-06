@@ -6,8 +6,9 @@
 <title>Adam Zikmund – financial mathematics, software and risk</title>
 <meta name="description" content="Financial Mathematics student at Charles University, previously co-founder and developer of products in production. Looking for an internship or part-time role in quantitative risk, quant research, VC/PE analytics or investment banking.">
 <meta name="author" content="Adam Zikmund">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f6f5f2">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://cv-seven-dusky-63.vercel.app/en/">
 <link rel="alternate" hreflang="en" href="https://cv-seven-dusky-63.vercel.app/en/">
 <link rel="alternate" hreflang="cs" href="https://cv-seven-dusky-63.vercel.app/">
@@ -23,9 +24,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,100,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="stylesheet" href="/assets/css/variant-c.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/assets/css/skyline.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
 <script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/quant.js" defer></script>
+<script src="/assets/js/skyline.js" defer></script>
 <script src="/assets/js/motion.js" defer></script>
 </head>
 <body>
@@ -38,7 +40,7 @@
     <ol class="nav-list">
       <li><a href="#profile" data-spy="profile">Profile</a></li>
       <li><a href="#experience" data-spy="experience">Experience</a></li>
-      <li><a href="#tools" data-spy="tools">Tools</a></li>
+      <li><a href="/en/tools/">Tools</a></li>
       <li><a href="#projects" data-spy="projects">Projects</a></li>
       <li><a href="#education" data-spy="education">Education</a></li>
       <li><a href="#skills" data-spy="skills">Skills</a></li>
@@ -49,81 +51,64 @@
   <div class="nav-right">
     <a class="nav-cv" href="/cv/Adam-Zikmund-CV-EN.pdf"><span class="t-long">Download CV (PDF)</span><span class="t-short">CV (PDF)</span></a>
     <span class="nav-lang" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/" hreflang="cs" lang="cs" title="Česká verze">CS</a></span>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode" data-theme-toggle>
+      <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </nav>
 </header>
 <main id="main">
-<section class="portal" data-portal aria-label="Adam Zikmund, Prague">
-  <div class="portal-pin">
-    <div class="portal-field" aria-hidden="true">
-      <p class="portal-lead">Financial mathematics student at Charles University. Software that gets used. Interested in risk, investing and venture capital.</p>
-    </div>
-    <svg class="portal-art" aria-hidden="true" focusable="false"><defs><clipPath id="portal-clip" clipPathUnits="userSpaceOnUse"><text data-portal-glyph x="0" y="0">Zikmund</text></clipPath></defs></svg>
-    <p class="portal-word" aria-hidden="true">Zikmund</p>
-    <p class="portal-kicker">Adam Zikmund, Prague</p>
-    <div class="portal-row">
-      <p class="portal-intro">Financial mathematics student at Charles University, previously co-founder of two products in production. Looking for an internship or part-time role in risk, investing and venture capital.</p>
-      <p class="portal-actions"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-EN.pdf">Download CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
-      <p class="portal-hint" aria-hidden="true">Scroll to enter ↓</p>
-    </div>
+<section class="hero-track" data-hero aria-labelledby="hero-title">
+  <div class="hero-pin">
+    <h1 id="hero-title" class="hero-title" data-magic="hero"><span class="w">I</span> <span class="w">build</span> <span class="w">software</span> <span class="w">people</span> <span class="w">want</span> <span class="w">to</span> <span class="w">use,</span> <span class="w">and</span> <span class="w">AI</span> <span class="w">makes</span> <span class="w">their</span> <span class="w">work</span> <span class="w">easier.</span> <span class="w">Now</span> <span class="w">I</span> <span class="w">am</span> <span class="w">taking</span> <span class="w">all</span> <span class="w">of</span> <span class="w">it</span> <span class="w">to</span> <span class="w">where</span> <span class="w">risk</span> <span class="w">is</span> <span class="w">measured</span> <span class="w">and</span> <span class="w">priced.</span></h1>
+    <p class="hero-hint" aria-hidden="true">Scroll down</p>
   </div>
 </section>
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero hero-rest">
   <div class="hero-text">
-    <h1 id="hero-title" data-split><span class="line">I build software that gets used.</span> <span class="line">Now I am learning how risk is measured and priced.</span></h1>
-    <p class="deck" data-magic>Co-founder and developer of products in production (Božííí, Freio); since September 2026 a Financial Mathematics student at Charles University. Looking for an internship, part-time role or project work in quantitative risk, quant research, VC/PE analytics or investment banking.</p>
-    <p class="actions"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-EN.pdf">Download CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
+    <p class="deck" data-magic><span class="w">Co-founder</span> <span class="w">and</span> <span class="w">developer</span> <span class="w">of</span> <span class="w">products</span> <span class="w">in</span> <span class="w">production</span> <span class="w">(Božííí,</span> <span class="w">Freio);</span> <span class="w">since</span> <span class="w">September</span> <span class="w">2026</span> <span class="w">a</span> <span class="w">Financial</span> <span class="w">Mathematics</span> <span class="w">student</span> <span class="w">at</span> <span class="w">Charles</span> <span class="w">University.</span> <span class="w">Looking</span> <span class="w">for</span> <span class="w">an</span> <span class="w">internship,</span> <span class="w">part-time</span> <span class="w">role</span> <span class="w">or</span> <span class="w">project</span> <span class="w">work</span> <span class="w">in</span> <span class="w">quantitative</span> <span class="w">risk,</span> <span class="w">quant</span> <span class="w">research,</span> <span class="w">VC/PE</span> <span class="w">analytics</span> <span class="w">or</span> <span class="w">investment</span> <span class="w">banking.</span></p>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-EN.pdf">Download CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
   </div>
-  <aside class="sheet" aria-labelledby="sheet-title">
+  <aside class="sheet" aria-labelledby="sheet-title" data-reveal="rise">
     <h2 id="sheet-title" class="visually-hidden">Key facts</h2>
     <dl class="sheet-rows">
       <div class="sheet-row"><dt>Study</dt><dd>Charles University in Prague (MFF UK), BSc Financial Mathematics, 2026 – present</dd></div>
-      <div class="sheet-row"><dt>Concurrently</dt><dd>Czech Technical University, Mechanical Engineering</dd></div>
       <div class="sheet-row"><dt>Experience</dt><dd>Valor Group (trainee), Freio (co-founder), Božííí (founder)</dd></div>
       <div class="sheet-row"><dt>Course</dt><dd>Practical Aspects of Financial Risk Measurement and Management (NMFP463), year 1</dd></div>
       <div class="sheet-row"><dt>Languages</dt><dd>Czech, English C1 (CAE), German A2</dd></div>
     </dl>
   </aside>
 </section>
-<section id="numbers" class="numbers" aria-label="In numbers">
-  <ul class="numbers-grid">
-    <li class="num-block" data-reveal><strong>8</strong><span>websites and apps in production</span></li>
-    <li class="num-block" data-reveal><strong>3,319</strong><span>exam questions in the advisers' trainer</span></li>
-    <li class="num-block" data-reveal><strong>CZK 1,000,000</strong><span>portfolio analysed across six funds</span></li>
-    <li class="num-block" data-reveal><strong>3</strong><span>models programmed from scratch</span></li>
-    <li class="num-block" data-reveal><strong>−58%</strong><span>parish response time after automation</span></li>
-    <li class="num-block" data-reveal><strong>1:24</strong><span>half marathon</span></li>
-  </ul>
-</section>
 <section id="profile" class="section" aria-labelledby="h-profile">
-  <div class="rail"><h2 id="h-profile">Profile</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-profile"><span class="mw"><span>Profile</span></span></h2></div>
   <div class="content">
-    <p class="lead" data-magic>While at grammar school I founded Božííí, a community site for Prague parishes, co-founded the EdTech platform Freio and freelanced on scraping, automation and LLM API integrations. My final-year research paper modelled how EU ETS 2 allowance costs pass through to households. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and analysing a six-fund portfolio. Since September I have been studying Financial Mathematics at Charles University, and in my first year I enrolled in a practitioner-led course on financial risk measurement and management.</p>
+    <p class="lead" data-magic><span class="w">While</span> <span class="w">at</span> <span class="w">grammar</span> <span class="w">school</span> <span class="w">I</span> <span class="w">founded</span> <span class="w">Božííí,</span> <span class="w">a</span> <span class="w">community</span> <span class="w">site</span> <span class="w">for</span> <span class="w">Prague</span> <span class="w">parishes,</span> <span class="w">co-founded</span> <span class="w">the</span> <span class="w">EdTech</span> <span class="w">platform</span> <span class="w">Freio</span> <span class="w">and</span> <span class="w">freelanced</span> <span class="w">on</span> <span class="w">automation,</span> <span class="w">scraping</span> <span class="w">and</span> <span class="w">LLM</span> <span class="w">API</span> <span class="w">integrations.</span> <span class="w">My</span> <span class="w">final-year</span> <span class="w">research</span> <span class="w">paper</span> <span class="w">modelled</span> <span class="w">how</span> <span class="w">EU</span> <span class="w">ETS</span> <span class="w">2</span> <span class="w">allowance</span> <span class="w">costs</span> <span class="w">pass</span> <span class="w">through</span> <span class="w">to</span> <span class="w">households.</span> <span class="w">I</span> <span class="w">spent</span> <span class="w">the</span> <span class="w">summer</span> <span class="w">of</span> <span class="w">2026</span> <span class="w">as</span> <span class="w">a</span> <span class="w">trainee</span> <span class="w">in</span> <span class="w">financial</span> <span class="w">advisory,</span> <span class="w">modelling</span> <span class="w">client</span> <span class="w">plans</span> <span class="w">and</span> <span class="w">analysing</span> <span class="w">a</span> <span class="w">portfolio.</span> <span class="w">Since</span> <span class="w">September</span> <span class="w">I</span> <span class="w">have</span> <span class="w">been</span> <span class="w">studying</span> <span class="w">Financial</span> <span class="w">Mathematics</span> <span class="w">at</span> <span class="w">Charles</span> <span class="w">University.</span></p>
     <div class="kv-block">
       <h3 id="h-seeking">What I am looking for</h3>
       <dl class="kv" aria-labelledby="h-seeking">
-        <div class="kv-row"><dt>Areas</dt><dd>quantitative risk, quant research, VC/PE analytics, investment banking, investment control</dd></div>
-        <div class="kv-row"><dt>Form</dt><dd>internship, part-time role or project collaboration</dd></div>
-        <div class="kv-row"><dt>Period</dt><dd>academic year 2026/27, alongside my studies</dd></div>
-        <div class="kv-row"><dt>Location</dt><dd>Prague or remote</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Areas</dt><dd>quantitative risk, quant research, VC/PE analytics, investment banking, investment control</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Form</dt><dd>internship, part-time role or project collaboration</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Period</dt><dd>academic year 2026/27, alongside my studies</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Location</dt><dd>Prague or remote</dd></div>
       </dl>
     </div>
     <div class="kv-block">
       <h3 id="h-basis">What I build on</h3>
       <dl class="kv" aria-labelledby="h-basis">
-        <div class="kv-row"><dt>Risk and simulation</dt><dd>5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator below; the NMFP463 course at Charles University</dd></div>
-        <div class="kv-row"><dt>Pricing and optimisation</dt><dd>Black–Scholes with Greeks and the Markowitz frontier, programmed from scratch, see Tools</dd></div>
-        <div class="kv-row"><dt>Fund analysis</dt><dd>a CZK 1,000,000 six-fund portfolio: TER ~1.35% p.a., duration, liquidity, rate scenarios (Valor Group)</dd></div>
-        <div class="kv-row"><dt>Finance and business</dt><dd>client financial plans (Valor Group); accounting (Charles University); business and strategy at Freio</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Risk and simulation</dt><dd>5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator below; the NMFP463 course at Charles University</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Pricing and optimisation</dt><dd>Black–Scholes with Greeks and the Markowitz frontier, programmed from scratch, see Tools</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Fund analysis</dt><dd>a CZK 1,000,000 six-fund portfolio: TER ~1.35% p.a., duration, liquidity, rate scenarios (Valor Group)</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Finance and business</dt><dd>client financial plans (Valor Group); accounting (Charles University); business and strategy at Freio</dd></div>
       </dl>
     </div>
   </div>
 </section>
 <section id="experience" class="section" aria-labelledby="h-experience">
-  <div class="rail"><h2 id="h-experience">Experience</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-experience"><span class="mw"><span>Experience</span></span></h2></div>
   <div class="content">
     <ol class="ledger">
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>06/2026 – 09/2026</time></div>
         <div class="row-head"><h3>Valor Group</h3><p class="row-role">Trainee, financial advisory</p></div>
         <div class="row-body">
@@ -131,23 +116,7 @@
           <p class="row-stack">Python, PIL, Remotion, React, TypeScript</p>
         </div>
       </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>04/2026 – 05/2026</time></div>
-        <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps and infrastructure, contract</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Hardware and cloud virtualisation operations, CI/CD automation support and Linux server administration.</li></ul>
-          <p class="row-stack">Linux, CI/CD, virtualisation</p>
-        </div>
-      </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>02/2026 – 07/2026</time></div>
-        <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, business and strategy</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; business strategy, market validation, customer segmentation.</li><li>Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project.</li></ul>
-          <p class="row-stack">EdTech, market validation, MVP</p>
-        </div>
-      </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>01/2026 – present</time></div>
         <div class="row-head"><h3>Freelance</h3><p class="row-role">Software and AI automation</p></div>
         <div class="row-body">
@@ -155,7 +124,23 @@
           <p class="row-stack">Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API</p>
         </div>
       </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
+        <div class="row-date"><time>04/2026 – 05/2026</time></div>
+        <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps and infrastructure, contract</p></div>
+        <div class="row-body">
+          <ul class="results"><li>Hardware and cloud virtualisation operations, CI/CD automation support and Linux server administration.</li></ul>
+          <p class="row-stack">Linux, CI/CD, virtualisation</p>
+        </div>
+      </li>
+      <li class="row" data-reveal="row">
+        <div class="row-date"><time>02/2026 – 07/2026</time></div>
+        <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, business and strategy</p></div>
+        <div class="row-body">
+          <ul class="results"><li>Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; business strategy, market validation, customer segmentation.</li><li>Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project.</li></ul>
+          <p class="row-stack">EdTech, market validation, MVP</p>
+        </div>
+      </li>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2025 – present</time></div>
         <div class="row-head"><h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3><p class="row-role">Founder and full-stack developer</p></div>
         <div class="row-body">
@@ -163,7 +148,7 @@
           <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend</p>
         </div>
       </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>10/2024 – present</time></div>
         <div class="row-head"><h3>Sauna &amp; Wellness Rooms Central</h3><p class="row-role">Shift supervisor, part-time</p></div>
         <div class="row-body">
@@ -174,238 +159,80 @@
     </ol>
   </div>
 </section>
-<section id="tools" class="section section-tools" aria-labelledby="h-tools">
-  <div class="rail"><h2 id="h-tools">Tools</h2></div>
+<section id="tools" class="section section-teaser" aria-labelledby="h-tools">
+  <div class="rail" data-reveal="rail"><h2 id="h-tools"><span class="mw"><span>Tools</span></span></h2></div>
   <div class="content">
-    <p class="section-heading" data-split>Three models I programmed in order to understand them.</p>
-    <div class="tools">
-      <article class="tool" id="tool-bs" data-tool="bs" data-reveal>
-        <h3 class="tool-title">Black–Scholes</h3>
-        <p class="tool-quote">I built an option pricer to understand what risk managers look at, not to rediscover the formula.</p>
-        <p class="tool-spec">European option, no dividends, constant volatility σ.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
-              <fieldset class="toggle" data-role="seg" data-name="type" data-default="call"><legend>Type</legend><div class="toggle-options"><button type="button" data-value="call" aria-pressed="true">call</button><button type="button" data-value="put" aria-pressed="false">put</button></div></fieldset>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-S-label" for="bs-S">Underlying price S</label>
-          <span class="ctl-value"><input id="bs-S" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-S-label" data-sync="S" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-K-label" for="bs-K">Strike K</label>
-          <span class="ctl-value"><input id="bs-K" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="K" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-K-label" data-sync="K" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-T-label" for="bs-T">Time to expiry T (years)</label>
-          <span class="ctl-value"><input id="bs-T" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="T" min="0.05" max="2" step="0.05" value="0.5" data-decimals="2"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-T-label" data-sync="T" min="0.05" max="2" step="0.05" value="0.5" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-r-label" for="bs-r">Risk-free rate r</label>
-          <span class="ctl-value"><input id="bs-r" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r" min="0" max="10" step="0.25" value="4" data-decimals="2"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-r-label" data-sync="r" min="0" max="10" step="0.25" value="4" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-sigma-label" for="bs-sigma">Volatility σ</label>
-          <span class="ctl-value"><input id="bs-sigma" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sigma" min="5" max="80" step="1" value="22" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-sigma-label" data-sync="sigma" min="5" max="80" step="1" value="22" tabindex="-1">
-        </div>
-              <div class="btn-row"><button type="button" class="text-btn" data-role="reset">Reset defaults</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Chart of option value against the underlying price with the payoff at expiry and the current price marked"></canvas>
-              <ul class="legend"><li><i class="sw sw-ink"></i>value today</li><li><i class="sw sw-dash"></i>payoff at expiry</li></ul>
-              <noscript><p class="chart-noscript">The tools need JavaScript enabled.</p></noscript>
-            </div>
-            <div class="readouts">
-              <dl class="ro-list">
-                <div class="ro ro-main"><dt>Option price</dt><dd data-out="price">—</dd></div>
-                <div class="ro"><dt>Δ delta</dt><dd data-out="delta">—</dd></div>
-                <div class="ro"><dt>Γ gamma</dt><dd data-out="gamma">—</dd></div>
-                <div class="ro"><dt>ν vega (per 1 pp of σ)</dt><dd data-out="vega">—</dd></div>
-                <div class="ro ro-theta"><dt>Θ theta (per day)</dt><dd data-out="theta">—</dd></div>
-                <div class="ro ro-sep"><dt>Intrinsic value</dt><dd data-out="intrinsic">—</dd></div>
-                <div class="ro"><dt>Time value</dt><dd data-out="timeValue">—</dd></div>
-              </dl>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">Theta accelerates as expiry approaches: an at-the-money option loses value fastest in its final weeks. Shorten T and watch the curve collapse onto the payoff.</p>
-          <details class="method"><summary>How it is computed</summary><ul><li>C = S·N(d₁) − K·e^(−rT)·N(d₂); P = K·e^(−rT)·N(−d₂) − S·N(−d₁)</li><li>d₁ = [ln(S/K) + (r + σ²/2)·T] / (σ·√T); d₂ = d₁ − σ·√T</li><li>N(x) is computed through erf (Abramowitz–Stegun 7.1.26, error below 1.5·10⁻⁷).</li><li>Δ = N(d₁) for a call, N(d₁) − 1 for a put; Γ = φ(d₁)/(S·σ·√T); ν = S·φ(d₁)·√T / 100 (per 1 pp of σ); Θ per day = Θ per year / 365.</li><li>Assumptions: European exercise, no dividends, constant σ and r, continuous compounding.</li></ul></details>
-        </div>
-      </article>
-      <article class="tool" id="tool-mc" data-tool="mc" data-reveal>
-        <h3 class="tool-title">Monte Carlo</h3>
-        <p class="tool-quote">I built it to get a feel for modelling uncertainty. What surprised me most was how badly the normal model underestimates crash risk.</p>
-        <p class="tool-spec">Geometric Brownian motion with daily steps, jumps following Merton's crash model.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
-              <div class="ctl">
-          <label class="ctl-label" id="mc-S0-label" for="mc-S0">Initial price S₀</label>
-          <span class="ctl-value"><input id="mc-S0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S0" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-S0-label" data-sync="S0" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mc-mu-label" for="mc-mu">Drift μ (p.a.)</label>
-          <span class="ctl-value"><input id="mc-mu" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-mu-label" data-sync="mu" min="-10" max="20" step="0.5" value="6" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mc-sigma-label" for="mc-sigma">Volatility σ (p.a.)</label>
-          <span class="ctl-value"><input id="mc-sigma" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sigma" min="5" max="80" step="1" value="22" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-sigma-label" data-sync="sigma" min="5" max="80" step="1" value="22" tabindex="-1">
-        </div>
-              <fieldset class="toggle" data-role="seg" data-name="horizon" data-default="252"><legend>Horizon (days)</legend><div class="toggle-options"><button type="button" data-value="21" aria-pressed="false">21</button><button type="button" data-value="63" aria-pressed="false">63</button><button type="button" data-value="126" aria-pressed="false">126</button><button type="button" data-value="252" aria-pressed="true">252</button></div></fieldset>
-              <fieldset class="toggle" data-role="seg" data-name="paths" data-default="1000"><legend>Number of paths</legend><div class="toggle-options"><button type="button" data-value="500" aria-pressed="false">500</button><button type="button" data-value="1000" aria-pressed="true">1,000</button><button type="button" data-value="2000" aria-pressed="false">2,000</button></div></fieldset>
-              <fieldset class="toggle" data-role="seg" data-name="dist" data-default="normal"><legend>Model</legend><div class="toggle-options"><button type="button" data-value="normal" aria-pressed="true">normal</button><button type="button" data-value="jump" aria-pressed="false">with jumps</button></div></fieldset>
-              <div class="btn-row"><button type="button" class="text-btn" data-role="reseed">Run again</button><button type="button" class="text-btn" data-role="reset">Reset defaults</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Chart of simulated price paths with the median, percentiles and the 5% VaR level; a histogram of terminal values on the right"></canvas>
-              <p class="chart-note mono" data-out="shown"></p>
-              <ul class="legend"><li><i class="sw sw-ink"></i>median</li><li><i class="sw sw-dash"></i>5th and 95th percentile</li><li><i class="sw sw-oxide"></i>5% VaR level</li><li data-role="legend-normal" hidden><i class="sw sw-oxide-dash"></i>normal-model VaR level</li></ul>
-              <noscript><p class="chart-noscript">The tools need JavaScript enabled.</p></noscript>
-            </div>
-            <div class="readouts">
-              <table class="ro-table">
-                <thead><tr><th scope="col"><span class="visually-hidden">Outputs</span></th><th scope="col" data-col="normal">normal</th><th scope="col" data-col="jump">with jumps</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">Median Sₜ</th><td data-out="median-n">—</td><td data-out="median-t">—</td></tr>
-                  <tr><th scope="row">Mean Sₜ</th><td data-out="mean-n">—</td><td data-out="mean-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% VaR</th><td data-out="var-n">—</td><td data-out="var-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% ES</th><td data-out="es-n">—</td><td data-out="es-t">—</td></tr>
-                  <tr><th scope="row">P(loss)</th><td data-out="ploss-n">—</td><td data-out="ploss-t">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">VaR vs. normal</th><td></td><td data-out="varDelta">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">ES vs. normal</th><td></td><td data-out="esDelta">—</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">Same drift and volatility, plus only rare downward jumps (one every two years on average, typically around −14%). The median barely moves, but the 5% VaR and the expected shortfall grow substantially. The normal model would call such a drop practically impossible; the paths below its VaR level are drawn in oxide red.</p>
-          <details class="method"><summary>How it is computed</summary><ul><li>Sₜ₊Δₜ = Sₜ · exp[(μ − σ²/2)·Δt + σ·√Δt · z], Δt = 1/252 (daily step), z ~ N(0, 1) via Box–Muller.</li><li>Jump model (Merton 1976): with probability λ·Δt per day a jump exp(J) arrives, J ~ N(−0.15, 0.10²), λ = 0.5 per year; the drift is compensated by λ·κ·Δt (κ = e^(μ<sub>J</sub> + σ<sub>J</sub>²/2) − 1) so the expected price stays the same.</li><li>5% VaR = S₀ − 5th percentile of terminal values; 5% ES = S₀ − mean of the worst 5% of terminal values; P(loss) = share of paths with Sₜ &lt; S₀.</li><li>Both models are always computed from the same seed so the columns can be compared; the chart shows the selected model.</li><li>Note: Student-t innovations on daily steps average out over longer horizons (CLT) and the terminal distribution approaches the normal one, which is why crashes are modelled as jumps.</li></ul></details>
-        </div>
-      </article>
-      <article class="tool" id="tool-mk" data-tool="mk" data-reveal>
-        <h3 class="tool-title">Markowitz</h3>
-        <p class="tool-quote">I programmed the efficient frontier to understand why diversification works, and above all where the model breaks down.</p>
-        <p class="tool-spec">Single-period model with three assets and no transaction costs.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Inputs" onsubmit="return false">
-              <table class="assets"><caption class="visually-hidden">Assets</caption>
-                <thead><tr><th scope="col">Asset</th><th scope="col">μ %</th><th scope="col">σ %</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">A</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu1" min="0" max="20" step="0.5" value="5" data-decimals="1" aria-label="Asset A: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg1" min="5" max="60" step="1" value="12" data-decimals="0" aria-label="Asset A: σ (%)"></td></tr>
-                  <tr><th scope="row">B</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu2" min="0" max="20" step="0.5" value="8" data-decimals="1" aria-label="Asset B: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg2" min="5" max="60" step="1" value="18" data-decimals="0" aria-label="Asset B: σ (%)"></td></tr>
-                  <tr><th scope="row">C</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu3" min="0" max="20" step="0.5" value="12" data-decimals="1" aria-label="Asset C: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg3" min="5" max="60" step="1" value="30" data-decimals="0" aria-label="Asset C: σ (%)"></td></tr>
-                </tbody>
-              </table>
-              <div class="corr" role="group" aria-label="Correlation"><span class="ctl-label">Correlation</span>
-                <label>ρ(A,B) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0.3" data-decimals="2"></label>
-                <label>ρ(A,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0.2" data-decimals="2"></label>
-                <label>ρ(B,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0.4" data-decimals="2"></label>
-              </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mk-rf-label" for="mk-rf">Risk-free rate r<sub>f</sub></label>
-          <span class="ctl-value"><input id="mk-rf" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="rf" min="0" max="6" step="0.25" value="2" data-decimals="2"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mk-rf-label" data-sync="rf" min="0" max="6" step="0.25" value="2" tabindex="-1">
-        </div>
-              <fieldset class="toggle" data-role="seg" data-name="short" data-default="none"><legend>Short selling</legend><div class="toggle-options"><button type="button" data-value="none" aria-pressed="true">no shorting</button><button type="button" data-value="short" aria-pressed="false">with shorting</button></div></fieldset>
-              <div class="btn-row"><button type="button" class="text-btn btn-error" data-role="error" aria-pressed="false">Estimation error</button><button type="button" class="text-btn" data-role="reset">Reset defaults</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Scatter chart of portfolios in the risk and return plane with the efficient frontier, the minimum-variance portfolio and the maximum-Sharpe portfolio"></canvas>
-              <p class="chart-note" data-role="error-caption" hidden>This is how sensitive the frontier is to the input estimates.</p>
-              <p class="chart-note is-warn" data-role="psd-note" hidden></p>
-              <p class="chart-note is-warn" data-role="no-tangency" hidden>No portfolio beats the risk-free rate, so there is no tangency portfolio.</p>
-              <ul class="legend"><li><i class="sw sw-cloud"></i>random portfolios</li><li><i class="sw sw-ink"></i>efficient frontier</li><li><i class="sw sw-navy"></i>max Sharpe and CML</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>frontiers under estimation error</li></ul>
-              <noscript><p class="chart-noscript">The tools need JavaScript enabled.</p></noscript>
-            </div>
-            <div class="readouts">
-              <p class="ro-title">Max-Sharpe portfolio</p>
-              <dl class="ro-list">
-                <div class="ro ro-main"><dt>E[r]</dt><dd data-out="ret">—</dd></div>
-                <div class="ro"><dt>σ</dt><dd data-out="risk">—</dd></div>
-                <div class="ro"><dt>Sharpe</dt><dd data-out="sharpe">—</dd></div>
-              </dl>
-              <table class="weights">
-                <thead><tr><th scope="col">Weights</th><th scope="col">estimate</th><th scope="col" class="col-err" hidden>± error</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">A</th><td><span class="wbar" aria-hidden="true"><i data-bar="0"></i></span><span data-out="w1">—</span></td><td class="col-err" hidden data-out="e1">—</td></tr>
-                  <tr><th scope="row">B</th><td><span class="wbar" aria-hidden="true"><i data-bar="1"></i></span><span data-out="w2">—</span></td><td class="col-err" hidden data-out="e2">—</td></tr>
-                  <tr><th scope="row">C</th><td><span class="wbar" aria-hidden="true"><i data-bar="2"></i></span><span data-out="w3">—</span></td><td class="col-err" hidden data-out="e3">—</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">The model is sensitive to its inputs: shifting expected returns by 1–2 percentage points reshuffles the &quot;optimal&quot; portfolio substantially. That is why raw Markowitz is rarely used on its own in practice; constraints, shrinkage estimators or Black–Litterman views are layered on top.</p>
-          <details class="method"><summary>How it is computed</summary><ul><li>E[r<sub>p</sub>] = Σ wᵢ·μᵢ; σ<sub>p</sub>² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ wᵢ = 1, without shorting wᵢ ≥ 0.</li><li>Frontier = upper envelope of 3,000 random portfolios (no shorting: weights from normalised |N(0,1)|; with shorting: from N(0,1) limited to [−1, 2]) plus the two-asset mixes.</li><li>Estimation error: 20 scenarios with μᵢ ± 1.5 pp and σᵢ ± 10% (fixed seed); their frontiers are drawn and the half-range of the max-Sharpe weights is reported as ±.</li><li>The three correlations entered must form a positive definite matrix; I require its smallest eigenvalue to be at least 0.05. If it is not, all three are scaled towards zero by the same factor until it is, and a note appears under the chart.</li><li>Assumptions: one period, no transaction costs; the inputs are themselves estimates.</li></ul></details>
-        </div>
-      </article>
-    </div>
-    <script type="application/json" id="quant-ui">{"bs":{"type":"Type","call":"call","put":"put","S":"Underlying price S","K":"Strike K","T":"Time to expiry T (years)","r":"Risk-free rate r","sigma":"Volatility σ","unitYears":"","unitPct":"%","price":"Option price","delta":"Δ delta","gamma":"Γ gamma","vega":"ν vega (per 1 pp of σ)","theta":"Θ theta (per day)","intrinsic":"Intrinsic value","timeValue":"Time value","legendValue":"value today","legendPayoff":"payoff at expiry","axisX":"underlying price","aria":"Chart of option value against the underlying price with the payoff at expiry and the current price marked","live":"Option price {price}, delta {delta}, theta {theta} per day."},"mc":{"S0":"Initial price S₀","mu":"Drift μ (p.a.)","sigma":"Volatility σ (p.a.)","horizon":"Horizon (days)","days":"days","paths":"Number of paths","dist":"Model","normal":"normal","fat":"with jumps","rerun":"Run again","unitPct":"%","colNormal":"normal","colFat":"with jumps","median":"Median Sₜ","mean":"Mean Sₜ","var":"5% VaR","ploss":"P(loss)","varDelta":"VaR vs. normal","shown":"showing {shown} of {total} paths","legendMedian":"median","legendVar":"5% VaR level","legendS0":"S₀","legendPct":"5th and 95th percentile","axisX":"trading days","aria":"Chart of simulated price paths with the median, percentiles and the 5% VaR level; a histogram of terminal values on the right","live":"Median terminal price {median}, 5% VaR {var}, expected shortfall {es}, probability of loss {ploss}.","es":"5% ES","esDelta":"ES vs. normal","legendVarNormal":"normal-model VaR level"},"mk":{"assets":"Assets","asset":"Asset","names":["A","B","C"],"mu":"μ","sigma":"σ","corr":"Correlation","rho":"ρ","rf":"Risk-free rate r_f","short":"Short selling","noShort":"no shorting","withShort":"with shorting","error":"Estimation error","unitPct":"%","maxSharpe":"Max-Sharpe portfolio","ret":"E[r]","risk":"σ","sharpe":"Sharpe","weights":"Weights","colEstimate":"estimate","colError":"± error","legendCloud":"random portfolios","legendFrontier":"efficient frontier","legendMin":"min variance","legendMax":"max Sharpe","legendCml":"CML","legendGhost":"frontiers under estimation error","axisX":"σ (% p.a.)","axisY":"E[r] (% p.a.)","caption":"This is how sensitive the frontier is to the input estimates.","aria":"Scatter chart of portfolios in the risk and return plane with the efficient frontier, the minimum-variance portfolio and the maximum-Sharpe portfolio","live":"Maximum-Sharpe portfolio: return {ret}, risk {risk}, Sharpe {sharpe}.","psdNote":"The correlations entered are mutually inconsistent or nearly singular, so they are scaled towards zero by a factor of {c}.","noTangency":"No portfolio beats the risk-free rate, so there is no tangency portfolio."}}</script>
+    <p class="section-intro" data-magic><span class="w">Three</span> <span class="w">models</span> <span class="w">I</span> <span class="w">programmed</span> <span class="w">in</span> <span class="w">order</span> <span class="w">to</span> <span class="w">understand</span> <span class="w">them.</span> <span class="w">They</span> <span class="w">run</span> <span class="w">right</span> <span class="w">in</span> <span class="w">the</span> <span class="w">browser,</span> <span class="w">and</span> <span class="w">I</span> <span class="w">am</span> <span class="w">adding</span> <span class="w">more.</span></p>
+    <ul class="tcards">
+      <li class="tcard" data-reveal="card"><a href="/en/tools/#tool-bs"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-grid" d="M0 160H320" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/><path class="th-muted" d="M0 160H160L320 21.1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M0 160l4 0 4 0 4 0 4 0 4-.1 4 0 4 0 4 0 4-.1 4 0 4-.1 4-.1 4-.1 4-.1 4-.2 4-.2 4-.2 4-.3 4-.3 4-.3 4-.5 4-.4 4-.5 4-.6 4-.7 4-.7 4-.8 4-.9 4-1 4-1.1 4-1.1 4-1.3 4-1.3 4-1.4 4-1.6 4-1.6 4-1.7 4-1.8 4-1.9 4-1.9 4-2.1 4-2.1 4-2.3 4-2.3 4-2.4 4-2.4 4-2.6 4-2.6 4-2.6 4-2.8 4-2.7 4-2.9 4-2.9 4-2.9 4-3 4-3 4-3.1 4-3.1 4-3.1 4-3.2 4-3.2 4-3.2 4-3.2 4-3.3 4-3.3 4-3.3 4-3.3 4-3.4 4-3.3 4-3.4 4-3.4 4-3.3 4-3.4 4-3.4 4-3.5 4-3.4 4-3.4 4-3.4 4-3.5 4-3.4" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><circle class="th-accent" cx="160" cy="135.1" r="3" fill="currentColor"/></svg></span><span class="tcard-body"><h3>Black–Scholes</h3><p>A European option priced with its Greeks.</p></span></a></li>
+      <li class="tcard" data-reveal="card"><a href="/en/tools/#tool-mc"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-grid" d="M0 92.7l11-.6 11-14.6 11-.2 11-4.4 11-2.3 11 20.1 11 3.7 11-7 11 8.6 11 8.7 11-3.2 11 13.5 11-4.2 11 4.3 11-.3 11 7.6 11-10.4 11 11.2 11-9.3 11 1.3 11-5.6 11-4.8 11-2.7 11-5 11 11.5 11-19 11 1.9 11 8M0 92.7l11-6.4 11 2.8 11-.4 11 21.8 11-8.9 11-.6 11 5.4 11-2.3 11 2.6 11-17.8 11-3.1 11-9.8 11-5.4 11-13.2 11 19.3 11 7.4 11-4.7 11-5.6 11-13.4 11-5.5 11 10.3 11-16.8 11-14.1 11 6.5 11-3.2 11 2 11-1.1 11-15.1M0 92.7l11 22.8 11-6 11 4.6 11 5.2 11 .8 11-7.2 11-6 11-2.1 11-4.8 11-1.3 11-.9 11 6.9 11-1.2 11 7.7 11-9.5 11-2.4 11 4.2 11 .2 11 12.1 11 6.9 11-12.3 11-7.2 11-2.6 11 13.2 11-6.9 11-11.4 11-7.6 11 10.2M0 92.7l11 11.5 11 .1 11-5.6 11 14.7 11-2.4 11 .7 11 .3 11 2.7 11 3.4 11-11.1 11-7.5 11-8 11 5.1 11-10.3 11-7.5 11 2.6 11 14.1 11 8.8 11 7.3 11 6.5 11 .2 11 3.3 11 11.4 11 .7 11-6.9 11-2.8 11-10.1 11-3.6M0 92.7l11-5.7 11-6.9 11 2.3 11 .2 11-4.8 11-8.5 11-1.3 11 9.1 11-.1 11 16.2 11 10.2 11 3.3 11-3.2 11-7.1 11 5.7 11 2.3 11 .7 11 10.2 11-15.1 11 2.2 11-7.2 11-2.4 11-1.1 11 4 11 5.2 11-5.5 11-.9 11 .5M0 92.7l11 6.2 11-10 11 7.2 11-11.1 11-5.7 11 11.4 11 4.8 11 .2 11-2.5 11 1.8 11-3.9 11-4 11 .6 11-2.6 11 17.7 11 4.8 11 5.3 11-9.5 11-1 11 11 11 4.8 11 .9 11-9.4 11 5.4 11 0 11 11 11-7.4 11-3M0 92.7l11-16 11 6.8 11 1.5 11 10.3 11-6.3 11 9.6 11-12.1 11-4.2 11 4.8 11-11.6 11-12.5 11 15.2 11-10.3 11 19.1 11-8.5 11 10.6 11-4.4 11-13.9 11-4.6 11-9 11 7.6 11-1.1 11 5.6 11-2.6 11-13.2 11-1.2 11 10.6 11 6.4M0 92.7l11-12.3 11-4 11-7.1 11-11.2 11-8.6 11 .1 11-7.3 11 7.9 11 1.7 11 9.5 11 1 11-2.2 11-10.4 11 8.8 11 15 11 13.3 11 7.5 11 8.8 11-.7 11-13.3 11 .7 11 .3 11-5.5 11-.4 11 4.5 11 2.3 11-3.8 11 2.1M0 92.7l11 1.5 11-1.7 11 8.8 11-4.7 11-5.4 11-12.9 11-7.3 11-5 11 9.9 11-2.9 11 2.7 11-13.3 11 .8 11-5.1 11-7.7 11 11.6 11-7.8 11 18.8 11-1.7 11 14.7 11 10.9 11 16.2 11-14.3 11-5.2 11-2.4 11-.4 11 1.4 11 12.4M0 92.7l11 11.2 11 9.6 11 .6 11-8.8 11-12.6 11 1.5 11 4.4 11-11.4 11 1.7 11-9.6 11 2.2 11 1.7 11-1.5 11-1.7 11 6.9 11 9.2 11-9.3 11-13.7 11-8.7 11-7.5 11-11.1 11-6.4 11 10.6 11 8.9 11-.5 11-7 11 9.3 11 2.4M0 92.7l11-8.9 11-10.6 11 3.8 11 11.2 11 3.7 11-7.4 11-1.1 11 .7 11-3.7 11 22.5 11-10.7 11 4.2 11 5.5 11 2.9 11 .2 11 0 11-3.6 11-12.1 11-9.2 11-18.9 11-22.8 11 10.8 11-10.4 11 15.7 11 5.7 11-1.8 11-9.2 11-.9M0 92.7l11-8.4 11-6.2 11 1.3 11-4.4 11 2.6 11-3.5 11-5.9 11-4 11-1.3 11 4.9 11 3.9 11 8.9 11-9.5 11 2.9 11 13.6 11 3.4 11 9.1 11-8.1 11-16.8 11-9 11-4.3 11-.8 11-16.5 11-13.4 11-19.2 11 8.5 11-1.2 11 15M0 92.7l11 7.4 11 1.8 11 7.5 11-6.1 11-10.3 11 7.8 11 6.3 11 1.7 11 5.3 11-8.6 11-11.2 11 5.9 11-3.1 11-3.9 11 2.9 11 1.4 11-10.8 11-8.2 11-6.4 11 4.4 11 2.5 11-2.1 11-5 11-1.5 11-22.9 11-.5 11-6.7 11-17.4M0 92.7l11 6.5 11-.3 11-3.7 11 15.4 11-14.3 11-4.4 11-.8 11 2.6 11 .4 11-1.8 11-14.9 11 5.9 11-4 11-3.5 11 14.8 11 5 11-2.5 11 8 11-9.7 11 15.9 11-1.6 11-3.8 11 3 11-.8 11-5 11-.6 11-9.1 11-12.5M0 92.7l11 2.2 11 4.9 11 6.5 11-2.8 11 4.2 11-12.4 11-15.3 11-1.3 11 8.9 11-4.2 11 9 11-.7 11-2.6 11-7.5 11-5.3 11-14.1 11 29.7 11 2.3 11-1 11 5.3 11-.7 11 5.8 11 14.1 11 4.3 11-5.8 11-6.1 11-8.2 11 6.8M0 92.7l11-8.8 11 10.6 11 3.8 11-4.3 11-13.8 11-5.6 11-6.2 11-13 11-1.9 11-18.7 11 6.7 11-18.1 11 9.8 11 10.4 11 15.6 11 11.5 11-8.8 11-12.5 11-.8 11-7 11-6.3 11 24.4 11 3.4 11 19.2 11 2.8 11-5.3 11 6.2 11-14.4M0 92.7l11-.3 11-13 11-1.3 11 1.6 11-.8 11-6.4 11-9.6 11-7.3 11 13.5 11 2 11-2.9 11-13.4 11-15.6 11 1.9 11-7.7 11-5.6 11 5.2 11 9.3 11 13.9 11 0 11-4.3 11-1.9 11 5.6 11 3.6 11-9.3 11 6.2 11-1.9 11 4.7M0 92.7l11 4.1 11-1.3 11-2.9 11-1.2 11 4.2 11 14 11 3.7 11-1.1 11 10.4 11 10.7 11 .7 11-7 11 12.2 11-4.3 11-4.2 11-5.3 11-.7 11 12.6 11-4.6 11 5.1 11 1.2 11-7.9 11-11.9 11 1.4 11 7.4 11-6.4 11 4.1 11-4.1M0 92.7l11-3.8 11-2.6 11-4.5 11 7 11 10.5 11 15 11-8 11 1.1 11 1.2 11 6.9 11 7.2 11-3 11 4.2 11-5.3 11 3.6 11 11.6 11 6 11 8.6 11 2.1 11 1.6 11 4.2 11 4.8 11 2.2 11-6.3 11 7 11-6.4 11-1.6 11-1.4M0 92.7l11-9.2 11-.6 11 11.6 11 4.6 11-6.2 11-3.8 11-5.4 11 5.7 11 15.7 11 3.7 11-3.4 11 3.8 11-4.6 11-1.2 11-4.8 11-2.2 11 1.1 11-8.7 11 2.5 11-1.7 11-7.3 11 8.7 11 .8 11 1.1 11-20 11-.1 11 15.9 11 6.7M0 92.7l11-10.7 11 3.1 11-19.3 11-12.3 11 3.7 11-1.1 11-7.8 11-23.9 11 3.1 11 1.1 11 10.3 11 .8 11-13.3 11 8 11 11.6 11 5.8 11-.7 11-6.9 11-7.7 11 3.9 11 3 11 .3 11-4 11 2.2 11-8.3 11 5.5 11 15.4 11 5.4M0 92.7l11-11.5 11-2.2 11 7 11-.6 11-1.8 11-1.1 11-1.1 11 4.7 11-9 11 5 11-6.3 11-1 11-5.8 11-4.8 11 11.4 11-5.4 11-5.6 11-12.5 11 2.6 11-17 11-.9 11-18.6 11-5.6 11 23.5 11 3.5 11 11.4 11 8.5 11 12.2M0 92.7l11 .6 11 7.1 11 4.2 11-3.3 11-3.2 11-2.2 11-7.9 11-4.9 11-4.5 11 6.1 11-.7 11 6.1 11-11.4 11-5.2 11-6.8 11 2.2 11-6.4 11 13.7 11-5.3 11 18.7 11 4.5 11-4.5 11-13.3 11-2.2 11 .9 11-8.3 11 14.2 11-10.5M0 92.7l11 2.1 11-4 11-3 11 9.9 11 2.2 11-2.4 11-9.9 11 10.9 11-2 11 .9 11 4.4 11 11.1 11-8.9 11 19.3 11-2.9 11-7.9 11-2.9 11 .5 11 5.5 11 6.9 11-13 11 6 11-8.4 11 8.9 11-2 11-14.6 11-12.2 11-2.4" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/><path class="th-oxide" d="M0 92.7l4.9 8.4 4.9 3.7 4.9 2.5 4.9 2 4.8 1.4 4.9 2.9 4.9 1.3 4.9 .2 4.9 1.1 4.9 1.1 4.9 .6 4.9 1.9 4.9 .9 4.8 1 4.9 1.1 4.9 1.4 4.9-.2 4.9 .8 4.9 .4 4.9 1.4 4.9 .4 4.9 1.1 4.8 1.1 4.9 .1 4.9 .5 4.9 1.2 4.9 .7 4.9-.5 4.9 .9 4.9 .9 4.9 .7 4.8-.2 4.9 1.3 4.9-.9 4.9 .7 4.9 1.4 4.9 .5 4.9-.1 4.9 .6 4.9 .6 4.8 .2 4.9 1.4 4.9 .4 4.9 .4 4.9-.6 4.9-.2 4.9 .5 4.9 .1 4.9 .6 4.8 .5 4.9 0 4.9 .1 4.9 .5 4.9 .6 4.9 1 4.9-.8 4.9 .7 4.9 .9 4.8-.1 4.9-.1 4.9 1.4 4.9 .7 4.9 .2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M0 92.7l4.9 .1 4.9-.2 4.9-.2 4.9-.2 4.8-.4 4.9 .3 4.9-.2 4.9 .1 4.9-.5 4.9 0 4.9 .2 4.9-.6 4.9-.1 4.8-.3 4.9-.2 4.9 .1 4.9-.3 4.9-.3 4.9-.3 4.9 .6 4.9 0 4.9-.4 4.8-.4 4.9 .7 4.9-.5 4.9 0 4.9-.1 4.9-1 4.9-.3 4.9 .2 4.9-.3 4.8 .1 4.9 .3 4.9-.4 4.9-.4 4.9 .8 4.9-.5 4.9 .1 4.9-.3 4.9 .6 4.8-.6 4.9-.1 4.9-.1 4.9 .7 4.9-.6 4.9 .5 4.9-.5 4.9-1 4.9 .4 4.8 .5 4.9-1 4.9 0 4.9 .1 4.9-.6 4.9-.4 4.9-.3 4.9-.3 4.9-.6 4.8 .3 4.9 .2 4.9 .3 4.9 .1 4.9-.1" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><path class="th-oxide" d="M311 146h9" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg></span><span class="tcard-body"><h3>Monte Carlo</h3><p>Simulated price paths with a jump model, 5% VaR and expected shortfall.</p></span></a></li>
+      <li class="tcard" data-reveal="card"><a href="/en/tools/#tool-mk"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-fill-muted" d="M21.5 138.4h.1m.2 .7h.1m-.1 1.5h.1m-.1-4.6h.1m-.1 4.4h.1m.1-2.9h.1m-.1 2.4h.1m.4-6.1h.1m.4 3.5h.1m2 3.9h.1m-.1-7.4h.1m-.1 8h.1m.2-.3h.1m-.1 3h.1m-.1-8.1h.1m.6-4.7h.1m.5 12.6h.1m.1-5.9h.1m.9 9.6h.1m0-14.3h.1m.1-2.3h.1m.7 1.6h.1m0 17.1h.1m0-8.4h.1m.2-1.1h.1m.1-14.1h.1m-.1 .6h.1m.4-3.3h.1m.4 23.2h.1m.8-18.8h.1m.1-6.4h.1m.4 7.8h.1m.3-4.1h.1m.3-1.6h.1m.5-3.1h.1m.1 2.2h.1m.7-1.6h.1m.1 6.8h.1m.2-6.2h.1m0-3h.1m1.4-.9h.1m0 6.6h.1m0 .6h.1m.2-.3h.1m-.1-3.6h.1m.2-3.6h.1m1.2 3.1h.1m0-4.4h.1m1-.7h.1m1 .7h.1m.9 5.9h.1m1-6.8h.1m1.2 3.2h.1m0 5h.1m0-10.4h.1m0 2h.1m-.1 0h.1m1.7 2.6h.1m0-5.9h.1m.5 1.1h.1m.4-1.8h.1m1 7.4h.1m1 1.8h.1m.5-10.6h.1m1.8 6.3h.1m-.1-7.1h.1m.8 10.8h.1m.3-11.5h.1m0-.3h.1m-.1 6.3h.1m.8 1.9h.1m.1 1.1h.1m.7-4.4h.1m1.3-3.5h.1m1.1 1.7h.1m.5 2.2h.1m.3-2.4h.1m-.1 3.6h.1m1.1 2.9h.1m3.6-5.2h.1m.4-1.2h.1m5.5-1.4h.1m.2-1.5h.1m0-1.3h.1m.9-3.6h.1m1.8 9.1h.1m.6-14.3h.1m.6 0h.1m.1 8.1h.1m2.2-8h.1m.2-1.2h.1m1.9-.4h.1m0 8.7h.1m1.7-8.3h.1m.2-.6h.1m.9-.5h.1m.5 1.8h.1m.3 1.6h.1m1.4 3.4h.1m-.1-8.7h.1m.7 5h.1m0 3.7h.1m1-9.5h.1m.4 2.6h.1m.1 .8h.1m1.2 9.5h.1m0-11.2h.1m.1-3.1h.1m1.3 5.1h.1m1.8-3.3h.1m.3-.3h.1m.3-3.3h.1m1.3 11h.1m.8-7.7h.1m.4 2.9h.1m1.4 7.9h.1m.1-15.4h.1m.4 18h.1m.6-18.2h.1m.3 3.6h.1m0 1.2h.1m.3-1.8h.1m.3-4h.1m.2 3.5h.1m.5-3.5h.1m.2 5.1h.1m.2 8.2h.1m1.4-3.4h.1m.2-10.9h.1m2.3 10.1h.1m-.1-8.8h.1m.4-2.7h.1m1.5 .9h.1m.4 2.6h.1m.4-2.9h.1m0-1.2h.1m.2-.4h.1m.9 7.7h.1m.4-7.7h.1m.3 1.3h.1m1.3 2.2h.1m.1 4.5h.1m2.4-4.1h.1m-.1 12.8h.1m.3-19.1h.1m2 4.5h.1m.1 .6h.1m.4 2h.1m1.1-3.6h.1m.2-3.9h.1m.6-.4h.1m.1-.2h.1m.8 .6h.1m.1-.5h.1m.2 1.8h.1m.9-3.1h.1m0-.8h.1m1.1 4.4h.1m1.6-3.9h.1m3.6-2.5h.1m2.3 5h.1m3.6-7.2h.1m3-1.3h.1m.7 2.4h.1m.8-1.3h.1m1.2-2.1h.1m-.1 6.7h.1m2.2-7.4h.1m2.3 6.7h.1m1.5-5.5h.1m1.4 2h.1m.4-2.2h.1m.1-2.8h.1m2.2 4.1h.1m2.4-4.9h.1m1.3 7.4h.1m1.2-3.4h.1m1.6-6.7h.1m.5 8h.1m1.5-7.8h.1m.9-.9h.1m.5-.1h.1m.9 2.9h.1m.8-3.1h.1m.8 1.3h.1m.1-2.2h.1m.3 .9h.1m1.6-1.8h.1m1.9 2.3h.1m.2 2.3h.1m1.3-3.2h.1m1.8-1.8h.1m3.1 5h.1m2-7.2h.1m.5 2h.1m1.2 3.9h.1m4.7-8.2h.1m9.4-2.6h.1m2.1 5.9h.1m5.4-2.9h.1m.1 2.1h.1m3.3-4.1h.1m.3-2.9h.1m7.2-2.7h.1m2.9 2.7h.1m-.1-3.3h.1m.4 4.4h.1m2.6-4.3h.1m4.2-.8h.1m4.8 3.1h.1m4.1-1.1h.1m-.1-.3h.1m.9-2.1h.1m2.5 .5h.1m16.4-5.8h.1m5.8-.7h.1m9.7-1.4h.1m16.3-4.8h.1m7.5-3.3h.1m10.4-2.2h.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke"/><path class="th-accent" d="M0 133.4L254.4 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M21.5 138.8l.6-4.1 1.6-3.7 2.3-3.4 2.7-3 3.1-2.8 3.2-2.6 3.4-2.3 3.5-2.3 3.4-2.1 4-2.2 3.6-2 4.1-2.1 4-1.9 3.7-1.8 4-1.8 3.7-1.6 3.7-1.6 3.9-1.7 4-1.6 4.4-1.8 4.1-1.7 4.2-1.6 3.9-1.5 4.3-1.6 4.4-1.7 4.1-1.5 4.4-1.6 4.6-1.6 4.2-1.5 4.6-1.7 3.8-1.3 4.3-1.5 4.8-1.6 4.4-1.5 3.9-1.4 4.4-1.5 4.1-1.3 4.4-1.5 3.9-1.2 4.1-1.2 4.2-1.3 4.4-1.2 4.4-1.2 4-1.1 3.9-1.1 4.1-1 4.2-1.1 4.2-1 4.3-1.1 4.3-1.1 4.5-1 4.5-1.1 4.5-1 4.6-1.1 4.7-1.1 3.9-.8 4-.9 4-.9 4-.9 4.1-.9 4.1-.9 4.1-.9 4.2-.8 4.2-.9 4.2-.9 4.3-.9 4.3-.9 4.3-.9 4.3-.8 4.4-.9 4.4-.9 4.4-.9 2.2-.4" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><circle class="th-ink" cx="34.4" cy="153.4" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-ink" cx="128.1" cy="100.4" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-ink" cx="315.5" cy="29.7" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-accent" cx="61.3" cy="104.2" r="3.6" fill="currentColor"/></svg></span><span class="tcard-body"><h3>Markowitz</h3><p>The efficient frontier of three assets and its sensitivity to estimation error.</p></span></a></li>
+    </ul>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="/en/tools/">Open the tools</a></p>
   </div>
 </section>
 <section id="projects" class="section" aria-labelledby="h-projects">
-  <div class="rail"><h2 id="h-projects">Projects</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-projects"><span class="mw"><span>Projects</span></span></h2></div>
   <div class="content">
-    <p class="section-intro" data-magic>Things I have built that are running. Most of them were made for real clients and users.</p>
+    <p class="section-intro" data-magic><span class="w">Things</span> <span class="w">I</span> <span class="w">have</span> <span class="w">built</span> <span class="w">that</span> <span class="w">are</span> <span class="w">running.</span> <span class="w">Most</span> <span class="w">of</span> <span class="w">them</span> <span class="w">were</span> <span class="w">made</span> <span class="w">for</span> <span class="w">real</span> <span class="w">clients</span> <span class="w">and</span> <span class="w">users.</span></p>
+    <div class="activity" data-reveal="panel">
+      <figure class="skyline" data-skyline data-view="3d" data-locale="en-GB" data-week-start="1">
+        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2025-10-08",4],["2025-10-13",1],["2025-10-14",4],["2025-10-15",2],["2025-10-16",2],["2025-10-18",2],["2025-10-19",3],["2025-10-22",3],["2025-10-27",1],["2025-11-07",1],["2025-11-09",1],["2025-11-11",2],["2025-11-12",1],["2025-11-22",8],["2025-11-23",1],["2025-12-03",1],["2025-12-08",4],["2025-12-09",1],["2025-12-15",3],["2025-12-21",1],["2025-12-28",1],["2025-12-29",1],["2026-01-02",3],["2026-01-03",1],["2026-01-05",1],["2026-01-09",1],["2026-01-17",2],["2026-01-18",1],["2026-01-19",7],["2026-01-20",4],["2026-01-21",2],["2026-01-22",1],["2026-01-23",5],["2026-01-26",1],["2026-01-28",1],["2026-01-31",3],["2026-02-01",1],["2026-02-02",5],["2026-02-03",11],["2026-02-04",5],["2026-02-05",3],["2026-02-06",2],["2026-02-07",1],["2026-02-08",1],["2026-02-11",2],["2026-02-12",1],["2026-02-15",1],["2026-02-16",6],["2026-02-17",1],["2026-02-19",1],["2026-02-21",1],["2026-03-02",1],["2026-03-04",3],["2026-03-05",8],["2026-03-10",4],["2026-03-23",4],["2026-04-21",5],["2026-04-23",8],["2026-05-06",4],["2026-05-07",11],["2026-05-08",2],["2026-05-12",1],["2026-05-25",5],["2026-06-03",3],["2026-06-04",5],["2026-06-06",1],["2026-06-09",7],["2026-06-10",16],["2026-06-11",2],["2026-06-12",6],["2026-06-14",2],["2026-06-16",3],["2026-06-25",3],["2026-06-29",1],["2026-06-30",3],["2026-07-09",11],["2026-07-10",5],["2026-07-11",1],["2026-07-12",1],["2026-07-20",3],["2026-07-21",8],["2026-07-22",6],["2026-07-23",5],["2026-08-12",25],["2026-08-13",17],["2026-08-14",20],["2026-08-15",9],["2026-08-16",1],["2026-08-20",8],["2026-08-21",2],["2026-08-23",19],["2026-08-24",15],["2026-08-25",54],["2026-08-26",3],["2026-08-27",12],["2026-08-28",1],["2026-08-29",5],["2026-08-30",21],["2026-08-31",16],["2026-09-01",4],["2026-09-02",6],["2026-09-03",5],["2026-09-05",5],["2026-09-06",15],["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",5]]}</script>
+        <script type="application/json" data-skyline-labels>{"aria":"Overview of commits in my repositories over the last year","title":{"one":"{total} commit in the last year","other":"{total} commits in the last year"},"unit":{"one":"commit","other":"commits"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"No commits, {date}","viewGroup":"View","view2d":"Grid","view3d":"Skyline","less":"Less","more":"More","statTotal":"Total","statBusiest":"Busiest day","statLongest":"Longest streak","statCurrent":"Current streak","daysUnit":{"one":"day","other":"days"},"hint":"Hover a day or use the arrow keys. In 3D, drag to orbit and double-click to reset.","levelNames":["No commits","Few commits","Some commits","Many commits","Most commits"]}</script>
+        <noscript><p class="skyline-fallback">816 commits in the last year</p></noscript>
+      </figure>
+    </div>
     <div class="pgrid">
-      <article class="pcard pcard-wide" data-reveal>
+      <article class="pcard pcard-wide" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Product</span><time>09/2025 – present</time></p>
         <h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3>
         <p class="pcard-role">Community platform for Prague parishes</p>
         <ul class="results"><li>A guide to sacraments and a parish directory; Dejvice, Hlubočepy and Chodov parishes on board.</li><li>Automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%.</li><li>Optimised for AI search engines (llms.txt).</li></ul>
         <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>07/2026 – 08/2026</time></p>
         <h3>CNB exam trainer</h3>
         <p class="pcard-role">Internal study app for Valor Group advisers</p>
         <ul class="results"><li>Two question banks for the Czech National Bank professional exams: insurance (1,980 questions) and investments (1,339), each with reasoning.</li><li>Mock exam scored by the official decree, spaced repetition of mistakes (1/3/7/14/30 days), readiness estimate, weak-section statistics.</li><li>A single HTML file with no dependencies, progress sync through a serverless function, 10 automated test suites.</li></ul>
         <p class="row-stack">Vanilla JS, Vercel Functions, jsdom</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>2025 – 2026</time></p>
         <h3>Carousel generator</h3>
         <p class="pcard-role">Content engine and user manual for Valor Group</p>
         <ul class="results"><li>Structured JSON becomes a series of 1080 × 1350 slides with dynamically measured typography; a QA enforcer checks types, required fields and lengths.</li><li>Video templates in Remotion (60 fps, 9:16 Reels) and a web manual with a template gallery for the team.</li></ul>
         <p class="row-stack">Python (PIL), Remotion, React, Vite</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Own</span><time>08/2026 – present</time></p>
         <h3>Training operations centre</h3>
         <p class="pcard-role">Private PWA for backyard-ultra preparation</p>
         <ul class="results"><li>Daily telemetry sync from the Garmin Connect API via Vercel Cron; ACWR and CTL/ATL load calculations.</li><li>Fuelling model (carbohydrates, hydration, sodium, pacing) and a weekly adaptive plan via the Anthropic API.</li></ul>
         <p class="row-stack">Next.js 15, Neon Postgres, Drizzle, Anthropic API</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>07/2026</time></p>
         <h3>Portfolio investment analysis</h3>
         <p class="pcard-role">Client presentation for Valor Group</p>
         <ul class="results"><li>Six funds and the allocation of a CZK 1,000,000 portfolio: TER, duration, liquidity, risks, rate scenarios; data from KIDs and factsheets.</li><li>A single file that works offline and prints to an A4 PDF.</li></ul>
         <p class="row-stack">HTML, CSS, JS</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>04/2026</time></p>
         <h3>Cooperation proposal</h3>
         <p class="pcard-role">Interactive presentation for a prospective client</p>
         <ul class="results"><li>Two ways of working together, questions to think through and a price calculator; the client clicks through and then gets in touch.</li></ul>
         <p class="row-stack">Next.js 16, TypeScript</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Own</span><time>06/2026</time></p>
         <h3>When and where do we go?</h3>
         <p class="pcard-role">Group trip planner</p>
         <ul class="results"><li>One shared calendar: everyone marks when they are free, the app finds the dates with the biggest overlap; ideas and votes in real time.</li></ul>
         <p class="row-stack">Next.js, Supabase</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>06/2026</time></p>
         <h3>Website for a home baker</h3>
         <p class="pcard-role">Showcase and cake builder</p>
@@ -416,10 +243,10 @@
   </div>
 </section>
 <section id="education" class="section" aria-labelledby="h-education">
-  <div class="rail"><h2 id="h-education">Education</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-education"><span class="mw"><span>Education</span></span></h2></div>
   <div class="content">
     <ol class="ledger">
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2026 – present</time></div>
         <div class="row-head"><h3>Charles University, Faculty of Mathematics and Physics</h3><p class="row-role">BSc Financial Mathematics</p></div>
         <div class="row-body">
@@ -427,15 +254,7 @@
           
         </div>
       </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>09/2026 – present</time></div>
-        <div class="row-head"><h3>Czech Technical University, Faculty of Mechanical Engineering</h3><p class="row-role">BSc Mechanical Engineering, concurrent</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Participant in the selective CTU Mentoring Programme (strategy, project building, quantitative methods).</li></ul>
-          
-        </div>
-      </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2022 – 06/2026</time></div>
         <div class="row-head"><h3>Gymnázium Christiána Dopplera</h3><p class="row-role">Mathematics, physics and computer science</p></div>
         <div class="row-body">
@@ -444,29 +263,30 @@
         </div>
       </li>
     </ol>
+    <p class="edu-note" data-reveal="rise"><strong>Fun fact.</strong> Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering with Applied Mathematical Stochastic Methods, Information Technology, Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics).</p>
   </div>
 </section>
 <section id="skills" class="section" aria-labelledby="h-skills">
-  <div class="rail"><h2 id="h-skills">Skills</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-skills"><span class="mw"><span>Skills</span></span></h2></div>
   <div class="content">
     <dl class="skills-grid">
-      <div class="skill"><dt>Programming</dt><dd>Python, TypeScript and JavaScript, C#, SQL (PostgreSQL), Next.js and React, FastAPI, Git, Linux; LLM APIs (OpenAI, Anthropic); web scraping (Playwright, BeautifulSoup); Remotion.</dd></div>
-      <div class="skill"><dt>Mathematics</dt><dd>Mathematical analysis, linear algebra, probability and statistics, optimisation; basics of stochastic modelling.</dd></div>
-      <div class="skill"><dt>Finance</dt><dd>Option pricing (Black–Scholes), Monte Carlo, Markowitz, VaR; accounting; Czech investment products (funds, KID, TER, duration, liquidity).</dd></div>
-      <div class="skill"><dt>Languages</dt><dd>Czech (native), English C1 (Cambridge CAE), German A2.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Programming</dt><dd>Python, TypeScript and JavaScript, C#, SQL (PostgreSQL), Next.js and React, FastAPI, Git, Linux; LLM APIs (OpenAI, Anthropic); web scraping (Playwright, BeautifulSoup); Remotion.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Mathematics</dt><dd>Mathematical analysis, linear algebra, probability and statistics, optimisation; basics of stochastic modelling.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Finance</dt><dd>Option pricing (Black–Scholes), Monte Carlo, Markowitz, VaR; accounting; Czech investment products (funds, KID, TER, duration, liquidity).</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Languages</dt><dd>Czech (native), English C1 (Cambridge CAE), German A2.</dd></div>
     </dl>
-    <p class="interests"><strong>Interests.</strong> 11 years of competitive baseball (Kotlářka Praha), half marathon in 1:24, training for a backyard ultra, goal of finishing a half-Ironman, poker and game theory, building products.</p>
+    <p class="interests" data-reveal="rise"><strong>Interests.</strong> 11 years of competitive baseball (Kotlářka Praha), half marathon in 1:24, training for a backyard ultra, goal of finishing a half-Ironman, poker and game theory, <a href="#projects">building products</a>.</p>
   </div>
 </section>
 <section id="contact" class="section section-contact" aria-labelledby="h-contact">
-  <div class="rail"><h2 id="h-contact">Contact</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-contact"><span class="mw"><span>Contact</span></span></h2></div>
   <div class="content">
-    <p class="contact-email"><a href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
+    <p class="contact-email" data-reveal="rise"><a href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
     <ul class="contact-list">
-      <li><a href="tel:+420728126406">+420 728 126 406</a></li>
-      <li><a href="https://www.linkedin.com/in/adam-zikmund-ba3469360/" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://www.strava.com/athletes/116589100" target="_blank" rel="noopener">Strava</a></li>
-      <li>CV as PDF: <a href="/cv/Adam-Zikmund-CV-EN.pdf">PDF (EN)</a>, <a href="/cv/Adam-Zikmund-CV-CZ.pdf">PDF (CZ)</a></li>
+      <li data-reveal="rise"><a href="tel:+420728126406">+420 728 126 406</a></li>
+      <li data-reveal="rise"><a href="https://www.linkedin.com/in/adam-zikmund-ba3469360/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li data-reveal="rise"><a href="https://www.strava.com/athletes/116589100" target="_blank" rel="noopener">Strava</a></li>
+      <li data-reveal="rise">CV as PDF: <a href="/cv/Adam-Zikmund-CV-EN.pdf">PDF (EN)</a>, <a href="/cv/Adam-Zikmund-CV-CZ.pdf">PDF (CZ)</a></li>
     </ul>
   </div>
 </section>

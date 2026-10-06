@@ -6,8 +6,9 @@
 <title>Adam Zikmund – finanční matematika, software a riziko</title>
 <meta name="description" content="Student finanční matematiky na MFF UK, předtím co-founder a vývojář produktů v provozu. Hledám stáž nebo part-time v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví.">
 <meta name="author" content="Adam Zikmund">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f6f5f2">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://cv-seven-dusky-63.vercel.app/">
 <link rel="alternate" hreflang="cs" href="https://cv-seven-dusky-63.vercel.app/">
 <link rel="alternate" hreflang="en" href="https://cv-seven-dusky-63.vercel.app/en/">
@@ -23,9 +24,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,100,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="stylesheet" href="/assets/css/variant-c.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/assets/css/skyline.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
 <script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/quant.js" defer></script>
+<script src="/assets/js/skyline.js" defer></script>
 <script src="/assets/js/motion.js" defer></script>
 </head>
 <body>
@@ -38,7 +40,7 @@
     <ol class="nav-list">
       <li><a href="#profil" data-spy="profil">Profil</a></li>
       <li><a href="#zkusenosti" data-spy="zkusenosti">Zkušenosti</a></li>
-      <li><a href="#nastroje" data-spy="nastroje">Nástroje</a></li>
+      <li><a href="/nastroje/">Nástroje</a></li>
       <li><a href="#projekty" data-spy="projekty">Projekty</a></li>
       <li><a href="#vzdelani" data-spy="vzdelani">Vzdělání</a></li>
       <li><a href="#dovednosti" data-spy="dovednosti">Dovednosti</a></li>
@@ -49,81 +51,64 @@
   <div class="nav-right">
     <a class="nav-cv" href="/cv/Adam-Zikmund-CV-CZ.pdf"><span class="t-long">Stáhnout CV (PDF)</span><span class="t-short">CV (PDF)</span></a>
     <span class="nav-lang" aria-label="Jazyk"><span class="is-current">CS</span><span class="sep" aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en" title="English version">EN</a></span>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Tmavý režim" title="Tmavý režim" data-theme-toggle>
+      <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </nav>
 </header>
 <main id="main">
-<section class="portal" data-portal aria-label="Adam Zikmund, Praha">
-  <div class="portal-pin">
-    <div class="portal-field" aria-hidden="true">
-      <p class="portal-lead">Student finanční matematiky na Matfyzu. Software, který se používá. Zájem o riziko, investice a venture kapitál.</p>
-    </div>
-    <svg class="portal-art" aria-hidden="true" focusable="false"><defs><clipPath id="portal-clip" clipPathUnits="userSpaceOnUse"><text data-portal-glyph x="0" y="0">Zikmund</text></clipPath></defs></svg>
-    <p class="portal-word" aria-hidden="true">Zikmund</p>
-    <p class="portal-kicker">Adam Zikmund, Praha</p>
-    <div class="portal-row">
-      <p class="portal-intro">Student finanční matematiky na MFF UK, předtím spoluzakladatel dvou produktů v provozu. Hledám stáž nebo part-time v řízení rizik, investicích a venture kapitálu.</p>
-      <p class="portal-actions"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-CZ.pdf">Stáhnout CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
-      <p class="portal-hint" aria-hidden="true">Scrollem dovnitř ↓</p>
-    </div>
+<section class="hero-track" data-hero aria-labelledby="hero-title">
+  <div class="hero-pin">
+    <h1 id="hero-title" class="hero-title" data-magic="hero"><span class="w">Stavím</span> <span class="w">software,</span> <span class="w">který</span> <span class="w">lidé</span> <span class="w">chtějí</span> <span class="w">používat,</span> <span class="w">a AI</span> <span class="w">jim</span> <span class="w">ulehčuje</span> <span class="w">práci.</span> <span class="w">Teď</span> <span class="w">s tím</span> <span class="w">vším</span> <span class="w">jdu</span> <span class="w">tam,</span> <span class="w">kde</span> <span class="w">se</span> <span class="w">měří</span> <span class="w">a oceňuje</span> <span class="w">riziko.</span></h1>
+    <p class="hero-hint" aria-hidden="true">Scrollujte dolů</p>
   </div>
 </section>
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero hero-rest">
   <div class="hero-text">
-    <h1 id="hero-title" data-split><span class="line">Stavím software, který se používá.</span> <span class="line">Teď se učím, jak se měří a oceňuje riziko.</span></h1>
-    <p class="deck" data-magic>Co-founder a vývojář produktů v provozu (Božííí, Freio), od září 2026 student finanční matematiky na MFF UK. Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví.</p>
-    <p class="actions"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-CZ.pdf">Stáhnout CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
+    <p class="deck" data-magic><span class="w">Co-founder</span> <span class="w">a vývojář</span> <span class="w">produktů</span> <span class="w">v provozu</span> <span class="w">(Božííí,</span> <span class="w">Freio),</span> <span class="w">od</span> <span class="w">září</span> <span class="w">2026</span> <span class="w">student</span> <span class="w">finanční</span> <span class="w">matematiky</span> <span class="w">na</span> <span class="w">MFF</span> <span class="w">UK.</span> <span class="w">Hledám</span> <span class="w">stáž,</span> <span class="w">part-time</span> <span class="w">nebo</span> <span class="w">projektovou</span> <span class="w">spolupráci</span> <span class="w">v kvantitativním</span> <span class="w">řízení</span> <span class="w">rizik,</span> <span class="w">quant</span> <span class="w">researchu,</span> <span class="w">VC/PE</span> <span class="w">analytice</span> <span class="w">nebo</span> <span class="w">investičním</span> <span class="w">bankovnictví.</span></p>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="/cv/Adam-Zikmund-CV-CZ.pdf">Stáhnout CV (PDF)</a><a class="email-link" href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
   </div>
-  <aside class="sheet" aria-labelledby="sheet-title">
+  <aside class="sheet" aria-labelledby="sheet-title" data-reveal="rise">
     <h2 id="sheet-title" class="visually-hidden">Základní údaje</h2>
     <dl class="sheet-rows">
       <div class="sheet-row"><dt>Studium</dt><dd>MFF UK v Praze, Bc. Finanční matematika, od 2026</dd></div>
-      <div class="sheet-row"><dt>Souběžně</dt><dd>FS ČVUT, Strojní inženýrství</dd></div>
       <div class="sheet-row"><dt>Praxe</dt><dd>Valor Group (trainee), Freio (co-founder), Božííí (founder)</dd></div>
       <div class="sheet-row"><dt>Kurz</dt><dd>Praktické aspekty měření a řízení finančních rizik (NMFP463), 1. ročník</dd></div>
       <div class="sheet-row"><dt>Jazyky</dt><dd>čeština, angličtina C1 (CAE), němčina A2</dd></div>
     </dl>
   </aside>
 </section>
-<section id="cisla" class="numbers" aria-label="V číslech">
-  <ul class="numbers-grid">
-    <li class="num-block" data-reveal><strong>8</strong><span>webů a aplikací v provozu</span></li>
-    <li class="num-block" data-reveal><strong>3 319</strong><span>zkouškových otázek v trenažéru pro poradce</span></li>
-    <li class="num-block" data-reveal><strong>1 000 000 Kč</strong><span>analyzované portfolio v šesti fondech</span></li>
-    <li class="num-block" data-reveal><strong>3</strong><span>modely naprogramované od nuly</span></li>
-    <li class="num-block" data-reveal><strong>−58 %</strong><span>čekání na odpověď farností po automatizaci</span></li>
-    <li class="num-block" data-reveal><strong>1:24</strong><span>půlmaraton</span></li>
-  </ul>
-</section>
 <section id="profil" class="section" aria-labelledby="h-profil">
-  <div class="rail"><h2 id="h-profil">Profil</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-profil"><span class="mw"><span>Profil</span></span></h2></div>
   <div class="content">
-    <p class="lead" data-magic>Na gymnáziu jsem založil komunitní web Božííí pro pražské farnosti, spoluzaložil EdTech platformu Freio a jako freelancer dělal scraping, automatizace a napojení na LLM API. Ročníkovou práci jsem psal o dopadu EU ETS 2 na domácnosti, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a analyzoval portfolio šesti fondů. Od září studuji finanční matematiku na MFF UK a hned v prvním ročníku jsem si zapsal předmět o praktickém měření a řízení finančních rizik.</p>
+    <p class="lead" data-magic><span class="w">Na</span> <span class="w">gymnáziu</span> <span class="w">jsem</span> <span class="w">založil</span> <span class="w">komunitní</span> <span class="w">web</span> <span class="w">Božííí</span> <span class="w">pro</span> <span class="w">pražské</span> <span class="w">farnosti,</span> <span class="w">spoluzaložil</span> <span class="w">EdTech</span> <span class="w">platformu</span> <span class="w">Freio</span> <span class="w">a jako</span> <span class="w">freelancer</span> <span class="w">dělal</span> <span class="w">automatizace,</span> <span class="w">scraping</span> <span class="w">a napojení</span> <span class="w">na</span> <span class="w">LLM</span> <span class="w">API.</span> <span class="w">Ročníkovou</span> <span class="w">práci</span> <span class="w">jsem</span> <span class="w">psal</span> <span class="w">o dopadu</span> <span class="w">EU</span> <span class="w">ETS</span> <span class="w">2</span> <span class="w">na</span> <span class="w">domácnosti,</span> <span class="w">s vlastním</span> <span class="w">matematickým</span> <span class="w">modelem</span> <span class="w">přenosu</span> <span class="w">nákladů.</span> <span class="w">Léto</span> <span class="w">2026</span> <span class="w">jsem</span> <span class="w">strávil</span> <span class="w">jako</span> <span class="w">trainee</span> <span class="w">ve</span> <span class="w">finančním</span> <span class="w">poradenství,</span> <span class="w">kde</span> <span class="w">jsem</span> <span class="w">modeloval</span> <span class="w">klientské</span> <span class="w">plány</span> <span class="w">a analyzoval</span> <span class="w">portfolio.</span> <span class="w">Od</span> <span class="w">září</span> <span class="w">studuji</span> <span class="w">finanční</span> <span class="w">matematiku</span> <span class="w">na</span> <span class="w">MFF</span> <span class="w">UK.</span></p>
     <div class="kv-block">
       <h3 id="h-seeking">Co hledám</h3>
       <dl class="kv" aria-labelledby="h-seeking">
-        <div class="kv-row"><dt>Oblasti</dt><dd>kvantitativní řízení rizik, quant research, VC/PE analytika, investiční bankovnictví, investiční kontrola</dd></div>
-        <div class="kv-row"><dt>Forma</dt><dd>stáž, part-time nebo projektová spolupráce</dd></div>
-        <div class="kv-row"><dt>Období</dt><dd>akademický rok 2026/27, při studiu</dd></div>
-        <div class="kv-row"><dt>Místo</dt><dd>Praha nebo vzdáleně</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Oblasti</dt><dd>kvantitativní řízení rizik, quant research, VC/PE analytika, investiční bankovnictví, investiční kontrola</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Forma</dt><dd>stáž, part-time nebo projektová spolupráce</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Období</dt><dd>akademický rok 2026/27, při studiu</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Místo</dt><dd>Praha nebo vzdáleně</dd></div>
       </dl>
     </div>
     <div class="kv-block">
       <h3 id="h-basis">Na co navazuji</h3>
       <dl class="kv" aria-labelledby="h-basis">
-        <div class="kv-row"><dt>Riziko a simulace</dt><dd>5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru níže; předmět NMFP463 na MFF UK</dd></div>
-        <div class="kv-row"><dt>Oceňování a optimalizace</dt><dd>Black–Scholes s Greeks a Markowitzova hranice, naprogramované od nuly, viz Nástroje</dd></div>
-        <div class="kv-row"><dt>Analýza fondů</dt><dd>portfolio 1 000 000 Kč v šesti fondech: TER ~1,35 % p. a., durace, likvidita, scénáře sazeb (Valor Group)</dd></div>
-        <div class="kv-row"><dt>Finance a obchod</dt><dd>klientské finanční plány (Valor Group); účetnictví (MFF UK); obchodní a strategická agenda ve Freiu</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Riziko a simulace</dt><dd>5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru níže; předmět NMFP463 na MFF UK</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Oceňování a optimalizace</dt><dd>Black–Scholes s Greeks a Markowitzova hranice, naprogramované od nuly, viz Nástroje</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Analýza fondů</dt><dd>portfolio 1 000 000 Kč v šesti fondech: TER ~1,35 % p. a., durace, likvidita, scénáře sazeb (Valor Group)</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Finance a obchod</dt><dd>klientské finanční plány (Valor Group); účetnictví (MFF UK); obchodní a strategická agenda ve Freiu</dd></div>
       </dl>
     </div>
   </div>
 </section>
 <section id="zkusenosti" class="section" aria-labelledby="h-zkusenosti">
-  <div class="rail"><h2 id="h-zkusenosti">Zkušenosti</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-zkusenosti"><span class="mw"><span>Zkušenosti</span></span></h2></div>
   <div class="content">
     <ol class="ledger">
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>06/2026 – 09/2026</time></div>
         <div class="row-head"><h3>Valor Group</h3><p class="row-role">Trainee, finanční poradenství</p></div>
         <div class="row-body">
@@ -131,23 +116,7 @@
           <p class="row-stack">Python, PIL, Remotion, React, TypeScript</p>
         </div>
       </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>04/2026 – 05/2026</time></div>
-        <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps a infrastruktura, kontrakt</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů.</li></ul>
-          <p class="row-stack">Linux, CI/CD, virtualizace</p>
-        </div>
-      </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>02/2026 – 07/2026</time></div>
-        <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, obchod a strategie</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Spoluzaložení EdTech platformy pro přípravu na přijímací zkoušky SCIO; obchodní strategie, ověření zájmu trhu, segmentace zákazníků.</li><li>První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner.</li></ul>
-          <p class="row-stack">EdTech, validace trhu, MVP</p>
-        </div>
-      </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>01/2026 – dosud</time></div>
         <div class="row-head"><h3>Freelance</h3><p class="row-role">Software a AI automatizace</p></div>
         <div class="row-body">
@@ -155,7 +124,23 @@
           <p class="row-stack">Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API</p>
         </div>
       </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
+        <div class="row-date"><time>04/2026 – 05/2026</time></div>
+        <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps a infrastruktura, kontrakt</p></div>
+        <div class="row-body">
+          <ul class="results"><li>Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů.</li></ul>
+          <p class="row-stack">Linux, CI/CD, virtualizace</p>
+        </div>
+      </li>
+      <li class="row" data-reveal="row">
+        <div class="row-date"><time>02/2026 – 07/2026</time></div>
+        <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, obchod a strategie</p></div>
+        <div class="row-body">
+          <ul class="results"><li>Spoluzaložení EdTech platformy pro přípravu na přijímací zkoušky SCIO; obchodní strategie, ověření zájmu trhu, segmentace zákazníků.</li><li>První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner.</li></ul>
+          <p class="row-stack">EdTech, validace trhu, MVP</p>
+        </div>
+      </li>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2025 – dosud</time></div>
         <div class="row-head"><h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3><p class="row-role">Founder a full-stack developer</p></div>
         <div class="row-body">
@@ -163,7 +148,7 @@
           <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis, Resend</p>
         </div>
       </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>10/2024 – dosud</time></div>
         <div class="row-head"><h3>Sauna &amp; Wellness Rooms Central</h3><p class="row-role">Vedoucí směny, part-time</p></div>
         <div class="row-body">
@@ -174,238 +159,80 @@
     </ol>
   </div>
 </section>
-<section id="nastroje" class="section section-tools" aria-labelledby="h-nastroje">
-  <div class="rail"><h2 id="h-nastroje">Nástroje</h2></div>
+<section id="nastroje" class="section section-teaser" aria-labelledby="h-nastroje">
+  <div class="rail" data-reveal="rail"><h2 id="h-nastroje"><span class="mw"><span>Nástroje</span></span></h2></div>
   <div class="content">
-    <p class="section-heading" data-split>Tři modely, které jsem naprogramoval, abych jim rozuměl.</p>
-    <div class="tools">
-      <article class="tool" id="tool-bs" data-tool="bs" data-reveal>
-        <h3 class="tool-title">Black–Scholes</h3>
-        <p class="tool-quote">Postavil jsem oceňovač opcí, abych rozuměl tomu, na co se dívají risk manažeři, ne abych znovu objevil vzorec.</p>
-        <p class="tool-spec">Evropská opce bez dividend s konstantní volatilitou σ.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
-              <fieldset class="toggle" data-role="seg" data-name="type" data-default="call"><legend>Typ</legend><div class="toggle-options"><button type="button" data-value="call" aria-pressed="true">call</button><button type="button" data-value="put" aria-pressed="false">put</button></div></fieldset>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-S-label" for="bs-S">Cena podkladu S</label>
-          <span class="ctl-value"><input id="bs-S" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-S-label" data-sync="S" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-K-label" for="bs-K">Realizační cena K</label>
-          <span class="ctl-value"><input id="bs-K" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="K" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-K-label" data-sync="K" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-T-label" for="bs-T">Čas do expirace T (v letech)</label>
-          <span class="ctl-value"><input id="bs-T" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="T" min="0.05" max="2" step="0.05" value="0,5" data-decimals="2"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-T-label" data-sync="T" min="0.05" max="2" step="0.05" value="0.5" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-r-label" for="bs-r">Bezriziková sazba r</label>
-          <span class="ctl-value"><input id="bs-r" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r" min="0" max="10" step="0.25" value="4" data-decimals="2"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-r-label" data-sync="r" min="0" max="10" step="0.25" value="4" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="bs-sigma-label" for="bs-sigma">Volatilita σ</label>
-          <span class="ctl-value"><input id="bs-sigma" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sigma" min="5" max="80" step="1" value="22" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="bs-sigma-label" data-sync="sigma" min="5" max="80" step="1" value="22" tabindex="-1">
-        </div>
-              <div class="btn-row"><button type="button" class="text-btn" data-role="reset">Výchozí hodnoty</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Graf hodnoty opce v závislosti na ceně podkladu s vyznačenou výplatou při expiraci a aktuální cenou"></canvas>
-              <ul class="legend"><li><i class="sw sw-ink"></i>hodnota dnes</li><li><i class="sw sw-dash"></i>výplata při expiraci</li></ul>
-              <noscript><p class="chart-noscript">Nástroje potřebují zapnutý JavaScript.</p></noscript>
-            </div>
-            <div class="readouts">
-              <dl class="ro-list">
-                <div class="ro ro-main"><dt>Cena opce</dt><dd data-out="price">—</dd></div>
-                <div class="ro"><dt>Δ delta</dt><dd data-out="delta">—</dd></div>
-                <div class="ro"><dt>Γ gamma</dt><dd data-out="gamma">—</dd></div>
-                <div class="ro"><dt>ν vega (na 1 p. b. σ)</dt><dd data-out="vega">—</dd></div>
-                <div class="ro ro-theta"><dt>Θ theta (za den)</dt><dd data-out="theta">—</dd></div>
-                <div class="ro ro-sep"><dt>Vnitřní hodnota</dt><dd data-out="intrinsic">—</dd></div>
-                <div class="ro"><dt>Časová hodnota</dt><dd data-out="timeValue">—</dd></div>
-              </dl>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">Theta roste s blížící se expirací: opce na penězích ztrácí hodnotu nejrychleji v posledních týdnech. Zkraťte T a sledujte, jak se křivka přimyká k výplatě.</p>
-          <details class="method"><summary>Jak to počítám</summary><ul><li>C = S·N(d₁) − K·e^(−rT)·N(d₂); P = K·e^(−rT)·N(−d₂) − S·N(−d₁)</li><li>d₁ = [ln(S/K) + (r + σ²/2)·T] / (σ·√T); d₂ = d₁ − σ·√T</li><li>N(x) počítám přes erf (Abramowitz–Stegun 7.1.26, chyba pod 1,5·10⁻⁷).</li><li>Δ = N(d₁) pro call, N(d₁) − 1 pro put; Γ = φ(d₁)/(S·σ·√T); ν = S·φ(d₁)·√T / 100 (na 1 p. b. σ); Θ za den = Θ za rok / 365.</li><li>Předpoklady: evropské uplatnění, bez dividend, konstantní σ a r, spojité úročení.</li></ul></details>
-        </div>
-      </article>
-      <article class="tool" id="tool-mc" data-tool="mc" data-reveal>
-        <h3 class="tool-title">Monte Carlo</h3>
-        <p class="tool-quote">Postavil jsem ho, abych si vyzkoušel modelování nejistoty. Nejvíc mě překvapilo, jak moc normální model podceňuje riziko krachů.</p>
-        <p class="tool-spec">Geometrický Brownův pohyb s denními kroky, skoky podle Mertonova modelu krachů.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
-              <div class="ctl">
-          <label class="ctl-label" id="mc-S0-label" for="mc-S0">Počáteční cena S₀</label>
-          <span class="ctl-value"><input id="mc-S0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="S0" min="50" max="200" step="1" value="100"><span class="unit" aria-hidden="true"></span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-S0-label" data-sync="S0" min="50" max="200" step="1" value="100" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mc-mu-label" for="mc-mu">Drift μ (p. a.)</label>
-          <span class="ctl-value"><input id="mc-mu" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-mu-label" data-sync="mu" min="-10" max="20" step="0.5" value="6" tabindex="-1">
-        </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mc-sigma-label" for="mc-sigma">Volatilita σ (p. a.)</label>
-          <span class="ctl-value"><input id="mc-sigma" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sigma" min="5" max="80" step="1" value="22" data-decimals="1"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mc-sigma-label" data-sync="sigma" min="5" max="80" step="1" value="22" tabindex="-1">
-        </div>
-              <fieldset class="toggle" data-role="seg" data-name="horizon" data-default="252"><legend>Horizont (dny)</legend><div class="toggle-options"><button type="button" data-value="21" aria-pressed="false">21</button><button type="button" data-value="63" aria-pressed="false">63</button><button type="button" data-value="126" aria-pressed="false">126</button><button type="button" data-value="252" aria-pressed="true">252</button></div></fieldset>
-              <fieldset class="toggle" data-role="seg" data-name="paths" data-default="1000"><legend>Počet cest</legend><div class="toggle-options"><button type="button" data-value="500" aria-pressed="false">500</button><button type="button" data-value="1000" aria-pressed="true">1 000</button><button type="button" data-value="2000" aria-pressed="false">2 000</button></div></fieldset>
-              <fieldset class="toggle" data-role="seg" data-name="dist" data-default="normal"><legend>Model</legend><div class="toggle-options"><button type="button" data-value="normal" aria-pressed="true">normální</button><button type="button" data-value="jump" aria-pressed="false">se skoky</button></div></fieldset>
-              <div class="btn-row"><button type="button" class="text-btn" data-role="reseed">Spustit znovu</button><button type="button" class="text-btn" data-role="reset">Výchozí hodnoty</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Graf simulovaných cest ceny s mediánem, percentily a hranicí 5% VaR; vpravo histogram koncových hodnot"></canvas>
-              <p class="chart-note mono" data-out="shown"></p>
-              <ul class="legend"><li><i class="sw sw-ink"></i>medián</li><li><i class="sw sw-dash"></i>5. a 95. percentil</li><li><i class="sw sw-oxide"></i>hranice 5% VaR</li><li data-role="legend-normal" hidden><i class="sw sw-oxide-dash"></i>hranice VaR normálního modelu</li></ul>
-              <noscript><p class="chart-noscript">Nástroje potřebují zapnutý JavaScript.</p></noscript>
-            </div>
-            <div class="readouts">
-              <table class="ro-table">
-                <thead><tr><th scope="col"><span class="visually-hidden">Výstupy</span></th><th scope="col" data-col="normal">normální</th><th scope="col" data-col="jump">se skoky</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">Medián Sₜ</th><td data-out="median-n">—</td><td data-out="median-t">—</td></tr>
-                  <tr><th scope="row">Průměr Sₜ</th><td data-out="mean-n">—</td><td data-out="mean-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% VaR</th><td data-out="var-n">—</td><td data-out="var-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% ES</th><td data-out="es-n">—</td><td data-out="es-t">—</td></tr>
-                  <tr><th scope="row">P(ztráta)</th><td data-out="ploss-n">—</td><td data-out="ploss-t">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">VaR vs. normální</th><td></td><td data-out="varDelta">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">ES vs. normální</th><td></td><td data-out="esDelta">—</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">Stejný drift i volatilita, navíc jen vzácné skoky dolů (v průměru jeden za dva roky, typicky kolem −14 %). Medián se skoro nepohne, ale 5% VaR a expected shortfall narostou výrazně. Normální model by takový propad označil za prakticky nemožný; cesty pod jeho hranicí VaR jsou v grafu oxidově červené.</p>
-          <details class="method"><summary>Jak to počítám</summary><ul><li>Sₜ₊Δₜ = Sₜ · exp[(μ − σ²/2)·Δt + σ·√Δt · z], Δt = 1/252 (denní krok), z ~ N(0; 1) přes Box–Muller.</li><li>Model se skoky (Merton 1976): s pravděpodobností λ·Δt za den přijde skok exp(J), J ~ N(−0,15; 0,10²), λ = 0,5 za rok; drift je o λ·κ·Δt kompenzován (κ = e^(μ<sub>J</sub> + σ<sub>J</sub>²/2) − 1), aby očekávaná cena zůstala stejná.</li><li>5% VaR = S₀ − 5. percentil koncových hodnot; 5% ES = S₀ − průměr nejhorších 5 % koncových hodnot; P(ztráta) = podíl cest s Sₜ &lt; S₀.</li><li>Oba modely se počítají vždy, ze stejného semínka, aby šly sloupce porovnat; graf ukazuje zvolený model.</li><li>Poznámka: Studentovo t na denních krocích se za delší horizont zprůměruje (CLT) a koncové rozdělení se blíží normálnímu; proto krachy modeluji skoky.</li></ul></details>
-        </div>
-      </article>
-      <article class="tool" id="tool-mk" data-tool="mk" data-reveal>
-        <h3 class="tool-title">Markowitz</h3>
-        <p class="tool-quote">Naprogramoval jsem efektivní hranici, abych pochopil, proč diverzifikace funguje, a hlavně kde model selhává.</p>
-        <p class="tool-spec">Jednoperiodový model se třemi aktivy, bez transakčních nákladů.</p>
-        <div class="panel">
-          <div class="panel-body">
-            <form class="controls" aria-label="Vstupy" onsubmit="return false">
-              <table class="assets"><caption class="visually-hidden">Aktiva</caption>
-                <thead><tr><th scope="col">Aktivum</th><th scope="col">μ %</th><th scope="col">σ %</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">A</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu1" min="0" max="20" step="0.5" value="5" data-decimals="1" aria-label="Aktivum A: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg1" min="5" max="60" step="1" value="12" data-decimals="0" aria-label="Aktivum A: σ (%)"></td></tr>
-                  <tr><th scope="row">B</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu2" min="0" max="20" step="0.5" value="8" data-decimals="1" aria-label="Aktivum B: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg2" min="5" max="60" step="1" value="18" data-decimals="0" aria-label="Aktivum B: σ (%)"></td></tr>
-                  <tr><th scope="row">C</th><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu3" min="0" max="20" step="0.5" value="12" data-decimals="1" aria-label="Aktivum C: μ (%)"></td><td><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="sg3" min="5" max="60" step="1" value="30" data-decimals="0" aria-label="Aktivum C: σ (%)"></td></tr>
-                </tbody>
-              </table>
-              <div class="corr" role="group" aria-label="Korelace"><span class="ctl-label">Korelace</span>
-                <label>ρ(A,B) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0,3" data-decimals="2"></label>
-                <label>ρ(A,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0,2" data-decimals="2"></label>
-                <label>ρ(B,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0,4" data-decimals="2"></label>
-              </div>
-              <div class="ctl">
-          <label class="ctl-label" id="mk-rf-label" for="mk-rf">Bezriziková sazba r<sub>f</sub></label>
-          <span class="ctl-value"><input id="mk-rf" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="rf" min="0" max="6" step="0.25" value="2" data-decimals="2"><span class="unit">%</span></span>
-          <input type="range" class="ctl-range" aria-labelledby="mk-rf-label" data-sync="rf" min="0" max="6" step="0.25" value="2" tabindex="-1">
-        </div>
-              <fieldset class="toggle" data-role="seg" data-name="short" data-default="none"><legend>Shortování</legend><div class="toggle-options"><button type="button" data-value="none" aria-pressed="true">bez shortu</button><button type="button" data-value="short" aria-pressed="false">se shortem</button></div></fieldset>
-              <div class="btn-row"><button type="button" class="text-btn btn-error" data-role="error" aria-pressed="false">Chyba odhadu</button><button type="button" class="text-btn" data-role="reset">Výchozí hodnoty</button></div>
-            </form>
-            <div class="chart">
-              <canvas data-role="chart" role="img" aria-label="Bodový graf portfolií v rovině riziko a výnos s efektivní hranicí, portfoliem s minimálním rozptylem a portfoliem s nejvyšším Sharpeho poměrem"></canvas>
-              <p class="chart-note" data-role="error-caption" hidden>Takto citlivá je hranice na odhad vstupů.</p>
-              <p class="chart-note is-warn" data-role="psd-note" hidden></p>
-              <p class="chart-note is-warn" data-role="no-tangency" hidden>Žádné portfolio nepřekoná bezrizikovou sazbu, tečné portfolio proto neexistuje.</p>
-              <ul class="legend"><li><i class="sw sw-cloud"></i>náhodná portfolia</li><li><i class="sw sw-ink"></i>efektivní hranice</li><li><i class="sw sw-navy"></i>max. Sharpe a CML</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>hranice při chybě odhadu</li></ul>
-              <noscript><p class="chart-noscript">Nástroje potřebují zapnutý JavaScript.</p></noscript>
-            </div>
-            <div class="readouts">
-              <p class="ro-title">Portfolio s max. Sharpe</p>
-              <dl class="ro-list">
-                <div class="ro ro-main"><dt>E[r]</dt><dd data-out="ret">—</dd></div>
-                <div class="ro"><dt>σ</dt><dd data-out="risk">—</dd></div>
-                <div class="ro"><dt>Sharpe</dt><dd data-out="sharpe">—</dd></div>
-              </dl>
-              <table class="weights">
-                <thead><tr><th scope="col">Váhy</th><th scope="col">odhad</th><th scope="col" class="col-err" hidden>± chyba</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">A</th><td><span class="wbar" aria-hidden="true"><i data-bar="0"></i></span><span data-out="w1">—</span></td><td class="col-err" hidden data-out="e1">—</td></tr>
-                  <tr><th scope="row">B</th><td><span class="wbar" aria-hidden="true"><i data-bar="1"></i></span><span data-out="w2">—</span></td><td class="col-err" hidden data-out="e2">—</td></tr>
-                  <tr><th scope="row">C</th><td><span class="wbar" aria-hidden="true"><i data-bar="2"></i></span><span data-out="w3">—</span></td><td class="col-err" hidden data-out="e3">—</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p class="visually-hidden" aria-live="polite" data-role="live"></p>
-          <p class="insight">Model je citlivý na vstupy: posun očekávaných výnosů o 1–2 procentní body „optimální“ portfolio výrazně přeskládá. Proto se Markowitzův model v základní podobě v praxi nepoužívá samostatně; přidávají se omezení, shrinkage odhadů nebo pohledy Black–Litterman.</p>
-          <details class="method"><summary>Jak to počítám</summary><ul><li>E[r<sub>p</sub>] = Σ wᵢ·μᵢ; σ<sub>p</sub>² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ wᵢ = 1, bez shortu wᵢ ≥ 0.</li><li>Hranice = horní obálka 3 000 náhodných portfolií (bez shortu váhy z normalizovaných |N(0,1)|, se shortem z N(0,1) omezené na [−1; 2]) doplněná o dvojice aktiv.</li><li>Chyba odhadu: 20 scénářů s μᵢ ± 1,5 p. b. a σᵢ ± 10 % (pevné semínko); vykreslí se jejich hranice a jako ± se uvádí polovina rozpětí vah max-Sharpe portfolia.</li><li>Tři zadané korelace musí tvořit pozitivně definitní matici; vyžaduji, aby její nejmenší vlastní číslo bylo aspoň 0,05. Pokud ne, zmenšuji všechny tři korelace stejným koeficientem, dokud podmínka neplatí, a upozorním na to pod grafem.</li><li>Předpoklady: jedno období, bez transakčních nákladů; vstupy jsou samy odhadem.</li></ul></details>
-        </div>
-      </article>
-    </div>
-    <script type="application/json" id="quant-ui">{"bs":{"type":"Typ","call":"call","put":"put","S":"Cena podkladu S","K":"Realizační cena K","T":"Čas do expirace T (v letech)","r":"Bezriziková sazba r","sigma":"Volatilita σ","unitYears":"","unitPct":"%","price":"Cena opce","delta":"Δ delta","gamma":"Γ gamma","vega":"ν vega (na 1 p. b. σ)","theta":"Θ theta (za den)","intrinsic":"Vnitřní hodnota","timeValue":"Časová hodnota","legendValue":"hodnota dnes","legendPayoff":"výplata při expiraci","axisX":"cena podkladu","aria":"Graf hodnoty opce v závislosti na ceně podkladu s vyznačenou výplatou při expiraci a aktuální cenou","live":"Cena opce {price}, delta {delta}, theta {theta} za den."},"mc":{"S0":"Počáteční cena S₀","mu":"Drift μ (p. a.)","sigma":"Volatilita σ (p. a.)","horizon":"Horizont (dny)","days":"dní","paths":"Počet cest","dist":"Model","normal":"normální","fat":"se skoky","rerun":"Spustit znovu","unitPct":"%","colNormal":"normální","colFat":"se skoky","median":"Medián Sₜ","mean":"Průměr Sₜ","var":"5% VaR","ploss":"P(ztráta)","varDelta":"VaR vs. normální","shown":"zobrazeno {shown} z {total} cest","legendMedian":"medián","legendVar":"hranice 5% VaR","legendS0":"S₀","legendPct":"5. a 95. percentil","axisX":"obchodní dny","aria":"Graf simulovaných cest ceny s mediánem, percentily a hranicí 5% VaR; vpravo histogram koncových hodnot","live":"Medián koncové ceny {median}, 5% VaR {var}, expected shortfall {es}, pravděpodobnost ztráty {ploss}.","es":"5% ES","esDelta":"ES vs. normální","legendVarNormal":"hranice VaR normálního modelu"},"mk":{"assets":"Aktiva","asset":"Aktivum","names":["A","B","C"],"mu":"μ","sigma":"σ","corr":"Korelace","rho":"ρ","rf":"Bezriziková sazba r_f","short":"Shortování","noShort":"bez shortu","withShort":"se shortem","error":"Chyba odhadu","unitPct":"%","maxSharpe":"Portfolio s max. Sharpe","ret":"E[r]","risk":"σ","sharpe":"Sharpe","weights":"Váhy","colEstimate":"odhad","colError":"± chyba","legendCloud":"náhodná portfolia","legendFrontier":"efektivní hranice","legendMin":"min. rozptyl","legendMax":"max. Sharpe","legendCml":"CML","legendGhost":"hranice při chybě odhadu","axisX":"σ (% p. a.)","axisY":"E[r] (% p. a.)","caption":"Takto citlivá je hranice na odhad vstupů.","aria":"Bodový graf portfolií v rovině riziko a výnos s efektivní hranicí, portfoliem s minimálním rozptylem a portfoliem s nejvyšším Sharpeho poměrem","live":"Portfolio s nejvyšším Sharpeho poměrem: výnos {ret}, riziko {risk}, Sharpe {sharpe}.","psdNote":"Zadané korelace jsou vzájemně nekonzistentní nebo téměř singulární, proto je zmenšuji koeficientem {c}.","noTangency":"Žádné portfolio nepřekoná bezrizikovou sazbu, tečné portfolio proto neexistuje."}}</script>
+    <p class="section-intro" data-magic><span class="w">Tři</span> <span class="w">modely,</span> <span class="w">které</span> <span class="w">jsem</span> <span class="w">naprogramoval,</span> <span class="w">abych</span> <span class="w">jim</span> <span class="w">rozuměl.</span> <span class="w">Běží</span> <span class="w">přímo</span> <span class="w">v prohlížeči</span> <span class="w">a další</span> <span class="w">postupně</span> <span class="w">přidávám.</span></p>
+    <ul class="tcards">
+      <li class="tcard" data-reveal="card"><a href="/nastroje/#tool-bs"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-grid" d="M0 160H320" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/><path class="th-muted" d="M0 160H160L320 21.1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M0 160l4 0 4 0 4 0 4 0 4-.1 4 0 4 0 4 0 4-.1 4 0 4-.1 4-.1 4-.1 4-.1 4-.2 4-.2 4-.2 4-.3 4-.3 4-.3 4-.5 4-.4 4-.5 4-.6 4-.7 4-.7 4-.8 4-.9 4-1 4-1.1 4-1.1 4-1.3 4-1.3 4-1.4 4-1.6 4-1.6 4-1.7 4-1.8 4-1.9 4-1.9 4-2.1 4-2.1 4-2.3 4-2.3 4-2.4 4-2.4 4-2.6 4-2.6 4-2.6 4-2.8 4-2.7 4-2.9 4-2.9 4-2.9 4-3 4-3 4-3.1 4-3.1 4-3.1 4-3.2 4-3.2 4-3.2 4-3.2 4-3.3 4-3.3 4-3.3 4-3.3 4-3.4 4-3.3 4-3.4 4-3.4 4-3.3 4-3.4 4-3.4 4-3.5 4-3.4 4-3.4 4-3.4 4-3.5 4-3.4" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><circle class="th-accent" cx="160" cy="135.1" r="3" fill="currentColor"/></svg></span><span class="tcard-body"><h3>Black–Scholes</h3><p>Ocenění evropské opce s citlivostmi Greeks.</p></span></a></li>
+      <li class="tcard" data-reveal="card"><a href="/nastroje/#tool-mc"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-grid" d="M0 92.7l11-.6 11-14.6 11-.2 11-4.4 11-2.3 11 20.1 11 3.7 11-7 11 8.6 11 8.7 11-3.2 11 13.5 11-4.2 11 4.3 11-.3 11 7.6 11-10.4 11 11.2 11-9.3 11 1.3 11-5.6 11-4.8 11-2.7 11-5 11 11.5 11-19 11 1.9 11 8M0 92.7l11-6.4 11 2.8 11-.4 11 21.8 11-8.9 11-.6 11 5.4 11-2.3 11 2.6 11-17.8 11-3.1 11-9.8 11-5.4 11-13.2 11 19.3 11 7.4 11-4.7 11-5.6 11-13.4 11-5.5 11 10.3 11-16.8 11-14.1 11 6.5 11-3.2 11 2 11-1.1 11-15.1M0 92.7l11 22.8 11-6 11 4.6 11 5.2 11 .8 11-7.2 11-6 11-2.1 11-4.8 11-1.3 11-.9 11 6.9 11-1.2 11 7.7 11-9.5 11-2.4 11 4.2 11 .2 11 12.1 11 6.9 11-12.3 11-7.2 11-2.6 11 13.2 11-6.9 11-11.4 11-7.6 11 10.2M0 92.7l11 11.5 11 .1 11-5.6 11 14.7 11-2.4 11 .7 11 .3 11 2.7 11 3.4 11-11.1 11-7.5 11-8 11 5.1 11-10.3 11-7.5 11 2.6 11 14.1 11 8.8 11 7.3 11 6.5 11 .2 11 3.3 11 11.4 11 .7 11-6.9 11-2.8 11-10.1 11-3.6M0 92.7l11-5.7 11-6.9 11 2.3 11 .2 11-4.8 11-8.5 11-1.3 11 9.1 11-.1 11 16.2 11 10.2 11 3.3 11-3.2 11-7.1 11 5.7 11 2.3 11 .7 11 10.2 11-15.1 11 2.2 11-7.2 11-2.4 11-1.1 11 4 11 5.2 11-5.5 11-.9 11 .5M0 92.7l11 6.2 11-10 11 7.2 11-11.1 11-5.7 11 11.4 11 4.8 11 .2 11-2.5 11 1.8 11-3.9 11-4 11 .6 11-2.6 11 17.7 11 4.8 11 5.3 11-9.5 11-1 11 11 11 4.8 11 .9 11-9.4 11 5.4 11 0 11 11 11-7.4 11-3M0 92.7l11-16 11 6.8 11 1.5 11 10.3 11-6.3 11 9.6 11-12.1 11-4.2 11 4.8 11-11.6 11-12.5 11 15.2 11-10.3 11 19.1 11-8.5 11 10.6 11-4.4 11-13.9 11-4.6 11-9 11 7.6 11-1.1 11 5.6 11-2.6 11-13.2 11-1.2 11 10.6 11 6.4M0 92.7l11-12.3 11-4 11-7.1 11-11.2 11-8.6 11 .1 11-7.3 11 7.9 11 1.7 11 9.5 11 1 11-2.2 11-10.4 11 8.8 11 15 11 13.3 11 7.5 11 8.8 11-.7 11-13.3 11 .7 11 .3 11-5.5 11-.4 11 4.5 11 2.3 11-3.8 11 2.1M0 92.7l11 1.5 11-1.7 11 8.8 11-4.7 11-5.4 11-12.9 11-7.3 11-5 11 9.9 11-2.9 11 2.7 11-13.3 11 .8 11-5.1 11-7.7 11 11.6 11-7.8 11 18.8 11-1.7 11 14.7 11 10.9 11 16.2 11-14.3 11-5.2 11-2.4 11-.4 11 1.4 11 12.4M0 92.7l11 11.2 11 9.6 11 .6 11-8.8 11-12.6 11 1.5 11 4.4 11-11.4 11 1.7 11-9.6 11 2.2 11 1.7 11-1.5 11-1.7 11 6.9 11 9.2 11-9.3 11-13.7 11-8.7 11-7.5 11-11.1 11-6.4 11 10.6 11 8.9 11-.5 11-7 11 9.3 11 2.4M0 92.7l11-8.9 11-10.6 11 3.8 11 11.2 11 3.7 11-7.4 11-1.1 11 .7 11-3.7 11 22.5 11-10.7 11 4.2 11 5.5 11 2.9 11 .2 11 0 11-3.6 11-12.1 11-9.2 11-18.9 11-22.8 11 10.8 11-10.4 11 15.7 11 5.7 11-1.8 11-9.2 11-.9M0 92.7l11-8.4 11-6.2 11 1.3 11-4.4 11 2.6 11-3.5 11-5.9 11-4 11-1.3 11 4.9 11 3.9 11 8.9 11-9.5 11 2.9 11 13.6 11 3.4 11 9.1 11-8.1 11-16.8 11-9 11-4.3 11-.8 11-16.5 11-13.4 11-19.2 11 8.5 11-1.2 11 15M0 92.7l11 7.4 11 1.8 11 7.5 11-6.1 11-10.3 11 7.8 11 6.3 11 1.7 11 5.3 11-8.6 11-11.2 11 5.9 11-3.1 11-3.9 11 2.9 11 1.4 11-10.8 11-8.2 11-6.4 11 4.4 11 2.5 11-2.1 11-5 11-1.5 11-22.9 11-.5 11-6.7 11-17.4M0 92.7l11 6.5 11-.3 11-3.7 11 15.4 11-14.3 11-4.4 11-.8 11 2.6 11 .4 11-1.8 11-14.9 11 5.9 11-4 11-3.5 11 14.8 11 5 11-2.5 11 8 11-9.7 11 15.9 11-1.6 11-3.8 11 3 11-.8 11-5 11-.6 11-9.1 11-12.5M0 92.7l11 2.2 11 4.9 11 6.5 11-2.8 11 4.2 11-12.4 11-15.3 11-1.3 11 8.9 11-4.2 11 9 11-.7 11-2.6 11-7.5 11-5.3 11-14.1 11 29.7 11 2.3 11-1 11 5.3 11-.7 11 5.8 11 14.1 11 4.3 11-5.8 11-6.1 11-8.2 11 6.8M0 92.7l11-8.8 11 10.6 11 3.8 11-4.3 11-13.8 11-5.6 11-6.2 11-13 11-1.9 11-18.7 11 6.7 11-18.1 11 9.8 11 10.4 11 15.6 11 11.5 11-8.8 11-12.5 11-.8 11-7 11-6.3 11 24.4 11 3.4 11 19.2 11 2.8 11-5.3 11 6.2 11-14.4M0 92.7l11-.3 11-13 11-1.3 11 1.6 11-.8 11-6.4 11-9.6 11-7.3 11 13.5 11 2 11-2.9 11-13.4 11-15.6 11 1.9 11-7.7 11-5.6 11 5.2 11 9.3 11 13.9 11 0 11-4.3 11-1.9 11 5.6 11 3.6 11-9.3 11 6.2 11-1.9 11 4.7M0 92.7l11 4.1 11-1.3 11-2.9 11-1.2 11 4.2 11 14 11 3.7 11-1.1 11 10.4 11 10.7 11 .7 11-7 11 12.2 11-4.3 11-4.2 11-5.3 11-.7 11 12.6 11-4.6 11 5.1 11 1.2 11-7.9 11-11.9 11 1.4 11 7.4 11-6.4 11 4.1 11-4.1M0 92.7l11-3.8 11-2.6 11-4.5 11 7 11 10.5 11 15 11-8 11 1.1 11 1.2 11 6.9 11 7.2 11-3 11 4.2 11-5.3 11 3.6 11 11.6 11 6 11 8.6 11 2.1 11 1.6 11 4.2 11 4.8 11 2.2 11-6.3 11 7 11-6.4 11-1.6 11-1.4M0 92.7l11-9.2 11-.6 11 11.6 11 4.6 11-6.2 11-3.8 11-5.4 11 5.7 11 15.7 11 3.7 11-3.4 11 3.8 11-4.6 11-1.2 11-4.8 11-2.2 11 1.1 11-8.7 11 2.5 11-1.7 11-7.3 11 8.7 11 .8 11 1.1 11-20 11-.1 11 15.9 11 6.7M0 92.7l11-10.7 11 3.1 11-19.3 11-12.3 11 3.7 11-1.1 11-7.8 11-23.9 11 3.1 11 1.1 11 10.3 11 .8 11-13.3 11 8 11 11.6 11 5.8 11-.7 11-6.9 11-7.7 11 3.9 11 3 11 .3 11-4 11 2.2 11-8.3 11 5.5 11 15.4 11 5.4M0 92.7l11-11.5 11-2.2 11 7 11-.6 11-1.8 11-1.1 11-1.1 11 4.7 11-9 11 5 11-6.3 11-1 11-5.8 11-4.8 11 11.4 11-5.4 11-5.6 11-12.5 11 2.6 11-17 11-.9 11-18.6 11-5.6 11 23.5 11 3.5 11 11.4 11 8.5 11 12.2M0 92.7l11 .6 11 7.1 11 4.2 11-3.3 11-3.2 11-2.2 11-7.9 11-4.9 11-4.5 11 6.1 11-.7 11 6.1 11-11.4 11-5.2 11-6.8 11 2.2 11-6.4 11 13.7 11-5.3 11 18.7 11 4.5 11-4.5 11-13.3 11-2.2 11 .9 11-8.3 11 14.2 11-10.5M0 92.7l11 2.1 11-4 11-3 11 9.9 11 2.2 11-2.4 11-9.9 11 10.9 11-2 11 .9 11 4.4 11 11.1 11-8.9 11 19.3 11-2.9 11-7.9 11-2.9 11 .5 11 5.5 11 6.9 11-13 11 6 11-8.4 11 8.9 11-2 11-14.6 11-12.2 11-2.4" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/><path class="th-oxide" d="M0 92.7l4.9 8.4 4.9 3.7 4.9 2.5 4.9 2 4.8 1.4 4.9 2.9 4.9 1.3 4.9 .2 4.9 1.1 4.9 1.1 4.9 .6 4.9 1.9 4.9 .9 4.8 1 4.9 1.1 4.9 1.4 4.9-.2 4.9 .8 4.9 .4 4.9 1.4 4.9 .4 4.9 1.1 4.8 1.1 4.9 .1 4.9 .5 4.9 1.2 4.9 .7 4.9-.5 4.9 .9 4.9 .9 4.9 .7 4.8-.2 4.9 1.3 4.9-.9 4.9 .7 4.9 1.4 4.9 .5 4.9-.1 4.9 .6 4.9 .6 4.8 .2 4.9 1.4 4.9 .4 4.9 .4 4.9-.6 4.9-.2 4.9 .5 4.9 .1 4.9 .6 4.8 .5 4.9 0 4.9 .1 4.9 .5 4.9 .6 4.9 1 4.9-.8 4.9 .7 4.9 .9 4.8-.1 4.9-.1 4.9 1.4 4.9 .7 4.9 .2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M0 92.7l4.9 .1 4.9-.2 4.9-.2 4.9-.2 4.8-.4 4.9 .3 4.9-.2 4.9 .1 4.9-.5 4.9 0 4.9 .2 4.9-.6 4.9-.1 4.8-.3 4.9-.2 4.9 .1 4.9-.3 4.9-.3 4.9-.3 4.9 .6 4.9 0 4.9-.4 4.8-.4 4.9 .7 4.9-.5 4.9 0 4.9-.1 4.9-1 4.9-.3 4.9 .2 4.9-.3 4.8 .1 4.9 .3 4.9-.4 4.9-.4 4.9 .8 4.9-.5 4.9 .1 4.9-.3 4.9 .6 4.8-.6 4.9-.1 4.9-.1 4.9 .7 4.9-.6 4.9 .5 4.9-.5 4.9-1 4.9 .4 4.8 .5 4.9-1 4.9 0 4.9 .1 4.9-.6 4.9-.4 4.9-.3 4.9-.3 4.9-.6 4.8 .3 4.9 .2 4.9 .3 4.9 .1 4.9-.1" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><path class="th-oxide" d="M311 146h9" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg></span><span class="tcard-body"><h3>Monte Carlo</h3><p>Simulace cest ceny s modelem skoků, 5% VaR a expected shortfall.</p></span></a></li>
+      <li class="tcard" data-reveal="card"><a href="/nastroje/#tool-mk"><span class="tcard-art"><svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><path class="th-fill-muted" d="M21.5 138.4h.1m.2 .7h.1m-.1 1.5h.1m-.1-4.6h.1m-.1 4.4h.1m.1-2.9h.1m-.1 2.4h.1m.4-6.1h.1m.4 3.5h.1m2 3.9h.1m-.1-7.4h.1m-.1 8h.1m.2-.3h.1m-.1 3h.1m-.1-8.1h.1m.6-4.7h.1m.5 12.6h.1m.1-5.9h.1m.9 9.6h.1m0-14.3h.1m.1-2.3h.1m.7 1.6h.1m0 17.1h.1m0-8.4h.1m.2-1.1h.1m.1-14.1h.1m-.1 .6h.1m.4-3.3h.1m.4 23.2h.1m.8-18.8h.1m.1-6.4h.1m.4 7.8h.1m.3-4.1h.1m.3-1.6h.1m.5-3.1h.1m.1 2.2h.1m.7-1.6h.1m.1 6.8h.1m.2-6.2h.1m0-3h.1m1.4-.9h.1m0 6.6h.1m0 .6h.1m.2-.3h.1m-.1-3.6h.1m.2-3.6h.1m1.2 3.1h.1m0-4.4h.1m1-.7h.1m1 .7h.1m.9 5.9h.1m1-6.8h.1m1.2 3.2h.1m0 5h.1m0-10.4h.1m0 2h.1m-.1 0h.1m1.7 2.6h.1m0-5.9h.1m.5 1.1h.1m.4-1.8h.1m1 7.4h.1m1 1.8h.1m.5-10.6h.1m1.8 6.3h.1m-.1-7.1h.1m.8 10.8h.1m.3-11.5h.1m0-.3h.1m-.1 6.3h.1m.8 1.9h.1m.1 1.1h.1m.7-4.4h.1m1.3-3.5h.1m1.1 1.7h.1m.5 2.2h.1m.3-2.4h.1m-.1 3.6h.1m1.1 2.9h.1m3.6-5.2h.1m.4-1.2h.1m5.5-1.4h.1m.2-1.5h.1m0-1.3h.1m.9-3.6h.1m1.8 9.1h.1m.6-14.3h.1m.6 0h.1m.1 8.1h.1m2.2-8h.1m.2-1.2h.1m1.9-.4h.1m0 8.7h.1m1.7-8.3h.1m.2-.6h.1m.9-.5h.1m.5 1.8h.1m.3 1.6h.1m1.4 3.4h.1m-.1-8.7h.1m.7 5h.1m0 3.7h.1m1-9.5h.1m.4 2.6h.1m.1 .8h.1m1.2 9.5h.1m0-11.2h.1m.1-3.1h.1m1.3 5.1h.1m1.8-3.3h.1m.3-.3h.1m.3-3.3h.1m1.3 11h.1m.8-7.7h.1m.4 2.9h.1m1.4 7.9h.1m.1-15.4h.1m.4 18h.1m.6-18.2h.1m.3 3.6h.1m0 1.2h.1m.3-1.8h.1m.3-4h.1m.2 3.5h.1m.5-3.5h.1m.2 5.1h.1m.2 8.2h.1m1.4-3.4h.1m.2-10.9h.1m2.3 10.1h.1m-.1-8.8h.1m.4-2.7h.1m1.5 .9h.1m.4 2.6h.1m.4-2.9h.1m0-1.2h.1m.2-.4h.1m.9 7.7h.1m.4-7.7h.1m.3 1.3h.1m1.3 2.2h.1m.1 4.5h.1m2.4-4.1h.1m-.1 12.8h.1m.3-19.1h.1m2 4.5h.1m.1 .6h.1m.4 2h.1m1.1-3.6h.1m.2-3.9h.1m.6-.4h.1m.1-.2h.1m.8 .6h.1m.1-.5h.1m.2 1.8h.1m.9-3.1h.1m0-.8h.1m1.1 4.4h.1m1.6-3.9h.1m3.6-2.5h.1m2.3 5h.1m3.6-7.2h.1m3-1.3h.1m.7 2.4h.1m.8-1.3h.1m1.2-2.1h.1m-.1 6.7h.1m2.2-7.4h.1m2.3 6.7h.1m1.5-5.5h.1m1.4 2h.1m.4-2.2h.1m.1-2.8h.1m2.2 4.1h.1m2.4-4.9h.1m1.3 7.4h.1m1.2-3.4h.1m1.6-6.7h.1m.5 8h.1m1.5-7.8h.1m.9-.9h.1m.5-.1h.1m.9 2.9h.1m.8-3.1h.1m.8 1.3h.1m.1-2.2h.1m.3 .9h.1m1.6-1.8h.1m1.9 2.3h.1m.2 2.3h.1m1.3-3.2h.1m1.8-1.8h.1m3.1 5h.1m2-7.2h.1m.5 2h.1m1.2 3.9h.1m4.7-8.2h.1m9.4-2.6h.1m2.1 5.9h.1m5.4-2.9h.1m.1 2.1h.1m3.3-4.1h.1m.3-2.9h.1m7.2-2.7h.1m2.9 2.7h.1m-.1-3.3h.1m.4 4.4h.1m2.6-4.3h.1m4.2-.8h.1m4.8 3.1h.1m4.1-1.1h.1m-.1-.3h.1m.9-2.1h.1m2.5 .5h.1m16.4-5.8h.1m5.8-.7h.1m9.7-1.4h.1m16.3-4.8h.1m7.5-3.3h.1m10.4-2.2h.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke"/><path class="th-accent" d="M0 133.4L254.4 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/><path class="th-ink th-draw" d="M21.5 138.8l.6-4.1 1.6-3.7 2.3-3.4 2.7-3 3.1-2.8 3.2-2.6 3.4-2.3 3.5-2.3 3.4-2.1 4-2.2 3.6-2 4.1-2.1 4-1.9 3.7-1.8 4-1.8 3.7-1.6 3.7-1.6 3.9-1.7 4-1.6 4.4-1.8 4.1-1.7 4.2-1.6 3.9-1.5 4.3-1.6 4.4-1.7 4.1-1.5 4.4-1.6 4.6-1.6 4.2-1.5 4.6-1.7 3.8-1.3 4.3-1.5 4.8-1.6 4.4-1.5 3.9-1.4 4.4-1.5 4.1-1.3 4.4-1.5 3.9-1.2 4.1-1.2 4.2-1.3 4.4-1.2 4.4-1.2 4-1.1 3.9-1.1 4.1-1 4.2-1.1 4.2-1 4.3-1.1 4.3-1.1 4.5-1 4.5-1.1 4.5-1 4.6-1.1 4.7-1.1 3.9-.8 4-.9 4-.9 4-.9 4.1-.9 4.1-.9 4.1-.9 4.2-.8 4.2-.9 4.2-.9 4.3-.9 4.3-.9 4.3-.9 4.3-.8 4.4-.9 4.4-.9 4.4-.9 2.2-.4" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="1"/><circle class="th-ink" cx="34.4" cy="153.4" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-ink" cx="128.1" cy="100.4" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-ink" cx="315.5" cy="29.7" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/><circle class="th-accent" cx="61.3" cy="104.2" r="3.6" fill="currentColor"/></svg></span><span class="tcard-body"><h3>Markowitz</h3><p>Efektivní hranice tří aktiv a citlivost na chybu odhadu.</p></span></a></li>
+    </ul>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="/nastroje/">Otevřít nástroje</a></p>
   </div>
 </section>
 <section id="projekty" class="section" aria-labelledby="h-projekty">
-  <div class="rail"><h2 id="h-projekty">Projekty</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-projekty"><span class="mw"><span>Projekty</span></span></h2></div>
   <div class="content">
-    <p class="section-intro" data-magic>Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele.</p>
+    <p class="section-intro" data-magic><span class="w">Věci,</span> <span class="w">které</span> <span class="w">jsem</span> <span class="w">postavil</span> <span class="w">a které</span> <span class="w">běží.</span> <span class="w">Většina</span> <span class="w">vznikla</span> <span class="w">pro</span> <span class="w">skutečné</span> <span class="w">klienty</span> <span class="w">a uživatele.</span></p>
+    <div class="activity" data-reveal="panel">
+      <figure class="skyline" data-skyline data-view="3d" data-locale="cs-CZ" data-week-start="1">
+        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2025-10-08",4],["2025-10-13",1],["2025-10-14",4],["2025-10-15",2],["2025-10-16",2],["2025-10-18",2],["2025-10-19",3],["2025-10-22",3],["2025-10-27",1],["2025-11-07",1],["2025-11-09",1],["2025-11-11",2],["2025-11-12",1],["2025-11-22",8],["2025-11-23",1],["2025-12-03",1],["2025-12-08",4],["2025-12-09",1],["2025-12-15",3],["2025-12-21",1],["2025-12-28",1],["2025-12-29",1],["2026-01-02",3],["2026-01-03",1],["2026-01-05",1],["2026-01-09",1],["2026-01-17",2],["2026-01-18",1],["2026-01-19",7],["2026-01-20",4],["2026-01-21",2],["2026-01-22",1],["2026-01-23",5],["2026-01-26",1],["2026-01-28",1],["2026-01-31",3],["2026-02-01",1],["2026-02-02",5],["2026-02-03",11],["2026-02-04",5],["2026-02-05",3],["2026-02-06",2],["2026-02-07",1],["2026-02-08",1],["2026-02-11",2],["2026-02-12",1],["2026-02-15",1],["2026-02-16",6],["2026-02-17",1],["2026-02-19",1],["2026-02-21",1],["2026-03-02",1],["2026-03-04",3],["2026-03-05",8],["2026-03-10",4],["2026-03-23",4],["2026-04-21",5],["2026-04-23",8],["2026-05-06",4],["2026-05-07",11],["2026-05-08",2],["2026-05-12",1],["2026-05-25",5],["2026-06-03",3],["2026-06-04",5],["2026-06-06",1],["2026-06-09",7],["2026-06-10",16],["2026-06-11",2],["2026-06-12",6],["2026-06-14",2],["2026-06-16",3],["2026-06-25",3],["2026-06-29",1],["2026-06-30",3],["2026-07-09",11],["2026-07-10",5],["2026-07-11",1],["2026-07-12",1],["2026-07-20",3],["2026-07-21",8],["2026-07-22",6],["2026-07-23",5],["2026-08-12",25],["2026-08-13",17],["2026-08-14",20],["2026-08-15",9],["2026-08-16",1],["2026-08-20",8],["2026-08-21",2],["2026-08-23",19],["2026-08-24",15],["2026-08-25",54],["2026-08-26",3],["2026-08-27",12],["2026-08-28",1],["2026-08-29",5],["2026-08-30",21],["2026-08-31",16],["2026-09-01",4],["2026-09-02",6],["2026-09-03",5],["2026-09-05",5],["2026-09-06",15],["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",5]]}</script>
+        <script type="application/json" data-skyline-labels>{"aria":"Přehled commitů v mých repozitářích za poslední rok","title":{"one":"{total} commit za poslední rok","few":"{total} commity za poslední rok","many":"{total} commitu za poslední rok","other":"{total} commitů za poslední rok"},"unit":{"one":"commit","few":"commity","many":"commitu","other":"commitů"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"Žádné commity, {date}","viewGroup":"Zobrazení","view2d":"Mřížka","view3d":"Panorama","less":"Méně","more":"Více","statTotal":"Celkem","statBusiest":"Nejaktivnější den","statLongest":"Nejdelší série","statCurrent":"Aktuální série","daysUnit":{"one":"den","few":"dny","many":"dne","other":"dnů"},"hint":"Najeďte na den nebo použijte šipky. Ve 3D otáčíte pohled tažením, dvojklik ho vrátí.","levelNames":["Žádné commity","Málo commitů","Středně commitů","Hodně commitů","Nejvíc commitů"]}</script>
+        <noscript><p class="skyline-fallback">816 commitů za poslední rok</p></noscript>
+      </figure>
+    </div>
     <div class="pgrid">
-      <article class="pcard pcard-wide" data-reveal>
+      <article class="pcard pcard-wide" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Produkt</span><time>09/2025 – dosud</time></p>
         <h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3>
         <p class="pcard-role">Komunitní platforma pro pražské farnosti</p>
         <ul class="results"><li>Průvodce svátostmi a katalog farností; zapojené farnosti Dejvice, Hlubočepy a Chodov.</li><li>Automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %.</li><li>Optimalizace pro AI vyhledávače (llms.txt).</li></ul>
         <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>07/2026 – 08/2026</time></p>
         <h3>Trenažér zkoušek ČNB</h3>
         <p class="pcard-role">Interní studijní aplikace pro poradce Valor Group</p>
         <ul class="results"><li>Dvě banky otázek k odborným zkouškám ČNB: pojišťovnictví (1 980 otázek) a investice (1 339 otázek), s odůvodněním u každé.</li><li>Zkouška nanečisto s bodováním podle vyhlášky, chytré opakování chyb (1/3/7/14/30 dní), odhad připravenosti, statistiky slabých sekcí.</li><li>Jeden HTML soubor bez závislostí, synchronizace postupu přes serverless funkci, 10 sad automatických testů.</li></ul>
         <p class="row-stack">Vanilla JS, Vercel Functions, jsdom</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>2025 – 2026</time></p>
         <h3>Generátor karuselů</h3>
         <p class="pcard-role">Content engine a uživatelský manuál pro Valor Group</p>
         <ul class="results"><li>Ze strukturovaného JSON vzniká série slidů 1080 × 1350 s dynamicky měřenou typografií; QA enforcer hlídá typy, povinná pole a délky.</li><li>Video šablony v Remotion (60 fps, Reels 9:16) a webový manuál s galerií šablon pro tým.</li></ul>
         <p class="row-stack">Python (PIL), Remotion, React, Vite</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><time>08/2026 – dosud</time></p>
         <h3>Tréninkové operační středisko</h3>
         <p class="pcard-role">Privátní PWA pro přípravu na backyard ultra</p>
         <ul class="results"><li>Denní synchronizace telemetrie z Garmin Connect API přes Vercel Cron; výpočty zátěže ACWR a CTL/ATL.</li><li>Energetický model (sacharidy, hydratace, sodík, pacing) a týdenní adaptivní plán přes Anthropic API.</li></ul>
         <p class="row-stack">Next.js 15, Neon Postgres, Drizzle, Anthropic API</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>07/2026</time></p>
         <h3>Analýza investic v portfoliu</h3>
         <p class="pcard-role">Klientská prezentace pro Valor Group</p>
         <ul class="results"><li>Rozbor šesti fondů a rozložení portfolia 1 000 000 Kč: TER, durace, likvidita, rizika, scénáře sazeb; data z KID a factsheetů.</li><li>Jeden soubor, funguje offline, tisk do PDF pro A4.</li></ul>
         <p class="row-stack">HTML, CSS, JS</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>04/2026</time></p>
         <h3>Nabídka spolupráce</h3>
         <p class="pcard-role">Interaktivní prezentace pro potenciálního klienta</p>
         <ul class="results"><li>Dvě cesty spolupráce, otázky k promyšlení a kalkulačka ceny; klient si stránku proklikává a pak se ozve.</li></ul>
         <p class="row-stack">Next.js 16, TypeScript</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><time>06/2026</time></p>
         <h3>Kdy a kam vyrazíme?</h3>
         <p class="pcard-role">Skupinový plánovač výletů</p>
         <ul class="results"><li>Jeden sdílený kalendář: každý vyznačí, kdy má čas, aplikace najde termíny s největším překryvem; nápady a hlasování v reálném čase.</li></ul>
         <p class="row-stack">Next.js, Supabase</p>
       </article>
-      <article class="pcard" data-reveal>
+      <article class="pcard" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>06/2026</time></p>
         <h3>Web pro domácí cukrářku</h3>
         <p class="pcard-role">Prezentace a skládačka dortů</p>
@@ -416,10 +243,10 @@
   </div>
 </section>
 <section id="vzdelani" class="section" aria-labelledby="h-vzdelani">
-  <div class="rail"><h2 id="h-vzdelani">Vzdělání</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-vzdelani"><span class="mw"><span>Vzdělání</span></span></h2></div>
   <div class="content">
     <ol class="ledger">
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2026 – dosud</time></div>
         <div class="row-head"><h3>Matematicko-fyzikální fakulta UK</h3><p class="row-role">Bc. Finanční matematika</p></div>
         <div class="row-body">
@@ -427,15 +254,7 @@
           
         </div>
       </li>
-      <li class="row" data-reveal>
-        <div class="row-date"><time>09/2026 – dosud</time></div>
-        <div class="row-head"><h3>Fakulta strojní ČVUT</h3><p class="row-role">Bc. Strojní inženýrství, souběžně</p></div>
-        <div class="row-body">
-          <ul class="results"><li>Účastník výběrového Mentoringového programu ČVUT (strategie, stavba projektů, kvantitativní metody).</li></ul>
-          
-        </div>
-      </li>
-      <li class="row" data-reveal>
+      <li class="row" data-reveal="row">
         <div class="row-date"><time>09/2022 – 06/2026</time></div>
         <div class="row-head"><h3>Gymnázium Christiána Dopplera</h3><p class="row-role">Matematika, fyzika a informatika</p></div>
         <div class="row-body">
@@ -444,29 +263,30 @@
         </div>
       </li>
     </ol>
+    <p class="edu-note" data-reveal="rise"><strong>Zajímavost.</strong> Přijat na pět fakult: MFF UK (Finanční matematika), FJFI ČVUT (Aplikované matematicko-stochastické metody), FIT ČVUT, FS ČVUT a FIS VŠE.</p>
   </div>
 </section>
 <section id="dovednosti" class="section" aria-labelledby="h-dovednosti">
-  <div class="rail"><h2 id="h-dovednosti">Dovednosti</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-dovednosti"><span class="mw"><span>Dovednosti</span></span></h2></div>
   <div class="content">
     <dl class="skills-grid">
-      <div class="skill"><dt>Programování</dt><dd>Python, TypeScript a JavaScript, C#, SQL (PostgreSQL), Next.js a React, FastAPI, Git, Linux; LLM API (OpenAI, Anthropic); web scraping (Playwright, BeautifulSoup); Remotion.</dd></div>
-      <div class="skill"><dt>Matematika</dt><dd>Matematická analýza, lineární algebra, pravděpodobnost a statistika, optimalizace; základy stochastického modelování.</dd></div>
-      <div class="skill"><dt>Finance</dt><dd>Oceňování opcí (Black–Scholes), Monte Carlo, Markowitz, VaR; účetnictví; české investiční produkty (fondy, KID, TER, durace, likvidita).</dd></div>
-      <div class="skill"><dt>Jazyky</dt><dd>Čeština (rodilý mluvčí), angličtina C1 (Cambridge CAE), němčina A2.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Programování</dt><dd>Python, TypeScript a JavaScript, C#, SQL (PostgreSQL), Next.js a React, FastAPI, Git, Linux; LLM API (OpenAI, Anthropic); web scraping (Playwright, BeautifulSoup); Remotion.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Matematika</dt><dd>Matematická analýza, lineární algebra, pravděpodobnost a statistika, optimalizace; základy stochastického modelování.</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Finance</dt><dd>Oceňování opcí (Black–Scholes), Monte Carlo, Markowitz, VaR; účetnictví; české investiční produkty (fondy, KID, TER, durace, likvidita).</dd></div>
+      <div class="skill" data-reveal="rise"><dt>Jazyky</dt><dd>Čeština (rodilý mluvčí), angličtina C1 (Cambridge CAE), němčina A2.</dd></div>
     </dl>
-    <p class="interests"><strong>Zájmy.</strong> 11 let závodního baseballu (Kotlářka Praha), půlmaraton 1:24, trénink na backyard ultra, cíl dokončit half-Ironman, poker a teorie her, stavění produktů.</p>
+    <p class="interests" data-reveal="rise"><strong>Zájmy.</strong> 11 let závodního baseballu (Kotlářka Praha), půlmaraton 1:24, trénink na backyard ultra, cíl dokončit half-Ironman, poker a teorie her, <a href="#projekty">stavění produktů</a>.</p>
   </div>
 </section>
 <section id="kontakt" class="section section-contact" aria-labelledby="h-kontakt">
-  <div class="rail"><h2 id="h-kontakt">Kontakt</h2></div>
+  <div class="rail" data-reveal="rail"><h2 id="h-kontakt"><span class="mw"><span>Kontakt</span></span></h2></div>
   <div class="content">
-    <p class="contact-email"><a href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
+    <p class="contact-email" data-reveal="rise"><a href="mailto:zikmundi@proton.me">zikmundi@proton.me</a></p>
     <ul class="contact-list">
-      <li><a href="tel:+420728126406">+420 728 126 406</a></li>
-      <li><a href="https://www.linkedin.com/in/adam-zikmund-ba3469360/" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://www.strava.com/athletes/116589100" target="_blank" rel="noopener">Strava</a></li>
-      <li>CV v PDF: <a href="/cv/Adam-Zikmund-CV-CZ.pdf">PDF (CZ)</a>, <a href="/cv/Adam-Zikmund-CV-EN.pdf">PDF (EN)</a></li>
+      <li data-reveal="rise"><a href="tel:+420728126406">+420 728 126 406</a></li>
+      <li data-reveal="rise"><a href="https://www.linkedin.com/in/adam-zikmund-ba3469360/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li data-reveal="rise"><a href="https://www.strava.com/athletes/116589100" target="_blank" rel="noopener">Strava</a></li>
+      <li data-reveal="rise">CV v PDF: <a href="/cv/Adam-Zikmund-CV-CZ.pdf">PDF (CZ)</a>, <a href="/cv/Adam-Zikmund-CV-EN.pdf">PDF (EN)</a></li>
     </ul>
   </div>
 </section>

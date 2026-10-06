@@ -1,7 +1,8 @@
-// Static site build: src/content.<lang>.json -> index.html (cs) and en/index.html (en).
+// Static site build: src/content.<lang>.json -> index.html (cs) and en/index.html (en), once per variant in src/variants.json.
+// Variant layout "blocks" (variant C) also renders a separate tools page (nastroje/index.html and en/tools/index.html).
 // Usage: node build.mjs          (site only)
 //        node build.mjs --cv     (site + CV PDFs via headless Chrome, see src/cv.mjs)
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -12,32 +13,46 @@ const typo = (s) => typoFor(s, LANG);
 const esc = (s) => typo(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const rich = (s) => esc(s).replace(/([A-Za-zσμρ\]\)])_([A-Za-z]{1,3})\b/g, '$1<sub>$2</sub>');
 const ext = (href) => /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '';
-const G = '';
-// Two design variants built from the same content. A is the production site, B is a noindex preview at /b/ for comparison.
+const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
+// Words wrapped for the scroll reveals. Split on plain spaces only, so non-breaking spaces keep their words together.
+const magic = (s) => esc(s).split(' ').map((w) => `<span class="w">${w}</span>`).join(' ');
+const maskWords = (s) => esc(s).split(' ').map((w) => `<span class="mw"><span>${w}</span></span>`).join(' ');
+const fill = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (vals[k] != null ? vals[k] : m));
+// Optional inputs: the tool thumbnails and the contribution snapshot (node scripts/fetch-contributions.mjs).
+const thumbs = existsSync(join(root, 'src', 'thumbs.mjs')) ? await import('./src/thumbs.mjs') : null;
+const contributions = existsSync(join(root, 'src', 'contributions.json')) ? JSON.parse(readFileSync(join(root, 'src', 'contributions.json'), 'utf8')) : null;
+// Design variants built from the same content: C (layout "blocks") is the production site at /, A and B are noindex previews for comparison.
 const VARIANTS = JSON.parse(readFileSync(join(root, 'src', 'variants.json'), 'utf8'));
 let V = VARIANTS[0];
 const P = (path) => (V.dir ? '/' + V.dir.replace(/\/$/, '') : '') + path;
+const isBlocks = () => V.layout === 'blocks';
 
 /* ---------- head / nav / footer ---------- */
-function head(c) {
-  const m = c.meta; const url = m.siteUrl + m.path; const alt = m.siteUrl + m.altLang.path;
+function head(c, pg) {
+  const m = c.meta; const url = m.siteUrl + pg.path; const alt = m.siteUrl + pg.altPath; const blocks = isBlocks();
+  const init = blocks
+    ? `<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>`
+    : `<script>document.documentElement.classList.add('js');</script>`;
+  const colour = blocks
+    ? `<meta name="color-scheme" content="light dark">\n<meta name="theme-color" content="${V.themeColor}" media="(prefers-color-scheme: light)">\n<meta name="theme-color" content="${V.themeColorDark}" media="(prefers-color-scheme: dark)">`
+    : `<meta name="color-scheme" content="light">\n<meta name="theme-color" content="${V.themeColor}">`;
+  const scripts = blocks ? ['site.js', pg.kind === 'tools' ? 'quant.js' : 'skyline.js', 'motion.js'] : ['site.js', 'quant.js'];
   return `<!doctype html>
 <html lang="${c.lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(m.title)}</title>
-<meta name="description" content="${esc(m.description)}">
+<title>${esc(pg.title)}</title>
+<meta name="description" content="${esc(pg.description)}">
 <meta name="author" content="Adam Zikmund">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="${V.themeColor}">
+${colour}
 <link rel="canonical" href="${url}">${V.noindex ? '\n<meta name="robots" content="noindex">' : ''}
 <link rel="alternate" hreflang="${c.lang}" href="${url}">
 <link rel="alternate" hreflang="${m.altLang.lang}" href="${alt}">
-<link rel="alternate" hreflang="x-default" href="${m.siteUrl}/">
-<meta property="og:type" content="profile">
-<meta property="og:title" content="${esc(m.title)}">
-<meta property="og:description" content="${esc(m.description)}">
+<link rel="alternate" hreflang="x-default" href="${c.lang === 'cs' ? url : alt}">
+<meta property="og:type" content="${pg.kind === 'home' ? 'profile' : 'website'}">
+<meta property="og:title" content="${esc(pg.title)}">
+<meta property="og:description" content="${esc(pg.description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:locale" content="${c.lang === 'cs' ? 'cs_CZ' : 'en_GB'}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -45,86 +60,81 @@ function head(c) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${V.fonts}">
 <link rel="stylesheet" href="/assets/css/site.css">
-<link rel="stylesheet" href="${V.css}">
-<script>document.documentElement.classList.add('js');</script>
-<script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/quant.js" defer></script>${V.layout === 'blocks' ? '\n<script src="/assets/js/motion.js" defer></script>' : ''}
+<link rel="stylesheet" href="${V.css}">${blocks && pg.kind === 'home' ? '\n<link rel="stylesheet" href="/assets/css/skyline.css">' : ''}
+${init}
+${scripts.map((s) => `<script src="/assets/js/${s}" defer></script>`).join('\n')}
 </head>`;
 }
 
-function nav(c) {
-  const n = c.nav; const m = c.meta;
+const themeToggle = (n) => `<button class="theme-toggle" type="button" aria-pressed="false" aria-label="${esc(n.theme)}" title="${esc(n.theme)}" data-theme-toggle>
+      <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>`;
+
+function nav(c, pg) {
+  const n = c.nav; const m = c.meta; const blocks = isBlocks(); const home = P(m.path);
+  const link = (l) => {
+    const isPage = blocks && l.href;
+    const href = isPage ? P(l.href) : (blocks && pg.kind === 'tools' ? `${home}#${l.id}` : `#${l.id}`);
+    const current = isPage && pg.kind === 'tools';
+    const spy = (blocks && pg.kind === 'tools') || isPage ? '' : ` data-spy="${l.id}"`;
+    return `<li><a href="${href}"${spy}${current ? ' class="is-active" aria-current="page"' : ''}>${esc(l.label)}</a></li>`;
+  };
+  const alt = P(pg.altPath);
   return `<header class="site-header" id="top">
 <a class="skip" href="#main">${esc(n.skip)}</a>
 <nav class="nav" aria-label="${esc(n.ariaMain)}">
-  <a class="brand" href="${P(m.path)}">${esc(n.brand)}</a>
+  <a class="brand" href="${home}">${esc(n.brand)}</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"><span class="t-open">${esc(n.contents)}</span><span class="t-close">${esc(n.close)}</span></button>
   <div class="nav-menu" id="nav-menu">
     <ol class="nav-list">
-      ${n.links.map((l) => `<li><a href="#${l.id}" data-spy="${l.id}">${esc(l.label)}</a></li>`).join('\n      ')}
+      ${n.links.map(link).join('\n      ')}
     </ol>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
+    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
   </div>
   <div class="nav-right">
     <a class="nav-cv" href="${m.cvPdf}"><span class="t-long">${esc(n.cv)}</span><span class="t-short">${esc(n.cvShort)}</span></a>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>
+    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>${blocks ? '\n    ' + themeToggle(n) : ''}
   </div>
 </nav>
 </header>`;
 }
 
-function footer(c) {
+function footer(c, pg) {
   const f = c.footer; const m = c.meta;
   return `<footer class="site-footer">
   <p>${esc(f.left)}</p>
   <p class="footer-note">${esc(f.note)}</p>
-  <p class="footer-lang"><span class="is-current">${esc(m.thisLang.label)}</span> / <a href="${P(m.altLang.path)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></p>
+  <p class="footer-lang"><span class="is-current">${esc(m.thisLang.label)}</span> / <a href="${P(pg.altPath)}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></p>
 </footer>`;
 }
 
 /* ---------- hero ---------- */
 function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(', '); }
-function heroBlocks(c) {
-  const h = c.hero;
-  return `<section class="portal" data-portal aria-label="${esc(h.kicker)}">
-  <div class="portal-pin">
-    <div class="portal-field" aria-hidden="true">
-      <p class="portal-lead">${esc(h.portalText)}</p>
-    </div>
-    <svg class="portal-art" aria-hidden="true" focusable="false"><defs><clipPath id="portal-clip" clipPathUnits="userSpaceOnUse"><text data-portal-glyph x="0" y="0">${esc(h.mark)}</text></clipPath></defs></svg>
-    <p class="portal-word" aria-hidden="true">${esc(h.mark)}</p>
-    <p class="portal-kicker">${esc(h.kicker)}</p>
-    <div class="portal-row">
-      <p class="portal-intro">${esc(h.intro)}</p>
-      <p class="portal-actions"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
-      <p class="portal-hint" aria-hidden="true">${esc(h.portalHint)} ↓</p>
-    </div>
-  </div>
-</section>
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-text">
-    <h1 id="hero-title" data-split>${h.title.map((t) => `<span class="line">${esc(t)}</span>`).join(' ')}</h1>
-    <p class="deck" data-magic>${esc(h.deck)}</p>
-    <p class="actions"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
-  </div>
-  <aside class="sheet" aria-labelledby="sheet-title">
+const sheet = (h) => `<aside class="sheet" aria-labelledby="sheet-title"${isBlocks() ? ' data-reveal="rise"' : ''}>
     <h2 id="sheet-title" class="visually-hidden">${esc(h.sheetTitle)}</h2>
     <dl class="sheet-rows">
       ${h.sheet.map((r) => `<div class="sheet-row"><dt>${esc(r.k)}</dt><dd>${r.links ? links(r.links) : esc(r.v)}</dd></div>`).join('\n      ')}
     </dl>
-  </aside>
-</section>`;
-}
-function numbers(c) {
-  const n = c.numbers; if (!n || V.layout !== 'blocks') return '';
-  return `<section id="${n.id}" class="numbers" aria-label="${esc(n.title)}">
-  <ul class="numbers-grid">
-    ${n.items.map((i) => `<li class="num-block" data-reveal><strong>${esc(i.n)}</strong><span>${esc(i.l)}</span></li>`).join('\n    ')}
-  </ul>
+  </aside>`;
+function heroBlocks(c) {
+  const h = c.hero;
+  return `<section class="hero-track" data-hero aria-labelledby="hero-title">
+  <div class="hero-pin">
+    <h1 id="hero-title" class="hero-title" data-magic="hero">${magic(h.title.join(' '))}</h1>
+    <p class="hero-hint" aria-hidden="true">${esc(h.scrollHint)}</p>
+  </div>
+</section>
+<section class="hero hero-rest">
+  <div class="hero-text">
+    <p class="deck" data-magic>${magic(h.deck)}</p>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
+  </div>
+  ${sheet(h)}
 </section>`;
 }
 function hero(c) {
-  if (V.layout === 'blocks') return heroBlocks(c);
+  if (isBlocks()) return heroBlocks(c);
   const h = c.hero;
   return `<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
@@ -132,19 +142,15 @@ function hero(c) {
     <p class="deck">${esc(h.deck)}</p>
     <p class="actions"><a class="cv-link" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
   </div>
-  <aside class="sheet" aria-labelledby="sheet-title">
-    <h2 id="sheet-title" class="visually-hidden">${esc(h.sheetTitle)}</h2>
-    <dl class="sheet-rows">
-      ${h.sheet.map((r) => `<div class="sheet-row"><dt>${esc(r.k)}</dt><dd>${r.links ? links(r.links) : esc(r.v)}</dd></div>`).join('\n      ')}
-    </dl>
-  </aside>
+  ${sheet(h)}
 </section>`;
 }
 
 /* ---------- section scaffolding ---------- */
 function section(s, body, extraClass) {
+  const blocks = isBlocks();
   return `<section id="${s.id}" class="section${extraClass ? ' ' + extraClass : ''}" aria-labelledby="h-${s.id}">
-  <div class="rail"><h2 id="h-${s.id}">${esc(s.title)}</h2></div>
+  <div class="rail"${blocks ? ' data-reveal="rail"' : ''}><h2 id="h-${s.id}">${blocks ? maskWords(s.title) : esc(s.title)}</h2></div>
   <div class="content">
 ${body}
   </div>
@@ -154,12 +160,12 @@ function kv(title, rows, id) {
   return `<div class="kv-block">
       <h3 id="${id}">${esc(title)}</h3>
       <dl class="kv" aria-labelledby="${id}">
-        ${rows.map((r) => `<div class="kv-row"><dt>${esc(r.k)}</dt><dd>${esc(r.v)}</dd></div>`).join('\n        ')}
+        ${rows.map((r) => `<div class="kv-row" data-reveal="kv"><dt>${esc(r.k)}</dt><dd>${esc(r.v)}</dd></div>`).join('\n        ')}
       </dl>
     </div>`;
 }
 function ledger(items, extra) {
-  const row = (e) => `<li class="row" data-reveal>
+  const row = (e) => `<li class="row" data-reveal="row">
         <div class="row-date"><time>${esc(e.period)}</time></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
@@ -174,40 +180,69 @@ function ledger(items, extra) {
 
 function profile(c) {
   const p = c.profile;
-  return section(p, `    <p class="lead" data-magic>${esc(p.lead)}</p>
+  return section(p, `    <p class="lead"${isBlocks() ? ' data-magic' : ''}>${isBlocks() ? magic(p.lead) : esc(p.lead)}</p>
     ${kv(p.seeking.title, p.seeking.rows, 'h-seeking')}
     ${kv(p.basis.title, p.basis.rows, 'h-basis')}`);
 }
 function experience(c) { return section(c.experience, '    ' + ledger(c.experience.items)); }
-function education(c) { return section(c.education, '    ' + ledger(c.education.items)); }
+function education(c) {
+  const e = c.education;
+  const note = e.note ? `\n    <p class="edu-note"${isBlocks() ? ' data-reveal="rise"' : ''}><strong>${esc(e.note.k)}.</strong> ${esc(e.note.v)}</p>` : '';
+  return section(e, '    ' + ledger(e.items) + note);
+}
+// GitHub-style contribution graph (variant C). Sparse data: the script fills the empty days.
+function activity(c) {
+  const a = c.projects.activity;
+  if (!isBlocks() || !a || !contributions) return '';
+  // Only the weeks the graph displays: from the Monday on or before (end - 364 days). The heading and the no-JavaScript text must agree with it.
+  const endMs = Date.parse(contributions.end + 'T00:00:00Z'); const startMs = endMs - 364 * 86400000;
+  const first = new Date(startMs - ((new Date(startMs).getUTCDay() + 6) % 7) * 86400000).toISOString().slice(0, 10);
+  const shown = contributions.days.filter((d) => d[0] >= first);
+  const days = shown.filter((d) => d[1] > 0);
+  const sum = shown.reduce((t, d) => t + d[1], 0);
+  const total = new Intl.NumberFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(sum);
+  return `<div class="activity" data-reveal="panel">
+      <figure class="skyline" data-skyline data-view="3d" data-locale="${LANG === 'cs' ? 'cs-CZ' : 'en-GB'}" data-week-start="1">
+        <script type="application/json" data-skyline-data>${json({ end: contributions.end, days })}</script>
+        <script type="application/json" data-skyline-labels>${json(a.labels)}</script>
+        <noscript><p class="skyline-fallback">${esc(fill(typeof a.labels.title === 'string' ? a.labels.title : (a.labels.title[new Intl.PluralRules(LANG === 'cs' ? 'cs-CZ' : 'en-GB').select(sum)] || a.labels.title.other), { total }))}</p></noscript>
+      </figure>
+    </div>
+    `;
+}
 function projects(c) {
-  if (V.layout !== 'blocks') return section(c.projects, '    ' + ledger(c.projects.items));
+  if (!isBlocks()) return section(c.projects, '    ' + ledger(c.projects.items));
   const p = c.projects;
-  const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}" data-reveal>
+  const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}" data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">${esc(e.tag)}</span><time>${esc(e.period)}</time></p>
         <h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3>
         <p class="pcard-role">${esc(e.role)}</p>
         <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
         ${e.stack ? `<p class="row-stack">${esc(e.stack)}</p>` : ''}
       </article>`;
-  return section(p, `    <p class="section-intro" data-magic>${esc(p.intro)}</p>
-    <div class="pgrid">
+  return section(p, `    <p class="section-intro" data-magic>${magic(p.intro)}</p>
+    ${activity(c)}<div class="pgrid">
       ${p.items.map(card).join('\n      ')}
     </div>`);
 }
 function skills(c) {
-  const s = c.skills;
+  const s = c.skills; const it = s.interests; const blocks = isBlocks();
+  let v = esc(it.v);
+  if (blocks && it.link && it.v.includes(it.link.text)) {
+    const i = it.v.indexOf(it.link.text);
+    v = `${esc(it.v.slice(0, i))}<a href="${it.link.href}">${esc(it.link.text)}</a>${esc(it.v.slice(i + it.link.text.length))}`;
+  }
   return section(s, `    <dl class="skills-grid">
-      ${s.groups.map((g) => `<div class="skill"><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
+      ${s.groups.map((g) => `<div class="skill"${blocks ? ' data-reveal="rise"' : ''}><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
     </dl>
-    <p class="interests"><strong>${esc(s.interests.k)}.</strong> ${esc(s.interests.v)}</p>`);
+    <p class="interests"${blocks ? ' data-reveal="rise"' : ''}><strong>${esc(it.k)}.</strong> ${v}</p>`);
 }
 function contact(c) {
-  const s = c.contact;
+  const s = c.contact; const blocks = isBlocks();
   const items = s.rows.map((r) => r.links
-    ? `<li>${esc(s.cvLabel)}: ${links(r.links)}</li>`
-    : `<li><a href="${r.href}"${ext(r.href)}>${esc(/^https?:/.test(r.href) ? r.k : r.v)}</a></li>`).join('\n      ');
-  return section(s, `    <p class="contact-email"><a href="mailto:${s.email}">${esc(s.email)}</a></p>
+    ? `<li${blocks ? ' data-reveal="rise"' : ''}>${esc(s.cvLabel)}: ${links(r.links)}</li>`
+    : `<li${blocks ? ' data-reveal="rise"' : ''}><a href="${r.href}"${ext(r.href)}>${esc(/^https?:/.test(r.href) ? r.k : r.v)}</a></li>`).join('\n      ');
+  return section(s, `    <p class="contact-email"${blocks ? ' data-reveal="rise"' : ''}><a href="mailto:${s.email}">${esc(s.email)}</a></p>
     <ul class="contact-list">
       ${items}
     </ul>`, 'section-contact');
@@ -232,7 +267,7 @@ function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><d
 
 function toolShell(c, t, controls, chart, readouts, extraBtns = '') {
   const cm = c.tools.common;
-  return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}" data-reveal>
+  return `<article class="tool" id="tool-${t.id}" data-tool="${t.id}" data-reveal="panel">
         <h3 class="tool-title">${esc(t.title)}</h3>
         <p class="tool-quote">${esc(t.quote)}</p>
         <p class="tool-spec">${esc(t.summary)}</p>
@@ -285,7 +320,7 @@ function toolMC(c, t) {
     toggle('dist', u.dist, [['normal', u.normal], ['jump', u.fat]]),
   ].join('\n              ');
   const chart = `<canvas data-role="chart" role="img" aria-label="${esc(u.aria)}"></canvas>
-              <p class="chart-note mono" data-out="shown"></p>
+              <p class="chart-note" data-out="shown"></p>
               <ul class="legend"><li><i class="sw sw-ink"></i>${esc(u.legendMedian)}</li><li><i class="sw sw-dash"></i>${esc(u.legendPct)}</li><li><i class="sw sw-oxide"></i>${esc(u.legendVar)}</li><li data-role="legend-normal" hidden><i class="sw sw-oxide-dash"></i>${esc(u.legendVarNormal)}</li></ul>`;
   const readouts = `<table class="ro-table">
                 <thead><tr><th scope="col"><span class="visually-hidden">${esc(c.tools.common.readouts)}</span></th><th scope="col" data-col="normal">${esc(u.colNormal)}</th><th scope="col" data-col="jump">${esc(u.colFat)}</th></tr></thead>
@@ -348,40 +383,92 @@ function tools(c) {
     <div class="tools">
       ${s.items.map((t) => r[t.id](c, t)).join('\n      ')}
     </div>
-    <script type="application/json" id="quant-ui">${JSON.stringify(Object.fromEntries(s.items.map((t) => [t.id, t.ui]))).replace(/</g, '\\u003c')}</script>`, 'section-tools');
+    <script type="application/json" id="quant-ui">${json(Object.fromEntries(s.items.map((t) => [t.id, t.ui])))}</script>`, 'section-tools');
+}
+
+/* ---------- variant C: tools teaser on the home page, tools on their own page ---------- */
+function toolsTeaser(c) {
+  const t = c.tools; const tz = t.teaser; const page = P(t.page.meta.path);
+  const art = { bs: thumbs && thumbs.thumbBS, mc: thumbs && thumbs.thumbMC, mk: thumbs && thumbs.thumbMK };
+  const cards = tz.cards.map((k) => `<li class="tcard" data-reveal="card"><a href="${page}#tool-${k.id}"><span class="tcard-art">${art[k.id] ? art[k.id]() : ''}</span><span class="tcard-body"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></span></a></li>`).join('\n      ');
+  return `<section id="${t.id}" class="section section-teaser" aria-labelledby="h-${t.id}">
+  <div class="rail" data-reveal="rail"><h2 id="h-${t.id}">${maskWords(tz.title)}</h2></div>
+  <div class="content">
+    <p class="section-intro" data-magic>${magic(tz.lead)}</p>
+    <ul class="tcards">
+      ${cards}
+    </ul>
+    <p class="actions" data-reveal="rise"><a class="btn-fill" href="${page}">${esc(tz.cta)}</a></p>
+  </div>
+</section>`;
+}
+function toolsPage(c) {
+  const t = c.tools; const p = t.page; const r = { bs: toolBS, mc: toolMC, mk: toolMK };
+  return `<section class="page-head" aria-labelledby="page-title">
+  <p class="crumb"><a href="${P(c.meta.path)}">${esc(p.back)}</a></p>
+  <h1 id="page-title" class="page-title">${maskWords(p.title)}</h1>
+  <p class="page-intro" data-magic>${magic(p.intro)}</p>
+  <nav class="page-index" aria-label="${esc(p.index)}"><ul>${t.items.map((i) => `<li><a href="#tool-${i.id}">${esc(i.title)}</a></li>`).join('')}</ul></nav>
+  <p class="page-more">${esc(p.more)}</p>
+</section>
+<section class="section section-tools" aria-label="${esc(t.title)}">
+  <div class="content">
+    <div class="tools">
+      ${t.items.map((i) => r[i.id](c, i)).join('\n      ')}
+    </div>
+    <script type="application/json" id="quant-ui">${json(Object.fromEntries(t.items.map((i) => [i.id, i.ui])))}</script>
+  </div>
+</section>`;
 }
 
 export function renderSite(c) {
-  return `${head(c)}
+  const m = c.meta; const blocks = isBlocks();
+  const pg = { kind: 'home', title: m.title, description: m.description, path: m.path, altPath: m.altLang.path };
+  return `${head(c, pg)}
 <body>
-${nav(c)}
+${nav(c, pg)}
 <main id="main">
 ${hero(c)}
-${numbers(c)}
 ${profile(c)}
 ${experience(c)}
-${tools(c)}
+${blocks ? toolsTeaser(c) : tools(c)}
 ${projects(c)}
 ${education(c)}
 ${skills(c)}
 ${contact(c)}
 </main>
-${footer(c)}
+${footer(c, pg)}
+</body>
+</html>
+`;
+}
+export function renderTools(c) {
+  const p = c.tools.page; const pg = { kind: 'tools', title: p.meta.title, description: p.meta.description, path: p.meta.path, altPath: p.meta.altPath };
+  return `${head(c, pg)}
+<body class="page-tools">
+${nav(c, pg)}
+<main id="main">
+${toolsPage(c)}
+</main>
+${footer(c, pg)}
 </body>
 </html>
 `;
 }
 
+const write = (rel, html, tag) => {
+  const out = (V.dir || '') + rel;
+  mkdirSync(dirname(join(root, out)), { recursive: true });
+  writeFileSync(join(root, out), html);
+  console.log('wrote', out, html.length, 'bytes', `(variant ${V.key}${tag ? ', ' + tag : ''})`);
+};
 for (const variant of VARIANTS) {
   V = variant;
-  for (const [lang, page] of [['cs', 'index.html'], ['en', 'en/index.html']]) {
+  for (const lang of ['cs', 'en']) {
     const c = JSON.parse(readFileSync(join(root, 'src', `content.${lang}.json`), 'utf8'));
     LANG = lang;
-    const out = (V.dir || '') + page;
-    const html = renderSite(c);
-    mkdirSync(dirname(join(root, out)), { recursive: true });
-    writeFileSync(join(root, out), html);
-    console.log('wrote', out, html.length, 'bytes', `(variant ${V.key})`);
+    write(lang === 'cs' ? 'index.html' : 'en/index.html', renderSite(c));
+    if (isBlocks()) write(c.tools.page.meta.path.replace(/^\//, '') + 'index.html', renderTools(c), 'tools');
   }
 }
 if (process.argv.includes('--cv')) {

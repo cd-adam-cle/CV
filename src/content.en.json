@@ -37,7 +37,8 @@
       },
       {
         "id": "tools",
-        "label": "Tools"
+        "label": "Tools",
+        "href": "/en/tools/"
       },
       {
         "id": "projects",
@@ -55,12 +56,13 @@
         "id": "contact",
         "label": "Contact"
       }
-    ]
+    ],
+    "theme": "Dark mode"
   },
   "hero": {
     "title": [
-      "I build software that gets used.",
-      "Now I am learning how risk is measured and priced."
+      "I build software people want to use, and AI makes their work easier.",
+      "Now I am taking all of it to where risk is measured and priced."
     ],
     "deck": "Co-founder and developer of products in production (Božííí, Freio); since September 2026 a Financial Mathematics student at Charles University. Looking for an internship, part-time role or project work in quantitative risk, quant research, VC/PE analytics or investment banking.",
     "actions": {
@@ -75,10 +77,6 @@
         "v": "Charles University in Prague (MFF UK), BSc Financial Mathematics, 2026 – present"
       },
       {
-        "k": "Concurrently",
-        "v": "Czech Technical University, Mechanical Engineering"
-      },
-      {
         "k": "Experience",
         "v": "Valor Group (trainee), Freio (co-founder), Božííí (founder)"
       },
@@ -91,16 +89,12 @@
         "v": "Czech, English C1 (CAE), German A2"
       }
     ],
-    "mark": "Zikmund",
-    "portalHint": "Scroll to enter",
-    "kicker": "Adam Zikmund, Prague",
-    "portalText": "Financial mathematics student at Charles University. Software that gets used. Interested in risk, investing and venture capital.",
-    "intro": "Financial mathematics student at Charles University, previously co-founder of two products in production. Looking for an internship or part-time role in risk, investing and venture capital."
+    "scrollHint": "Scroll down"
   },
   "profile": {
     "id": "profile",
     "title": "Profile",
-    "lead": "While at grammar school I founded Božííí, a community site for Prague parishes, co-founded the EdTech platform Freio and freelanced on scraping, automation and LLM API integrations. My final-year research paper modelled how EU ETS 2 allowance costs pass through to households. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and analysing a six-fund portfolio. Since September I have been studying Financial Mathematics at Charles University, and in my first year I enrolled in a practitioner-led course on financial risk measurement and management.",
+    "lead": "While at grammar school I founded Božííí, a community site for Prague parishes, co-founded the EdTech platform Freio and freelanced on automation, scraping and LLM API integrations. My final-year research paper modelled how EU ETS 2 allowance costs pass through to households. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and analysing a portfolio. Since September I have been studying Financial Mathematics at Charles University.",
     "seeking": {
       "title": "What I am looking for",
       "rows": [
@@ -160,6 +154,16 @@
         "stack": "Python, PIL, Remotion, React, TypeScript"
       },
       {
+        "period": "01/2026 – present",
+        "org": "Freelance",
+        "role": "Software and AI automation",
+        "results": [
+          "Scraping and data pipelines (Playwright, BeautifulSoup) and LLM API integrations (OpenAI, Anthropic) for clients.",
+          "Content and e-mail personalisation automation saved more than 60% of manual preparation time."
+        ],
+        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
+      },
+      {
         "period": "04/2026 – 05/2026",
         "org": "Cloudinfrastack",
         "role": "DevOps and infrastructure, contract",
@@ -178,16 +182,6 @@
           "Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project."
         ],
         "stack": "EdTech, market validation, MVP"
-      },
-      {
-        "period": "01/2026 – present",
-        "org": "Freelance",
-        "role": "Software and AI automation",
-        "results": [
-          "Scraping and data pipelines (Playwright, BeautifulSoup) and LLM API integrations (OpenAI, Anthropic) for clients.",
-          "Content and e-mail personalisation automation saved more than 60% of manual preparation time."
-        ],
-        "stack": "Python, TypeScript, Playwright, BeautifulSoup, OpenAI API, Anthropic API"
       },
       {
         "period": "09/2025 – present",
@@ -360,7 +354,42 @@
         ],
         "insight": "The model is sensitive to its inputs: shifting expected returns by 1–2 percentage points reshuffles the \"optimal\" portfolio substantially. That is why raw Markowitz is rarely used on its own in practice; constraints, shrinkage estimators or Black–Litterman views are layered on top."
       }
-    ]
+    ],
+    "teaser": {
+      "title": "Tools",
+      "lead": "Three models I programmed in order to understand them. They run right in the browser, and I am adding more.",
+      "cta": "Open the tools",
+      "cards": [
+        {
+          "id": "bs",
+          "title": "Black–Scholes",
+          "text": "A European option priced with its Greeks."
+        },
+        {
+          "id": "mc",
+          "title": "Monte Carlo",
+          "text": "Simulated price paths with a jump model, 5% VaR and expected shortfall."
+        },
+        {
+          "id": "mk",
+          "title": "Markowitz",
+          "text": "The efficient frontier of three assets and its sensitivity to estimation error."
+        }
+      ]
+    },
+    "page": {
+      "title": "Tools",
+      "intro": "Three models I programmed in order to understand them. All of them run right in the browser, without a server.",
+      "more": "I am adding more models over time.",
+      "back": "Back to the main page",
+      "index": "Models",
+      "meta": {
+        "title": "Tools – Adam Zikmund",
+        "description": "Interactive models in the browser: Black–Scholes with Greeks, Monte Carlo with 5% VaR and expected shortfall, and the Markowitz efficient frontier. Educational demonstrations.",
+        "path": "/en/tools/",
+        "altPath": "/nastroje/"
+      }
+    }
   },
   "projects": {
     "id": "projects",
@@ -455,7 +484,43 @@
         "stack": "Next.js, TypeScript"
       }
     ],
-    "intro": "Things I have built that are running. Most of them were made for real clients and users."
+    "intro": "Things I have built that are running. Most of them were made for real clients and users.",
+    "activity": {
+      "labels": {
+        "aria": "Overview of commits in my repositories over the last year",
+        "title": {
+          "one": "{total} commit in the last year",
+          "other": "{total} commits in the last year"
+        },
+        "unit": {
+          "one": "commit",
+          "other": "commits"
+        },
+        "dayWithCount": "{count} {unit}, {date}",
+        "dayEmpty": "No commits, {date}",
+        "viewGroup": "View",
+        "view2d": "Grid",
+        "view3d": "Skyline",
+        "less": "Less",
+        "more": "More",
+        "statTotal": "Total",
+        "statBusiest": "Busiest day",
+        "statLongest": "Longest streak",
+        "statCurrent": "Current streak",
+        "daysUnit": {
+          "one": "day",
+          "other": "days"
+        },
+        "hint": "Hover a day or use the arrow keys. In 3D, drag to orbit and double-click to reset.",
+        "levelNames": [
+          "No commits",
+          "Few commits",
+          "Some commits",
+          "Many commits",
+          "Most commits"
+        ]
+      }
+    }
   },
   "education": {
     "id": "education",
@@ -472,15 +537,6 @@
         "stack": ""
       },
       {
-        "period": "09/2026 – present",
-        "org": "Czech Technical University, Faculty of Mechanical Engineering",
-        "role": "BSc Mechanical Engineering, concurrent",
-        "results": [
-          "Participant in the selective CTU Mentoring Programme (strategy, project building, quantitative methods)."
-        ],
-        "stack": ""
-      },
-      {
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "role": "Mathematics, physics and computer science",
@@ -490,7 +546,11 @@
         ],
         "stack": ""
       }
-    ]
+    ],
+    "note": {
+      "k": "Fun fact",
+      "v": "Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering with Applied Mathematical Stochastic Methods, Information Technology, Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics)."
+    }
   },
   "skills": {
     "id": "skills",
@@ -515,7 +575,11 @@
     ],
     "interests": {
       "k": "Interests",
-      "v": "11 years of competitive baseball (Kotlářka Praha), half marathon in 1:24, training for a backyard ultra, goal of finishing a half-Ironman, poker and game theory, building products."
+      "v": "11 years of competitive baseball (Kotlářka Praha), half marathon in 1:24, training for a backyard ultra, goal of finishing a half-Ironman, poker and game theory, building products.",
+      "link": {
+        "text": "building products",
+        "href": "#projects"
+      }
     }
   },
   "contact": {
@@ -575,8 +639,7 @@
         "degree": "BSc in Financial Mathematics",
         "period": "Sep 2026 – Jun 2029 (expected)",
         "bullets": [
-          "First-semester coursework: Mathematical Analysis, Linear Algebra, Accounting, Programming, Mathematical Proseminar; year-one elective Practical Aspects of Financial Risk Measurement and Management (NMFP463, taught by practitioners).",
-          "Concurrently enrolled in BSc Mechanical Engineering at the Czech Technical University; selected for the CTU Mentoring Programme (strategy, project building, quantitative methods)."
+          "First-semester coursework: Mathematical Analysis, Linear Algebra, Accounting, Programming, Mathematical Proseminar; year-one elective Practical Aspects of Financial Risk Measurement and Management (NMFP463, taught by practitioners)."
         ]
       },
       {
@@ -683,36 +746,6 @@
       {
         "k": "Interests",
         "v": "half marathon 1:24 and backyard ultra training, 11 years of competitive baseball, poker and game theory"
-      }
-    ]
-  },
-  "numbers": {
-    "id": "numbers",
-    "title": "In numbers",
-    "items": [
-      {
-        "n": "8",
-        "l": "websites and apps in production"
-      },
-      {
-        "n": "3,319",
-        "l": "exam questions in the advisers' trainer"
-      },
-      {
-        "n": "CZK 1,000,000",
-        "l": "portfolio analysed across six funds"
-      },
-      {
-        "n": "3",
-        "l": "models programmed from scratch"
-      },
-      {
-        "n": "−58%",
-        "l": "parish response time after automation"
-      },
-      {
-        "n": "1:24",
-        "l": "half marathon"
       }
     ]
   }

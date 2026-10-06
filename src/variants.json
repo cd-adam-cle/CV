@@ -6,7 +6,8 @@
     "noindex": false,
     "themeColor": "#f6f5f2",
     "layout": "blocks",
-    "fonts": "https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,100,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    "fonts": "https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,100,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap",
+    "themeColorDark": "#121211"
   },
   {
     "key": "a",
