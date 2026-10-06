@@ -41,7 +41,7 @@ Varianta C má oba režimy. Ve výchozím stavu sleduje nastavení systému, tla
 
 ## Graf commitů
 
-Data jsou snímek `src/contributions.json` (jen data a denní počty, žádné názvy repozitářů, zprávy ani autoři). Počítá se každý commit bez sloučení větví, a to jednou podle jeho hashe, takže klony stejného repozitáře se nezdvojují. Započítávají se commity pod mými identitami (jméno nebo adresa obsahuje `cd-adam-cle` nebo `zikmund`, tedy i pracovní a školní adresa i adresy vymyšlené gitem) a commity asistenta (`noreply@anthropic.com`, tedy i z cloudových session) v repozitářích, které jsou moje: remote pod mým účtem nebo bez remote. Commity cizích lidí se nepočítají.
+Graf ukazuje posledních pět týdnů po dnech (2D mřížka nebo 3D panorama, počet týdnů je `ACTIVITY_WEEKS` v `build.mjs`), velké číslo v nadpisu je součet za posledních 53 týdnů. Data jsou snímek `src/contributions.json` (jen data a denní počty, žádné názvy repozitářů, zprávy ani autoři). Počítá se každý commit bez sloučení větví, a to jednou podle jeho hashe, takže klony stejného repozitáře se nezdvojují. Započítávají se commity pod mými identitami (jméno nebo adresa obsahuje `cd-adam-cle` nebo `zikmund`, tedy i pracovní a školní adresa i adresy vymyšlené gitem) a commity asistenta (`noreply@anthropic.com`, tedy i z cloudových session) v repozitářích, které jsou moje: remote pod mým účtem nebo bez remote. Commity cizích lidí se nepočítají.
 
 Obnova snímku před nasazením:
 
