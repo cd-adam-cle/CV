@@ -9,9 +9,12 @@ export function typo(str, LANG = 'cs') {
   t = t.replace(/ ([A-Za-zα-ωΑ-Ω](?:_[a-z]+|[₀-₉]+)?)(?=$| \(|[.,;:](?:\s|$))/g, `${NBSP}$1`);   // keep a trailing variable symbol (r, σ, S₀, r_f) with its label
   t = t.replace(/(\d(?:\u00a0| )?%) (VaR|ES)\b/g, `$1${NBSP}$2`);                 // 5% VaR                           // 1,35 %
   t = t.replace(/(\d) (Kč|p\. a\.|p\.a\.|p\. b\.|dní|hodin|let|km\/h|km|h|fps|scénářů|aktiva|fondech|funds|years|days|paths)(?=[\s,.;:)]|$)/g, `$1${NBSP}$2`); // 1 000 Kč, 5 % p. a., 24 hodin
+  t = t.replace(/(\d) (mil\.) (Kč)/g, `$1${NBSP}$2${NBSP}$3`);               // 1 mil. Kč
   t = t.replace(/\bp\. a\./g, `p.${NBSP}a.`);
   t = t.replace(/\bp\. b\./g, `p.${NBSP}b.`);
   t = t.replace(/(\d) (–|-) (\d)/g, `$1${NBSP}$2 $3`);               // 06/2026 – 09/2026 (keep break after dash)
+  t = t.replace(/(\d) (–) (?=\p{L})/gu, `$1${NBSP}$2 `);             // 2026 – present: the dash stays with the year
+  t = t.replace(/\bETS (\d)\b/g, `ETS${NBSP}$1`);                    // EU ETS 2
   if (LANG === 'cs') {
     t = t.replace(/(^|[\s(„"])([KSVZOUAIksvzouai]) (?=\S)/g, `$1$2${NBSP}`); // one-letter prepositions and conjunctions
     t = t.replace(/(\d{1,2}\.) (ročník|semestr)/g, `$1${NBSP}$2`);

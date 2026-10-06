@@ -47,14 +47,6 @@
     sync();
   }
 
-  /* compact header after scrolling past the hero */
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return; ticking = true;
-    requestAnimationFrame(() => { if (header) header.classList.toggle('is-compact', window.scrollY > 64); ticking = false; });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
   /* scroll-spy */
   const links = Array.from(document.querySelectorAll('[data-spy]'));
   const sections = links.map((l) => document.getElementById(l.dataset.spy)).filter(Boolean);

@@ -121,7 +121,7 @@
       "rows": [
         {
           "k": "Riziko a simulace",
-          "v": "5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru níže; předmět NMFP463 na MFF UK"
+          "v": "5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru (viz Nástroje); předmět NMFP463 na MFF UK"
         },
         {
           "k": "Oceňování a optimalizace",
@@ -149,7 +149,7 @@
         "results": [
           "Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty.",
           "Analýza portfolia 1 000 000 Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb, zpracovaná jako interaktivní klientská prezentace.",
-          "Trenažér odborných zkoušek ČNB pro poradce a generátor carouselů s automatickou QA kontrolou (viz Projekty)."
+          "Trenažér odborných zkoušek ČNB pro poradce a generátor karuselů s automatickou QA kontrolou (viz Projekty)."
         ],
         "stack": "Python, PIL, Remotion, React, TypeScript"
       },
@@ -487,7 +487,7 @@
     "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele.",
     "activity": {
       "labels": {
-        "aria": "Přehled commitů v mých repozitářích za poslední rok",
+        "aria": "Commity v mých repozitářích za posledních pět týdnů, po dnech",
         "title": {
           "one": "{total} commit za poslední rok",
           "few": "{total} commity za poslední rok",
@@ -521,7 +521,7 @@
         "levelNames": [
           "Žádné commity",
           "Málo commitů",
-          "Středně commitů",
+          "Průměrně commitů",
           "Hodně commitů",
           "Nejvíc commitů"
         ]
@@ -626,10 +626,10 @@
   },
   "footer": {
     "left": "© 2026 Adam Zikmund",
-    "note": "Nástroje na této stránce jsou vzdělávací ukázky, ne investiční doporučení."
+    "note": "Nástroje na tomto webu jsou vzdělávací ukázky, ne investiční doporučení."
   },
   "cv": {
-    "fileTitle": "Adam Zikmund — CV",
+    "fileTitle": "Adam Zikmund – CV",
     "name": "Adam Zikmund",
     "contactLine": "Praha · +420 728 126 406 · zikmundi@proton.me · linkedin.com/in/adam-zikmund-ba3469360 · cv-seven-dusky-63.vercel.app",
     "sections": {
@@ -668,7 +668,7 @@
         "bullets": [
           "Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty; rozbor rodinných rozpočtů.",
           "Analýza portfolia 1 mil. Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb; zpracováno jako interaktivní klientská prezentace.",
-          "Content engine firmy: carousely v Pythonu (PIL) řízené JSON s automatickou QA kontrolou a videa v Remotion."
+          "Content engine firmy: karusely v Pythonu (PIL) řízené JSON s automatickou QA kontrolou a videa v Remotion."
         ]
       },
       {

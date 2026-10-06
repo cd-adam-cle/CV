@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="stylesheet" href="/assets/css/variant-c.css">
 <link rel="stylesheet" href="/assets/css/skyline.css">
-<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);var m=document.querySelectorAll('meta[name="theme-color"]'),c,i;for(i=0;i<m.length;i++){if(/dark/.test(m[i].media||'')===(t==='dark'))c=m[i].content}if(c)for(i=0;i<m.length;i++)m[i].content=c}}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/skyline.js" defer></script>
 <script src="/assets/js/motion.js" defer></script>
@@ -40,17 +40,17 @@
     <ol class="nav-list">
       <li><a href="#profile" data-spy="profile">Profile</a></li>
       <li><a href="#experience" data-spy="experience">Experience</a></li>
-      <li><a href="/en/tools/">Tools</a></li>
+      <li><a href="/en/tools/" data-spy="tools">Tools</a></li>
       <li><a href="#projects" data-spy="projects">Projects</a></li>
       <li><a href="#education" data-spy="education">Education</a></li>
       <li><a href="#skills" data-spy="skills">Skills</a></li>
       <li><a href="#contact" data-spy="contact">Contact</a></li>
     </ol>
-    <span class="nav-lang" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/" hreflang="cs" lang="cs">CS</a></span>
+    <span class="nav-lang" role="group" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/" hreflang="cs" lang="cs">CS</a></span>
   </div>
   <div class="nav-right">
     <a class="nav-cv" href="/cv/Adam-Zikmund-CV-EN.pdf"><span class="t-long">Download CV (PDF)</span><span class="t-short">CV (PDF)</span></a>
-    <span class="nav-lang" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/" hreflang="cs" lang="cs" title="Česká verze">CS</a></span>
+    <span class="nav-lang" role="group" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/" hreflang="cs" lang="cs" title="Česká verze">CS</a></span>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode" data-theme-toggle>
       <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -73,7 +73,7 @@
   <aside class="sheet" aria-labelledby="sheet-title" data-reveal="rise">
     <h2 id="sheet-title" class="visually-hidden">Key facts</h2>
     <dl class="sheet-rows">
-      <div class="sheet-row"><dt>Study</dt><dd>Charles University in Prague (MFF UK), BSc Financial Mathematics, 2026 – present</dd></div>
+      <div class="sheet-row"><dt>Study</dt><dd>Charles University in Prague (MFF UK), BSc Financial Mathematics, 2026 – present</dd></div>
       <div class="sheet-row"><dt>Experience</dt><dd>Valor Group (trainee), Freio (co-founder), Božííí (founder)</dd></div>
       <div class="sheet-row"><dt>Course</dt><dd>Practical Aspects of Financial Risk Measurement and Management (NMFP463), year 1</dd></div>
       <div class="sheet-row"><dt>Languages</dt><dd>Czech, English C1 (CAE), German A2</dd></div>
@@ -83,7 +83,7 @@
 <section id="profile" class="section" aria-labelledby="h-profile">
   <div class="rail" data-reveal="rail"><h2 id="h-profile"><span class="mw"><span>Profile</span></span></h2></div>
   <div class="content">
-    <p class="lead" data-magic><span class="w">While</span> <span class="w">at</span> <span class="w">grammar</span> <span class="w">school</span> <span class="w">I</span> <span class="w">founded</span> <span class="w">Božííí,</span> <span class="w">a</span> <span class="w">community</span> <span class="w">site</span> <span class="w">for</span> <span class="w">Prague</span> <span class="w">parishes,</span> <span class="w">co-founded</span> <span class="w">the</span> <span class="w">EdTech</span> <span class="w">platform</span> <span class="w">Freio</span> <span class="w">and</span> <span class="w">freelanced</span> <span class="w">on</span> <span class="w">automation,</span> <span class="w">scraping</span> <span class="w">and</span> <span class="w">LLM</span> <span class="w">API</span> <span class="w">integrations.</span> <span class="w">My</span> <span class="w">final-year</span> <span class="w">research</span> <span class="w">paper</span> <span class="w">modelled</span> <span class="w">how</span> <span class="w">EU</span> <span class="w">ETS</span> <span class="w">2</span> <span class="w">allowance</span> <span class="w">costs</span> <span class="w">pass</span> <span class="w">through</span> <span class="w">to</span> <span class="w">households.</span> <span class="w">I</span> <span class="w">spent</span> <span class="w">the</span> <span class="w">summer</span> <span class="w">of</span> <span class="w">2026</span> <span class="w">as</span> <span class="w">a</span> <span class="w">trainee</span> <span class="w">in</span> <span class="w">financial</span> <span class="w">advisory,</span> <span class="w">modelling</span> <span class="w">client</span> <span class="w">plans</span> <span class="w">and</span> <span class="w">analysing</span> <span class="w">a</span> <span class="w">portfolio.</span> <span class="w">Since</span> <span class="w">September</span> <span class="w">I</span> <span class="w">have</span> <span class="w">been</span> <span class="w">studying</span> <span class="w">Financial</span> <span class="w">Mathematics</span> <span class="w">at</span> <span class="w">Charles</span> <span class="w">University.</span></p>
+    <p class="lead" data-magic><span class="w">While</span> <span class="w">at</span> <span class="w">grammar</span> <span class="w">school</span> <span class="w">I</span> <span class="w">founded</span> <span class="w">Božííí,</span> <span class="w">a</span> <span class="w">community</span> <span class="w">site</span> <span class="w">for</span> <span class="w">Prague</span> <span class="w">parishes,</span> <span class="w">co-founded</span> <span class="w">the</span> <span class="w">EdTech</span> <span class="w">platform</span> <span class="w">Freio</span> <span class="w">and</span> <span class="w">freelanced</span> <span class="w">on</span> <span class="w">automation,</span> <span class="w">scraping</span> <span class="w">and</span> <span class="w">LLM</span> <span class="w">API</span> <span class="w">integrations.</span> <span class="w">My</span> <span class="w">final-year</span> <span class="w">research</span> <span class="w">paper</span> <span class="w">modelled</span> <span class="w">how</span> <span class="w">EU</span> <span class="w">ETS 2</span> <span class="w">allowance</span> <span class="w">costs</span> <span class="w">pass</span> <span class="w">through</span> <span class="w">to</span> <span class="w">households.</span> <span class="w">I</span> <span class="w">spent</span> <span class="w">the</span> <span class="w">summer</span> <span class="w">of</span> <span class="w">2026</span> <span class="w">as</span> <span class="w">a</span> <span class="w">trainee</span> <span class="w">in</span> <span class="w">financial</span> <span class="w">advisory,</span> <span class="w">modelling</span> <span class="w">client</span> <span class="w">plans</span> <span class="w">and</span> <span class="w">analysing</span> <span class="w">a</span> <span class="w">portfolio.</span> <span class="w">Since</span> <span class="w">September</span> <span class="w">I</span> <span class="w">have</span> <span class="w">been</span> <span class="w">studying</span> <span class="w">Financial</span> <span class="w">Mathematics</span> <span class="w">at</span> <span class="w">Charles</span> <span class="w">University.</span></p>
     <div class="kv-block">
       <h3 id="h-seeking">What I am looking for</h3>
       <dl class="kv" aria-labelledby="h-seeking">
@@ -96,7 +96,7 @@
     <div class="kv-block">
       <h3 id="h-basis">What I build on</h3>
       <dl class="kv" aria-labelledby="h-basis">
-        <div class="kv-row" data-reveal="kv"><dt>Risk and simulation</dt><dd>5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator below; the NMFP463 course at Charles University</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Risk and simulation</dt><dd>5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator (see Tools); the NMFP463 course at Charles University</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Pricing and optimisation</dt><dd>Black–Scholes with Greeks and the Markowitz frontier, programmed from scratch, see Tools</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Fund analysis</dt><dd>a CZK 1,000,000 six-fund portfolio: TER ~1.35% p.a., duration, liquidity, rate scenarios (Valor Group)</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Finance and business</dt><dd>client financial plans (Valor Group); accounting (Charles University); business and strategy at Freio</dd></div>
@@ -109,7 +109,7 @@
   <div class="content">
     <ol class="ledger">
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>06/2026 – 09/2026</time></div>
+        <div class="row-date"><span>06/2026 – 09/2026</span></div>
         <div class="row-head"><h3>Valor Group</h3><p class="row-role">Trainee, financial advisory</p></div>
         <div class="row-body">
           <ul class="results"><li>Modelled client financial plans (insurance and investment products), prepared meeting materials and joined client meetings.</li><li>Analysed a CZK 1,000,000 six-fund portfolio (50% bonds / 34% real estate / 16% equities): weighted TER ~1.35% p.a., duration, liquidity, risk types and rate scenarios, delivered as an interactive client presentation.</li><li>A CNB exam trainer for advisers and a carousel generator with automated QA checks (see Projects).</li></ul>
@@ -117,7 +117,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>01/2026 – present</time></div>
+        <div class="row-date"><span>01/2026 – present</span></div>
         <div class="row-head"><h3>Freelance</h3><p class="row-role">Software and AI automation</p></div>
         <div class="row-body">
           <ul class="results"><li>Scraping and data pipelines (Playwright, BeautifulSoup) and LLM API integrations (OpenAI, Anthropic) for clients.</li><li>Content and e-mail personalisation automation saved more than 60% of manual preparation time.</li></ul>
@@ -125,7 +125,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>04/2026 – 05/2026</time></div>
+        <div class="row-date"><span>04/2026 – 05/2026</span></div>
         <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps and infrastructure, contract</p></div>
         <div class="row-body">
           <ul class="results"><li>Hardware and cloud virtualisation operations, CI/CD automation support and Linux server administration.</li></ul>
@@ -133,7 +133,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>02/2026 – 07/2026</time></div>
+        <div class="row-date"><span>02/2026 – 07/2026</span></div>
         <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, business and strategy</p></div>
         <div class="row-body">
           <ul class="results"><li>Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; business strategy, market validation, customer segmentation.</li><li>Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project.</li></ul>
@@ -141,7 +141,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2025 – present</time></div>
+        <div class="row-date"><span>09/2025 – present</span></div>
         <div class="row-head"><h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3><p class="row-role">Founder and full-stack developer</p></div>
         <div class="row-body">
           <ul class="results"><li>Community site connecting Prague parishes with people arranging baptism, confirmation or first communion; automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%.</li></ul>
@@ -149,7 +149,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>10/2024 – present</time></div>
+        <div class="row-date"><span>10/2024 – present</span></div>
         <div class="row-head"><h3>Sauna &amp; Wellness Rooms Central</h3><p class="row-role">Shift supervisor, part-time</p></div>
         <div class="row-body">
           <ul class="results"><li>Cash management, daily closings and till reconciliation; led the shift team.</li></ul>
@@ -176,64 +176,64 @@
   <div class="content">
     <p class="section-intro" data-magic><span class="w">Things</span> <span class="w">I</span> <span class="w">have</span> <span class="w">built</span> <span class="w">that</span> <span class="w">are</span> <span class="w">running.</span> <span class="w">Most</span> <span class="w">of</span> <span class="w">them</span> <span class="w">were</span> <span class="w">made</span> <span class="w">for</span> <span class="w">real</span> <span class="w">clients</span> <span class="w">and</span> <span class="w">users.</span></p>
     <div class="activity" data-reveal="panel">
-      <figure class="skyline" data-skyline data-view="3d" data-locale="en-GB" data-week-start="1">
-        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2025-10-08",4],["2025-10-13",1],["2025-10-14",4],["2025-10-15",2],["2025-10-16",2],["2025-10-18",2],["2025-10-19",3],["2025-10-22",3],["2025-10-27",1],["2025-11-07",1],["2025-11-09",1],["2025-11-11",2],["2025-11-12",1],["2025-11-22",8],["2025-11-23",1],["2025-12-03",1],["2025-12-08",4],["2025-12-09",1],["2025-12-15",3],["2025-12-21",1],["2025-12-28",1],["2025-12-29",1],["2026-01-02",3],["2026-01-03",1],["2026-01-05",1],["2026-01-09",1],["2026-01-17",2],["2026-01-18",1],["2026-01-19",7],["2026-01-20",4],["2026-01-21",2],["2026-01-22",1],["2026-01-23",5],["2026-01-26",1],["2026-01-28",1],["2026-01-31",3],["2026-02-01",1],["2026-02-02",5],["2026-02-03",11],["2026-02-04",5],["2026-02-05",3],["2026-02-06",2],["2026-02-07",1],["2026-02-08",1],["2026-02-11",2],["2026-02-12",1],["2026-02-15",1],["2026-02-16",6],["2026-02-17",1],["2026-02-19",1],["2026-02-21",1],["2026-03-02",1],["2026-03-04",3],["2026-03-05",8],["2026-03-10",4],["2026-03-23",4],["2026-04-21",5],["2026-04-23",8],["2026-05-06",4],["2026-05-07",11],["2026-05-08",2],["2026-05-12",1],["2026-05-25",5],["2026-06-03",3],["2026-06-04",5],["2026-06-06",1],["2026-06-09",7],["2026-06-10",16],["2026-06-11",2],["2026-06-12",6],["2026-06-14",2],["2026-06-16",3],["2026-06-25",3],["2026-06-29",1],["2026-06-30",3],["2026-07-09",11],["2026-07-10",5],["2026-07-11",1],["2026-07-12",1],["2026-07-20",3],["2026-07-21",8],["2026-07-22",6],["2026-07-23",5],["2026-08-12",25],["2026-08-13",17],["2026-08-14",20],["2026-08-15",9],["2026-08-16",1],["2026-08-20",8],["2026-08-21",2],["2026-08-23",19],["2026-08-24",15],["2026-08-25",54],["2026-08-26",3],["2026-08-27",12],["2026-08-28",1],["2026-08-29",5],["2026-08-30",21],["2026-08-31",16],["2026-09-01",4],["2026-09-02",6],["2026-09-03",5],["2026-09-05",5],["2026-09-06",15],["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",5]]}</script>
-        <script type="application/json" data-skyline-labels>{"aria":"Overview of commits in my repositories over the last year","title":{"one":"{total} commit in the last year","other":"{total} commits in the last year"},"unit":{"one":"commit","other":"commits"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"No commits, {date}","viewGroup":"View","view2d":"Grid","view3d":"Skyline","less":"Less","more":"More","statTotal":"Total","statBusiest":"Busiest day","statLongest":"Longest streak","statCurrent":"Current streak","daysUnit":{"one":"day","other":"days"},"hint":"Hover a day or use the arrow keys. In 3D, drag to orbit and double-click to reset.","levelNames":["No commits","Few commits","Some commits","Many commits","Most commits"]}</script>
-        <noscript><p class="skyline-fallback">816 commits in the last year</p></noscript>
+      <figure class="skyline" data-skyline data-view="3d" data-locale="en-GB" data-week-start="1" data-weeks="5" data-total="841">
+        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",8]]}</script>
+        <script type="application/json" data-skyline-labels>{"aria":"Commits in my repositories over the last five weeks, by day","title":{"one":"{total} commit in the last year","other":"{total} commits in the last year"},"unit":{"one":"commit","other":"commits"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"No commits, {date}","viewGroup":"View","view2d":"Grid","view3d":"Skyline","less":"Less","more":"More","statTotal":"Total","statBusiest":"Busiest day","statLongest":"Longest streak","statCurrent":"Current streak","daysUnit":{"one":"day","other":"days"},"hint":"Hover a day or use the arrow keys. In 3D, drag to orbit and double-click to reset.","levelNames":["No commits","Few commits","Some commits","Many commits","Most commits"]}</script>
+        <noscript><p class="skyline-fallback">841 commits in the last year</p></noscript>
       </figure>
     </div>
     <div class="pgrid">
       <article class="pcard pcard-wide" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Product</span><time>09/2025 – present</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Product</span><span class="pcard-period">09/2025 – present</span></p>
         <h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3>
         <p class="pcard-role">Community platform for Prague parishes</p>
         <ul class="results"><li>A guide to sacraments and a parish directory; Dejvice, Hlubočepy and Chodov parishes on board.</li><li>Automated enquiry routing (Resend, Redis) cut response waiting time by more than 58%.</li><li>Optimised for AI search engines (llms.txt).</li></ul>
         <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>07/2026 – 08/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">For a client</span><span class="pcard-period">07/2026 – 08/2026</span></p>
         <h3>CNB exam trainer</h3>
         <p class="pcard-role">Internal study app for Valor Group advisers</p>
         <ul class="results"><li>Two question banks for the Czech National Bank professional exams: insurance (1,980 questions) and investments (1,339), each with reasoning.</li><li>Mock exam scored by the official decree, spaced repetition of mistakes (1/3/7/14/30 days), readiness estimate, weak-section statistics.</li><li>A single HTML file with no dependencies, progress sync through a serverless function, 10 automated test suites.</li></ul>
         <p class="row-stack">Vanilla JS, Vercel Functions, jsdom</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>2025 – 2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">For a client</span><span class="pcard-period">2025 – 2026</span></p>
         <h3>Carousel generator</h3>
         <p class="pcard-role">Content engine and user manual for Valor Group</p>
         <ul class="results"><li>Structured JSON becomes a series of 1080 × 1350 slides with dynamically measured typography; a QA enforcer checks types, required fields and lengths.</li><li>Video templates in Remotion (60 fps, 9:16 Reels) and a web manual with a template gallery for the team.</li></ul>
         <p class="row-stack">Python (PIL), Remotion, React, Vite</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Own</span><time>08/2026 – present</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Personal</span><span class="pcard-period">08/2026 – present</span></p>
         <h3>Training operations centre</h3>
         <p class="pcard-role">Private PWA for backyard-ultra preparation</p>
         <ul class="results"><li>Daily telemetry sync from the Garmin Connect API via Vercel Cron; ACWR and CTL/ATL load calculations.</li><li>Fuelling model (carbohydrates, hydration, sodium, pacing) and a weekly adaptive plan via the Anthropic API.</li></ul>
         <p class="row-stack">Next.js 15, Neon Postgres, Drizzle, Anthropic API</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>07/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">For a client</span><span class="pcard-period">07/2026</span></p>
         <h3>Portfolio investment analysis</h3>
         <p class="pcard-role">Client presentation for Valor Group</p>
         <ul class="results"><li>Six funds and the allocation of a CZK 1,000,000 portfolio: TER, duration, liquidity, risks, rate scenarios; data from KIDs and factsheets.</li><li>A single file that works offline and prints to an A4 PDF.</li></ul>
         <p class="row-stack">HTML, CSS, JS</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>04/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">For a client</span><span class="pcard-period">04/2026</span></p>
         <h3>Cooperation proposal</h3>
         <p class="pcard-role">Interactive presentation for a prospective client</p>
         <ul class="results"><li>Two ways of working together, questions to think through and a price calculator; the client clicks through and then gets in touch.</li></ul>
         <p class="row-stack">Next.js 16, TypeScript</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Own</span><time>06/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Personal</span><span class="pcard-period">06/2026</span></p>
         <h3>When and where do we go?</h3>
         <p class="pcard-role">Group trip planner</p>
         <ul class="results"><li>One shared calendar: everyone marks when they are free, the app finds the dates with the biggest overlap; ideas and votes in real time.</li></ul>
         <p class="row-stack">Next.js, Supabase</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">For a client</span><time>06/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">For a client</span><span class="pcard-period">06/2026</span></p>
         <h3>Website for a home baker</h3>
         <p class="pcard-role">Showcase and cake builder</p>
         <ul class="results"><li>Cake builder, gallery, reviews and blog; customers assemble a cake and send an enquiry.</li></ul>
@@ -247,7 +247,7 @@
   <div class="content">
     <ol class="ledger">
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2026 – present</time></div>
+        <div class="row-date"><span>09/2026 – present</span></div>
         <div class="row-head"><h3>Charles University, Faculty of Mathematics and Physics</h3><p class="row-role">BSc Financial Mathematics</p></div>
         <div class="row-body">
           <ul class="results"><li>First semester: Mathematical Analysis, Linear Algebra, Accounting, Programming, Mathematical Proseminar.</li><li>Practical Aspects of Financial Risk Measurement and Management (NMFP463): an elective taught by practitioners, taken in year one; group financial statement analysis and an individual paper.</li></ul>
@@ -255,15 +255,15 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2022 – 06/2026</time></div>
+        <div class="row-date"><span>09/2022 – 06/2026</span></div>
         <div class="row-head"><h3>Gymnázium Christiána Dopplera</h3><p class="row-role">Mathematics, physics and computer science</p></div>
         <div class="row-body">
-          <ul class="results"><li>Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).</li><li>Final-year research paper &quot;The impact of EU ETS 2 on ordinary people&quot; (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households.</li></ul>
+          <ul class="results"><li>Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).</li><li>Final-year research paper &quot;The impact of EU ETS 2 on ordinary people&quot; (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households.</li></ul>
           
         </div>
       </li>
     </ol>
-    <p class="edu-note" data-reveal="rise"><strong>Fun fact.</strong> Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering with Applied Mathematical Stochastic Methods, Information Technology, Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics).</p>
+    <p class="edu-note" data-reveal="rise"><strong>Fun fact.</strong> Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering, programme Applied Mathematical Stochastic Methods; Information Technology; Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics).</p>
   </div>
 </section>
 <section id="skills" class="section" aria-labelledby="h-skills">
@@ -293,7 +293,7 @@
 </main>
 <footer class="site-footer">
   <p>© 2026 Adam Zikmund</p>
-  <p class="footer-note">The tools on this page are educational demonstrations, not investment advice.</p>
+  <p class="footer-note">The tools on this site are educational demonstrations, not investment advice.</p>
   <p class="footer-lang"><span class="is-current">EN</span> / <a href="/" hreflang="cs" lang="cs">CS</a></p>
 </footer>
 </body>

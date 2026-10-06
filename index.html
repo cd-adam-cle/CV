@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="stylesheet" href="/assets/css/variant-c.css">
 <link rel="stylesheet" href="/assets/css/skyline.css">
-<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);var m=document.querySelectorAll('meta[name="theme-color"]'),c,i;for(i=0;i<m.length;i++){if(/dark/.test(m[i].media||'')===(t==='dark'))c=m[i].content}if(c)for(i=0;i<m.length;i++)m[i].content=c}}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/skyline.js" defer></script>
 <script src="/assets/js/motion.js" defer></script>
@@ -40,17 +40,17 @@
     <ol class="nav-list">
       <li><a href="#profil" data-spy="profil">Profil</a></li>
       <li><a href="#zkusenosti" data-spy="zkusenosti">Zkušenosti</a></li>
-      <li><a href="/nastroje/">Nástroje</a></li>
+      <li><a href="/nastroje/" data-spy="nastroje">Nástroje</a></li>
       <li><a href="#projekty" data-spy="projekty">Projekty</a></li>
       <li><a href="#vzdelani" data-spy="vzdelani">Vzdělání</a></li>
       <li><a href="#dovednosti" data-spy="dovednosti">Dovednosti</a></li>
       <li><a href="#kontakt" data-spy="kontakt">Kontakt</a></li>
     </ol>
-    <span class="nav-lang" aria-label="Jazyk"><span class="is-current">CS</span><span class="sep" aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en">EN</a></span>
+    <span class="nav-lang" role="group" aria-label="Jazyk"><span class="is-current">CS</span><span class="sep" aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en">EN</a></span>
   </div>
   <div class="nav-right">
     <a class="nav-cv" href="/cv/Adam-Zikmund-CV-CZ.pdf"><span class="t-long">Stáhnout CV (PDF)</span><span class="t-short">CV (PDF)</span></a>
-    <span class="nav-lang" aria-label="Jazyk"><span class="is-current">CS</span><span class="sep" aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en" title="English version">EN</a></span>
+    <span class="nav-lang" role="group" aria-label="Jazyk"><span class="is-current">CS</span><span class="sep" aria-hidden="true">/</span><a href="/en/" hreflang="en" lang="en" title="English version">EN</a></span>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Tmavý režim" title="Tmavý režim" data-theme-toggle>
       <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -83,7 +83,7 @@
 <section id="profil" class="section" aria-labelledby="h-profil">
   <div class="rail" data-reveal="rail"><h2 id="h-profil"><span class="mw"><span>Profil</span></span></h2></div>
   <div class="content">
-    <p class="lead" data-magic><span class="w">Na</span> <span class="w">gymnáziu</span> <span class="w">jsem</span> <span class="w">založil</span> <span class="w">komunitní</span> <span class="w">web</span> <span class="w">Božííí</span> <span class="w">pro</span> <span class="w">pražské</span> <span class="w">farnosti,</span> <span class="w">spoluzaložil</span> <span class="w">EdTech</span> <span class="w">platformu</span> <span class="w">Freio</span> <span class="w">a jako</span> <span class="w">freelancer</span> <span class="w">dělal</span> <span class="w">automatizace,</span> <span class="w">scraping</span> <span class="w">a napojení</span> <span class="w">na</span> <span class="w">LLM</span> <span class="w">API.</span> <span class="w">Ročníkovou</span> <span class="w">práci</span> <span class="w">jsem</span> <span class="w">psal</span> <span class="w">o dopadu</span> <span class="w">EU</span> <span class="w">ETS</span> <span class="w">2</span> <span class="w">na</span> <span class="w">domácnosti,</span> <span class="w">s vlastním</span> <span class="w">matematickým</span> <span class="w">modelem</span> <span class="w">přenosu</span> <span class="w">nákladů.</span> <span class="w">Léto</span> <span class="w">2026</span> <span class="w">jsem</span> <span class="w">strávil</span> <span class="w">jako</span> <span class="w">trainee</span> <span class="w">ve</span> <span class="w">finančním</span> <span class="w">poradenství,</span> <span class="w">kde</span> <span class="w">jsem</span> <span class="w">modeloval</span> <span class="w">klientské</span> <span class="w">plány</span> <span class="w">a analyzoval</span> <span class="w">portfolio.</span> <span class="w">Od</span> <span class="w">září</span> <span class="w">studuji</span> <span class="w">finanční</span> <span class="w">matematiku</span> <span class="w">na</span> <span class="w">MFF</span> <span class="w">UK.</span></p>
+    <p class="lead" data-magic><span class="w">Na</span> <span class="w">gymnáziu</span> <span class="w">jsem</span> <span class="w">založil</span> <span class="w">komunitní</span> <span class="w">web</span> <span class="w">Božííí</span> <span class="w">pro</span> <span class="w">pražské</span> <span class="w">farnosti,</span> <span class="w">spoluzaložil</span> <span class="w">EdTech</span> <span class="w">platformu</span> <span class="w">Freio</span> <span class="w">a jako</span> <span class="w">freelancer</span> <span class="w">dělal</span> <span class="w">automatizace,</span> <span class="w">scraping</span> <span class="w">a napojení</span> <span class="w">na</span> <span class="w">LLM</span> <span class="w">API.</span> <span class="w">Ročníkovou</span> <span class="w">práci</span> <span class="w">jsem</span> <span class="w">psal</span> <span class="w">o dopadu</span> <span class="w">EU</span> <span class="w">ETS 2</span> <span class="w">na</span> <span class="w">domácnosti,</span> <span class="w">s vlastním</span> <span class="w">matematickým</span> <span class="w">modelem</span> <span class="w">přenosu</span> <span class="w">nákladů.</span> <span class="w">Léto</span> <span class="w">2026</span> <span class="w">jsem</span> <span class="w">strávil</span> <span class="w">jako</span> <span class="w">trainee</span> <span class="w">ve</span> <span class="w">finančním</span> <span class="w">poradenství,</span> <span class="w">kde</span> <span class="w">jsem</span> <span class="w">modeloval</span> <span class="w">klientské</span> <span class="w">plány</span> <span class="w">a analyzoval</span> <span class="w">portfolio.</span> <span class="w">Od</span> <span class="w">září</span> <span class="w">studuji</span> <span class="w">finanční</span> <span class="w">matematiku</span> <span class="w">na</span> <span class="w">MFF</span> <span class="w">UK.</span></p>
     <div class="kv-block">
       <h3 id="h-seeking">Co hledám</h3>
       <dl class="kv" aria-labelledby="h-seeking">
@@ -96,7 +96,7 @@
     <div class="kv-block">
       <h3 id="h-basis">Na co navazuji</h3>
       <dl class="kv" aria-labelledby="h-basis">
-        <div class="kv-row" data-reveal="kv"><dt>Riziko a simulace</dt><dd>5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru níže; předmět NMFP463 na MFF UK</dd></div>
+        <div class="kv-row" data-reveal="kv"><dt>Riziko a simulace</dt><dd>5% VaR, expected shortfall a model krachů se skoky v Monte Carlo simulátoru (viz Nástroje); předmět NMFP463 na MFF UK</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Oceňování a optimalizace</dt><dd>Black–Scholes s Greeks a Markowitzova hranice, naprogramované od nuly, viz Nástroje</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Analýza fondů</dt><dd>portfolio 1 000 000 Kč v šesti fondech: TER ~1,35 % p. a., durace, likvidita, scénáře sazeb (Valor Group)</dd></div>
         <div class="kv-row" data-reveal="kv"><dt>Finance a obchod</dt><dd>klientské finanční plány (Valor Group); účetnictví (MFF UK); obchodní a strategická agenda ve Freiu</dd></div>
@@ -109,15 +109,15 @@
   <div class="content">
     <ol class="ledger">
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>06/2026 – 09/2026</time></div>
+        <div class="row-date"><span>06/2026 – 09/2026</span></div>
         <div class="row-head"><h3>Valor Group</h3><p class="row-role">Trainee, finanční poradenství</p></div>
         <div class="row-body">
-          <ul class="results"><li>Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty.</li><li>Analýza portfolia 1 000 000 Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb, zpracovaná jako interaktivní klientská prezentace.</li><li>Trenažér odborných zkoušek ČNB pro poradce a generátor carouselů s automatickou QA kontrolou (viz Projekty).</li></ul>
+          <ul class="results"><li>Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty.</li><li>Analýza portfolia 1 000 000 Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb, zpracovaná jako interaktivní klientská prezentace.</li><li>Trenažér odborných zkoušek ČNB pro poradce a generátor karuselů s automatickou QA kontrolou (viz Projekty).</li></ul>
           <p class="row-stack">Python, PIL, Remotion, React, TypeScript</p>
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>01/2026 – dosud</time></div>
+        <div class="row-date"><span>01/2026 – dosud</span></div>
         <div class="row-head"><h3>Freelance</h3><p class="row-role">Software a AI automatizace</p></div>
         <div class="row-body">
           <ul class="results"><li>Scrapovací a datové pipeline (Playwright, BeautifulSoup) a napojení na LLM API (OpenAI, Anthropic) pro klienty.</li><li>Automatizace tvorby obsahu a personalizace e-mailů ušetřila přes 60 % času manuální přípravy.</li></ul>
@@ -125,7 +125,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>04/2026 – 05/2026</time></div>
+        <div class="row-date"><span>04/2026 – 05/2026</span></div>
         <div class="row-head"><h3>Cloudinfrastack</h3><p class="row-role">DevOps a infrastruktura, kontrakt</p></div>
         <div class="row-body">
           <ul class="results"><li>Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů.</li></ul>
@@ -133,7 +133,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>02/2026 – 07/2026</time></div>
+        <div class="row-date"><span>02/2026 – 07/2026</span></div>
         <div class="row-head"><h3><a href="https://freio.cz" target="_blank" rel="noopener">Freio</a></h3><p class="row-role">Co-founder, obchod a strategie</p></div>
         <div class="row-body">
           <ul class="results"><li>Spoluzaložení EdTech platformy pro přípravu na přijímací zkoušky SCIO; obchodní strategie, ověření zájmu trhu, segmentace zákazníků.</li><li>První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner.</li></ul>
@@ -141,7 +141,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2025 – dosud</time></div>
+        <div class="row-date"><span>09/2025 – dosud</span></div>
         <div class="row-head"><h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3><p class="row-role">Founder a full-stack developer</p></div>
         <div class="row-body">
           <ul class="results"><li>Komunitní web propojující pražské farnosti s lidmi, kteří vyřizují křest, biřmování nebo svaté přijímání; automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %.</li></ul>
@@ -149,7 +149,7 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>10/2024 – dosud</time></div>
+        <div class="row-date"><span>10/2024 – dosud</span></div>
         <div class="row-head"><h3>Sauna &amp; Wellness Rooms Central</h3><p class="row-role">Vedoucí směny, part-time</p></div>
         <div class="row-body">
           <ul class="results"><li>Hotovost na provozu, denní uzávěrky a kontrola pokladny; vedení týmu na směně.</li></ul>
@@ -176,64 +176,64 @@
   <div class="content">
     <p class="section-intro" data-magic><span class="w">Věci,</span> <span class="w">které</span> <span class="w">jsem</span> <span class="w">postavil</span> <span class="w">a které</span> <span class="w">běží.</span> <span class="w">Většina</span> <span class="w">vznikla</span> <span class="w">pro</span> <span class="w">skutečné</span> <span class="w">klienty</span> <span class="w">a uživatele.</span></p>
     <div class="activity" data-reveal="panel">
-      <figure class="skyline" data-skyline data-view="3d" data-locale="cs-CZ" data-week-start="1">
-        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2025-10-08",4],["2025-10-13",1],["2025-10-14",4],["2025-10-15",2],["2025-10-16",2],["2025-10-18",2],["2025-10-19",3],["2025-10-22",3],["2025-10-27",1],["2025-11-07",1],["2025-11-09",1],["2025-11-11",2],["2025-11-12",1],["2025-11-22",8],["2025-11-23",1],["2025-12-03",1],["2025-12-08",4],["2025-12-09",1],["2025-12-15",3],["2025-12-21",1],["2025-12-28",1],["2025-12-29",1],["2026-01-02",3],["2026-01-03",1],["2026-01-05",1],["2026-01-09",1],["2026-01-17",2],["2026-01-18",1],["2026-01-19",7],["2026-01-20",4],["2026-01-21",2],["2026-01-22",1],["2026-01-23",5],["2026-01-26",1],["2026-01-28",1],["2026-01-31",3],["2026-02-01",1],["2026-02-02",5],["2026-02-03",11],["2026-02-04",5],["2026-02-05",3],["2026-02-06",2],["2026-02-07",1],["2026-02-08",1],["2026-02-11",2],["2026-02-12",1],["2026-02-15",1],["2026-02-16",6],["2026-02-17",1],["2026-02-19",1],["2026-02-21",1],["2026-03-02",1],["2026-03-04",3],["2026-03-05",8],["2026-03-10",4],["2026-03-23",4],["2026-04-21",5],["2026-04-23",8],["2026-05-06",4],["2026-05-07",11],["2026-05-08",2],["2026-05-12",1],["2026-05-25",5],["2026-06-03",3],["2026-06-04",5],["2026-06-06",1],["2026-06-09",7],["2026-06-10",16],["2026-06-11",2],["2026-06-12",6],["2026-06-14",2],["2026-06-16",3],["2026-06-25",3],["2026-06-29",1],["2026-06-30",3],["2026-07-09",11],["2026-07-10",5],["2026-07-11",1],["2026-07-12",1],["2026-07-20",3],["2026-07-21",8],["2026-07-22",6],["2026-07-23",5],["2026-08-12",25],["2026-08-13",17],["2026-08-14",20],["2026-08-15",9],["2026-08-16",1],["2026-08-20",8],["2026-08-21",2],["2026-08-23",19],["2026-08-24",15],["2026-08-25",54],["2026-08-26",3],["2026-08-27",12],["2026-08-28",1],["2026-08-29",5],["2026-08-30",21],["2026-08-31",16],["2026-09-01",4],["2026-09-02",6],["2026-09-03",5],["2026-09-05",5],["2026-09-06",15],["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",5]]}</script>
-        <script type="application/json" data-skyline-labels>{"aria":"Přehled commitů v mých repozitářích za poslední rok","title":{"one":"{total} commit za poslední rok","few":"{total} commity za poslední rok","many":"{total} commitu za poslední rok","other":"{total} commitů za poslední rok"},"unit":{"one":"commit","few":"commity","many":"commitu","other":"commitů"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"Žádné commity, {date}","viewGroup":"Zobrazení","view2d":"Mřížka","view3d":"Panorama","less":"Méně","more":"Více","statTotal":"Celkem","statBusiest":"Nejaktivnější den","statLongest":"Nejdelší série","statCurrent":"Aktuální série","daysUnit":{"one":"den","few":"dny","many":"dne","other":"dnů"},"hint":"Najeďte na den nebo použijte šipky. Ve 3D otáčíte pohled tažením, dvojklik ho vrátí.","levelNames":["Žádné commity","Málo commitů","Středně commitů","Hodně commitů","Nejvíc commitů"]}</script>
-        <noscript><p class="skyline-fallback">816 commitů za poslední rok</p></noscript>
+      <figure class="skyline" data-skyline data-view="3d" data-locale="cs-CZ" data-week-start="1" data-weeks="5" data-total="841">
+        <script type="application/json" data-skyline-data>{"end":"2026-10-06","days":[["2026-09-07",20],["2026-09-08",11],["2026-09-10",19],["2026-09-11",9],["2026-09-12",22],["2026-09-14",10],["2026-09-15",1],["2026-09-16",5],["2026-09-17",18],["2026-09-18",11],["2026-09-19",16],["2026-09-20",10],["2026-09-21",4],["2026-09-22",9],["2026-09-23",7],["2026-09-25",4],["2026-09-26",20],["2026-09-27",3],["2026-09-28",3],["2026-09-29",16],["2026-09-30",2],["2026-10-01",16],["2026-10-02",12],["2026-10-03",17],["2026-10-04",5],["2026-10-05",7],["2026-10-06",8]]}</script>
+        <script type="application/json" data-skyline-labels>{"aria":"Commity v mých repozitářích za posledních pět týdnů, po dnech","title":{"one":"{total} commit za poslední rok","few":"{total} commity za poslední rok","many":"{total} commitu za poslední rok","other":"{total} commitů za poslední rok"},"unit":{"one":"commit","few":"commity","many":"commitu","other":"commitů"},"dayWithCount":"{count} {unit}, {date}","dayEmpty":"Žádné commity, {date}","viewGroup":"Zobrazení","view2d":"Mřížka","view3d":"Panorama","less":"Méně","more":"Více","statTotal":"Celkem","statBusiest":"Nejaktivnější den","statLongest":"Nejdelší série","statCurrent":"Aktuální série","daysUnit":{"one":"den","few":"dny","many":"dne","other":"dnů"},"hint":"Najeďte na den nebo použijte šipky. Ve 3D otáčíte pohled tažením, dvojklik ho vrátí.","levelNames":["Žádné commity","Málo commitů","Průměrně commitů","Hodně commitů","Nejvíc commitů"]}</script>
+        <noscript><p class="skyline-fallback">841 commitů za poslední rok</p></noscript>
       </figure>
     </div>
     <div class="pgrid">
       <article class="pcard pcard-wide" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Produkt</span><time>09/2025 – dosud</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Produkt</span><span class="pcard-period">09/2025 – dosud</span></p>
         <h3><a href="https://boziii.com" target="_blank" rel="noopener">Božííí</a></h3>
         <p class="pcard-role">Komunitní platforma pro pražské farnosti</p>
         <ul class="results"><li>Průvodce svátostmi a katalog farností; zapojené farnosti Dejvice, Hlubočepy a Chodov.</li><li>Automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %.</li><li>Optimalizace pro AI vyhledávače (llms.txt).</li></ul>
         <p class="row-stack">Next.js 15, React 19, TypeScript, Tailwind 4, Redis</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>07/2026 – 08/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><span class="pcard-period">07/2026 – 08/2026</span></p>
         <h3>Trenažér zkoušek ČNB</h3>
         <p class="pcard-role">Interní studijní aplikace pro poradce Valor Group</p>
         <ul class="results"><li>Dvě banky otázek k odborným zkouškám ČNB: pojišťovnictví (1 980 otázek) a investice (1 339 otázek), s odůvodněním u každé.</li><li>Zkouška nanečisto s bodováním podle vyhlášky, chytré opakování chyb (1/3/7/14/30 dní), odhad připravenosti, statistiky slabých sekcí.</li><li>Jeden HTML soubor bez závislostí, synchronizace postupu přes serverless funkci, 10 sad automatických testů.</li></ul>
         <p class="row-stack">Vanilla JS, Vercel Functions, jsdom</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>2025 – 2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><span class="pcard-period">2025 – 2026</span></p>
         <h3>Generátor karuselů</h3>
         <p class="pcard-role">Content engine a uživatelský manuál pro Valor Group</p>
         <ul class="results"><li>Ze strukturovaného JSON vzniká série slidů 1080 × 1350 s dynamicky měřenou typografií; QA enforcer hlídá typy, povinná pole a délky.</li><li>Video šablony v Remotion (60 fps, Reels 9:16) a webový manuál s galerií šablon pro tým.</li></ul>
         <p class="row-stack">Python (PIL), Remotion, React, Vite</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><time>08/2026 – dosud</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><span class="pcard-period">08/2026 – dosud</span></p>
         <h3>Tréninkové operační středisko</h3>
         <p class="pcard-role">Privátní PWA pro přípravu na backyard ultra</p>
         <ul class="results"><li>Denní synchronizace telemetrie z Garmin Connect API přes Vercel Cron; výpočty zátěže ACWR a CTL/ATL.</li><li>Energetický model (sacharidy, hydratace, sodík, pacing) a týdenní adaptivní plán přes Anthropic API.</li></ul>
         <p class="row-stack">Next.js 15, Neon Postgres, Drizzle, Anthropic API</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>07/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><span class="pcard-period">07/2026</span></p>
         <h3>Analýza investic v portfoliu</h3>
         <p class="pcard-role">Klientská prezentace pro Valor Group</p>
         <ul class="results"><li>Rozbor šesti fondů a rozložení portfolia 1 000 000 Kč: TER, durace, likvidita, rizika, scénáře sazeb; data z KID a factsheetů.</li><li>Jeden soubor, funguje offline, tisk do PDF pro A4.</li></ul>
         <p class="row-stack">HTML, CSS, JS</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>04/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><span class="pcard-period">04/2026</span></p>
         <h3>Nabídka spolupráce</h3>
         <p class="pcard-role">Interaktivní prezentace pro potenciálního klienta</p>
         <ul class="results"><li>Dvě cesty spolupráce, otázky k promyšlení a kalkulačka ceny; klient si stránku proklikává a pak se ozve.</li></ul>
         <p class="row-stack">Next.js 16, TypeScript</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><time>06/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Vlastní</span><span class="pcard-period">06/2026</span></p>
         <h3>Kdy a kam vyrazíme?</h3>
         <p class="pcard-role">Skupinový plánovač výletů</p>
         <ul class="results"><li>Jeden sdílený kalendář: každý vyznačí, kdy má čas, aplikace najde termíny s největším překryvem; nápady a hlasování v reálném čase.</li></ul>
         <p class="row-stack">Next.js, Supabase</p>
       </article>
       <article class="pcard" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><time>06/2026</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">Pro klienta</span><span class="pcard-period">06/2026</span></p>
         <h3>Web pro domácí cukrářku</h3>
         <p class="pcard-role">Prezentace a skládačka dortů</p>
         <ul class="results"><li>Skládačka dortů, galerie, recenze a blog; zákazník si dort sestaví a poptá.</li></ul>
@@ -247,7 +247,7 @@
   <div class="content">
     <ol class="ledger">
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2026 – dosud</time></div>
+        <div class="row-date"><span>09/2026 – dosud</span></div>
         <div class="row-head"><h3>Matematicko-fyzikální fakulta UK</h3><p class="row-role">Bc. Finanční matematika</p></div>
         <div class="row-body">
           <ul class="results"><li>1. semestr: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář.</li><li>Praktické aspekty měření a řízení finančních rizik (NMFP463): volitelný předmět s vyučujícími z praxe, zapsaný už v 1. ročníku; skupinová analýza výkazů a individuální práce.</li></ul>
@@ -255,10 +255,10 @@
         </div>
       </li>
       <li class="row" data-reveal="row">
-        <div class="row-date"><time>09/2022 – 06/2026</time></div>
+        <div class="row-date"><span>09/2022 – 06/2026</span></div>
         <div class="row-head"><h3>Gymnázium Christiána Dopplera</h3><p class="row-role">Matematika, fyzika a informatika</p></div>
         <div class="row-body">
-          <ul class="results"><li>Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).</li><li>Ročníková práce „Dopad EU ETS 2 na běžného člověka“ (hodnocena výborně): matematický model přenosu nákladů povolenek do cen paliv, rozbor LRF, MSR a front‑loadingu; Sociální klimatický fond pokryje jen asi 22 % reálného zdražení u zranitelných domácností.</li></ul>
+          <ul class="results"><li>Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).</li><li>Ročníková práce „Dopad EU ETS 2 na běžného člověka“ (hodnocena výborně): matematický model přenosu nákladů povolenek do cen paliv, rozbor LRF, MSR a front‑loadingu; Sociální klimatický fond pokryje jen asi 22 % reálného zdražení u zranitelných domácností.</li></ul>
           
         </div>
       </li>
@@ -293,7 +293,7 @@
 </main>
 <footer class="site-footer">
   <p>© 2026 Adam Zikmund</p>
-  <p class="footer-note">Nástroje na této stránce jsou vzdělávací ukázky, ne investiční doporučení.</p>
+  <p class="footer-note">Nástroje na tomto webu jsou vzdělávací ukázky, ne investiční doporučení.</p>
   <p class="footer-lang"><span class="is-current">CS</span> / <a href="/en/" hreflang="en" lang="en">EN</a></p>
 </footer>
 </body>

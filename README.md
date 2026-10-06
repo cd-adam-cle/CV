@@ -1,6 +1,6 @@
-# Adam Zikmund — osobní web a CV
+# Adam Zikmund: osobní web a CV
 
-Statický jednostránkový web (čeština + `/en/`) ve třech variantách vzhledu a jednostránkové CV v PDF (EN + CZ). Hostováno na Vercelu bez build kroku: Vercel servíruje soubory z repozitáře tak, jak jsou.
+Statický web (úvodní stránka a stránka s nástroji, čeština + `/en/`) ve třech variantách vzhledu a jednostránkové CV v PDF (EN + CZ). Hostováno na Vercelu bez build kroku: Vercel servíruje soubory z repozitáře tak, jak jsou.
 
 ## Struktura
 
@@ -41,7 +41,7 @@ Varianta C má oba režimy. Ve výchozím stavu sleduje nastavení systému, tla
 
 ## Graf commitů
 
-Data jsou snímek `src/contributions.json` (jen data a denní počty, žádné názvy repozitářů, zprávy ani autoři). Počítá se každý commit bez sloučení větví, a to jednou podle jeho hashe, takže klony stejného repozitáře se nezdvojují. Započítávají se commity pod mými identitami (jméno nebo adresa obsahuje `cd-adam-cle` nebo `zikmund`, tedy i pracovní a školní adresa i adresy vymyšlené gitem) a commity asistenta (`noreply@anthropic.com`) v repozitářích, kam nepřispívá nikdo jiný. Commity cizích lidí se nepočítají.
+Data jsou snímek `src/contributions.json` (jen data a denní počty, žádné názvy repozitářů, zprávy ani autoři). Počítá se každý commit bez sloučení větví, a to jednou podle jeho hashe, takže klony stejného repozitáře se nezdvojují. Započítávají se commity pod mými identitami (jméno nebo adresa obsahuje `cd-adam-cle` nebo `zikmund`, tedy i pracovní a školní adresa i adresy vymyšlené gitem) a commity asistenta (`noreply@anthropic.com`, tedy i z cloudových session) v repozitářích, které jsou moje: remote pod mým účtem nebo bez remote. Commity cizích lidí se nepočítají.
 
 Obnova snímku před nasazením:
 

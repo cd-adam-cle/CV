@@ -9,7 +9,8 @@
  * CSS custom properties (--sky-empty, --sky-1 ... --sky-4, --ink-2, --surface, --line).
  *
  * Markup contract (everything else is generated):
- *   <figure class="skyline" data-skyline data-view="3d" data-locale="cs-CZ" data-week-start="1">
+ *   <figure class="skyline" data-skyline data-view="3d" data-locale="cs-CZ" data-week-start="1" data-weeks="5" data-total="841">
+ *   (data-weeks: how many weeks the grid shows, default 53; data-total: the figure for the heading when it covers more than the grid)
  *     <script type="application/json" data-skyline-data>{"end":"YYYY-MM-DD","days":[["YYYY-MM-DD",n],...]}</script>
  *     <script type="application/json" data-skyline-labels>{...}</script>
  *     <noscript>...</noscript>
@@ -54,11 +55,11 @@
   }
 
   /**
-   * Columns are weeks, rows are weekdays (row 0 = weekStart). The grid ends on endMs and starts
-   * on the week containing the day one year earlier. Levels split the non-zero days by their
+   * Columns are weeks, rows are weekdays (row 0 = weekStart). The grid ends on endMs and shows
+   * `weeks` weeks (53 by default, one year). Levels split the non-zero days by their
    * share of a busy day, the 95th percentile, so one freak day cannot wash the rest out.
    */
-  function buildGrid(days, endMs, weekStart) {
+  function buildGrid(days, endMs, weekStart, weeks) {
     var counts = new Map();
     for (var j = 0; j < days.length; j++) {
       var d = days[j];
@@ -69,8 +70,8 @@
       var k = toKey(ms);
       counts.set(k, (counts.get(k) || 0) + c);
     }
-    var start = endMs - 364 * DAY_MS;
-    start -= ((new Date(start).getUTCDay() - weekStart + 7) % 7) * DAY_MS;
+    // the grid shows `weeks` whole weeks and ends with the week that contains endMs (53 weeks reproduce the former one-year window)
+    var start = endMs - ((new Date(endMs).getUTCDay() - weekStart + 7) % 7) * DAY_MS - ((weeks || 53) - 1) * 7 * DAY_MS;
     var cells = [];
     for (var m2 = start, i = 0; m2 <= endMs; m2 += DAY_MS, i++) {
       var date = toKey(m2);
@@ -288,9 +289,13 @@
       endMs = 0;
       for (var a = 0; a < allDays.length; a++) endMs = Math.max(endMs, dayMs(allDays[a][0]) || 0);
     }
-    var grid = buildGrid(allDays, endMs, weekStart);
+    var weeksShown = parseInt(fig.getAttribute('data-weeks'), 10);
+    if (!(weeksShown > 0)) weeksShown = 53;
+    var grid = buildGrid(allDays, endMs, weekStart, weeksShown);
     var cells = grid.cells;
     var stats = computeStats(cells);
+    var headTotal = parseInt(fig.getAttribute('data-total'), 10);
+    if (!(headTotal >= 0)) headTotal = stats.total;
 
     var nf = new Intl.NumberFormat(locale);
     var dfShort = new Intl.DateTimeFormat(locale, { month: 'short', day: 'numeric', timeZone: 'UTC' });
@@ -339,10 +344,10 @@
     var titleEl = el('h3', 'skyline-title');
     titleEl.id = id + '-title';
     var titleTpl = L.title;
-    if (titleTpl && typeof titleTpl === 'object') titleTpl = plural(titleTpl, stats.total);
+    if (titleTpl && typeof titleTpl === 'object') titleTpl = plural(titleTpl, headTotal);
     var titleParts = String(titleTpl || '{total}').split('{total}');
     for (var tp = 0; tp < titleParts.length; tp++) {
-      if (tp > 0) titleEl.appendChild(el('span', 'skyline-title-num', nf.format(stats.total)));
+      if (tp > 0) titleEl.appendChild(el('span', 'skyline-title-num', nf.format(headTotal)));
       if (titleParts[tp]) titleEl.appendChild(document.createTextNode(titleParts[tp]));
     }
 
@@ -610,7 +615,7 @@
       H2 = 20 + 4 + ((b2.maxy - b2.miny) / (b2.maxx - b2.minx)) * (W - gutter - 4);
       var b3 = extent(camera(1), 1, true);
       var natural = ((b3.maxy - b3.miny) / (b3.maxx - b3.minx)) * (W - 40) + 40;
-      H3 = Math.max(Math.min(natural, W * 0.72, 620), Math.min(natural, 240));
+      H3 = Math.max(Math.min(natural, W * (weeksShown < 20 ? 1.15 : 0.72), 620), Math.min(natural, 240));
       Hmax = Math.ceil(Math.max(H2, H3));
       canvas.width = Math.round(W * dpr);
       canvas.height = Math.round(Hmax * dpr);

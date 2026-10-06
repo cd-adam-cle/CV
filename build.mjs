@@ -18,9 +18,10 @@ const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 const magic = (s) => esc(s).split(' ').map((w) => `<span class="w">${w}</span>`).join(' ');
 const maskWords = (s) => esc(s).split(' ').map((w) => `<span class="mw"><span>${w}</span></span>`).join(' ');
 const fill = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (vals[k] != null ? vals[k] : m));
-// Optional inputs: the tool thumbnails and the contribution snapshot (node scripts/fetch-contributions.mjs).
+// Optional inputs: the tool thumbnails and the contribution snapshot (node scripts/build-contributions.mjs).
 const thumbs = existsSync(join(root, 'src', 'thumbs.mjs')) ? await import('./src/thumbs.mjs') : null;
 const contributions = existsSync(join(root, 'src', 'contributions.json')) ? JSON.parse(readFileSync(join(root, 'src', 'contributions.json'), 'utf8')) : null;
+if (contributions && (Date.now() - Date.parse(contributions.end + 'T00:00:00Z')) / 86400000 > 14) console.warn(`warning: src/contributions.json ends ${contributions.end}; refresh it with scripts/build-contributions.mjs (see README) so "in the last year" stays true`);
 // Design variants built from the same content: C (layout "blocks") is the production site at /, A and B are noindex previews for comparison.
 const VARIANTS = JSON.parse(readFileSync(join(root, 'src', 'variants.json'), 'utf8'));
 let V = VARIANTS[0];
@@ -31,7 +32,7 @@ const isBlocks = () => V.layout === 'blocks';
 function head(c, pg) {
   const m = c.meta; const url = m.siteUrl + pg.path; const alt = m.siteUrl + pg.altPath; const blocks = isBlocks();
   const init = blocks
-    ? `<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>`
+    ? `<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);var m=document.querySelectorAll('meta[name="theme-color"]'),c,i;for(i=0;i<m.length;i++){if(/dark/.test(m[i].media||'')===(t==='dark'))c=m[i].content}if(c)for(i=0;i<m.length;i++)m[i].content=c}}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>`
     : `<script>document.documentElement.classList.add('js');</script>`;
   const colour = blocks
     ? `<meta name="color-scheme" content="light dark">\n<meta name="theme-color" content="${V.themeColor}" media="(prefers-color-scheme: light)">\n<meta name="theme-color" content="${V.themeColorDark}" media="(prefers-color-scheme: dark)">`
@@ -77,7 +78,7 @@ function nav(c, pg) {
     const isPage = blocks && l.href;
     const href = isPage ? P(l.href) : (blocks && pg.kind === 'tools' ? `${home}#${l.id}` : `#${l.id}`);
     const current = isPage && pg.kind === 'tools';
-    const spy = (blocks && pg.kind === 'tools') || isPage ? '' : ` data-spy="${l.id}"`;
+    const spy = blocks && pg.kind === 'tools' ? '' : ` data-spy="${l.id}"`;
     return `<li><a href="${href}"${spy}${current ? ' class="is-active" aria-current="page"' : ''}>${esc(l.label)}</a></li>`;
   };
   const alt = P(pg.altPath);
@@ -90,11 +91,11 @@ function nav(c, pg) {
     <ol class="nav-list">
       ${n.links.map(link).join('\n      ')}
     </ol>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
+    <span class="nav-lang" role="group" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}">${esc(m.altLang.label)}</a></span>
   </div>
   <div class="nav-right">
     <a class="nav-cv" href="${m.cvPdf}"><span class="t-long">${esc(n.cv)}</span><span class="t-short">${esc(n.cvShort)}</span></a>
-    <span class="nav-lang" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>${blocks ? '\n    ' + themeToggle(n) : ''}
+    <span class="nav-lang" role="group" aria-label="${esc(n.ariaLang)}"><span class="is-current">${esc(m.thisLang.label)}</span><span class="sep" aria-hidden="true">/</span><a href="${alt}" hreflang="${m.altLang.lang}" lang="${m.altLang.lang}" title="${esc(m.altLang.title)}">${esc(m.altLang.label)}</a></span>${blocks ? '\n    ' + themeToggle(n) : ''}
   </div>
 </nav>
 </header>`;
@@ -166,7 +167,7 @@ function kv(title, rows, id) {
 }
 function ledger(items, extra) {
   const row = (e) => `<li class="row" data-reveal="row">
-        <div class="row-date"><time>${esc(e.period)}</time></div>
+        <div class="row-date"><span>${esc(e.period)}</span></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
           <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
@@ -190,22 +191,26 @@ function education(c) {
   const note = e.note ? `\n    <p class="edu-note"${isBlocks() ? ' data-reveal="rise"' : ''}><strong>${esc(e.note.k)}.</strong> ${esc(e.note.v)}</p>` : '';
   return section(e, '    ' + ledger(e.items) + note);
 }
-// GitHub-style contribution graph (variant C). Sparse data: the script fills the empty days.
+// GitHub-style commit graph (variant C): the chart shows the last five weeks, the heading states the figure for the last year.
+// Sparse data: the script fills the empty days.
+const ACTIVITY_WEEKS = 5;
 function activity(c) {
   const a = c.projects.activity;
   if (!isBlocks() || !a || !contributions) return '';
-  // Only the weeks the graph displays: from the Monday on or before (end - 364 days). The heading and the no-JavaScript text must agree with it.
-  const endMs = Date.parse(contributions.end + 'T00:00:00Z'); const startMs = endMs - 364 * 86400000;
-  const first = new Date(startMs - ((new Date(startMs).getUTCDay() + 6) % 7) * 86400000).toISOString().slice(0, 10);
-  const shown = contributions.days.filter((d) => d[0] >= first);
-  const days = shown.filter((d) => d[1] > 0);
-  const sum = shown.reduce((t, d) => t + d[1], 0);
-  const total = new Intl.NumberFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(sum);
+  const DAYMS = 86400000;
+  const weekStartOf = (ms) => ms - ((new Date(ms).getUTCDay() + 6) % 7) * DAYMS; // weeks start on Monday
+  const endMs = Date.parse(contributions.end + 'T00:00:00Z');
+  const yearFrom = new Date(weekStartOf(endMs - 364 * DAYMS)).toISOString().slice(0, 10); // the 53 weeks of a year
+  const chartFrom = new Date(weekStartOf(endMs) - (ACTIVITY_WEEKS - 1) * 7 * DAYMS).toISOString().slice(0, 10);
+  const yearTotal = contributions.days.filter((d) => d[0] >= yearFrom).reduce((t, d) => t + d[1], 0);
+  const days = contributions.days.filter((d) => d[0] >= chartFrom && d[1] > 0);
+  const total = new Intl.NumberFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(yearTotal);
+  const title = typeof a.labels.title === 'string' ? a.labels.title : (a.labels.title[new Intl.PluralRules(LANG === 'cs' ? 'cs-CZ' : 'en-GB').select(yearTotal)] || a.labels.title.other);
   return `<div class="activity" data-reveal="panel">
-      <figure class="skyline" data-skyline data-view="3d" data-locale="${LANG === 'cs' ? 'cs-CZ' : 'en-GB'}" data-week-start="1">
+      <figure class="skyline" data-skyline data-view="3d" data-locale="${LANG === 'cs' ? 'cs-CZ' : 'en-GB'}" data-week-start="1" data-weeks="${ACTIVITY_WEEKS}" data-total="${yearTotal}">
         <script type="application/json" data-skyline-data>${json({ end: contributions.end, days })}</script>
         <script type="application/json" data-skyline-labels>${json(a.labels)}</script>
-        <noscript><p class="skyline-fallback">${esc(fill(typeof a.labels.title === 'string' ? a.labels.title : (a.labels.title[new Intl.PluralRules(LANG === 'cs' ? 'cs-CZ' : 'en-GB').select(sum)] || a.labels.title.other), { total }))}</p></noscript>
+        <noscript><p class="skyline-fallback">${esc(fill(title, { total }))}</p></noscript>
       </figure>
     </div>
     `;
@@ -214,7 +219,7 @@ function projects(c) {
   if (!isBlocks()) return section(c.projects, '    ' + ledger(c.projects.items));
   const p = c.projects;
   const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}" data-reveal="card">
-        <p class="pcard-meta"><span class="pcard-tag">${esc(e.tag)}</span><time>${esc(e.period)}</time></p>
+        <p class="pcard-meta"><span class="pcard-tag">${esc(e.tag)}</span><span class="pcard-period">${esc(e.period)}</span></p>
         <h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3>
         <p class="pcard-role">${esc(e.role)}</p>
         <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
@@ -263,7 +268,7 @@ function toggle(name, legend, options, def) {
   const d = def != null ? String(def) : options[0][0];
   return `<fieldset class="toggle" data-role="seg" data-name="${name}" data-default="${d}"><legend>${esc(legend)}</legend><div class="toggle-options">${options.map(([v, l]) => `<button type="button" data-value="${v}" aria-pressed="${v === d ? 'true' : 'false'}">${esc(l)}</button>`).join('')}</div></fieldset>`;
 }
-function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><dt>${esc(label)}</dt><dd data-out="${key}">—</dd></div>`; }
+function ro(label, key, cls) { return `<div class="ro${cls ? ' ' + cls : ''}"><dt>${esc(label)}</dt><dd data-out="${key}">–</dd></div>`; }
 
 function toolShell(c, t, controls, chart, readouts, extraBtns = '') {
   const cm = c.tools.common;
@@ -325,13 +330,13 @@ function toolMC(c, t) {
   const readouts = `<table class="ro-table">
                 <thead><tr><th scope="col"><span class="visually-hidden">${esc(c.tools.common.readouts)}</span></th><th scope="col" data-col="normal">${esc(u.colNormal)}</th><th scope="col" data-col="jump">${esc(u.colFat)}</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">${esc(u.median)}</th><td data-out="median-n">—</td><td data-out="median-t">—</td></tr>
-                  <tr><th scope="row">${esc(u.mean)}</th><td data-out="mean-n">—</td><td data-out="mean-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">${esc(u.var)}</th><td data-out="var-n">—</td><td data-out="var-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">${esc(u.es)}</th><td data-out="es-n">—</td><td data-out="es-t">—</td></tr>
-                  <tr><th scope="row">${esc(u.ploss)}</th><td data-out="ploss-n">—</td><td data-out="ploss-t">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">${esc(u.varDelta)}</th><td></td><td data-out="varDelta">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">${esc(u.esDelta)}</th><td></td><td data-out="esDelta">—</td></tr>
+                  <tr><th scope="row">${esc(u.median)}</th><td data-out="median-n">–</td><td data-out="median-t">–</td></tr>
+                  <tr><th scope="row">${esc(u.mean)}</th><td data-out="mean-n">–</td><td data-out="mean-t">–</td></tr>
+                  <tr class="is-oxide"><th scope="row">${esc(u.var)}</th><td data-out="var-n">–</td><td data-out="var-t">–</td></tr>
+                  <tr class="is-oxide"><th scope="row">${esc(u.es)}</th><td data-out="es-n">–</td><td data-out="es-t">–</td></tr>
+                  <tr><th scope="row">${esc(u.ploss)}</th><td data-out="ploss-n">–</td><td data-out="ploss-t">–</td></tr>
+                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">${esc(u.varDelta)}</th><td></td><td data-out="varDelta">–</td></tr>
+                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">${esc(u.esDelta)}</th><td></td><td data-out="esDelta">–</td></tr>
                 </tbody>
               </table>`;
   return toolShell(c, t, controls, chart, readouts, `<button type="button" class="text-btn" data-role="reseed">${esc(u.rerun)}</button>`);
@@ -362,7 +367,7 @@ function toolMK(c, t) {
               <p class="chart-note" data-role="error-caption" hidden>${esc(u.caption)}</p>
               <p class="chart-note is-warn" data-role="psd-note" hidden></p>
               <p class="chart-note is-warn" data-role="no-tangency" hidden>${esc(u.noTangency)}</p>
-              <ul class="legend"><li><i class="sw sw-cloud"></i>${esc(u.legendCloud)}</li><li><i class="sw sw-ink"></i>${esc(u.legendFrontier)}</li><li><i class="sw sw-navy"></i>${esc(u.legendMax)} ${LANG === 'cs' ? 'a' : 'and'} ${esc(u.legendCml)}</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>${esc(u.legendGhost)}</li></ul>`;
+              <ul class="legend"><li><i class="sw sw-cloud"></i>${esc(u.legendCloud)}</li><li><i class="sw sw-ink"></i>${esc(u.legendFrontier)}</li><li><i class="sw sw-navy"></i>${esc(u.legendMax)} ${LANG === 'cs' ? 'a\u00a0' : 'and '}${esc(u.legendCml)}</li><li class="legend-ghost" hidden><i class="sw sw-oxide"></i>${esc(u.legendGhost)}</li></ul>`;
   const readouts = `<p class="ro-title">${esc(u.maxSharpe)}</p>
               <dl class="ro-list">
                 ${ro(u.ret, 'ret', 'ro-main')}
@@ -372,7 +377,7 @@ function toolMK(c, t) {
               <table class="weights">
                 <thead><tr><th scope="col">${esc(u.weights)}</th><th scope="col">${esc(u.colEstimate)}</th><th scope="col" class="col-err" hidden>${esc(u.colError)}</th></tr></thead>
                 <tbody>
-                  ${N.map((n, i) => `<tr><th scope="row">${esc(n)}</th><td><span class="wbar" aria-hidden="true"><i data-bar="${i}"></i></span><span data-out="w${i + 1}">—</span></td><td class="col-err" hidden data-out="e${i + 1}">—</td></tr>`).join('\n                  ')}
+                  ${N.map((n, i) => `<tr><th scope="row">${esc(n)}</th><td><span class="wbar" aria-hidden="true"><i data-bar="${i}"></i></span><span data-out="w${i + 1}">–</span></td><td class="col-err" hidden data-out="e${i + 1}">–</td></tr>`).join('\n                  ')}
                 </tbody>
               </table>`;
   return toolShell(c, t, controls, chart, readouts, `<button type="button" class="text-btn btn-error" data-role="error" aria-pressed="false">${esc(u.error)}</button>`);

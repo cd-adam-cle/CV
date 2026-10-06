@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,100,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="stylesheet" href="/assets/css/variant-c.css">
-<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);var m=document.querySelectorAll('meta[name="theme-color"]'),c,i;for(i=0;i<m.length;i++){if(/dark/.test(m[i].media||'')===(t==='dark'))c=m[i].content}if(c)for(i=0;i<m.length;i++)m[i].content=c}}catch(e){}setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-fail')},4000)})();</script>
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/quant.js" defer></script>
 <script src="/assets/js/motion.js" defer></script>
@@ -45,11 +45,11 @@
       <li><a href="/en/#skills">Skills</a></li>
       <li><a href="/en/#contact">Contact</a></li>
     </ol>
-    <span class="nav-lang" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/nastroje/" hreflang="cs" lang="cs">CS</a></span>
+    <span class="nav-lang" role="group" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/nastroje/" hreflang="cs" lang="cs">CS</a></span>
   </div>
   <div class="nav-right">
     <a class="nav-cv" href="/cv/Adam-Zikmund-CV-EN.pdf"><span class="t-long">Download CV (PDF)</span><span class="t-short">CV (PDF)</span></a>
-    <span class="nav-lang" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/nastroje/" hreflang="cs" lang="cs" title="Česká verze">CS</a></span>
+    <span class="nav-lang" role="group" aria-label="Language"><span class="is-current">EN</span><span class="sep" aria-hidden="true">/</span><a href="/nastroje/" hreflang="cs" lang="cs" title="Česká verze">CS</a></span>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode" data-theme-toggle>
       <svg class="ico-moon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16.4 12.1A7 7 0 0 1 7.9 3.6a7 7 0 1 0 8.5 8.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       <svg class="ico-sun" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -110,13 +110,13 @@
             </div>
             <div class="readouts">
               <dl class="ro-list">
-                <div class="ro ro-main"><dt>Option price</dt><dd data-out="price">—</dd></div>
-                <div class="ro"><dt>Δ delta</dt><dd data-out="delta">—</dd></div>
-                <div class="ro"><dt>Γ gamma</dt><dd data-out="gamma">—</dd></div>
-                <div class="ro"><dt>ν vega (per 1 pp of σ)</dt><dd data-out="vega">—</dd></div>
-                <div class="ro ro-theta"><dt>Θ theta (per day)</dt><dd data-out="theta">—</dd></div>
-                <div class="ro ro-sep"><dt>Intrinsic value</dt><dd data-out="intrinsic">—</dd></div>
-                <div class="ro"><dt>Time value</dt><dd data-out="timeValue">—</dd></div>
+                <div class="ro ro-main"><dt>Option price</dt><dd data-out="price">–</dd></div>
+                <div class="ro"><dt>Δ delta</dt><dd data-out="delta">–</dd></div>
+                <div class="ro"><dt>Γ gamma</dt><dd data-out="gamma">–</dd></div>
+                <div class="ro"><dt>ν vega (per 1 pp of σ)</dt><dd data-out="vega">–</dd></div>
+                <div class="ro ro-theta"><dt>Θ theta (per day)</dt><dd data-out="theta">–</dd></div>
+                <div class="ro ro-sep"><dt>Intrinsic value</dt><dd data-out="intrinsic">–</dd></div>
+                <div class="ro"><dt>Time value</dt><dd data-out="timeValue">–</dd></div>
               </dl>
             </div>
           </div>
@@ -162,13 +162,13 @@
               <table class="ro-table">
                 <thead><tr><th scope="col"><span class="visually-hidden">Outputs</span></th><th scope="col" data-col="normal">normal</th><th scope="col" data-col="jump">with jumps</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Median Sₜ</th><td data-out="median-n">—</td><td data-out="median-t">—</td></tr>
-                  <tr><th scope="row">Mean Sₜ</th><td data-out="mean-n">—</td><td data-out="mean-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% VaR</th><td data-out="var-n">—</td><td data-out="var-t">—</td></tr>
-                  <tr class="is-oxide"><th scope="row">5% ES</th><td data-out="es-n">—</td><td data-out="es-t">—</td></tr>
-                  <tr><th scope="row">P(loss)</th><td data-out="ploss-n">—</td><td data-out="ploss-t">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">VaR vs. normal</th><td></td><td data-out="varDelta">—</td></tr>
-                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">ES vs. normal</th><td></td><td data-out="esDelta">—</td></tr>
+                  <tr><th scope="row">Median Sₜ</th><td data-out="median-n">–</td><td data-out="median-t">–</td></tr>
+                  <tr><th scope="row">Mean Sₜ</th><td data-out="mean-n">–</td><td data-out="mean-t">–</td></tr>
+                  <tr class="is-oxide"><th scope="row">5% VaR</th><td data-out="var-n">–</td><td data-out="var-t">–</td></tr>
+                  <tr class="is-oxide"><th scope="row">5% ES</th><td data-out="es-n">–</td><td data-out="es-t">–</td></tr>
+                  <tr><th scope="row">P(loss)</th><td data-out="ploss-n">–</td><td data-out="ploss-t">–</td></tr>
+                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">VaR vs. normal</th><td></td><td data-out="varDelta">–</td></tr>
+                  <tr class="row-delta" data-role="var-delta" hidden><th scope="row">ES vs. normal</th><td></td><td data-out="esDelta">–</td></tr>
                 </tbody>
               </table>
             </div>
@@ -217,16 +217,16 @@
             <div class="readouts">
               <p class="ro-title">Max-Sharpe portfolio</p>
               <dl class="ro-list">
-                <div class="ro ro-main"><dt>E[r]</dt><dd data-out="ret">—</dd></div>
-                <div class="ro"><dt>σ</dt><dd data-out="risk">—</dd></div>
-                <div class="ro"><dt>Sharpe</dt><dd data-out="sharpe">—</dd></div>
+                <div class="ro ro-main"><dt>E[r]</dt><dd data-out="ret">–</dd></div>
+                <div class="ro"><dt>σ</dt><dd data-out="risk">–</dd></div>
+                <div class="ro"><dt>Sharpe</dt><dd data-out="sharpe">–</dd></div>
               </dl>
               <table class="weights">
                 <thead><tr><th scope="col">Weights</th><th scope="col">estimate</th><th scope="col" class="col-err" hidden>± error</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">A</th><td><span class="wbar" aria-hidden="true"><i data-bar="0"></i></span><span data-out="w1">—</span></td><td class="col-err" hidden data-out="e1">—</td></tr>
-                  <tr><th scope="row">B</th><td><span class="wbar" aria-hidden="true"><i data-bar="1"></i></span><span data-out="w2">—</span></td><td class="col-err" hidden data-out="e2">—</td></tr>
-                  <tr><th scope="row">C</th><td><span class="wbar" aria-hidden="true"><i data-bar="2"></i></span><span data-out="w3">—</span></td><td class="col-err" hidden data-out="e3">—</td></tr>
+                  <tr><th scope="row">A</th><td><span class="wbar" aria-hidden="true"><i data-bar="0"></i></span><span data-out="w1">–</span></td><td class="col-err" hidden data-out="e1">–</td></tr>
+                  <tr><th scope="row">B</th><td><span class="wbar" aria-hidden="true"><i data-bar="1"></i></span><span data-out="w2">–</span></td><td class="col-err" hidden data-out="e2">–</td></tr>
+                  <tr><th scope="row">C</th><td><span class="wbar" aria-hidden="true"><i data-bar="2"></i></span><span data-out="w3">–</span></td><td class="col-err" hidden data-out="e3">–</td></tr>
                 </tbody>
               </table>
             </div>
@@ -243,7 +243,7 @@
 </main>
 <footer class="site-footer">
   <p>© 2026 Adam Zikmund</p>
-  <p class="footer-note">The tools on this page are educational demonstrations, not investment advice.</p>
+  <p class="footer-note">The tools on this site are educational demonstrations, not investment advice.</p>
   <p class="footer-lang"><span class="is-current">EN</span> / <a href="/nastroje/" hreflang="cs" lang="cs">CS</a></p>
 </footer>
 </body>

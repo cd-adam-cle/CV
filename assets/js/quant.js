@@ -194,8 +194,8 @@
       put('median', fmt.n(rn.median, 2), fmt.n(rt.median, 2)); put('mean', fmt.n(rn.mean, 2), fmt.n(rt.mean, 2));
       put('var', fmt.n(rn.var5, 2), fmt.n(rt.var5, 2)); put('es', fmt.n(rn.es05, 2), fmt.n(rt.es05, 2)); put('ploss', fmt.pct(100 * rn.ploss, 1), fmt.pct(100 * rt.ploss, 1));
       root.querySelectorAll('[data-role=var-delta], [data-role=legend-normal]').forEach((el) => { el.hidden = !fat; });
-      setOut(root, 'varDelta', rn.var5 > 0 ? fmt.signedPct(100 * (rt.var5 - rn.var5) / rn.var5, 1) : '—');
-      setOut(root, 'esDelta', rn.es05 > 0 ? fmt.signedPct(100 * (rt.es05 - rn.es05) / rn.es05, 1) : '—');
+      setOut(root, 'varDelta', rn.var5 > 0 ? fmt.signedPct(100 * (rt.var5 - rn.var5) / rn.var5, 1) : '–');
+      setOut(root, 'esDelta', rn.es05 > 0 ? fmt.signedPct(100 * (rt.es05 - rn.es05) / rn.es05, 1) : '–');
       root.querySelectorAll('.ro-table [data-col], .ro-table td').forEach((el) => el.classList.remove('is-active'));
       root.querySelectorAll(`.ro-table [data-out$="-${fat ? 't' : 'n'}"], .ro-table [data-col="${fat ? 'jump' : 'normal'}"]`).forEach((el) => el.classList.add('is-active'));
       const sel = state.sel;
@@ -298,9 +298,9 @@
       const sel = base.maxSharpe;
       const noTan = root.querySelector('[data-role=no-tangency]'); if (noTan) noTan.hidden = tangency;
       if (tangency) { setOut(root, 'ret', fmt.pct(sel.r * 100, 1)); setOut(root, 'risk', fmt.pct(sel.s * 100, 1)); setOut(root, 'sharpe', fmt.n(sel.sh, 2)); }
-      else { setOut(root, 'ret', '—'); setOut(root, 'risk', '—'); setOut(root, 'sharpe', '—'); }
-      sel.w.forEach((wv, i) => { setOut(root, `w${i + 1}`, tangency ? fmt.pct(wv * 100, 1) : '—'); const bar = root.querySelector(`[data-bar="${i}"]`); if (bar) { bar.style.width = tangency ? `${Math.min(100, Math.abs(wv) * 100)}%` : '0'; bar.classList.toggle('is-neg', wv < 0); }
-        setOut(root, `e${i + 1}`, err && tangency ? fmt.plusMinus(err[i] * 100, 1) : '—'); });
+      else { setOut(root, 'ret', '–'); setOut(root, 'risk', '–'); setOut(root, 'sharpe', '–'); }
+      sel.w.forEach((wv, i) => { setOut(root, `w${i + 1}`, tangency ? fmt.pct(wv * 100, 1) : '–'); const bar = root.querySelector(`[data-bar="${i}"]`); if (bar) { bar.style.width = tangency ? `${Math.min(100, Math.abs(wv) * 100)}%` : '0'; bar.classList.toggle('is-neg', wv < 0); }
+        setOut(root, `e${i + 1}`, err && tangency ? fmt.plusMinus(err[i] * 100, 1) : '–'); });
       root.querySelectorAll('.col-err').forEach((el) => { el.hidden = !errOn; });
       const cap = root.querySelector('[data-role=error-caption]'); if (cap) cap.hidden = !errOn;
       const lg = root.querySelector('.legend-ghost'); if (lg) lg.hidden = !errOn;

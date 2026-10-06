@@ -121,7 +121,7 @@
       "rows": [
         {
           "k": "Risk and simulation",
-          "v": "5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator below; the NMFP463 course at Charles University"
+          "v": "5% VaR, expected shortfall and a jump (crash) model in the Monte Carlo simulator (see Tools); the NMFP463 course at Charles University"
         },
         {
           "k": "Pricing and optimisation",
@@ -435,7 +435,7 @@
         "period": "08/2026 – present",
         "org": "Training operations centre",
         "role": "Private PWA for backyard-ultra preparation",
-        "tag": "Own",
+        "tag": "Personal",
         "results": [
           "Daily telemetry sync from the Garmin Connect API via Vercel Cron; ACWR and CTL/ATL load calculations.",
           "Fuelling model (carbohydrates, hydration, sodium, pacing) and a weekly adaptive plan via the Anthropic API."
@@ -467,7 +467,7 @@
         "period": "06/2026",
         "org": "When and where do we go?",
         "role": "Group trip planner",
-        "tag": "Own",
+        "tag": "Personal",
         "results": [
           "One shared calendar: everyone marks when they are free, the app finds the dates with the biggest overlap; ideas and votes in real time."
         ],
@@ -487,7 +487,7 @@
     "intro": "Things I have built that are running. Most of them were made for real clients and users.",
     "activity": {
       "labels": {
-        "aria": "Overview of commits in my repositories over the last year",
+        "aria": "Commits in my repositories over the last five weeks, by day",
         "title": {
           "one": "{total} commit in the last year",
           "other": "{total} commits in the last year"
@@ -549,7 +549,7 @@
     ],
     "note": {
       "k": "Fun fact",
-      "v": "Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering with Applied Mathematical Stochastic Methods, Information Technology, Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics)."
+      "v": "Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering, programme Applied Mathematical Stochastic Methods; Information Technology; Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics)."
     }
   },
   "skills": {
@@ -620,10 +620,10 @@
   },
   "footer": {
     "left": "© 2026 Adam Zikmund",
-    "note": "The tools on this page are educational demonstrations, not investment advice."
+    "note": "The tools on this site are educational demonstrations, not investment advice."
   },
   "cv": {
-    "fileTitle": "Adam Zikmund — CV",
+    "fileTitle": "Adam Zikmund – CV",
     "name": "Adam Zikmund",
     "contactLine": "Prague · +420 728 126 406 · zikmundi@proton.me · linkedin.com/in/adam-zikmund-ba3469360 · cv-seven-dusky-63.vercel.app",
     "sections": {

@@ -6,9 +6,8 @@
 // by its hash, so clones of the same repository never count twice. A commit counts when it is the owner's (any author
 // name or address containing "cd-adam-cle" or "zikmund", which covers the GitHub name, the personal, school and work
 // addresses and the addresses git invents for a laptop) or when it was written by the coding assistant
-// (noreply@anthropic.com) in a repository where nobody else committed in the window. Commits by other people are never counted,
-// and in a repository that other people also commit to the assistant's commits are left out too, because they
-// cannot be told apart from those of the other people.
+// (noreply@anthropic.com, which includes the owner's cloud sessions) in a repository that belongs to the owner: its remote
+// is under the owner's GitHub account or it has no remote. Commits by other people are never counted.
 //
 // Where it looks. The folders are searched for git repositories (nested ones too). With --github the default-branch
 // commits of that user's public repositories are added. With --clone a repository that is not on this machine is
@@ -34,6 +33,7 @@ if (!folders.length && !github && !clones.length) { console.error('Usage: node s
 
 const MINE = /cd-adam-cle|zikmund/i;
 const ASSISTANT = /noreply@anthropic\.com/i;
+const OWNER = /cd-adam-cle/i; // a repository counts as the owner's when its remote is under this GitHub account
 const DAY = 86400000;
 const iso = (ms) => new Date(ms).toISOString().slice(0, 10);
 const now = new Date(); const localToday = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
@@ -47,12 +47,11 @@ const commits = new Map(); // hash -> YYYY-MM-DD
 const stats = { repos: 0, mine: 0, assistant: 0, others: 0, github: 0 };
 
 // rows: [hash, "name <email> login", date] already limited to the window; applies the counting rule for one repository
-function take(rows, fromGithub) {
-  const others = rows.filter((r) => !MINE.test(r[1]) && !ASSISTANT.test(r[1])).length;
-  stats.others += others;
+function take(rows, fromGithub, owned) {
+  stats.others += rows.filter((r) => !MINE.test(r[1]) && !ASSISTANT.test(r[1])).length;
   for (const [h, who, d] of rows) {
     const mine = MINE.test(who); const assistant = !mine && ASSISTANT.test(who);
-    if (!(mine || (assistant && others === 0))) continue;
+    if (!(mine || (assistant && owned))) continue;
     if (commits.has(h)) continue;
     commits.set(h, d);
     if (fromGithub) stats.github++; else if (mine) stats.mine++; else stats.assistant++;
@@ -79,7 +78,10 @@ function readRepo(path) {
   const rows = out.split('\n').map((l) => l.split('\t')).filter((p) => p.length === 3 && p[2] >= from && p[2] <= end);
   if (!rows.length) return;
   stats.repos++;
-  take(rows, false);
+  let remotes = [];
+  try { remotes = execFileSync('git', ['-C', path, 'remote', '-v'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean); } catch { /* no remotes */ }
+  const owned = remotes.length === 0 || remotes.some((l) => OWNER.test(l));
+  take(rows, false, owned);
 }
 const repos = []; for (const f of folders) findRepos(f, 0, repos);
 for (const r of repos) readRepo(r);
@@ -113,7 +115,7 @@ if (github) {
       }
       if (batch.length < 100) break;
     }
-    take(rows, true);
+    take(rows, true, true); // the user's own repositories on GitHub
   }
 }
 

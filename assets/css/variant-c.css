@@ -32,9 +32,9 @@
 }
 @media (min-width: 1024px) { :root { --section-pad: 150px; } }
 ::selection { background: color-mix(in srgb, var(--navy) 30%, transparent); }
-h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font-display); }
+h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font-display); }
 .brand { font-weight: 700; letter-spacing: -0.01em; }
-.site-header { background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.site-header { background: var(--bg); }
 .nav-list a { font-weight: 500; }
 .nav-list a.is-active { border-bottom-color: var(--ink); }
 
@@ -57,7 +57,7 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
 /* ---------- hero: the headline is pinned while its words light up with the scroll ---------- */
 .hero-track { position: relative; height: calc(100svh + 85svh - var(--nav-h)); }
 .hero-pin { position: sticky; top: var(--nav-h); height: calc(100svh - var(--nav-h)); box-sizing: border-box; max-width: var(--max); margin-inline: auto; padding: 24px var(--gutter) 96px; display: flex; flex-direction: column; justify-content: center; }
-.hero-title { font-weight: 800; font-size: clamp(36px, min(5.9vw, 11svh), 98px); line-height: 0.97; letter-spacing: -0.04em; max-width: 20ch; text-wrap: pretty; }
+.hero-title { word-spacing: 0.09em; font-weight: 800; font-size: clamp(36px, min(5.9vw, 11svh), 98px); line-height: 0.97; letter-spacing: -0.04em; max-width: 20ch; text-wrap: pretty; }
 .hero-hint { position: absolute; left: var(--gutter); bottom: 28px; margin: 0; display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-2); opacity: var(--hero-hint, 1); }
 .hero-hint::before { content: ""; width: 1px; height: 30px; background: currentColor; transform-origin: top; }
 @media (prefers-reduced-motion: no-preference) { .hero-hint::before { animation: hint 2.4s var(--ease) 1.2s 3 both; } }
@@ -110,21 +110,28 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
 .row::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: left; }
 .row-head h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
 .row-role { font-style: normal; font-size: 16px; }
-@media (min-width: 1024px) { .row { padding: 36px 0; } .row-head h3 { font-size: 30px; } }
+@media (min-width: 1024px) { .row, #vzdelani .row, #education .row { padding: 36px 0; } .row-head h3 { font-size: 30px; } }
 .edu-note, .interests { margin-top: 36px; }
 .interests a { text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--navy); }
 .interests a:hover { color: var(--navy); }
 
 /* ---------- activity (contribution graph) and project grid ---------- */
 .activity { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 22px 18px 18px; margin-bottom: 16px; }
-/* the graph shows one figure, how many commits in the last year, and the chart; statistics, legend and hint text are hidden
-   (the hint stays for screen readers because the canvas is described by it) */
+/* the graph shows one figure, how many commits in the last year, and a compact chart of the last five weeks; statistics, legend and
+   hint text are hidden (the hint stays for screen readers because the canvas is described by it) */
 .activity .skyline-stats, .activity .skyline-corner, .activity .skyline-legend { display: none; }
 .activity .skyline-foot { margin: 0; }
 .activity .skyline-hint { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.activity .skyline-head { margin-bottom: 10px; align-items: flex-end; }
+.activity .skyline { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 48px; align-items: center; }
+.activity .skyline-head { grid-area: 1 / 1; margin: 0; flex-direction: column; align-items: flex-start; gap: 18px; }
+.activity .skyline-plot { grid-area: 2 / 1; width: 100%; max-width: 360px; justify-self: start; }
 .activity .skyline-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; font-size: clamp(18px, 2.4vw, 26px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-.activity .skyline-title-num { font-size: clamp(60px, 10vw, 120px); font-weight: 800; line-height: 0.82; letter-spacing: -0.05em; }
+.activity .skyline-title-num { font-size: clamp(72px, 14vw, 168px); font-weight: 800; line-height: 0.82; letter-spacing: -0.05em; }
+@media (min-width: 760px) {
+  .activity .skyline { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); }
+  .activity .skyline-plot { grid-area: 1 / 1; }
+  .activity .skyline-head { grid-area: 1 / 2; }
+}
 @media (min-width: 640px) { .activity { padding: 30px 30px 24px; margin-bottom: 20px; } }
 .pgrid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .pcard { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 10px; transition: translate 400ms var(--ease), border-color 300ms; }
@@ -144,7 +151,7 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
 .tcard a { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; transition: translate 400ms var(--ease), border-color 300ms; }
 .tcard a:hover { translate: 0 -4px; border-color: var(--line-strong); color: inherit; }
 .tcard-art { display: block; padding: 22px 22px 4px; color: var(--ink); }
-.tcard-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tcard-art svg { display: block; width: 100%; max-width: 400px; height: auto; overflow: visible; }
 /* thumbnails: the classes only set the colour; every stroke and fill in the SVG is currentColor */
 .th-ink { color: var(--ink); } .th-muted { color: var(--ink-2); } .th-grid { color: var(--line-strong); }
 .th-accent { color: var(--navy); } .th-oxide { color: var(--oxide); } .th-fill-muted { color: var(--cloud); }
@@ -185,7 +192,7 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
 [data-magic] .w { transition: none; }
 :root.js:not(.motion-ready):not(.motion-fail) [data-magic] .w { opacity: 0.18; }
 :root.motion-fail [data-magic] .w { opacity: 1 !important; }
-@media (prefers-reduced-motion: reduce) { [data-magic] .w { opacity: 1 !important; } }
+@media (prefers-reduced-motion: reduce), (prefers-contrast: more), (forced-colors: active) { [data-magic] .w { opacity: 1 !important; } }
 .mw { display: inline-block; overflow: clip; vertical-align: top; padding: 0.06em 0.04em 0.16em; margin: -0.06em -0.04em -0.16em; }
 .mw > span { display: inline-block; }
 @media (prefers-reduced-motion: no-preference) {
@@ -211,7 +218,7 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
   :root.js:not(.motion-fail) [data-reveal="rise"] { transition: opacity 800ms var(--ease), transform 900ms var(--ease); }
   :root.js:not(.motion-fail) [data-reveal="rise"]:not(.in) { opacity: 0; transform: translateY(30px); }
   /* cards tilt up into place */
-  :root.js:not(.motion-fail) [data-reveal="card"] { transition: opacity 800ms var(--ease), transform 1000ms var(--ease); transform-origin: 50% 100%; }
+  :root.js:not(.motion-fail) [data-reveal="card"] { transition: opacity 800ms var(--ease), transform 1000ms var(--ease), translate 400ms var(--ease), border-color 300ms; transform-origin: 50% 100%; }
   :root.js:not(.motion-fail) [data-reveal="card"]:not(.in) { opacity: 0; transform: perspective(1000px) translateY(56px) rotateX(7deg) scale(0.965); }
   /* panels (tools, activity) settle from slightly below and larger */
   :root.js:not(.motion-fail) [data-reveal="panel"] { transition: opacity 900ms var(--ease), transform 1100ms var(--ease); }
@@ -220,6 +227,10 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .page-title { font-f
   :root.js:not(.motion-fail) [data-reveal="kv"], :root.js:not(.motion-fail) [data-reveal="rise"], :root.js:not(.motion-fail) [data-reveal="card"], :root.js:not(.motion-fail) [data-reveal="panel"] { transition-delay: calc(var(--i, 0) * 90ms); }
   :root.js:not(.motion-fail) .tcard .th-draw { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1800ms var(--ease) 250ms; }
   :root.js:not(.motion-fail) .tcard:not(.in) .th-draw { stroke-dashoffset: 1; }
+  /* the rest of the drawing fades in under the line, the markers arrive once the line has passed them */
+  :root.js:not(.motion-fail) .tcard svg > :not(.th-draw, circle) { transition: opacity 900ms var(--ease) 100ms; }
+  :root.js:not(.motion-fail) .tcard svg > circle { transition: opacity 500ms var(--ease) 600ms; }
+  :root.js:not(.motion-fail) .tcard:not(.in) svg > :not(.th-draw) { opacity: 0; }
 }
 @keyframes mask-up { from { transform: translateY(112%); } to { transform: none; } }
 
