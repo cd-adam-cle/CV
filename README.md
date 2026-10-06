@@ -37,7 +37,7 @@ Až si vybereš variantu, stačí v `src/variants.json` nechat jen ji (složka `
 
 ## Rámeček AI engineering v Dovednostech
 
-Je v obsahu pod `skills.ai` (nadpis, krátký popisek, řádky `k` a `v` a poznámka `cert` o certifikacích). Vykresluje ho `aiFrame()` v `build.mjs` mezi mřížkou dovedností a zájmy, styly jsou v `assets/css/site.css` (základ pro všechny varianty) a `assets/css/variant-c.css` (karta). Do rámečku patří jen to, co jde doložit prací nebo konfigurací. Poznámka o certifikacích mluví o plánu, dokud certifikát není získaný; po získání ji přepiš na hotovou věc a uveď přesný název z oficiální stránky Anthropic.
+Je v obsahu pod `skills.ai` (nadpis, skupiny `k` a `v` ve stejné podobě jako ostatní dovednosti a poznámka `cert` o certifikacích). Vykresluje ho `aiFrame()` v `build.mjs` mezi mřížkou dovedností a zájmy, styly jsou v `assets/css/site.css` (základ pro všechny varianty) a `assets/css/variant-c.css` (karta). Do rámečku patří jen to, co jde doložit prací nebo konfigurací. Poznámka o certifikacích mluví o plánu, dokud certifikát není získaný; po získání ji přepiš na hotovou věc a uveď přesný název z oficiální stránky Anthropic.
 
 ## Světlý a tmavý režim
 

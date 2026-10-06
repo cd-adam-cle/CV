@@ -239,20 +239,17 @@ function skills(c) {
   }
   return section(s, `    <dl class="skills-grid">
       ${s.groups.map((g) => `<div class="skill"${blocks ? ' data-reveal="rise"' : ''}><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
-    </dl>${aiFrame(s.ai, blocks)}
+    </dl>${aiFrame(s.ai)}
     <p class="interests"${blocks ? ' data-reveal="rise"' : ''}><strong>${esc(it.k)}.</strong> ${v}</p>`);
 }
-/* the AI engineering frame inside the skills section: a lead, a few labelled rows and the certification plan */
-function aiFrame(a, blocks) {
+/* the AI engineering frame inside the skills section: the same label and short paragraph as the other skills, in a light frame, plus the certificate plan */
+function aiFrame(a) {
   if (!a) return '';
   return `
-    <div class="ai-frame"${blocks ? ' data-reveal="panel"' : ''}>
-      <div class="ai-head">
-        <h3 class="ai-title">${esc(a.title)}</h3>
-        <p class="ai-lead">${esc(a.lead)}</p>
-      </div>
-      <dl class="ai-rows">
-        ${a.rows.map((r) => `<div class="ai-row"${blocks ? ' data-reveal="kv"' : ''}><dt>${esc(r.k)}</dt><dd>${esc(r.v)}</dd></div>`).join('\n        ')}
+    <div class="ai-frame"${isBlocks() ? ' data-reveal="panel"' : ''}>
+      <h3 class="ai-title">${esc(a.title)}</h3>
+      <dl class="ai-grid">
+        ${a.groups.map((g) => `<div class="skill"><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n        ')}
       </dl>${a.cert ? `
       <p class="ai-cert"><strong>${esc(a.cert.k)}.</strong> ${esc(a.cert.v)}</p>` : ''}
     </div>`;

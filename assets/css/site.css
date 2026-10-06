@@ -161,25 +161,13 @@ body.nav-open .nav-toggle .t-close { display: inline; }
 @media (min-width: 640px) { .skills-grid { grid-template-columns: 1fr 1fr; gap: 32px 28px; } }
 @media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
 
-/* AI engineering frame inside skills */
-.ai-frame { margin-top: 40px; border: 1px solid var(--line); padding: 22px 20px 20px; display: grid; gap: 18px; }
-.ai-title { font-size: 22px; font-weight: 600; line-height: 1.15; }
-.ai-lead { margin-top: 6px; font-size: 16px; line-height: 1.5; }
-.ai-rows { border-top: 1px solid var(--line); }
-.ai-row { display: grid; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.ai-row dt { font-size: 15px; font-weight: 600; }
-.ai-row dd { font-size: 16px; line-height: 1.5; }
-.ai-cert { font-size: 16px; line-height: 1.5; }
-@media (min-width: 640px) {
-  .ai-frame { padding: 26px 26px 24px; }
-  .ai-row { grid-template-columns: 180px 1fr; gap: 20px; }
-}
-@media (min-width: 1100px) {
-  .ai-frame { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; grid-template-areas: "head rows" "cert rows"; gap: 20px 48px; padding: 28px 30px 26px; }
-  .ai-head { grid-area: head; }
-  .ai-rows { grid-area: rows; align-self: start; }
-  .ai-cert { grid-area: cert; align-self: end; padding-top: 16px; border-top: 1px solid var(--line); max-width: 44ch; }
-}
+/* AI engineering frame inside skills: the cells reuse .skill */
+.ai-frame { margin-top: 32px; border: 1px solid var(--line); padding: 16px 16px 14px; }
+.ai-title { font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+.ai-grid { display: grid; gap: 14px; }
+.ai-cert { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.5; }
+@media (min-width: 640px) { .ai-frame { margin-top: 36px; padding: 18px 20px; } .ai-grid { gap: 18px; } .ai-cert { margin-top: 16px; padding-top: 14px; } }
+@media (min-width: 900px) { .ai-grid { grid-template-columns: repeat(3, 1fr); gap: 0 28px; } }
 
 /* contact */
 .contact-email { font-size: 28px; line-height: 1.2; margin-bottom: 28px; word-break: break-all; }
