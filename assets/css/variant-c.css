@@ -9,17 +9,41 @@
   --section-pad: 96px;
 }
 @media (min-width: 1024px) { :root { --section-pad: 150px; } }
-h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .kicker { font-family: var(--font-display); }
+h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .portal-word, .portal-kicker { font-family: var(--font-display); }
 .brand { font-weight: 700; letter-spacing: -0.01em; }
 .site-header { background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .nav-list a { font-weight: 500; }
 
+/* ---------- portal ---------- */
+.portal { position: relative; height: 240svh; }
+.portal-pin { position: sticky; top: 0; height: 100svh; overflow: clip; isolation: isolate; }
+.portal-field { position: absolute; inset: 0; background: var(--navy); color: #f6f5f2; clip-path: url(#portal-clip); display: grid; place-items: center; padding: clamp(24px, 7vw, 120px); }
+.portal-lead { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3.4vw, 48px); line-height: 1.15; letter-spacing: -0.025em; max-width: 24ch; text-wrap: balance; text-align: center; opacity: var(--portal-reveal, 0); margin: 0; }
+.portal-art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.portal-art text { font-family: var(--font-display); font-weight: 800; font-size: 100px; letter-spacing: 0; font-kerning: none; font-variant-ligatures: none; }
+.portal-word { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; font-weight: 800; font-size: min(22vw, 38svh); letter-spacing: 0; font-kerning: none; color: var(--navy); line-height: 1; }
+.js-ready .portal[data-portal-ready] .portal-word { visibility: hidden; }
+.portal-kicker { position: absolute; left: var(--gutter); top: calc(var(--nav-h) + 20px); margin: 0; font-weight: 600; font-size: 15px; letter-spacing: -0.005em; opacity: var(--portal-caption, 1); }
+.portal-row { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; display: grid; gap: 18px; opacity: var(--portal-caption, 1); }
+.portal-intro { margin: 0; font-size: 17px; line-height: 1.4; max-width: 44ch; color: var(--ink); }
+.portal-actions { margin: 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.portal-hint { margin: 0; font-size: 15px; color: var(--ink-2); }
+.portal-word { font-size: min(24vw, 34svh); }
+@media (min-width: 760px) {
+  .portal-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "intro actions" "intro hint"; align-items: end; column-gap: 48px; bottom: 36px; }
+  .portal-intro { grid-area: intro; font-size: 19px; }
+  .portal-actions { grid-area: actions; justify-content: flex-end; }
+  .portal-hint { grid-area: hint; text-align: right; }
+}
+@media (max-height: 560px) { .portal-intro, .portal-hint { display: none; } }
+.portal[data-portal-static] { height: auto; }
+.portal[data-portal-static] .portal-pin { position: relative; height: 100svh; }
+@media (prefers-reduced-motion: reduce) { .portal { height: auto; } .portal-pin { position: relative; height: 100svh; } .portal-lead { opacity: 0; } }
+
 /* ---------- hero ---------- */
-.hero { padding-top: 56px; padding-bottom: 72px; }
-.hero-open { min-height: calc(100svh - var(--nav-h)); box-sizing: border-box; align-content: center; }
+.hero { padding-top: 72px; padding-bottom: 72px; }
 .hero::after { display: none; }
-.kicker { margin: 0 0 28px; font-weight: 600; font-size: 15px; letter-spacing: -0.005em; color: var(--ink-2); }
-.hero h1 { font-weight: 800; font-size: clamp(42px, 6.4vw, 104px); line-height: 0.95; letter-spacing: -0.04em; max-width: 13ch; text-wrap: balance; }
+.hero h1 { font-weight: 800; font-size: clamp(38px, 5.4vw, 80px); line-height: 0.98; letter-spacing: -0.035em; max-width: 14ch; text-wrap: balance; }
 .hero h1 .line { display: block; }
 .deck { font-size: 20px; margin-top: 32px; max-width: 52ch; }
 .btn-fill { display: inline-block; background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; letter-spacing: -0.005em; }
@@ -28,8 +52,8 @@ h1, h2, h3, .numbers strong, .pcard-tag, .btn-fill, .brand, .kicker { font-famil
 .sheet-row dt { font-weight: 600; color: var(--ink); }
 @media (min-width: 640px) { .deck { font-size: 22px; } }
 @media (min-width: 1024px) {
-  .hero { padding-top: 96px; padding-bottom: 96px; }
-  .hero-text { grid-column: 1 / span 8; } .sheet { grid-column: 9 / span 4; padding-top: 48px; }
+  .hero { padding-top: 120px; padding-bottom: 96px; }
+  .hero-text { grid-column: 1 / span 8; } .sheet { grid-column: 9 / span 4; padding-top: 16px; }
 }
 @media (min-width: 1280px) { .hero-text { grid-column: 1 / span 8; } .sheet { grid-column: 9 / span 4; } }
 

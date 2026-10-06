@@ -86,9 +86,23 @@ function footer(c) {
 function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(', '); }
 function heroBlocks(c) {
   const h = c.hero;
-  return `<section class="hero hero-open" aria-labelledby="hero-title">
+  return `<section class="portal" data-portal aria-label="${esc(h.kicker)}">
+  <div class="portal-pin">
+    <div class="portal-field" aria-hidden="true">
+      <p class="portal-lead">${esc(h.portalText)}</p>
+    </div>
+    <svg class="portal-art" aria-hidden="true" focusable="false"><defs><clipPath id="portal-clip" clipPathUnits="userSpaceOnUse"><text data-portal-glyph x="0" y="0">${esc(h.mark)}</text></clipPath></defs></svg>
+    <p class="portal-word" aria-hidden="true">${esc(h.mark)}</p>
+    <p class="portal-kicker">${esc(h.kicker)}</p>
+    <div class="portal-row">
+      <p class="portal-intro">${esc(h.intro)}</p>
+      <p class="portal-actions"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
+      <p class="portal-hint" aria-hidden="true">${esc(h.portalHint)} ↓</p>
+    </div>
+  </div>
+</section>
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
-    <p class="kicker">${esc(h.kicker)}</p>
     <h1 id="hero-title" data-split>${h.title.map((t) => `<span class="line">${esc(t)}</span>`).join(' ')}</h1>
     <p class="deck" data-magic>${esc(h.deck)}</p>
     <p class="actions"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>

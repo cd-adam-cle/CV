@@ -91,7 +91,11 @@
         "v": "Czech, English C1 (CAE), German A2"
       }
     ],
-    "kicker": "Adam Zikmund, Prague"
+    "mark": "Zikmund",
+    "portalHint": "Scroll to enter",
+    "kicker": "Adam Zikmund, Prague",
+    "portalText": "Financial mathematics student at Charles University. Software that gets used. Interested in risk, investing and venture capital.",
+    "intro": "Financial mathematics student at Charles University, previously co-founder of two products in production. Looking for an internship or part-time role in risk, investing and venture capital."
   },
   "profile": {
     "id": "profile",
