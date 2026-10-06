@@ -586,20 +586,20 @@
       "groups": [
         {
           "k": "Use cases",
-          "v": "Assessing applications, daily recommendations, client content with quality control, lecture transcription, scheduled digests and message drafts, optimisation for AI search (llms.txt)."
+          "v": "Assessing parish applications (Božííí), daily training recommendations, client content with quality control, lecture transcription, scheduled digests and message drafts, optimisation for AI search (llms.txt)."
         },
         {
           "k": "Integration",
-          "v": "Anthropic API with schema-constrained output: the model assesses, deterministic code decides, failures go to a person; cron and GitHub Actions workflows with checks; MCP servers."
+          "v": "Anthropic API with schema-constrained output: the model assesses, deterministic code decides, a person handles failures; scheduled workflows (cron, GitHub Actions) with checks; connecting ready-made MCP servers."
         },
         {
           "k": "Knowledge and tools",
-          "v": "Prompt and context engineering, prompt-injection defence, cost limits, model choice by price, tests with a fake client; Claude Code, Cowork, Antigravity."
+          "v": "Prompt engineering and context engineering, prompt-injection defence, cost limits, model choice by price, tests with a fake client; Claude Code, Claude Cowork, Google Antigravity."
         }
       ],
       "cert": {
-        "k": "Anthropic certificates",
-        "v": "The goal is as many Claude Academy certificates of completion as possible, starting with Building with the Claude API and Claude Code in action."
+        "k": "Certificates planned",
+        "v": "Claude Academy (Anthropic) courses that end in a certificate of completion, starting with “Building with the Claude API” and “Claude Code in action”."
       }
     }
   },
@@ -758,7 +758,7 @@
       },
       {
         "k": "AI engineering",
-        "v": "Integrating LLMs into applications and automations (Anthropic API, schema-constrained output, prompt-injection defence, cost limits, testing), agentic development (Claude Code, Cowork, Google Antigravity, MCP); Anthropic Claude Academy certificates of completion planned"
+        "v": "Integrating LLMs into applications and automations (Anthropic API, schema-constrained output, prompt-injection defence, cost limits, testing), agentic development (Claude Code, Claude Cowork, Google Antigravity, Model Context Protocol); Anthropic Claude Academy certificates of completion planned"
       },
       {
         "k": "Quantitative",

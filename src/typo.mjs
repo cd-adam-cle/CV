@@ -15,6 +15,9 @@ export function typo(str, LANG = 'cs') {
   t = t.replace(/(\d) (–|-) (\d)/g, `$1${NBSP}$2 $3`);               // 06/2026 – 09/2026 (keep break after dash)
   t = t.replace(/(\d) (–) (?=\p{L})/gu, `$1${NBSP}$2 `);             // 2026 – present: the dash stays with the year
   t = t.replace(/\bETS (\d)\b/g, `ETS${NBSP}$1`);                    // EU ETS 2
+  t = t.replace(/\b([Cc]o|[Pp]art)-(founder|time)\b/g, '$1\u2011$2');   // co-founder, part-time never break at the hyphen (the CV prints a plain hyphen)
+  t = t.replace(/\bMFF UK\b/g, `MFF${NBSP}UK`);
+  t = t.replace(/\b(Claude|Google) (Code|API|Cowork|Academy|Antigravity)\b/g, `$1${NBSP}$2`);   // product names
   if (LANG === 'cs') {
     t = t.replace(/(^|[\s(„"])([KSVZOUAIksvzouai]) (?=\S)/g, `$1$2${NBSP}`); // one-letter prepositions and conjunctions
     t = t.replace(/(\d{1,2}\.) (ročník|semestr)/g, `$1${NBSP}$2`);

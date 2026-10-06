@@ -592,20 +592,20 @@
       "groups": [
         {
           "k": "Oblasti použití",
-          "v": "Posuzování žádostí, denní doporučení, obsah pro klienty s kontrolou kvality, přepis přednášek, plánované přehledy a koncepty zpráv, optimalizace pro AI vyhledávače (llms.txt)."
+          "v": "Posuzování žádostí farností (Božííí), denní tréninkové doporučení, obsah pro klienty s kontrolou kvality, přepis přednášek, plánované přehledy a koncepty zpráv, optimalizace pro AI vyhledávače (llms.txt)."
         },
         {
           "k": "Integrace",
-          "v": "Anthropic API s výstupem podle schématu: model posuzuje, rozhoduje deterministický kód, selhání jdou na člověka; workflow v cronu a GitHub Actions s kontrolami; MCP servery."
+          "v": "Anthropic API s výstupem podle schématu: model posuzuje, rozhoduje deterministický kód, selhání řeší člověk; naplánovaná workflow (cron, GitHub Actions) s kontrolami; napojování hotových MCP serverů."
         },
         {
           "k": "Znalosti a nástroje",
-          "v": "Prompt a kontext engineering, ochrana před prompt injection, limity nákladů, volba modelu podle ceny, testy s atrapou klienta; Claude Code, Cowork, Antigravity."
+          "v": "Prompt engineering a context engineering, ochrana před prompt injection, limity nákladů, volba modelu podle ceny, testy s atrapou klienta; Claude Code, Claude Cowork, Google Antigravity."
         }
       ],
       "cert": {
-        "k": "Certifikáty Anthropic",
-        "v": "Cílem je co nejvíc certifikátů o dokončení kurzů Claude Academy, nejdřív Building with the Claude API a Claude Code in action."
+        "k": "Certifikáty v plánu",
+        "v": "Kurzy Claude Academy (Anthropic) zakončené certifikátem o dokončení, nejdřív „Building with the Claude API“ a „Claude Code in action“."
       }
     }
   },
@@ -764,7 +764,7 @@
       },
       {
         "k": "AI engineering",
-        "v": "Integrace LLM do aplikací a automatizací (Anthropic API, výstup podle schématu, ochrana před prompt injection, limity nákladů, testy), agentní vývoj (Claude Code, Cowork, Google Antigravity, MCP); v plánu certifikáty o dokončení kurzů Claude Academy (Anthropic)"
+        "v": "Integrace LLM do aplikací a automatizací (Anthropic API, výstup podle schématu, ochrana před prompt injection, limity nákladů, testy), agentní vývoj (Claude Code, Claude Cowork, Google Antigravity, Model Context Protocol); v plánu certifikáty o dokončení kurzů Claude Academy (Anthropic)"
       },
       {
         "k": "Kvantitativní",

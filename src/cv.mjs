@@ -9,7 +9,7 @@ import { typo } from './typo.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 let CV_LANG = 'cs';
-const esc = (s) => typo(String(s), CV_LANG).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const esc = (s) => typo(String(s), CV_LANG).replace(/\u2011/g, '-').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const CSS = `
 @page { size: A4; margin: 0; }
