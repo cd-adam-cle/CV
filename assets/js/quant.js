@@ -34,7 +34,7 @@
   function setupCanvas(canvas) {
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
     const rect = canvas.getBoundingClientRect();
-    const w = Math.max(240, Math.round(rect.width)); const h = Math.max(160, Math.round(rect.height || 300));
+    const w = Math.max(160, Math.round(rect.width)); const h = Math.max(160, Math.round(rect.height || 300));
     if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
     const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
     return { ctx, w, h };

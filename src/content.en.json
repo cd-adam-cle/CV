@@ -346,9 +346,9 @@
           "noTangency": "No portfolio beats the risk-free rate, so there is no tangency portfolio."
         },
         "details": [
-          "E[r_p] = Σ wᵢ·μᵢ; σ_p² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r_p] − r_f) / σ_p; Σ wᵢ = 1, without shorting wᵢ ≥ 0.",
+          "E[r_p] = Σ w_i·μ_i; σ_p² = Σ_i Σ_j w_i·w_j·ρ_ij·σ_i·σ_j; Sharpe = (E[r_p] − r_f) / σ_p; Σ w_i = 1, without shorting w_i ≥ 0.",
           "Frontier = upper envelope of 3,000 random portfolios (no shorting: weights from normalised |N(0,1)|; with shorting: from N(0,1) limited to [−1, 2]) plus the two-asset mixes.",
-          "Estimation error: 20 scenarios with μᵢ ± 1.5 pp and σᵢ ± 10% (fixed seed); their frontiers are drawn and the half-range of the max-Sharpe weights is reported as ±.",
+          "Estimation error: 20 scenarios with μ_i ± 1.5 pp and σ_i ± 10% (fixed seed); their frontiers are drawn and the half-range of the max-Sharpe weights is reported as ±.",
           "The three correlations entered must form a positive definite matrix; I require its smallest eigenvalue to be at least 0.05. If it is not, all three are scaled towards zero by the same factor until it is, and a note appears under the chart.",
           "Assumptions: one period, no transaction costs; the inputs are themselves estimates."
         ],
@@ -542,7 +542,7 @@
         "role": "Mathematics, physics and computer science",
         "results": [
           "Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).",
-          "Final-year research paper \"The impact of EU ETS 2 on ordinary people\" (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households."
+          "Final-year research paper “The impact of EU ETS 2 on ordinary people” (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households."
         ],
         "stack": ""
       }

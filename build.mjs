@@ -11,7 +11,7 @@ import { typo as typoFor } from './src/typo.mjs';
 let LANG = 'cs';
 const typo = (s) => typoFor(s, LANG);
 const esc = (s) => typo(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const rich = (s) => esc(s).replace(/([A-Za-zσμρ\]\)])_([A-Za-z]{1,3})\b/g, '$1<sub>$2</sub>');
+const rich = (s) => esc(s).replace(/([A-Za-zΣσμρ\]\)])_([A-Za-z]{1,3})\b/g, '$1<sub>$2</sub>');
 const ext = (href) => /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '';
 const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 // Words wrapped for the scroll reveals. Split on plain spaces only, so non-breaking spaces keep their words together.
@@ -267,7 +267,7 @@ function contact(c) {
 
 /* ---------- quant tools ---------- */
 const fmtIn = (v) => { let s = String(v); if (s.includes('.')) s = s.replace(/0+$/, '').replace(/\.$/, ''); return LANG === 'cs' ? s.replace('.', ',') : s; };
-const numAttrs = (name, min, max, step, value, decimals) => `type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="${name}" min="${min}" max="${max}" step="${step}" value="${fmtIn(value)}"${decimals != null ? ` data-decimals="${decimals}"` : ''}`;
+const numAttrs = (name, min, max, step, value, decimals) => `type="text" ${Number(min) < 0 ? '' : 'inputmode="decimal" '}autocomplete="off" spellcheck="false" data-num name="${name}" min="${min}" max="${max}" step="${step}" value="${fmtIn(value)}"${decimals != null ? ` data-decimals="${decimals}"` : ''}`;
 function ctl(tool, name, label, min, max, step, value, unit, decimals) {
   const id = `${tool}-${name}`;
   return `<div class="ctl">

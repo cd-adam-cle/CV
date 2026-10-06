@@ -139,7 +139,7 @@
         </div>
               <div class="ctl">
           <label class="ctl-label" id="mc-mu-label" for="mc-mu">Drift μ (p.a.)</label>
-          <span class="ctl-value"><input id="mc-mu" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
+          <span class="ctl-value"><input id="mc-mu" type="text" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
           <input type="range" class="ctl-range" aria-labelledby="mc-mu-label" data-sync="mu" min="-10" max="20" step="0.5" value="6" tabindex="-1">
         </div>
               <div class="ctl">
@@ -194,9 +194,9 @@
                 </tbody>
               </table>
               <div class="corr" role="group" aria-label="Correlation"><span class="ctl-label">Correlation</span>
-                <label>ρ(A,B) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0.3" data-decimals="2"></label>
-                <label>ρ(A,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0.2" data-decimals="2"></label>
-                <label>ρ(B,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0.4" data-decimals="2"></label>
+                <label>ρ(A,B) <input type="text" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0.3" data-decimals="2"></label>
+                <label>ρ(A,C) <input type="text" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0.2" data-decimals="2"></label>
+                <label>ρ(B,C) <input type="text" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0.4" data-decimals="2"></label>
               </div>
               <div class="ctl">
           <label class="ctl-label" id="mk-rf-label" for="mk-rf">Risk-free rate r<sub>f</sub></label>
@@ -233,7 +233,7 @@
           </div>
           <p class="visually-hidden" aria-live="polite" data-role="live"></p>
           <p class="insight">The model is sensitive to its inputs: shifting expected returns by 1–2 percentage points reshuffles the &quot;optimal&quot; portfolio substantially. That is why raw Markowitz is rarely used on its own in practice; constraints, shrinkage estimators or Black–Litterman views are layered on top.</p>
-          <details class="method"><summary>How it is computed</summary><ul><li>E[r<sub>p</sub>] = Σ wᵢ·μᵢ; σ<sub>p</sub>² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ wᵢ = 1, without shorting wᵢ ≥ 0.</li><li>Frontier = upper envelope of 3,000 random portfolios (no shorting: weights from normalised |N(0,1)|; with shorting: from N(0,1) limited to [−1, 2]) plus the two-asset mixes.</li><li>Estimation error: 20 scenarios with μᵢ ± 1.5 pp and σᵢ ± 10% (fixed seed); their frontiers are drawn and the half-range of the max-Sharpe weights is reported as ±.</li><li>The three correlations entered must form a positive definite matrix; I require its smallest eigenvalue to be at least 0.05. If it is not, all three are scaled towards zero by the same factor until it is, and a note appears under the chart.</li><li>Assumptions: one period, no transaction costs; the inputs are themselves estimates.</li></ul></details>
+          <details class="method"><summary>How it is computed</summary><ul><li>E[r<sub>p</sub>] = Σ w<sub>i</sub>·μ<sub>i</sub>; σ<sub>p</sub>² = Σ<sub>i</sub> Σ<sub>j</sub> w<sub>i</sub>·w<sub>j</sub>·ρ<sub>ij</sub>·σ<sub>i</sub>·σ<sub>j</sub>; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ w<sub>i</sub> = 1, without shorting w<sub>i</sub> ≥ 0.</li><li>Frontier = upper envelope of 3,000 random portfolios (no shorting: weights from normalised |N(0,1)|; with shorting: from N(0,1) limited to [−1, 2]) plus the two-asset mixes.</li><li>Estimation error: 20 scenarios with μ<sub>i</sub> ± 1.5 pp and σ<sub>i</sub> ± 10% (fixed seed); their frontiers are drawn and the half-range of the max-Sharpe weights is reported as ±.</li><li>The three correlations entered must form a positive definite matrix; I require its smallest eigenvalue to be at least 0.05. If it is not, all three are scaled towards zero by the same factor until it is, and a note appears under the chart.</li><li>Assumptions: one period, no transaction costs; the inputs are themselves estimates.</li></ul></details>
         </div>
       </article>
     </div>

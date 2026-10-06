@@ -139,7 +139,7 @@
         </div>
               <div class="ctl">
           <label class="ctl-label" id="mc-mu-label" for="mc-mu">Drift μ (p. a.)</label>
-          <span class="ctl-value"><input id="mc-mu" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
+          <span class="ctl-value"><input id="mc-mu" type="text" autocomplete="off" spellcheck="false" data-num name="mu" min="-10" max="20" step="0.5" value="6" data-decimals="1"><span class="unit">%</span></span>
           <input type="range" class="ctl-range" aria-labelledby="mc-mu-label" data-sync="mu" min="-10" max="20" step="0.5" value="6" tabindex="-1">
         </div>
               <div class="ctl">
@@ -194,9 +194,9 @@
                 </tbody>
               </table>
               <div class="corr" role="group" aria-label="Korelace"><span class="ctl-label">Korelace</span>
-                <label>ρ(A,B) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0,3" data-decimals="2"></label>
-                <label>ρ(A,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0,2" data-decimals="2"></label>
-                <label>ρ(B,C) <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0,4" data-decimals="2"></label>
+                <label>ρ(A,B) <input type="text" autocomplete="off" spellcheck="false" data-num name="r12" min="-0.9" max="0.95" step="0.05" value="0,3" data-decimals="2"></label>
+                <label>ρ(A,C) <input type="text" autocomplete="off" spellcheck="false" data-num name="r13" min="-0.9" max="0.95" step="0.05" value="0,2" data-decimals="2"></label>
+                <label>ρ(B,C) <input type="text" autocomplete="off" spellcheck="false" data-num name="r23" min="-0.9" max="0.95" step="0.05" value="0,4" data-decimals="2"></label>
               </div>
               <div class="ctl">
           <label class="ctl-label" id="mk-rf-label" for="mk-rf">Bezriziková sazba r<sub>f</sub></label>
@@ -233,7 +233,7 @@
           </div>
           <p class="visually-hidden" aria-live="polite" data-role="live"></p>
           <p class="insight">Model je citlivý na vstupy: posun očekávaných výnosů o 1–2 procentní body „optimální“ portfolio výrazně přeskládá. Proto se Markowitzův model v základní podobě v praxi nepoužívá samostatně; přidávají se omezení, shrinkage odhadů nebo pohledy Black–Litterman.</p>
-          <details class="method"><summary>Jak to počítám</summary><ul><li>E[r<sub>p</sub>] = Σ wᵢ·μᵢ; σ<sub>p</sub>² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ wᵢ = 1, bez shortu wᵢ ≥ 0.</li><li>Hranice = horní obálka 3 000 náhodných portfolií (bez shortu váhy z normalizovaných |N(0,1)|, se shortem z N(0,1) omezené na [−1; 2]) doplněná o dvojice aktiv.</li><li>Chyba odhadu: 20 scénářů s μᵢ ± 1,5 p. b. a σᵢ ± 10 % (pevné semínko); vykreslí se jejich hranice a jako ± se uvádí polovina rozpětí vah max-Sharpe portfolia.</li><li>Tři zadané korelace musí tvořit pozitivně definitní matici; vyžaduji, aby její nejmenší vlastní číslo bylo aspoň 0,05. Pokud ne, zmenšuji všechny tři korelace stejným koeficientem, dokud podmínka neplatí, a upozorním na to pod grafem.</li><li>Předpoklady: jedno období, bez transakčních nákladů; vstupy jsou samy odhadem.</li></ul></details>
+          <details class="method"><summary>Jak to počítám</summary><ul><li>E[r<sub>p</sub>] = Σ w<sub>i</sub>·μ<sub>i</sub>; σ<sub>p</sub>² = Σ<sub>i</sub> Σ<sub>j</sub> w<sub>i</sub>·w<sub>j</sub>·ρ<sub>ij</sub>·σ<sub>i</sub>·σ<sub>j</sub>; Sharpe = (E[r<sub>p</sub>] − r<sub>f</sub>) / σ<sub>p</sub>; Σ w<sub>i</sub> = 1, bez shortu w<sub>i</sub> ≥ 0.</li><li>Hranice = horní obálka 3 000 náhodných portfolií (bez shortu váhy z normalizovaných |N(0,1)|, se shortem z N(0,1) omezené na [−1; 2]) doplněná o dvojice aktiv.</li><li>Chyba odhadu: 20 scénářů s μ<sub>i</sub> ± 1,5 p. b. a σ<sub>i</sub> ± 10 % (pevné semínko); vykreslí se jejich hranice a jako ± se uvádí polovina rozpětí vah max-Sharpe portfolia.</li><li>Tři zadané korelace musí tvořit pozitivně definitní matici; vyžaduji, aby její nejmenší vlastní číslo bylo aspoň 0,05. Pokud ne, zmenšuji všechny tři korelace stejným koeficientem, dokud podmínka neplatí, a upozorním na to pod grafem.</li><li>Předpoklady: jedno období, bez transakčních nákladů; vstupy jsou samy odhadem.</li></ul></details>
         </div>
       </article>
     </div>

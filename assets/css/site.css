@@ -66,6 +66,7 @@ body.nav-open .nav-toggle .t-close { display: inline; }
   body.nav-open .nav-list { display: block; }
   .nav-list li { border-bottom: 1px solid var(--line); }
   .nav-list a { display: block; font-size: 28px; padding: 16px 0; border-bottom: 0; }
+  .nav-list a.is-active, .nav-list a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
 }
 @media (min-width: 1024px) {
   .nav-toggle { display: none; }
@@ -177,7 +178,8 @@ body.nav-open .nav-toggle .t-close { display: inline; }
 @media (min-width: 640px) { .contact-email { font-size: 40px; line-height: 1.1; word-break: normal; } .contact-list { font-size: 20px; } }
 
 /* footer */
-.site-footer { margin-top: var(--section-pad); padding-top: 24px; padding-bottom: 40px; border-top: 1px solid var(--line); display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
+.site-footer { position: relative; margin-top: var(--section-pad); padding-top: 24px; padding-bottom: 40px; display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
+.site-footer::before { content: ""; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); border-top: 1px solid var(--line); }
 .site-footer .is-current { color: var(--ink); }
 .site-footer a { color: var(--ink-2); display: inline-block; padding: 8px 6px; margin: -8px -6px; }
 @media (min-width: 640px) { .site-footer { grid-template-columns: 1fr auto; } .footer-note { grid-column: 1; grid-row: 2; } .footer-lang { grid-column: 2; grid-row: 1; } }
@@ -268,6 +270,7 @@ body.nav-open .nav-toggle .t-close { display: inline; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 2px 22px; margin-top: 14px; }
 .text-btn { font: inherit; font-size: 15px; font-weight: 500; background: none; border: 0; padding: 6px 0; cursor: pointer; color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .text-btn:hover { color: var(--navy); }
+@media (pointer: coarse) { .text-btn { padding: 10px 0; } .nav-toggle { min-height: 44px; min-width: 44px; padding: 0 6px; margin-right: -6px; } .contact-list a { padding-block: 8px; margin-block: -4px; } }
 .text-btn[aria-pressed="true"] { color: var(--oxide); }
 .assets { width: 100%; border-collapse: collapse; font-size: 15px; }
 .assets th { font-weight: 400; text-align: left; padding: 6px 0; font-size: 14px; color: var(--ink-2); }

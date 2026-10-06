@@ -21,9 +21,10 @@
     }
     return { el, spans, hero: el.dataset.magic === 'hero', last: new Float32Array(spans.length).fill(-1) };
   });
+  const FLOOR = 0.4; // dim words keep enough contrast to be read before they are lit
   const setWords = (m, lit) => { // lit = number of fully lit words, fractional for the word being lit
     for (let i = 0; i < m.spans.length; i++) {
-      const o = 0.18 + 0.82 * clamp(lit - i);
+      const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
       if (Math.abs(o - m.last[i]) > 0.004) { m.spans[i].style.opacity = o.toFixed(3); m.last[i] = o; }
     }
   };
@@ -34,7 +35,7 @@
       const r = m.el.getBoundingClientRect();
       let p;
       if (r.top >= vh) p = 0; else if (r.bottom <= 0) p = 1;
-      else p = clamp((vh * 0.9 - r.top) / (vh * 0.65 + Math.min(r.height, vh * 0.9))); // starts when the top reaches 90% of the viewport, done when the bottom reaches about 25%
+      else p = clamp((vh * 0.9 - r.top) / (vh * 0.45 + Math.min(r.height, vh * 0.9))); // starts when the top reaches 90% of the viewport, done when the bottom reaches about 45%
       setWords(m, m.spans.length * p);
     }
   };
@@ -43,13 +44,15 @@
   const hero = document.querySelector('[data-hero]');
   const pin = hero && hero.querySelector('.hero-pin');
   const heroM = magics.find((m) => m.hero);
+  const titleWords = heroM ? heroM.el.querySelectorAll('.hero-sentence:first-child .w').length : 0; // the title is lit from the start, the subtitle lights up with the scroll
   const paintHero = () => {
     if (!hero || !pin || !heroM) return;
     const navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 56;
     const dist = Math.max(1, hero.offsetHeight - pin.offsetHeight);
     const p = clamp((navH - hero.getBoundingClientRect().top) / dist);
     const q = clamp(p / 0.8); // the last fifth of the distance holds the finished headline
-    setWords(heroM, heroM.spans.length * (0.2 + 0.8 * q));
+    const base = titleWords || Math.round(heroM.spans.length * 0.2);
+    setWords(heroM, base + (heroM.spans.length - base) * q);
     hero.style.setProperty('--hero-hint', (1 - smooth(0, 0.06, p)).toFixed(3));
   };
 

@@ -346,9 +346,9 @@
           "noTangency": "Žádné portfolio nepřekoná bezrizikovou sazbu, tečné portfolio proto neexistuje."
         },
         "details": [
-          "E[r_p] = Σ wᵢ·μᵢ; σ_p² = Σᵢ Σⱼ wᵢ·wⱼ·ρᵢⱼ·σᵢ·σⱼ; Sharpe = (E[r_p] − r_f) / σ_p; Σ wᵢ = 1, bez shortu wᵢ ≥ 0.",
+          "E[r_p] = Σ w_i·μ_i; σ_p² = Σ_i Σ_j w_i·w_j·ρ_ij·σ_i·σ_j; Sharpe = (E[r_p] − r_f) / σ_p; Σ w_i = 1, bez shortu w_i ≥ 0.",
           "Hranice = horní obálka 3 000 náhodných portfolií (bez shortu váhy z normalizovaných |N(0,1)|, se shortem z N(0,1) omezené na [−1; 2]) doplněná o dvojice aktiv.",
-          "Chyba odhadu: 20 scénářů s μᵢ ± 1,5 p. b. a σᵢ ± 10 % (pevné semínko); vykreslí se jejich hranice a jako ± se uvádí polovina rozpětí vah max-Sharpe portfolia.",
+          "Chyba odhadu: 20 scénářů s μ_i ± 1,5 p. b. a σ_i ± 10 % (pevné semínko); vykreslí se jejich hranice a jako ± se uvádí polovina rozpětí vah max-Sharpe portfolia.",
           "Tři zadané korelace musí tvořit pozitivně definitní matici; vyžaduji, aby její nejmenší vlastní číslo bylo aspoň 0,05. Pokud ne, zmenšuji všechny tři korelace stejným koeficientem, dokud podmínka neplatí, a upozorním na to pod grafem.",
           "Předpoklady: jedno období, bez transakčních nákladů; vstupy jsou samy odhadem."
         ],

@@ -40,7 +40,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 
 /* theme toggle */
 .theme-toggle { display: inline-grid; place-items: center; width: 36px; height: 36px; margin: -6px -8px -6px -4px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--ink); cursor: pointer; transition: color var(--dur), background-color var(--dur); }
-.theme-toggle:hover { color: var(--navy); background: color-mix(in srgb, var(--ink) 7%, transparent); }
+@media (hover: hover) { .theme-toggle:hover { color: var(--navy); background: color-mix(in srgb, var(--ink) 7%, transparent); } }
 .theme-toggle .ico-sun { display: none; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .theme-toggle .ico-moon { display: none; }
@@ -70,7 +70,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .hero-rest { padding-top: 0; padding-bottom: 72px; }
 .deck { font-size: 20px; margin-top: 0; max-width: 52ch; }
 .btn-fill { display: inline-block; background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; letter-spacing: -0.005em; transition: background-color 200ms, color 200ms, translate 300ms var(--ease); }
-.btn-fill:hover { background: var(--navy); color: var(--on-accent); translate: 0 -2px; }
+@media (hover: hover) { .btn-fill:hover { background: var(--navy); color: var(--on-accent); translate: 0 -2px; } }
 .sheet-rows { border-top: 1px solid var(--rule); }
 .sheet-row dt { font-weight: 600; color: var(--ink); }
 @media (min-width: 640px) { .deck { font-size: 22px; } }
@@ -129,7 +129,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .activity .skyline-plot { grid-area: 1 / 1; width: 100%; max-width: 280px; justify-self: start; }
 .activity .skyline-head { grid-area: 1 / 2; margin: 0; flex-direction: column; align-items: flex-start; gap: 10px; }
 .activity .skyline-title { text-wrap: balance; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: clamp(14px, 1.7vw, 19px); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; }
-.activity .skyline-title-num { font-size: clamp(48px, 7.4vw, 88px); font-weight: 800; line-height: 0.84; letter-spacing: -0.05em; }
+.activity .skyline-title-num { font-size: clamp(48px, 7.4vw, 88px); font-weight: 800; line-height: 0.84; letter-spacing: -0.03em; }
 @media (min-width: 640px) {
   .activity { padding: 24px 28px; margin-bottom: 20px; }
   .activity .skyline { grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 0 48px; }
@@ -137,7 +137,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 }
 .pgrid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .pcard { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 10px; transition: translate 400ms var(--ease), border-color 300ms; }
-.pcard:hover { translate: 0 -4px; border-color: var(--line-strong); }
+@media (hover: hover) { .pcard:hover { translate: 0 -4px; border-color: var(--line-strong); } }
 .pcard h3 { font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin-top: 10px; }
 .pcard h3 a { text-decoration: none; } .pcard h3 a:hover { text-decoration: underline; }
 .pcard-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; color: var(--ink-2); }
@@ -145,13 +145,14 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .pcard-role { font-size: 17px; color: var(--ink-2); margin-top: -4px; }
 .pcard .results { margin-top: 6px; } .pcard .results li { font-size: 16px; }
 .pcard .row-stack { margin-top: auto; padding-top: 14px; font-size: 14px; }
+.pcard-wide .row-stack { margin-top: 0; }
 @media (min-width: 640px) { .pgrid { grid-template-columns: 1fr 1fr; gap: 20px; } .pcard-wide { grid-column: 1 / -1; } .pcard-wide h3 { font-size: 40px; } .pcard { padding: 32px 30px 34px; } }
 @media (min-width: 1024px) { .pgrid { grid-template-columns: repeat(3, 1fr); } .pcard-wide { grid-column: 1 / span 2; } }
 
 /* ---------- tools: teaser on the home page, full tools on their own page ---------- */
 .tcards { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .tcard a { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; transition: translate 400ms var(--ease), border-color 300ms; }
-.tcard a:hover { translate: 0 -4px; border-color: var(--line-strong); color: inherit; }
+@media (hover: hover) { .tcard a:hover { translate: 0 -4px; border-color: var(--line-strong); color: inherit; } }
 .tcard-art { display: block; padding: 22px 22px 4px; color: var(--ink); }
 .tcard-art svg { display: block; width: 100%; max-width: 400px; height: auto; overflow: visible; }
 /* thumbnails: the classes only set the colour; every stroke and fill in the SVG is currentColor */
@@ -161,7 +162,8 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .tcard h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
 .tcard p { margin-top: 8px; font-size: 16px; line-height: 1.45; color: var(--ink-2); }
 .section-teaser .actions { margin-top: 36px; }
-@media (min-width: 900px) { .tcards { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+@media (min-width: 700px) { .tcards { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+@media (min-width: 900px) { .tcards { gap: 20px; } }
 .page-head { max-width: var(--max); margin-inline: auto; padding: 48px var(--gutter) 0; }
 .crumb { font-size: 15px; margin-bottom: 36px; }
 .crumb a { color: var(--ink-2); } .crumb a:hover { color: var(--navy); }
@@ -169,7 +171,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .page-intro { font-family: var(--font-display); font-weight: 600; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.25; letter-spacing: -0.015em; max-width: 36ch; margin-top: 32px; }
 .page-index ul { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
 .page-index a { display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px; padding: 9px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background-color 200ms, color 200ms, border-color 200ms; }
-.page-index a:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (hover: hover) { .page-index a:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); } }
 .page-more { margin-top: 20px; font-size: 16px; color: var(--ink-2); }
 .section-tools { padding-top: 56px; }
 .section-tools > .content { grid-column: 1 / -1; }
@@ -177,7 +179,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .tool-title { font-size: 34px; font-weight: 700; letter-spacing: -0.025em; }
 .tool-quote { font-size: 19px; }
 .panel { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 0 24px; }
-.chart { padding-left: 24px; padding-right: 0; }
+@media (min-width: 1024px) { .chart { padding-left: 24px; padding-right: 0; } }
 .skills-grid { border-top: 1px solid var(--rule); }
 /* the AI engineering frame: a light outlined card; its cells are the same .skill cells as above */
 .ai-frame { margin-top: 36px; background: var(--surface); border-color: var(--line-strong); border-radius: 6px; padding: 16px 16px 14px; }
@@ -196,7 +198,8 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
    The hidden states below apply only while the page runs motion.js (html.js, no html.motion-fail) and the visitor allows motion.
    motion.js adds .in when an element scrolls into view; the delay of stacked items comes from --i. */
 [data-magic] .w { transition: none; }
-:root.js:not(.motion-ready):not(.motion-fail) [data-magic] .w { opacity: 0.18; }
+:root.js:not(.motion-ready):not(.motion-fail) [data-magic] .w { opacity: 0.4; }
+:root.js:not(.motion-ready):not(.motion-fail) .hero-sentence:first-child .w { opacity: 1; }
 :root.motion-fail [data-magic] .w { opacity: 1 !important; }
 @media (prefers-reduced-motion: reduce), (prefers-contrast: more), (forced-colors: active) { [data-magic] .w { opacity: 1 !important; } }
 .mw { display: inline-block; overflow: clip; vertical-align: top; padding: 0.06em 0.04em 0.16em; margin: -0.06em -0.04em -0.16em; }
@@ -229,6 +232,8 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
   /* panels (tools, activity) settle from slightly below and larger */
   :root.js:not(.motion-fail) [data-reveal="panel"] { transition: opacity 900ms var(--ease), transform 1100ms var(--ease); }
   :root.js:not(.motion-fail) [data-reveal="panel"]:not(.in) { opacity: 0; transform: translateY(44px) scale(0.985); }
+  /* the target of a #hash link is shown in place at once, so the browser scrolls to its final position and the header does not cover it */
+  :root.js:not(.motion-fail) [data-reveal]:target { opacity: 1 !important; transform: none !important; transition: none !important; }
   /* tool thumbnails draw themselves */
   :root.js:not(.motion-fail) [data-reveal="kv"], :root.js:not(.motion-fail) [data-reveal="rise"], :root.js:not(.motion-fail) [data-reveal="card"], :root.js:not(.motion-fail) [data-reveal="panel"] { transition-delay: calc(var(--i, 0) * 90ms); }
   :root.js:not(.motion-fail) .tcard .th-draw { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1800ms var(--ease) 250ms; }

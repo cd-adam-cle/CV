@@ -14,6 +14,7 @@ export function typo(str, LANG = 'cs') {
   t = t.replace(/\bp\. b\./g, `p.${NBSP}b.`);
   t = t.replace(/(\d) (–|-) (\d)/g, `$1${NBSP}$2 $3`);               // 06/2026 – 09/2026 (keep break after dash)
   t = t.replace(/(\d) (–) (?=\p{L})/gu, `$1${NBSP}$2 `);             // 2026 – present: the dash stays with the year
+  t = t.replace(/\bEU ETS\b/g, `EU${NBSP}ETS`);
   t = t.replace(/\bETS (\d)\b/g, `ETS${NBSP}$1`);                    // EU ETS 2
   t = t.replace(/\b([Cc]o|[Pp]art)-(founder|time)\b/g, '$1\u2011$2');   // co-founder, part-time never break at the hyphen (the CV prints a plain hyphen)
   t = t.replace(/\bMFF UK\b/g, `MFF${NBSP}UK`);
