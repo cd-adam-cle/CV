@@ -586,6 +586,32 @@
         "text": "stavění produktů",
         "href": "#projekty"
       }
+    },
+    "ai": {
+      "title": "AI engineering",
+      "lead": "Vývoj s AI agenty od 10/2025 a funkce na jazykových modelech.",
+      "rows": [
+        {
+          "k": "Agentní vývoj",
+          "v": "Claude Code, Claude Cowork a Google Antigravity jako hlavní nástroje; vlastní skills, příkazy a hooky; práce s více agenty najednou."
+        },
+        {
+          "k": "LLM v aplikacích",
+          "v": "Anthropic API ve dvou aplikacích: strukturovaný výstup podle schématu, limity nákladů a času, ochrana před prompt injection, testy s atrapou klienta."
+        },
+        {
+          "k": "MCP a automatizace",
+          "v": "MCP servery v Claude Code a Antigravity; plánované automatizace s AI krokem a kontrolami v CI; role agentů s kontrolou kvality pro obsah klientů."
+        },
+        {
+          "k": "Další",
+          "v": "Přepis řeči (lokální Whisper, srovnání služeb), optimalizace pro AI vyhledávače (llms.txt)."
+        }
+      ],
+      "cert": {
+        "k": "Certifikáty Anthropic",
+        "v": "Cílem je co nejvíc certifikátů o dokončení kurzů Claude Academy, nejdřív Building with the Claude API, Claude Code in action a Introduction to Model Context Protocol."
+      }
     }
   },
   "contact": {
@@ -740,6 +766,10 @@
       {
         "k": "Programování",
         "v": "Python, TypeScript/JavaScript, C#, SQL, Next.js/React, FastAPI, Git, Linux; LLM API; web scraping"
+      },
+      {
+        "k": "AI engineering",
+        "v": "Claude Code, Claude Cowork, Google Antigravity (vývoj s AI agenty od 10/2025); Anthropic API (strukturovaný výstup, limity nákladů, testy); MCP; v plánu certifikáty o dokončení kurzů Claude Academy (Anthropic)"
       },
       {
         "k": "Kvantitativní",

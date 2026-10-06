@@ -1,6 +1,6 @@
 // CV generator: content.<lang>.json -> HTML -> PDF (headless Chrome).
 // Usage: node src/cv.mjs [--html-only]
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -73,8 +73,15 @@ ${cv.projects.map(p => entry(p.name, p.period, '', '', p.bullets)).join('')}
 }
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+/* The CV font comes from Google Fonts. If it does not arrive in time Chrome prints with a fallback face, the text gets shorter and the
+   layout is wrong, so the PDF is checked for the embedded font name and printed again (up to 4 times) when it is missing. */
 export function htmlToPdf(htmlPath, pdfPath) {
-  execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', `--print-to-pdf=${pdfPath}`, `file://${htmlPath}`], { stdio: 'ignore' });
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--virtual-time-budget=8000', `--print-to-pdf=${pdfPath}`, `file://${htmlPath}`], { stdio: 'ignore' });
+    if (existsSync(pdfPath) && readFileSync(pdfPath).includes('EBGaramond')) return;
+    console.warn(`CV font missing in ${pdfPath} (attempt ${attempt}), printing again`);
+  }
+  throw new Error(`The CV font (EB Garamond) did not load; ${pdfPath} would use a fallback face`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

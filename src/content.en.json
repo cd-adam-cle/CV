@@ -580,6 +580,32 @@
         "text": "building products",
         "href": "#projects"
       }
+    },
+    "ai": {
+      "title": "AI engineering",
+      "lead": "Building with AI agents since 10/2025, and features on language models.",
+      "rows": [
+        {
+          "k": "Agentic development",
+          "v": "Claude Code, Claude Cowork and Google Antigravity as main tools; own skills, commands and hooks; working with several agents at once."
+        },
+        {
+          "k": "LLMs in applications",
+          "v": "Anthropic API in two applications: schema-constrained structured output, cost and time limits, prompt-injection safeguards, tests with a fake client."
+        },
+        {
+          "k": "MCP and automation",
+          "v": "MCP servers in Claude Code and Antigravity; scheduled automations with an AI step and CI checks; agent roles with quality control for client content."
+        },
+        {
+          "k": "Also",
+          "v": "Speech to text (local Whisper, service comparison), optimisation for AI search (llms.txt)."
+        }
+      ],
+      "cert": {
+        "k": "Anthropic certificates",
+        "v": "The goal is as many Claude Academy certificates of completion as possible, starting with Building with the Claude API, Claude Code in action and Introduction to Model Context Protocol."
+      }
     }
   },
   "contact": {
@@ -734,6 +760,10 @@
       {
         "k": "Programming",
         "v": "Python, TypeScript/JavaScript, C#, SQL, Next.js/React, FastAPI, Git, Linux; LLM APIs; web scraping"
+      },
+      {
+        "k": "AI engineering",
+        "v": "Claude Code, Claude Cowork, Google Antigravity (building with AI agents since 10/2025); Anthropic API (structured output, cost limits, testing); MCP; Anthropic Claude Academy certificates of completion planned"
       },
       {
         "k": "Quantitative",

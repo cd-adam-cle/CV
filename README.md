@@ -35,6 +35,10 @@ Statický web (úvodní stránka a stránka s nástroji, čeština + `/en/`) ve 
 
 Až si vybereš variantu, stačí v `src/variants.json` nechat jen ji (složka `""`) a smazat složky `a/` a `b/`.
 
+## Rámeček AI engineering v Dovednostech
+
+Je v obsahu pod `skills.ai` (nadpis, krátký popisek, řádky `k` a `v` a poznámka `cert` o certifikacích). Vykresluje ho `aiFrame()` v `build.mjs` mezi mřížkou dovedností a zájmy, styly jsou v `assets/css/site.css` (základ pro všechny varianty) a `assets/css/variant-c.css` (karta). Do rámečku patří jen to, co jde doložit prací nebo konfigurací. Poznámka o certifikacích mluví o plánu, dokud certifikát není získaný; po získání ji přepiš na hotovou věc a uveď přesný název z oficiální stránky Anthropic.
+
 ## Světlý a tmavý režim
 
 Varianta C má oba režimy. Ve výchozím stavu sleduje nastavení systému, tlačítko v hlavičce volbu přepne a uloží (`localStorage`, klíč `theme`). Barvy jsou jen v CSS proměnných na začátku `assets/css/variant-c.css`; grafy nástrojů a graf příspěvků je čtou z nich a po přepnutí se překreslí (událost `themechange`).

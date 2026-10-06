@@ -239,8 +239,23 @@ function skills(c) {
   }
   return section(s, `    <dl class="skills-grid">
       ${s.groups.map((g) => `<div class="skill"${blocks ? ' data-reveal="rise"' : ''}><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
-    </dl>
+    </dl>${aiFrame(s.ai, blocks)}
     <p class="interests"${blocks ? ' data-reveal="rise"' : ''}><strong>${esc(it.k)}.</strong> ${v}</p>`);
+}
+/* the AI engineering frame inside the skills section: a lead, a few labelled rows and the certification plan */
+function aiFrame(a, blocks) {
+  if (!a) return '';
+  return `
+    <div class="ai-frame"${blocks ? ' data-reveal="panel"' : ''}>
+      <div class="ai-head">
+        <h3 class="ai-title">${esc(a.title)}</h3>
+        <p class="ai-lead">${esc(a.lead)}</p>
+      </div>
+      <dl class="ai-rows">
+        ${a.rows.map((r) => `<div class="ai-row"${blocks ? ' data-reveal="kv"' : ''}><dt>${esc(r.k)}</dt><dd>${esc(r.v)}</dd></div>`).join('\n        ')}
+      </dl>${a.cert ? `
+      <p class="ai-cert"><strong>${esc(a.cert.k)}.</strong> ${esc(a.cert.v)}</p>` : ''}
+    </div>`;
 }
 function contact(c) {
   const s = c.contact; const blocks = isBlocks();
@@ -395,7 +410,7 @@ function tools(c) {
 function toolsTeaser(c) {
   const t = c.tools; const tz = t.teaser; const page = P(t.page.meta.path);
   const art = { bs: thumbs && thumbs.thumbBS, mc: thumbs && thumbs.thumbMC, mk: thumbs && thumbs.thumbMK };
-  const cards = tz.cards.map((k) => `<li class="tcard" data-reveal="card"><a href="${page}#tool-${k.id}"><span class="tcard-art">${art[k.id] ? art[k.id]() : ''}</span><span class="tcard-body"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></span></a></li>`).join('\n      ');
+  const cards = tz.cards.map((k) => `<li class="tcard" data-reveal="card"><a href="${page}#tool-${k.id}"><div class="tcard-art">${art[k.id] ? art[k.id]() : ''}</div><div class="tcard-body"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></div></a></li>`).join('\n      ');
   return `<section id="${t.id}" class="section section-teaser" aria-labelledby="h-${t.id}">
   <div class="rail" data-reveal="rail"><h2 id="h-${t.id}">${maskWords(tz.title)}</h2></div>
   <div class="content">

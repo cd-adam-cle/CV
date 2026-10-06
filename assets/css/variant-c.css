@@ -178,6 +178,25 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .panel { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 0 24px; }
 .chart { padding-left: 24px; padding-right: 0; }
 .skills-grid { border-top: 1px solid var(--rule); }
+/* the AI engineering frame: an outlined card, title and lead on the left, labelled rows on the right, the certification plan along the bottom */
+.ai-frame { margin-top: 44px; background: var(--surface); border-color: var(--line-strong); border-radius: 6px; padding: 24px 22px 22px; }
+.ai-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+.ai-lead { margin-top: 10px; font-size: 17px; color: var(--ink-2); max-width: 32ch; text-wrap: balance; }
+.ai-rows { border-top-color: var(--rule); }
+.ai-row { padding: 12px 0; }
+.ai-row dt { font-size: 16px; color: var(--ink); }
+.ai-row dd { font-size: 17px; }
+.ai-cert { font-size: 17px; text-wrap: pretty; }
+@media (min-width: 640px) {
+  .ai-frame { padding: 28px 28px 24px; }
+  .ai-title { font-size: 32px; }
+  .ai-row { grid-template-columns: 200px 1fr; }
+}
+@media (min-width: 1100px) {
+  .ai-frame { padding: 32px 34px 28px; }
+  .ai-title { font-size: 36px; }
+  .ai-row { grid-template-columns: 210px 1fr; }
+}
 .skill dt { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.01em; }
 .contact-email { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; font-size: clamp(28px, 5.6vw, 76px); line-height: 1; }
 .contact-email a { text-decoration: none; } .contact-email a:hover { text-decoration: underline; }
