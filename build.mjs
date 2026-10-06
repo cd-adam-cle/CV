@@ -207,7 +207,7 @@ function activity(c) {
   const total = new Intl.NumberFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(yearTotal);
   const title = typeof a.labels.title === 'string' ? a.labels.title : (a.labels.title[new Intl.PluralRules(LANG === 'cs' ? 'cs-CZ' : 'en-GB').select(yearTotal)] || a.labels.title.other);
   return `<div class="activity" data-reveal="panel">
-      <figure class="skyline" data-skyline data-view="3d" data-locale="${LANG === 'cs' ? 'cs-CZ' : 'en-GB'}" data-week-start="1" data-weeks="${ACTIVITY_WEEKS}" data-total="${yearTotal}">
+      <figure class="skyline" data-skyline data-view="3d" data-locale="${LANG === 'cs' ? 'cs-CZ' : 'en-GB'}" data-week-start="1" data-weeks="${ACTIVITY_WEEKS}" data-orient="rows" data-total="${yearTotal}">
         <script type="application/json" data-skyline-data>${json({ end: contributions.end, days })}</script>
         <script type="application/json" data-skyline-labels>${json(a.labels)}</script>
         <noscript><p class="skyline-fallback">${esc(fill(title, { total }))}</p></noscript>

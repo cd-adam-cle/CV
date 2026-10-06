@@ -135,8 +135,8 @@
   }
 
   /** Box height in grid units. Empty days are thin slabs; the busiest day is about 7.6 cells tall. */
-  function barHeight(count, max) {
-    return count > 0 && max > 0 ? 0.4 + Math.pow(count / max, 0.85) * 7.2 : 0.2;
+  function barHeight(count, max, span) {
+    return count > 0 && max > 0 ? 0.4 + Math.pow(count / max, 0.85) * (span || 7.2) : 0.2;
   }
 
   /** Share of the morph each bar spends waiting; the wave sweeps oldest week to newest. */
@@ -291,6 +291,8 @@
     }
     var weeksShown = parseInt(fig.getAttribute('data-weeks'), 10);
     if (!(weeksShown > 0)) weeksShown = 53;
+    // data-orient="rows": a few weeks as a small calendar, one row per week and one column per weekday, without axis labels
+    var rowsMode = fig.getAttribute('data-orient') === 'rows';
     var grid = buildGrid(allDays, endMs, weekStart, weeksShown);
     var cells = grid.cells;
     var stats = computeStats(cells);
@@ -507,6 +509,8 @@
     var weeks = grid.weeks;
     var wk = new Float32Array(n);
     var dy = new Float32Array(n);
+    var gx = new Float32Array(n);        // position on the ground plane; equals week / weekday, swapped in rows mode
+    var gy = new Float32Array(n);
     var lv = new Uint8Array(n);
     var hgt = new Float32Array(n);
     var zs = new Float32Array(n);
@@ -519,8 +523,10 @@
       order.push(oi);
       wk[oi] = cells[oi].week;
       dy[oi] = cells[oi].day;
+      gx[oi] = rowsMode ? cells[oi].day : cells[oi].week;
+      gy[oi] = rowsMode ? cells[oi].week : cells[oi].day;
       lv[oi] = cells[oi].level;
-      hgt[oi] = barHeight(cells[oi].count, grid.max);
+      hgt[oi] = barHeight(cells[oi].count, grid.max, rowsMode ? 3.4 : 7.2);
     }
     var months = monthLabels(cells, weeks, dfMonth);
     var weekdayRows = [];
@@ -581,8 +587,8 @@
         if (p[1] > maxy) maxy = p[1];
       }
       for (var i = 0; i < n; i++) {
-        var x0 = wk[i] + off;
-        var y0 = dy[i] + off;
+        var x0 = gx[i] + off;
+        var y0 = gy[i] + off;
         var z = full ? hgt[i] * e : zs[i];
         add(x0, y0, z);
         add(x0 + w, y0, z);
@@ -591,9 +597,17 @@
         add(x0, y0 + w, 0);
         add(x0 + w, y0, 0);
       }
-      // room for the month labels that run along the front edge in 3D
-      add(0, 7 + 1.5 * e, 0);
-      add(weeks, 7 + 1.5 * e, 0);
+      if (rowsMode) {
+        // no labels: the four corners of the whole calendar, so a short last week does not shift the picture
+        add(0, 0, 0);
+        add(7, 0, 0);
+        add(0, weeks, 0);
+        add(7, weeks, 0);
+      } else {
+        // room for the month labels that run along the front edge in 3D
+        add(0, 7 + 1.5 * e, 0);
+        add(weeks, 7 + 1.5 * e, 0);
+      }
       return { minx: minx, maxx: maxx, miny: miny, maxy: maxy };
     }
 
@@ -609,13 +623,13 @@
       for (var r = 0; r < weekdayRows.length; r++) widest = Math.max(widest, ctx.measureText(weekdayRows[r].label).width);
       labelW = Math.ceil(widest) + 8;
       // Narrow cards give the weekday names' column to the grid; rows get too tight to label.
-      gutter = W < 520 ? 0 : labelW;
+      gutter = W < 520 || rowsMode ? 0 : labelW;
       dpr = Math.min(2, window.devicePixelRatio || 1);
       var b2 = extent(camera(0), 0, true);
-      H2 = 20 + 4 + ((b2.maxy - b2.miny) / (b2.maxx - b2.minx)) * (W - gutter - 4);
+      H2 = (rowsMode ? 0 : 20) + 4 + ((b2.maxy - b2.miny) / (b2.maxx - b2.minx)) * (W - gutter - 4);
       var b3 = extent(camera(1), 1, true);
       var natural = ((b3.maxy - b3.miny) / (b3.maxx - b3.minx)) * (W - 40) + 40;
-      H3 = Math.max(Math.min(natural, W * (weeksShown < 20 ? 1.15 : 0.72), 620), Math.min(natural, 240));
+      H3 = rowsMode ? Math.min(natural, W * 0.8) : Math.max(Math.min(natural, W * (weeksShown < 20 ? 1.15 : 0.72), 620), Math.min(natural, 240));
       Hmax = Math.ceil(Math.max(H2, H3));
       canvas.width = Math.round(W * dpr);
       canvas.height = Math.round(Hmax * dpr);
@@ -641,7 +655,7 @@
       var b = extent(cam, e, false);
       var pad = lerp(2, 20, e);
       var left = pad + gutter * (1 - e);
-      var top = pad + 20 * (1 - e);
+      var top = pad + (rowsMode ? 0 : 20) * (1 - e);
       var aw = W - left - pad;
       var ah = Hc - top - pad;
       var bw = Math.max(1e-6, b.maxx - b.minx);
@@ -658,7 +672,7 @@
 
       // painter's order: far to near for yaw in [0, 90 degrees]
       order.sort(function (a2, c2) {
-        return (wk[a2] + 0.5) * sn + (dy[a2] + 0.5) * cs - ((wk[c2] + 0.5) * sn + (dy[c2] + 0.5) * cs);
+        return (gx[a2] + 0.5) * sn + (gy[a2] + 0.5) * cs - ((gx[c2] + 0.5) * sn + (gy[c2] + 0.5) * cs);
       });
 
       var w = lerp(0.78, 0.9, e);
@@ -672,8 +686,8 @@
 
       for (var k = 0; k < n; k++) {
         var ii = order[k];
-        var x0 = wk[ii] + off;
-        var y0 = dy[ii] + off;
+        var x0 = gx[ii] + off;
+        var y0 = gy[ii] + off;
         var x1 = x0 + w;
         var y1 = y0 + w;
         var z = zs[ii] + hover[ii] * lift;
@@ -749,7 +763,7 @@
       var a2 = 1 - smoothstep(0, 0.4, e);
       var a3 = smoothstep(0.62, 1, e);
       var edge, mi, mm, x, tw;
-      if (a2 > 0.004) {
+      if (a2 > 0.004 && !rowsMode) {
         ctx.fillStyle = 'rgba(' + mus + ',' + a2.toFixed(3) + ')';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'bottom';
@@ -771,7 +785,7 @@
           }
         }
       }
-      if (a3 > 0.004) {
+      if (a3 > 0.004 && !rowsMode) {
         ctx.fillStyle = 'rgba(' + mus + ',' + a3.toFixed(3) + ')';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
@@ -790,14 +804,15 @@
       if (activeIdx >= 0 && activeIdx < n) {
         var ai = activeIdx;
         var za = zs[ai] + hover[ai] * lift;
-        var tx = px(wk[ai] + 0.5, dy[ai] + 0.5);
+        var tx = px(gx[ai] + 0.5, gy[ai] + 0.5);
         var ty = Math.min(
-          py(wk[ai] + off, dy[ai] + off, za),
-          py(wk[ai] + off + w, dy[ai] + off, za),
-          py(wk[ai] + off, dy[ai] + off + w, za)
+          py(gx[ai] + off, gy[ai] + off, za),
+          py(gx[ai] + off + w, gy[ai] + off, za),
+          py(gx[ai] + off, gy[ai] + off + w, za)
         );
         var half = tipW / 2;
-        var cx = Math.min(W - half - 2, Math.max(half + 2, tx));
+        // a tooltip wider than the chart (a small chart beside the figure) starts at the chart's left edge and runs into the free space on the right
+        var cx = tipW + 4 > W ? half : Math.min(W - half - 2, Math.max(half + 2, tx));
         tip.style.transform = 'translate(' + (cx - half).toFixed(1) + 'px,' + (ty - 8).toFixed(1) + 'px) translateY(-100%)';
         tip.style.setProperty('--arrow', (tx - cx + half).toFixed(1) + 'px');
       }
@@ -1035,10 +1050,12 @@
       }
       var i = pinned >= 0 ? pinned : activeIdx >= 0 ? activeIdx : n - 1;
       if (pinned >= 0 || activeIdx >= 0) {
-        if (ev.key === 'ArrowLeft') i -= 7;
-        if (ev.key === 'ArrowRight') i += 7;
-        if (ev.key === 'ArrowUp') i -= 1;
-        if (ev.key === 'ArrowDown') i += 1;
+        var across = rowsMode ? 1 : 7;   // one step to the side: a day in rows mode, a week otherwise
+        var down = rowsMode ? 7 : 1;     // one step down: a week in rows mode, a day otherwise
+        if (ev.key === 'ArrowLeft') i -= across;
+        if (ev.key === 'ArrowRight') i += across;
+        if (ev.key === 'ArrowUp') i -= down;
+        if (ev.key === 'ArrowDown') i += down;
         if (ev.key === 'Home') i = 0;
         if (ev.key === 'End') i = n - 1;
       }

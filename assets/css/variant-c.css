@@ -116,23 +116,22 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .interests a:hover { color: var(--navy); }
 
 /* ---------- activity (contribution graph) and project grid ---------- */
-.activity { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 22px 18px 18px; margin-bottom: 16px; }
-/* the graph shows one figure, how many commits in the last year, and a compact chart of the last five weeks; statistics, legend and
-   hint text are hidden (the hint stays for screen readers because the canvas is described by it) */
+.activity { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 18px 16px; margin-bottom: 16px; }
+/* the graph is one figure, how many commits in the last year, next to a small calendar of the last five weeks (one row per week);
+   statistics, legend and hint text are hidden (the hint stays for screen readers because the canvas is described by it) */
 .activity .skyline-stats, .activity .skyline-corner, .activity .skyline-legend { display: none; }
 .activity .skyline-foot { margin: 0; }
 .activity .skyline-hint { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.activity .skyline { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 48px; align-items: center; }
-.activity .skyline-head { grid-area: 1 / 1; margin: 0; flex-direction: column; align-items: flex-start; gap: 18px; }
-.activity .skyline-plot { grid-area: 2 / 1; width: 100%; max-width: 360px; justify-self: start; }
-.activity .skyline-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; font-size: clamp(18px, 2.4vw, 26px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-.activity .skyline-title-num { font-size: clamp(72px, 14vw, 168px); font-weight: 800; line-height: 0.82; letter-spacing: -0.05em; }
-@media (min-width: 760px) {
-  .activity .skyline { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); }
-  .activity .skyline-plot { grid-area: 1 / 1; }
-  .activity .skyline-head { grid-area: 1 / 2; }
+.activity .skyline { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 1fr); gap: 0 clamp(14px, 4vw, 44px); align-items: center; }
+.activity .skyline-plot { grid-area: 1 / 1; width: 100%; max-width: 280px; justify-self: start; }
+.activity .skyline-head { grid-area: 1 / 2; margin: 0; flex-direction: column; align-items: flex-start; gap: 10px; }
+.activity .skyline-title { text-wrap: balance; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: clamp(14px, 1.7vw, 19px); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; }
+.activity .skyline-title-num { font-size: clamp(48px, 7.4vw, 88px); font-weight: 800; line-height: 0.84; letter-spacing: -0.05em; }
+@media (min-width: 640px) {
+  .activity { padding: 24px 28px; margin-bottom: 20px; }
+  .activity .skyline { grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 0 48px; }
+  .activity .skyline-head { gap: 14px; }
 }
-@media (min-width: 640px) { .activity { padding: 30px 30px 24px; margin-bottom: 20px; } }
 .pgrid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .pcard { background: var(--surface); border: 1px solid var(--card-border); border-radius: 6px; padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 10px; transition: translate 400ms var(--ease), border-color 300ms; }
 .pcard:hover { translate: 0 -4px; border-color: var(--line-strong); }
