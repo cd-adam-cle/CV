@@ -61,9 +61,9 @@
   },
   "hero": {
     "title": [
-      "Studuji {fin}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, který se snadno používá, s {alg}algoritmy od školních po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
+      "Studuji {fin}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, který se snadno používá, s {alg}algoritmy od klasických po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
-    "deck": "Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. Za sebou mám vlastní produkt v provozu (Božííí) a spoluzaložení EdTech platformy Freio.",
+    "deck": "Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. Provozuji vlastní produkt (Božííí) a mám za sebou spoluzaložení EdTech platformy Freio.",
     "actions": {
       "cv": "Stáhnout CV (PDF)",
       "cvHref": "/cv/Adam-Zikmund-CV-CZ.pdf",
@@ -170,7 +170,7 @@
           "Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů."
         ],
         "stack": "Linux, CI/CD, virtualizace",
-        "exit": "Kontrakt jsem odpracoval a dál pokračovat nechtěl. Prostředí mi nesedělo a utvrdilo mě v tom, že nechci zůstat čistě u softwaru."
+        "exit": "Kontrakt jsem dokončil a pokračovat jsem nechtěl. Prostředí mi nesedělo a utvrdilo mě v tom, že nechci zůstat čistě u softwaru."
       },
       {
         "period": "02/2026 – 07/2026",
@@ -182,7 +182,7 @@
           "První funkční web (MVP) a počáteční marketingová akvizice; projekt dál vede původní partner."
         ],
         "stack": "EdTech, validace trhu, MVP",
-        "exit": "Se společníkem jsme se neshodli na směru a dalších krocích. Po vyhodnocení potenciálu trhu jsem odstoupil, s royalty a odkupem svého podílu."
+        "exit": "Se společníkem jsme se neshodli na směru a dalších krocích. Po vyhodnocení potenciálu trhu jsem z projektu odstoupil za odkup svého podílu a royalty."
       },
       {
         "period": "09/2025 – dosud",

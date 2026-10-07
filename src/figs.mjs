@@ -97,9 +97,10 @@ function proc() {
   body += arrow(230 + w / 2, 70 + h + 8, 230 + w / 2, 250 - 8, 700);
   body += arrow(230 - 8, 290, 40 + w + 8, 290, 1150);
   [92, 110, 128].forEach((y, i) => { body += G(pts([[60, y], [150 - i * 18, y]])); });
-  const n2 = [[262, 96], [262, 124], [295, 110], [328, 96], [328, 124]];
-  body += D(pts([n2[0], n2[2], n2[3]]), 600) + D(pts([n2[1], n2[2], n2[4]]), 680);
-  n2.forEach(([x, y]) => { body += dot(x, y, 3.4, 650); });
+  const inL = [[262, 97], [262, 123]], mid = [[295, 86], [295, 110], [295, 134]], out = [328, 110];
+  [[0, 0], [0, 1], [1, 1], [1, 2]].forEach(([a, b], i) => { body += D(pts([inL[a], mid[b]]), 600 + i * 40); });
+  mid.forEach((p, i) => { body += D(pts([p, out]), 760 + i * 40); });
+  [...inL, ...mid, out].forEach(([x, y]) => { body += dot(x, y, 3.2, 650); });
   body += D(pts([[272, 292], [288, 308], [320, 274]]), 1050, ' stroke-width="2.4"');
   [272, 290, 308].forEach((y, i) => { body += G(pts([[62, y], [148 - (i === 2 ? 30 : 0), y]])); });
   return svg('proc', 400, 400, body);
@@ -158,15 +159,15 @@ function pipe() {
 function ets() {
   const X0 = 46, X1 = 372, Y0 = 250, Y1 = 40;
   const xt = (yr) => X0 + (X1 - X0) * (yr - 2024) / 8, yp = (v) => Y0 - v * 1.75;
-  let body = G(pts([[X0, Y0], [X1, Y0]])) + G(pts([[X0, Y0], [X0, Y1]])) + G(pts([[xt(2027), Y0], [xt(2027), Y1 + 10]]));
-  const steps = [[2024, 0], [2027, 0], [2027, 45], [2028, 45], [2028, 55], [2029, 55], [2029, 70], [2030, 70], [2030, 85], [2032, 85]];
+  let body = G(pts([[X0, Y0], [X1, Y0]])) + G(pts([[X0, Y0], [X0, Y1]]));
+  const steps = [[2027, 45], [2028, 45], [2028, 55], [2029, 55], [2029, 70], [2030, 70], [2030, 85], [2032, 85]];
   body += D(pts(steps.map(([a, v]) => [xt(a), yp(v)])), 0, ' stroke-width="2.2"');
   const price = (t) => (t < 2027 ? 0 : t < 2028 ? 45 : t < 2029 ? 55 : t < 2030 ? 70 : 85);
   const cost = [];
   for (let i = 0; i <= 80; i++) {
     const t = 2024 + i / 10;
     const pass = 1 - Math.exp(-Math.max(0, t - 2027) / 0.9);
-    cost.push([xt(t), yp(45 + 0.62 * price(t - 0.35) * pass)]);
+    cost.push([xt(t), yp(14 + 0.55 * price(t - 0.35) * pass)]);
   }
   body += D(pts(cost), 700);
   return svg('ets', 400, 300, body);

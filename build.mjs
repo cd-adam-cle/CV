@@ -141,7 +141,7 @@ const sheet = (h) => `<aside class="sheet" aria-labelledby="sheet-title"${isBloc
 function heroBlocks(c) {
   const h = c.hero;
   const ids = figIds(h.title.join(' '));
-  return `<section class="hero-track" data-hero aria-labelledby="hero-title">
+  return `<section class="hero-track" data-hero>
   <div class="hero-pin">
     <h1 id="hero-title" class="hero-title" data-magic="hero"${ids.length ? ' data-art="art-hero"' : ''}>${h.title.map((t) => `<span class="hero-sentence">${magicFig(t, true)}</span>`).join(' ')}</h1>${ids.length ? `
     <div class="fig-art fig-art-hero" id="art-hero" aria-hidden="true">${drawFigs(ids)}</div>` : ''}

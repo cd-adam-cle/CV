@@ -33,18 +33,20 @@
       const el = art.querySelector(`.fig[data-fig="${id}"]`);
       if (el) list.push({ first: i, el });
     });
-    if (list.length) m.figs = { list, active: null };
+    if (list.length) m.figs = { list, active: null, box: art };
   });
   const showFig = (m, lit) => {
     if (!m.figs) return;
     let cur = null;
     for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
+    const act = m.figs.active; // a little hysteresis: scrolling back a word does not flip the drawing back and forth
+    if (act && cur !== act && (!cur || cur.first < act.first) && lit >= act.first - 0.5) cur = act;
     if (cur === m.figs.active) return;
     if (m.figs.active) m.figs.active.el.classList.remove('on');
     if (cur) cur.el.classList.add('on', 'drawn'); // drawn stays, so a figure draws itself once and later only fades
     m.figs.active = cur;
   };
-  const FLOOR = 0.5; // dim words keep enough contrast to be read before they are lit
+  const FLOOR = 0.6; // dim words keep enough contrast to be read before they are lit
   const setWords = (m, lit) => { // lit = number of fully lit words, fractional for the word being lit
     for (let i = 0; i < m.spans.length; i++) {
       const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
@@ -59,7 +61,13 @@
       const r = m.el.getBoundingClientRect();
       let p;
       if (r.top >= vh) p = 0; else if (r.bottom <= 0) p = 1;
-      else p = clamp((vh * 0.9 - r.top) / (vh * 0.45 + Math.min(r.height, vh * 0.9))); // starts when the top reaches 90% of the viewport, done when the bottom reaches about 45%
+      else if (m.figs && m.figs.box.offsetHeight) {
+        // with a drawing beside it, the paragraph starts lighting only once the drawing is fully on screen
+        const a = m.figs.box.getBoundingClientRect();
+        const navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 56;
+        const room = vh - 24 - a.height - navH - 12; // scroll distance before the drawing would reach the header
+        p = clamp((vh - 24 - a.bottom) / Math.max(160, Math.min(r.height * 0.85, room)));
+      } else p = clamp((vh * 0.9 - r.top) / (vh * 0.45 + Math.min(r.height, vh * 0.9))); // starts when the top reaches 90% of the viewport, done when the bottom reaches about 45%
       setWords(m, m.spans.length * p);
     }
   };

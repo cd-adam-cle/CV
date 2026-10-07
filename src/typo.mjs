@@ -16,11 +16,13 @@ export function typo(str, LANG = 'cs') {
   t = t.replace(/(\d) (–) (?=\p{L})/gu, `$1${NBSP}$2 `);             // 2026 – present: the dash stays with the year
   t = t.replace(/\bEU ETS\b/g, `EU${NBSP}ETS`);
   t = t.replace(/\bETS (\d)\b/g, `ETS${NBSP}$1`);                    // EU ETS 2
-  t = t.replace(/\b([Cc]o|[Pp]art)-(founder|time)\b/g, '$1\u2011$2');   // co-founder, part-time never break at the hyphen (the CV prints a plain hyphen)
+  t = t.replace(/\b([Cc]o)-(?=\p{L})/gu, '$1\u2011').replace(/\b([Pp]art)-(time)\b/g, '$1\u2011$2');   // co-founder, co-founded, part-time never break at the hyphen (the CV prints a plain hyphen)
   t = t.replace(/\bMFF UK\b/g, `MFF${NBSP}UK`);
+  t = t.replace(/\b(FIS|FS|FIT|FJFI) (VŠE|ČVUT)\b/g, `$1${NBSP}$2`);   // faculty abbreviations
+  t = t.replace(/\bTypeSafe AI\b/g, `TypeSafe${NBSP}AI`);
   t = t.replace(/\b(Claude|Google) (Code|API|Cowork|Academy|Antigravity)\b/g, `$1${NBSP}$2`);   // product names
   if (LANG === 'cs') {
-    t = t.replace(/(^|[\s(„"])([KSVZOUAIksvzouai]) (?=\S)/g, `$1$2${NBSP}`); // one-letter prepositions and conjunctions
+    t = t.replace(/(?<=^|[\s(„"])([KSVZOUAIksvzouai]) (?=\S)/g, `$1${NBSP}`); // one-letter prepositions and conjunctions, also two in a row ("a s")
     t = t.replace(/(\d{1,2}\.) (ročník|semestr)/g, `$1${NBSP}$2`);
   }
   return t;
