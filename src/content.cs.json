@@ -61,10 +61,9 @@
   },
   "hero": {
     "title": [
-      "Finance a riziko, s kódem navíc.",
-      "Studuji finanční matematiku a chci ji spojit s tím, co už umím postavit: software a AI systémy, které práci urychlí nebo převezmou."
+      "Studuji {fin}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, který se snadno používá, s {alg}algoritmy od školních po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
-    "deck": "Od září 2026 student finanční matematiky na MFF UK, hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. K tomu jsem co-founder a vývojář produktů v provozu (Božííí, Freio).",
+    "deck": "Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. Za sebou mám vlastní produkt v provozu (Božííí) a spoluzaložení EdTech platformy Freio.",
     "actions": {
       "cv": "Stáhnout CV (PDF)",
       "cvHref": "/cv/Adam-Zikmund-CV-CZ.pdf",
@@ -94,7 +93,7 @@
   "profile": {
     "id": "profil",
     "title": "Profil",
-    "lead": "Na gymnáziu jsem založil komunitní web Božííí pro pražské farnosti, spoluzaložil EdTech platformu Freio a jako freelancer dělal automatizace, scraping a napojení na LLM API. Ročníkovou práci jsem psal o dopadu EU ETS 2 na domácnosti, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a analyzoval portfolio. Od září studuji finanční matematiku na MFF UK.",
+    "lead": "Na gymnáziu jsem založil {map}komunitní web Božííí pro pražské farnosti{/}, spoluzaložil {edu}EdTech platformu Freio{/} a jako freelancer dělal {pipe}automatizace, scraping a napojení na LLM API{/}. Ročníkovou práci jsem psal o {ets}dopadu EU ETS 2 na domácnosti{/}, s vlastním matematickým modelem přenosu nákladů. Léto 2026 jsem strávil jako trainee ve finančním poradenství, kde jsem modeloval klientské plány a {port}analyzoval portfolio{/}. Od září studuji finanční matematiku na MFF UK.",
     "seeking": {
       "title": "Co hledám",
       "rows": [
@@ -170,7 +169,8 @@
         "results": [
           "Správa hardwaru a cloudové virtualizace, pomoc s CI/CD automatizací a správa linuxových serverů."
         ],
-        "stack": "Linux, CI/CD, virtualizace"
+        "stack": "Linux, CI/CD, virtualizace",
+        "exit": "Kontrakt jsem odpracoval a dál pokračovat nechtěl. Prostředí mi nesedělo a utvrdilo mě v tom, že nechci zůstat čistě u softwaru."
       },
       {
         "period": "02/2026 – 07/2026",
@@ -179,9 +179,10 @@
         "role": "Co-founder, obchod a strategie",
         "results": [
           "Spoluzaložení EdTech platformy pro přípravu na přijímací zkoušky SCIO; obchodní strategie, ověření zájmu trhu, segmentace zákazníků.",
-          "První funkční web (MVP) a počáteční marketingová akvizice. Po ověření na trhu dohoda o odchodu a vyrovnání podílů; projekt dál vede původní partner."
+          "První funkční web (MVP) a počáteční marketingová akvizice; projekt dál vede původní partner."
         ],
-        "stack": "EdTech, validace trhu, MVP"
+        "stack": "EdTech, validace trhu, MVP",
+        "exit": "Se společníkem jsme se neshodli na směru a dalších krocích. Po vyhodnocení potenciálu trhu jsem odstoupil, s royalty a odkupem svého podílu."
       },
       {
         "period": "09/2025 – dosud",
@@ -202,7 +203,8 @@
         ],
         "stack": ""
       }
-    ]
+    ],
+    "exitLabel": "Proč jsem odešel:"
   },
   "tools": {
     "id": "nastroje",
@@ -554,7 +556,7 @@
       }
     ],
     "note": {
-      "k": "Zajímavost",
+      "k": "",
       "v": "Přijat na pět fakult: MFF UK (Finanční matematika), FJFI ČVUT (Aplikované matematicko-stochastické metody), FIT ČVUT, FS ČVUT a FIS VŠE."
     }
   },
@@ -592,7 +594,7 @@
       "groups": [
         {
           "k": "Oblasti použití",
-          "v": "Posuzování žádostí farností (Božííí), denní tréninkové doporučení, obsah pro klienty s kontrolou kvality, přepis přednášek, plánované přehledy a koncepty zpráv, optimalizace pro AI vyhledávače (llms.txt)."
+          "v": "Posuzování žádostí farností (Božííí), denní tréninkové doporučení, automatizace většiny tvorby obsahu pro sociální sítě, přepis přednášek, plánované přehledy a koncepty zpráv, optimalizace pro AI vyhledávače (llms.txt)."
         },
         {
           "k": "Integrace",
@@ -600,7 +602,7 @@
         },
         {
           "k": "Znalosti a nástroje",
-          "v": "Prompt engineering a context engineering, ochrana před prompt injection, limity nákladů, volba modelu podle ceny, testy s atrapou klienta; Claude Code, Claude Cowork, Google Antigravity."
+          "v": "Prompt engineering a context engineering, ochrana před prompt injection, limity nákladů, volba modelu podle ceny, testy s atrapou klienta; TypeSafe AI a model Jev: kdy se vyplatí zapojit ho do systému a jak ho využít naplno; Claude Code, Claude Cowork, Google Antigravity."
         }
       ],
       "cert": {

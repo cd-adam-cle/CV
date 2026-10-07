@@ -16,10 +16,30 @@ const ext = (href) => /^https?:/.test(href) ? ' target="_blank" rel="noopener"' 
 const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 // Words wrapped for the scroll reveals. Split on plain spaces only, so non-breaking spaces keep their words together.
 const magic = (s) => esc(s).split(' ').map((w) => `<span class="w">${w}</span>`).join(' ');
+// Figure markers in texts: "{id}some words{/}" tags those words; variant C draws figure id (src/figs.mjs) beside the text when
+// the words light up. Everywhere else the markers are removed.
+const plain = (s) => String(s).replace(/\{\w+\}|\{\/\}/g, '');
+const figIds = (s) => [...new Set([...String(s).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].filter((id) => !figMod || figMod.FIGS[id]);
+// Like magic(), plus data-fig on tagged words; lit0 marks the words up to the end of the first tagged phrase as lit from the start.
+function magicFig(s, lit0) {
+  let cur = null, firstId = null, lastOfFirst = -1;
+  const toks = esc(s).split(' ').map((w, i) => {
+    const open = /\{(\w+)\}/.exec(w);
+    if (open) { cur = open[1]; if (!firstId) firstId = cur; w = w.replace(open[0], ''); }
+    const fig = cur, close = w.includes('{/}');
+    if (close) w = w.replace('{/}', '');
+    if (fig && fig === firstId) lastOfFirst = i;
+    if (close) cur = null;
+    return { w, fig };
+  });
+  return toks.map((t, i) => `<span class="w${lit0 && i <= lastOfFirst ? ' l0' : ''}"${t.fig ? ` data-fig="${t.fig}"` : ''}>${t.w}</span>`).join(' ');
+}
 const maskWords = (s) => esc(s).split(' ').map((w) => `<span class="mw"><span>${w}</span></span>`).join(' ');
 const fill = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (vals[k] != null ? vals[k] : m));
 // Optional inputs: the tool thumbnails and the contribution snapshot (node scripts/build-contributions.mjs).
 const thumbs = existsSync(join(root, 'src', 'thumbs.mjs')) ? await import('./src/thumbs.mjs') : null;
+const figMod = existsSync(join(root, 'src', 'figs.mjs')) ? await import('./src/figs.mjs') : null;
+const drawFigs = (ids) => (figMod ? figMod.figs(ids) : '');
 const contributions = existsSync(join(root, 'src', 'contributions.json')) ? JSON.parse(readFileSync(join(root, 'src', 'contributions.json'), 'utf8')) : null;
 if (contributions && (Date.now() - Date.parse(contributions.end + 'T00:00:00Z')) / 86400000 > 14) console.warn(`warning: src/contributions.json ends ${contributions.end}; refresh it with scripts/build-contributions.mjs (see README) so "in the last year" stays true`);
 // Design variants built from the same content: C (layout "blocks") is the production site at /, A and B are noindex previews for comparison.
@@ -120,9 +140,11 @@ const sheet = (h) => `<aside class="sheet" aria-labelledby="sheet-title"${isBloc
   </aside>`;
 function heroBlocks(c) {
   const h = c.hero;
+  const ids = figIds(h.title.join(' '));
   return `<section class="hero-track" data-hero aria-labelledby="hero-title">
   <div class="hero-pin">
-    <h1 id="hero-title" class="hero-title" data-magic="hero">${h.title.map((t) => `<span class="hero-sentence">${magic(t)}</span>`).join(' ')}</h1>
+    <h1 id="hero-title" class="hero-title" data-magic="hero"${ids.length ? ' data-art="art-hero"' : ''}>${h.title.map((t) => `<span class="hero-sentence">${magicFig(t, true)}</span>`).join(' ')}</h1>${ids.length ? `
+    <div class="fig-art fig-art-hero" id="art-hero" aria-hidden="true">${drawFigs(ids)}</div>` : ''}
     <p class="hero-hint" aria-hidden="true">${esc(h.scrollHint)}</p>
   </div>
 </section>
@@ -139,7 +161,7 @@ function hero(c) {
   const h = c.hero;
   return `<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
-    <h1 id="hero-title">${h.title.map((t) => `<span class="line">${esc(t)}</span>`).join(' ')}</h1>
+    <h1 id="hero-title">${h.title.map((t) => `<span class="line">${esc(plain(t))}</span>`).join(' ')}</h1>
     <p class="deck">${esc(h.deck)}</p>
     <p class="actions"><a class="cv-link" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
   </div>
@@ -165,12 +187,14 @@ function kv(title, rows, id) {
       </dl>
     </div>`;
 }
+let EXIT_LABEL = '';
 function ledger(items, extra) {
   const row = (e) => `<li class="row" data-reveal="row">
         <div class="row-date"><span>${esc(e.period)}</span></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
           <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+          ${e.exit ? `<p class="row-exit"><span class="row-exit-k">${esc(EXIT_LABEL)}</span> ${esc(e.exit)}</p>` : ''}
           ${e.stack ? `<p class="row-stack">${esc(e.stack)}</p>` : ''}
         </div>
       </li>`;
@@ -181,14 +205,21 @@ function ledger(items, extra) {
 
 function profile(c) {
   const p = c.profile;
-  return section(p, `    <p class="lead"${isBlocks() ? ' data-magic' : ''}>${isBlocks() ? magic(p.lead) : esc(p.lead)}</p>
+  const ids = isBlocks() ? figIds(p.lead) : [];
+  const lead = isBlocks()
+    ? `<div class="lead-row">
+      <p class="lead" data-magic${ids.length ? ' data-art="art-profile"' : ''}>${magicFig(p.lead)}</p>${ids.length ? `
+      <div class="fig-art fig-art-profile" id="art-profile" aria-hidden="true">${drawFigs(ids)}</div>` : ''}
+    </div>`
+    : `<p class="lead">${esc(plain(p.lead))}</p>`;
+  return section(p, `    ${lead}
     ${kv(p.seeking.title, p.seeking.rows, 'h-seeking')}
     ${kv(p.basis.title, p.basis.rows, 'h-basis')}`);
 }
-function experience(c) { return section(c.experience, '    ' + ledger(c.experience.items)); }
+function experience(c) { EXIT_LABEL = c.experience.exitLabel || ''; return section(c.experience, '    ' + ledger(c.experience.items)); }
 function education(c) {
   const e = c.education;
-  const note = e.note ? `\n    <p class="edu-note"${isBlocks() ? ' data-reveal="rise"' : ''}><strong>${esc(e.note.k)}.</strong> ${esc(e.note.v)}</p>` : '';
+  const note = e.note ? `\n    <p class="edu-note"${isBlocks() ? ' data-reveal="rise"' : ''}>${e.note.k ? `<strong>${esc(e.note.k)}.</strong> ` : ''}${esc(e.note.v)}</p>` : '';
   return section(e, '    ' + ledger(e.items) + note);
 }
 // GitHub-style commit graph (variant C): the chart shows the last five weeks, the heading states the figure for the last year.
@@ -240,14 +271,18 @@ function skills(c) {
   return section(s, `    <dl class="skills-grid">
       ${s.groups.map((g) => `<div class="skill"${blocks ? ' data-reveal="rise"' : ''}><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n      ')}
     </dl>${aiFrame(s.ai)}
-    <p class="interests"${blocks ? ' data-reveal="rise"' : ''}><strong>${esc(it.k)}.</strong> ${v}</p>`);
+
+    <div class="card-frame interests-card"${blocks ? ' data-reveal="panel"' : ''}>
+      <h3 class="card-title">${esc(it.k)}</h3>
+      <p class="interests">${v}</p>
+    </div>`);
 }
 /* the AI engineering frame inside the skills section: the same label and short paragraph as the other skills, in a light frame, plus the certificate plan */
 function aiFrame(a) {
   if (!a) return '';
   return `
-    <div class="ai-frame"${isBlocks() ? ' data-reveal="panel"' : ''}>
-      <h3 class="ai-title">${esc(a.title)}</h3>
+    <div class="card-frame ai-frame"${isBlocks() ? ' data-reveal="panel"' : ''}>
+      <h3 class="card-title">${esc(a.title)}</h3>
       <dl class="ai-grid">
         ${a.groups.map((g) => `<div class="skill"><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n        ')}
       </dl>${a.cert ? `

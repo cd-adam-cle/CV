@@ -21,12 +21,36 @@
     }
     return { el, spans, hero: el.dataset.magic === 'hero', last: new Float32Array(spans.length).fill(-1) };
   });
+  /* figures beside the lit words (hero and profile): the latest tagged phrase whose first word is at least half lit picks one */
+  magics.forEach((m) => {
+    const art = m.el.dataset.art ? document.getElementById(m.el.dataset.art) : null;
+    if (!art) return;
+    const list = [], seen = new Set();
+    m.spans.forEach((s, i) => {
+      const id = s.dataset.fig;
+      if (!id || seen.has(id)) return;
+      seen.add(id);
+      const el = art.querySelector(`.fig[data-fig="${id}"]`);
+      if (el) list.push({ first: i, el });
+    });
+    if (list.length) m.figs = { list, active: null };
+  });
+  const showFig = (m, lit) => {
+    if (!m.figs) return;
+    let cur = null;
+    for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
+    if (cur === m.figs.active) return;
+    if (m.figs.active) m.figs.active.el.classList.remove('on');
+    if (cur) cur.el.classList.add('on', 'drawn'); // drawn stays, so a figure draws itself once and later only fades
+    m.figs.active = cur;
+  };
   const FLOOR = 0.5; // dim words keep enough contrast to be read before they are lit
   const setWords = (m, lit) => { // lit = number of fully lit words, fractional for the word being lit
     for (let i = 0; i < m.spans.length; i++) {
       const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
       if (Math.abs(o - m.last[i]) > 0.004) { m.spans[i].style.opacity = o.toFixed(3); m.last[i] = o; }
     }
+    showFig(m, lit);
   };
   const paintMagic = () => {
     const vh = window.innerHeight;
@@ -44,7 +68,7 @@
   const hero = document.querySelector('[data-hero]');
   const pin = hero && hero.querySelector('.hero-pin');
   const heroM = magics.find((m) => m.hero);
-  const titleWords = heroM ? heroM.el.querySelectorAll('.hero-sentence:first-child .w').length : 0; // the title is lit from the start, the subtitle lights up with the scroll
+  const titleWords = heroM ? heroM.el.querySelectorAll('.w.l0').length : 0; // words marked l0 (up to the first tagged phrase) are lit from the start
   const paintHero = () => {
     if (!hero || !pin || !heroM) return;
     const navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 56;

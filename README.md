@@ -39,6 +39,10 @@ Až si vybereš variantu, stačí v `src/variants.json` nechat jen ji (složka `
 
 Je v obsahu pod `skills.ai` (nadpis, skupiny `k` a `v` ve stejné podobě jako ostatní dovednosti a poznámka `cert` o certifikacích). Vykresluje ho `aiFrame()` v `build.mjs` mezi mřížkou dovedností a zájmy, styly jsou v `assets/css/site.css` (základ pro všechny varianty) a `assets/css/variant-c.css` (karta). Do rámečku patří jen to, co jde doložit prací nebo konfigurací. Poznámka o certifikacích mluví o plánu, dokud certifikát není získaný; po získání ji přepiš na hotovou věc a uveď přesný název z oficiální stránky Anthropic.
 
+## Kresby u rozsvěcených slov (hero a Profil)
+
+V textu hero (`hero.title`) a profilu (`profile.lead`) značka `{id}slova{/}` určí slova, u kterých se při scrollování vpravo objeví černobílá čárová kresba `id` ze `src/figs.mjs` (počítaná, ne kreslená ručně: náhodné cesty a hustota pro finanční matematiku, graf s nejkratší cestou, neuronová síť, proces s AI krokem, mapa farností, záznamový arch, scraping do modelu, model EU ETS 2 a rozložení portfolia). Ukazuje se vždy kresba k poslední rozsvícené značce. Kresby jsou jen na širokých obrazovkách od 1100 px a jen když běží pohyb; při omezeném pohybu, bez JavaScriptu nebo při vysokém kontrastu zůstane čistý text. Ve variantách A a B a všude jinde se značky z textu odstraní.
+
 ## Světlý a tmavý režim
 
 Varianta C má oba režimy. Ve výchozím stavu sleduje nastavení systému, tlačítko v hlavičce volbu přepne a uloží (`localStorage`, klíč `theme`). Barvy jsou jen v CSS proměnných na začátku `assets/css/variant-c.css`; grafy nástrojů a graf příspěvků je čtou z nich a po přepnutí se překreslí (událost `themechange`).

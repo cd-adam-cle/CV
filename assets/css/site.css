@@ -160,15 +160,19 @@ body.nav-open .nav-toggle .t-close { display: inline; }
 .skill dt { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
 .skill dd { font-size: 16px; line-height: 1.5; }
 .interests, .edu-note { margin-top: 40px; font-size: 17px; line-height: 1.55; max-width: 70ch; }
+.row-exit { margin-top: 10px; font-size: 15px; line-height: 1.5; color: var(--ink-2); max-width: 64ch; }
+.row-exit-k { font-weight: 600; color: var(--ink); }
 @media (min-width: 640px) { .skills-grid { grid-template-columns: 1fr 1fr; gap: 32px 28px; } }
 @media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* AI engineering frame inside skills: the cells reuse .skill */
-.ai-frame { margin-top: 32px; border: 1px solid var(--line); padding: 16px 16px 14px; }
-.ai-title { font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+.card-frame { margin-top: 32px; border: 1px solid var(--line); padding: 16px 16px 14px; }
+.card-frame + .card-frame { margin-top: 16px; }
+.card-title { font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+.interests-card .interests { margin-top: 0; }
 .ai-grid { display: grid; gap: 14px; }
 .ai-cert { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.5; }
-@media (min-width: 640px) { .ai-frame { margin-top: 36px; padding: 18px 20px; } .ai-grid { gap: 18px; } .ai-cert { margin-top: 16px; padding-top: 14px; } }
+@media (min-width: 640px) { .card-frame { margin-top: 36px; padding: 18px 20px; } .card-frame + .card-frame { margin-top: 20px; } .ai-grid { gap: 18px; } .ai-cert { margin-top: 16px; padding-top: 14px; } }
 @media (min-width: 900px) { .ai-grid { grid-template-columns: repeat(3, 1fr); gap: 0 28px; } }
 
 /* contact */

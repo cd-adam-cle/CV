@@ -61,10 +61,9 @@
   },
   "hero": {
     "title": [
-      "Finance and risk, with code on top.",
-      "I study financial mathematics and want to combine it with what I can already build: software and AI systems that speed work up or take it over."
+      "I study {fin}financial mathematics at Charles University in Prague{/} and bring experience in building software that is easy to use, in {alg}algorithms from the classics to finance{/}, and in {ai}AI systems{/} that I {proc}build into processes{/}."
     ],
-    "deck": "A Financial Mathematics student at Charles University since September 2026, looking for an internship, part-time role or project work in quantitative risk, quant research, VC/PE analytics or investment banking. On top of that, I am a co-founder and developer of products in production (Božííí, Freio).",
+    "deck": "Looking for an internship, part-time role or project work in quantitative risk, quant research, VC/PE analytics or investment banking. I run my own product, Božííí, and co-founded the EdTech platform Freio.",
     "actions": {
       "cv": "Download CV (PDF)",
       "cvHref": "/cv/Adam-Zikmund-CV-EN.pdf",
@@ -94,7 +93,7 @@
   "profile": {
     "id": "profile",
     "title": "Profile",
-    "lead": "While at grammar school I founded Božííí, a community site for Prague parishes, co-founded the EdTech platform Freio and freelanced on automation, scraping and LLM API integrations. My final-year research paper modelled how EU ETS 2 allowance costs pass through to households. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and analysing a portfolio. Since September I have been studying Financial Mathematics at Charles University.",
+    "lead": "While at grammar school I founded {map}Božííí, a community site for Prague parishes{/}, co-founded {edu}the EdTech platform Freio{/} and freelanced on {pipe}automation, scraping and LLM API integrations{/}. My final-year research paper modelled how {ets}EU ETS 2 allowance costs pass through to households{/}. I spent the summer of 2026 as a trainee in financial advisory, modelling client plans and {port}analysing a portfolio{/}. Since September I have been studying Financial Mathematics at Charles University.",
     "seeking": {
       "title": "What I am looking for",
       "rows": [
@@ -170,7 +169,8 @@
         "results": [
           "Hardware and cloud virtualisation operations, CI/CD automation support and Linux server administration."
         ],
-        "stack": "Linux, CI/CD, virtualisation"
+        "stack": "Linux, CI/CD, virtualisation",
+        "exit": "I completed the contract and chose not to continue. The environment did not suit me and confirmed that I did not want to stay purely in software."
       },
       {
         "period": "02/2026 – 07/2026",
@@ -179,9 +179,10 @@
         "role": "Co-founder, business and strategy",
         "results": [
           "Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; business strategy, market validation, customer segmentation.",
-          "Built the first MVP website and led initial customer acquisition. After market validation, left by mutual agreement with an equity settlement; the original partner continues to run the project."
+          "Built the first MVP website and led initial customer acquisition; the original partner continues to run the project."
         ],
-        "stack": "EdTech, market validation, MVP"
+        "stack": "EdTech, market validation, MVP",
+        "exit": "My partner and I disagreed on direction and next steps. After assessing the market potential I stepped back, with royalties and a buyout of my share."
       },
       {
         "period": "09/2025 – present",
@@ -202,7 +203,8 @@
         ],
         "stack": ""
       }
-    ]
+    ],
+    "exitLabel": "Why I left:"
   },
   "tools": {
     "id": "tools",
@@ -548,7 +550,7 @@
       }
     ],
     "note": {
-      "k": "Fun fact",
+      "k": "",
       "v": "Accepted to five faculties: Charles University (Financial Mathematics), the Czech Technical University (Nuclear Sciences and Physical Engineering, programme Applied Mathematical Stochastic Methods; Information Technology; Mechanical Engineering) and the Prague University of Economics and Business (Informatics and Statistics)."
     }
   },
@@ -586,7 +588,7 @@
       "groups": [
         {
           "k": "Use cases",
-          "v": "Assessing parish applications (Božííí), daily training recommendations, client content with quality control, lecture transcription, scheduled digests and message drafts, optimisation for AI search (llms.txt)."
+          "v": "Assessing parish applications (Božííí), daily training recommendations, automating most social media content production, lecture transcription, scheduled digests and message drafts, optimisation for AI search (llms.txt)."
         },
         {
           "k": "Integration",
@@ -594,7 +596,7 @@
         },
         {
           "k": "Knowledge and tools",
-          "v": "Prompt engineering and context engineering, prompt-injection defence, cost limits, model choice by price, tests with a fake client; Claude Code, Claude Cowork, Google Antigravity."
+          "v": "Prompt engineering and context engineering, prompt-injection defence, cost limits, model choice by price, tests with a fake client; TypeSafe AI and its Jev model: when building it into a system pays off and how to use it fully; Claude Code, Claude Cowork, Google Antigravity."
         }
       ],
       "cert": {
