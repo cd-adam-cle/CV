@@ -249,7 +249,7 @@ function activity(c) {
 function projects(c) {
   if (!isBlocks()) return section(c.projects, '    ' + ledger(c.projects.items));
   const p = c.projects;
-  const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}" data-reveal="card">
+  const card = (e, i) => `<article class="pcard${i === 0 ? ' pcard-wide' : ''}"${e.anchor ? ` id="${e.anchor}"` : ''} data-reveal="card">
         <p class="pcard-meta"><span class="pcard-tag">${esc(e.tag)}</span><span class="pcard-period">${esc(e.period)}</span></p>
         <h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3>
         <p class="pcard-role">${esc(e.role)}</p>

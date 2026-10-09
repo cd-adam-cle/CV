@@ -8,7 +8,7 @@
                    stroke-dasharray: 1 and stroke-dashoffset: 1 -> 0 at any rendered size.
    - class "dot":  a filled dot that fades in.   class "ring": an outlined node that fades in.
    - style="--t:Nms" staggers an element.
-   Figures: hero  mff (Matfyz, financial mathematics), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
+   Figures: hero  mff (Matfyz, financial mathematics), sw (building software), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
             profile  map (Božííí), edu (Freio), pipe (automation and scraping), ets (EU ETS 2 model), port (portfolio). */
 
 const r = (v) => String(Math.round(v * 10) / 10);
@@ -58,6 +58,27 @@ function mff() {
     body += `<rect class="${c >= o ? 'dot' : 'ring'}" x="${r(x - w / 2)}" y="${r(top)}" width="${w}" height="${r(Math.max(2, bot - top))}"${st(t + 200)}/>`;
   });
   return svg('mff', 400, 400, body);
+}
+
+// Software: an application window assembled piece by piece: frame, title bar, sidebar, a chart panel and a short list.
+function sw() {
+  const X = 44, Y = 74, W = 312, H = 252;
+  let body = D(roundRect(X, Y, W, H, 12), 0);
+  body += D(pts([[X, Y + 30], [X + W, Y + 30]]), 260);                                      // title bar
+  [0, 1, 2].forEach((i) => { body += ring(X + 20 + i * 15, Y + 15, 4.2, 320 + i * 60); });   // window controls
+  body += D(pts([[X + 80, Y + 30], [X + 80, Y + H]]), 420);                                  // sidebar edge
+  [0, 1, 2, 3].forEach((i) => { body += G(pts([[X + 18, Y + 58 + i * 24], [X + 62 - (i % 2) * 12, Y + 58 + i * 24]])); });
+  body += D(pts([[X + 18, Y + 58], [X + 62, Y + 58]]), 560, ' stroke-width="2.4"');           // the active menu item
+  const px = X + 98, py = Y + 48, pw = W - 116, ph = 100;                                    // chart panel
+  body += D(roundRect(px, py, pw, ph, 8), 640);
+  const v = [0.22, 0.3, 0.26, 0.42, 0.38, 0.55, 0.5, 0.68, 0.74];
+  body += D(pts(v.map((y, i) => [px + 14 + i * (pw - 28) / (v.length - 1), py + ph - 14 - y * (ph - 28)])), 900, ' stroke-width="2"');
+  [0, 1, 2].forEach((i) => {                                                                 // a list of three rows
+    const yy = py + ph + 26 + i * 26;
+    body += G(pts([[px + 22, yy], [px + pw - 40 - (i % 2) * 30, yy]]));
+    body += i === 0 ? dot(px + 6, yy, 4, 1100) : ring(px + 6, yy, 4.2, 1100 + i * 90);
+  });
+  return svg('sw', 400, 400, body);
 }
 
 // Financial mathematics: seven geometric Brownian motion paths (mu 6%, sigma 32%, one year in 60 steps) and, sideways
@@ -211,5 +232,5 @@ function port() {
   return svg('port', 400, 300, body);
 }
 
-export const FIGS = { mff, fin, alg, ai, proc, map, edu, pipe, ets, port };
+export const FIGS = { mff, sw, fin, alg, ai, proc, map, edu, pipe, ets, port };
 export const figs = (ids) => ids.filter((id) => FIGS[id]).map((id) => FIGS[id]()).join('');

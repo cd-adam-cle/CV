@@ -61,7 +61,7 @@
   },
   "hero": {
     "title": [
-      "I study {mff}financial mathematics at Charles University in Prague{/} and bring experience in building software, in {alg}algorithms from the classics{/} {fin}to finance{/}, and in {ai}AI systems{/} that I {proc}build into processes{/}."
+      "I study {mff}financial mathematics at Charles University in Prague{/} and bring experience in {sw}building software{/}, in {alg}algorithms from the classics{/} {fin}to finance{/}, and in {ai}AI systems{/} that I {proc}build into processes{/}."
     ],
     "deck": "Looking for an internship, part-time role or project work in quantitative risk, quant research, VC/PE analytics or investment banking. I run my own product, Božííí, and co-founded the EdTech platform Freio.",
     "actions": {
@@ -484,6 +484,18 @@
           "Cake builder, gallery, reviews and blog; customers assemble a cake and send an enquiry."
         ],
         "stack": "Next.js, TypeScript"
+      },
+      {
+        "period": "2025 – 2026",
+        "org": "Algorithms in C#",
+        "anchor": "algorithms",
+        "role": "Programming seminar and preparation for the programming maturita (school-leaving exam)",
+        "tag": "School",
+        "results": [
+          "Graphs: Dijkstra with a priority queue, breadth-first and depth-first search, minimum spanning trees (Kruskal, Jarník) and topological sorting.",
+          "Sorting from insertion sort to heapsort and introsort, backtracking, dynamic programming and minimax for the game of Nim; 25 worked exam questions with code."
+        ],
+        "stack": "C#, .NET"
       }
     ],
     "intro": "Things I have built that are running. Most of them were made for real clients and users.",

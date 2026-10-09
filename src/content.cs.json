@@ -61,7 +61,7 @@
   },
   "hero": {
     "title": [
-      "Studuji {mff}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, s {alg}algoritmy od klasických{/} {fin}po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
+      "Studuji {mff}finanční matematiku na Matfyzu{/} a přináším zkušenosti se {sw}stavěním softwaru{/}, s {alg}algoritmy od klasických{/} {fin}po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
     "deck": "Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. Provozuji vlastní produkt (Božííí) a mám za sebou spoluzaložení EdTech platformy Freio.",
     "actions": {
@@ -484,6 +484,18 @@
           "Skládačka dortů, galerie, recenze a blog; zákazník si dort sestaví a poptá."
         ],
         "stack": "Next.js, TypeScript"
+      },
+      {
+        "period": "2025 – 2026",
+        "org": "Algoritmy v C#",
+        "anchor": "algoritmy",
+        "role": "Programovací seminář a příprava na maturitu z programování",
+        "tag": "Škola",
+        "results": [
+          "Grafy: Dijkstra s prioritní frontou, průchody do šířky a do hloubky, minimální kostra (Kruskal, Jarník) a topologické třídění.",
+          "Třídění od insert sortu po heapsort a introsort, backtracking, dynamické programování a minimax pro hru Nim; 25 vypracovaných maturitních otázek s kódem."
+        ],
+        "stack": "C#, .NET"
       }
     ],
     "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele.",
