@@ -8,7 +8,7 @@
                    stroke-dasharray: 1 and stroke-dashoffset: 1 -> 0 at any rendered size.
    - class "dot":  a filled dot that fades in.   class "ring": an outlined node that fades in.
    - style="--t:Nms" staggers an element.
-   Figures: hero  mff (Matfyz), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
+   Figures: hero  mff (Matfyz, financial mathematics), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
             profile  map (Božííí), edu (Freio), pipe (automation and scraping), ets (EU ETS 2 model), port (portfolio). */
 
 const r = (v) => String(Math.round(v * 10) / 10);
@@ -36,22 +36,27 @@ function roundRect(x, y, w, h, q) {
 
 /* ---------- hero ---------- */
 
-// Matfyz (mathematics and physics): a point turning on the unit circle and its height traced out as a sine wave.
+// Matfyz, financial mathematics: a square-root sign assembled from geometric pieces (a nod to the faculty's mathematics mark,
+// drawn as plain outlines) with a candlestick price chart under its bar, so the radicand is a market.
 function mff() {
-  const c = [112, 200], R = 72, th = (50 * Math.PI) / 180, x0 = 214, per = 172;
-  let body = G(pts([[24, c[1]], [386, c[1]]])) + G(pts([[c[0], c[1] - R - 26], [c[0], c[1] + R + 26]]));
-  body += D(`M${c[0] + R} ${c[1]}A${R} ${R} 0 1 0 ${c[0] - R} ${c[1]}A${R} ${R} 0 1 0 ${c[0] + R} ${c[1]}`, 0);
-  const P = [c[0] + R * Math.cos(th), c[1] - R * Math.sin(th)];
-  body += D(pts([c, P]), 500, ' stroke-width="2.2"');
-  const arc = [];
-  for (let a = 0; a <= th + 1e-9; a += th / 12) arc.push([c[0] + 22 * Math.cos(a), c[1] - 22 * Math.sin(a)]);
-  body += D(pts(arc), 700);
-  const wave = [];
-  for (let i = 0; i <= 96; i++) { const x = x0 + (per * i) / 96 * 1.0; wave.push([x, c[1] - R * Math.sin((2 * Math.PI * (x - x0)) / per)]); }
-  body += D(pts(wave), 300);
-  const Q = [x0 + (per * th) / (2 * Math.PI), P[1]];
-  body += G(pts([P, Q]));
-  body += dot(P[0], P[1], 3.6, 900) + dot(Q[0], Q[1], 3.6, 1100) + dot(c[0], c[1], 2.6, 0);
+  const L = ([x, y]) => [30 + (x - 520) * 0.507, 110 + (y - 505) * 0.507];   // piece coordinates are given on a 2000 px grid
+  const piece = (ps, t) => D(pts(ps.map(L)) + 'Z', t);
+  let body = '';
+  body += piece([[523, 650], [523, 772], [645, 772]], 0);                      // left triangle
+  body += piece([[528, 778], [780, 778], [654, 904]], 120);                    // bottom triangle
+  body += piece([[662, 772], [788, 772], [914, 645], [790, 645]], 240);        // the long stroke
+  body += piece([[797, 636], [920, 636], [920, 513]], 360);                    // the turn
+  body += piece([[927, 509], [1055, 509], [1055, 636], [927, 636]], 480);      // the bar, two squares
+  body += piece([[1061, 509], [1189, 509], [1189, 636], [1061, 636]], 600);
+  // under the bar: six daily candles of a rising price (open, close, high, low); filled = up day, hollow = down day
+  const candles = [[40, 47, 50, 37], [47, 44, 49, 41], [44, 55, 58, 43], [55, 52, 57, 49], [52, 63, 66, 51], [63, 74, 78, 61]];
+  const yp = (v) => 304 - (v - 35) * 2.75, w = 12;
+  body += G(pts([[236, 312], [369, 312]]));
+  candles.forEach(([o, c, h, l], i) => {
+    const x = 250 + i * 21, top = yp(Math.max(o, c)), bot = yp(Math.min(o, c)), t = 760 + i * 90;
+    body += D(pts([[x, yp(h)], [x, yp(l)]]), t);
+    body += `<rect class="${c >= o ? 'dot' : 'ring'}" x="${r(x - w / 2)}" y="${r(top)}" width="${w}" height="${r(Math.max(2, bot - top))}"${st(t + 200)}/>`;
+  });
   return svg('mff', 400, 400, body);
 }
 
