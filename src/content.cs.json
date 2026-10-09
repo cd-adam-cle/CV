@@ -61,7 +61,7 @@
   },
   "hero": {
     "title": [
-      "Studuji {fin}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, který se snadno používá, s {alg}algoritmy od klasických po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
+      "Studuji {mff}finanční matematiku na Matfyzu{/} a přináším zkušenosti se stavěním softwaru, s {alg}algoritmy od klasických{/} {fin}po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
     "deck": "Hledám stáž, part-time nebo projektovou spolupráci v kvantitativním řízení rizik, quant researchu, VC/PE analytice nebo investičním bankovnictví. Provozuji vlastní produkt (Božííí) a mám za sebou spoluzaložení EdTech platformy Freio.",
     "actions": {

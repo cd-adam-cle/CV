@@ -8,7 +8,7 @@
                    stroke-dasharray: 1 and stroke-dashoffset: 1 -> 0 at any rendered size.
    - class "dot":  a filled dot that fades in.   class "ring": an outlined node that fades in.
    - style="--t:Nms" staggers an element.
-   Figures: hero  fin (financial mathematics), alg (algorithms), ai (AI systems), proc (AI in processes);
+   Figures: hero  mff (Matfyz), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
             profile  map (Božííí), edu (Freio), pipe (automation and scraping), ets (EU ETS 2 model), port (portfolio). */
 
 const r = (v) => String(Math.round(v * 10) / 10);
@@ -35,6 +35,25 @@ function roundRect(x, y, w, h, q) {
 }
 
 /* ---------- hero ---------- */
+
+// Matfyz (mathematics and physics): a point turning on the unit circle and its height traced out as a sine wave.
+function mff() {
+  const c = [112, 200], R = 72, th = (50 * Math.PI) / 180, x0 = 214, per = 172;
+  let body = G(pts([[24, c[1]], [386, c[1]]])) + G(pts([[c[0], c[1] - R - 26], [c[0], c[1] + R + 26]]));
+  body += D(`M${c[0] + R} ${c[1]}A${R} ${R} 0 1 0 ${c[0] - R} ${c[1]}A${R} ${R} 0 1 0 ${c[0] + R} ${c[1]}`, 0);
+  const P = [c[0] + R * Math.cos(th), c[1] - R * Math.sin(th)];
+  body += D(pts([c, P]), 500, ' stroke-width="2.2"');
+  const arc = [];
+  for (let a = 0; a <= th + 1e-9; a += th / 12) arc.push([c[0] + 22 * Math.cos(a), c[1] - 22 * Math.sin(a)]);
+  body += D(pts(arc), 700);
+  const wave = [];
+  for (let i = 0; i <= 96; i++) { const x = x0 + (per * i) / 96 * 1.0; wave.push([x, c[1] - R * Math.sin((2 * Math.PI * (x - x0)) / per)]); }
+  body += D(pts(wave), 300);
+  const Q = [x0 + (per * th) / (2 * Math.PI), P[1]];
+  body += G(pts([P, Q]));
+  body += dot(P[0], P[1], 3.6, 900) + dot(Q[0], Q[1], 3.6, 1100) + dot(c[0], c[1], 2.6, 0);
+  return svg('mff', 400, 400, body);
+}
 
 // Financial mathematics: seven geometric Brownian motion paths (mu 6%, sigma 32%, one year in 60 steps) and, sideways
 // along the right axis, the normal density of their log terminal value.
@@ -187,5 +206,5 @@ function port() {
   return svg('port', 400, 300, body);
 }
 
-export const FIGS = { fin, alg, ai, proc, map, edu, pipe, ets, port };
+export const FIGS = { mff, fin, alg, ai, proc, map, edu, pipe, ets, port };
 export const figs = (ids) => ids.filter((id) => FIGS[id]).map((id) => FIGS[id]()).join('');
