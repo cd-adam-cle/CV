@@ -37,17 +37,26 @@
   });
   const showFig = (m, lit) => {
     if (!m.figs) return;
-    let cur = null;
-    for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
-    const act = m.figs.active; // a little hysteresis: scrolling back a word does not flip the drawing back and forth
-    if (act && cur !== act && (!cur || cur.first < act.first) && lit >= act.first - 0.5) cur = act;
+    let cur = m.figs.hover || null; // a phrase whose note is open (hints.js) shows its drawing
+    if (!cur) {
+      for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
+      const act = m.figs.active; // a little hysteresis: scrolling back a word does not flip the drawing back and forth
+      if (act && cur !== act && (!cur || cur.first < act.first) && lit >= act.first - 0.5) cur = act;
+    }
     if (cur === m.figs.active) return;
     if (m.figs.active) m.figs.active.el.classList.remove('on');
     if (cur) cur.el.classList.add('on', 'drawn'); // drawn stays, so a figure draws itself once and later only fades
     m.figs.active = cur;
   };
+  document.addEventListener('hintchange', (e) => {
+    const m = magics.find((x) => x.el === e.detail.host);
+    if (!m || !m.figs) return;
+    m.figs.hover = (e.detail.fig && m.figs.list.find((f) => f.el.dataset.fig === e.detail.fig)) || null;
+    showFig(m, m.lit || 0);
+  });
   const FLOOR = 0.6; // dim words keep enough contrast to be read before they are lit
   const setWords = (m, lit) => { // lit = number of fully lit words, fractional for the word being lit
+    m.lit = lit;
     for (let i = 0; i < m.spans.length; i++) {
       const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
       if (Math.abs(o - m.last[i]) > 0.004) { m.spans[i].style.opacity = o.toFixed(3); m.last[i] = o; }

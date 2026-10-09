@@ -19,6 +19,7 @@ Statický web (úvodní stránka a stránka s nástroji, čeština + `/en/`) ve 
 | `assets/css/variant-a.css`, `variant-b.css` | A: teplý papír a Source Sans 3; B: bílá a Literata |
 | `assets/js/site.js` | mobilní menu a zvýraznění aktivní sekce, bez animací |
 | `assets/js/motion.js` | jen varianta C: připnutý nadpis, jehož slova se rozsvěcují scrollem, odkrývání textu po slovech, objevování bloků a čára průchodu stránkou; respektuje `prefers-reduced-motion` |
+| `assets/js/hints.js` | jen varianta C, úvodní stránka: poznámky u označených slov v hero a Profilu (najetí myší, fokus z klávesnice, první klepnutí) |
 | `assets/js/skyline.js`, `assets/css/skyline.css` | jen varianta C: graf příspěvků ve stylu GitHubu (2D mřížka a 3D panorama), čistý JS + canvas |
 | `src/contributions.json`, `scripts/build-contributions.mjs` | počty commitů po dnech za poslední rok pro graf; obnova je v části Graf commitů níže |
 | `src/thumbs.mjs` | SVG náhledy tří modelů na kartách nástrojů (skutečné výpočty, žádné obrázky) |
@@ -41,7 +42,15 @@ Je v obsahu pod `skills.ai` (nadpis, skupiny `k` a `v` ve stejné podobě jako o
 
 ## Kresby u rozsvěcených slov (hero a Profil)
 
-V textu hero (`hero.title`) a profilu (`profile.lead`) značka `{id}slova{/}` určí slova, u kterých se při scrollování vpravo objeví černobílá čárová kresba `id` ze `src/figs.mjs` (počítaná, ne kreslená ručně: náhodné cesty a hustota pro finanční matematiku, graf s nejkratší cestou, neuronová síť, proces s AI krokem, mapa farností, záznamový arch, scraping do modelu, model EU ETS 2 a rozložení portfolia). Ukazuje se vždy kresba k poslední rozsvícené značce. Kresby jsou jen na širokých obrazovkách od 1100 px a jen když běží pohyb; při omezeném pohybu, bez JavaScriptu nebo při vysokém kontrastu zůstane čistý text. Ve variantách A a B a všude jinde se značky z textu odstraní.
+V textu hero (`hero.title`) a profilu (`profile.lead`) značka `{id}slova{/}` určí slova, u kterých se při scrollování vpravo objeví černobílá čárová kresba `id` ze `src/figs.mjs` (počítaná, ne kreslená ručně: odmocnina z dílků se svíčkovým grafem u Matfyzu, okno aplikace s grafem u softwaru, náhodné cesty a hustota pro finanční matematiku, graf s nejkratší cestou, neuronová síť, proces s AI krokem, mapa farností, záznamový arch, scraping do modelu, model EU ETS 2 a rozložení portfolia). Ukazuje se vždy kresba k poslední rozsvícené značce. Kresby jsou jen na širokých obrazovkách od 1100 px a jen když běží pohyb; při omezeném pohybu, bez JavaScriptu nebo při vysokém kontrastu zůstane čistý text. Ve variantách A a B a všude jinde se značky z textu odstraní.
+
+## Poznámky u označených slov (hero a Profil)
+
+Každá značka `{id}…{/}` může mít v obsahu poznámku `hints.<id>` = `{ "text", "link", "href" }`. Fráze se pak ve variantě C vykreslí jako odkaz na `href` (sekce, položka nebo stránka) s jemným tečkovaným podtržením a `text` je její popis pro čtečky (`aria-describedby`). `assets/js/hints.js` ukáže text a odkaz `link` v malém okénku u fráze: myší po krátkém najetí (do okénka se dá přejet), z klávesnice při fokusu (Escape zavře, Enter otevře odkaz), na dotykovém displeji prvním klepnutím (druhé klepnutí nebo odkaz v okénku přejde na cíl). Dokud je okénko otevřené, vedle textu se ukazuje kresba té fráze. Bez JavaScriptu jsou fráze obyčejné odkazy.
+
+Cíle uvnitř stránky jsou sekce (`#projekty`) nebo položky s polem `anchor` v obsahu (řádky Zkušeností a Vzdělání, karty Projektů, rámeček AI engineering), které se vykreslí jako `id`. Při změně textu nebo kotvy zkontroluj, že každý `href` z `hints` míří na existující prvek.
+
+Karty Projektů: první je široká, takže když by poslední karta zůstala v řádku sama (počet karet dělitelný třemi), roztáhne se na šířku stránky s nadpisem vlevo a body vpravo.
 
 ## Světlý a tmavý režim
 

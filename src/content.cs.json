@@ -155,6 +155,7 @@
       {
         "period": "01/2026 – dosud",
         "org": "Freelance",
+        "anchor": "freelance",
         "role": "Software a AI automatizace",
         "results": [
           "Scrapovací a datové pipeline (Playwright, BeautifulSoup) a napojení na LLM API (OpenAI, Anthropic) pro klienty.",
@@ -175,6 +176,7 @@
       {
         "period": "02/2026 – 07/2026",
         "org": "Freio",
+        "anchor": "freio",
         "href": "https://freio.cz",
         "role": "Co-founder, obchod a strategie",
         "results": [
@@ -447,6 +449,7 @@
       {
         "period": "07/2026",
         "org": "Analýza investic v portfoliu",
+        "anchor": "analyza-portfolia",
         "role": "Klientská prezentace pro Valor Group",
         "tag": "Pro klienta",
         "results": [
@@ -549,6 +552,7 @@
       {
         "period": "09/2026 – dosud",
         "org": "Matematicko-fyzikální fakulta UK",
+        "anchor": "mff",
         "role": "Bc. Finanční matematika",
         "results": [
           "1. semestr: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář.",
@@ -559,6 +563,7 @@
       {
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
+        "anchor": "gymnazium",
         "role": "Matematika, fyzika a informatika",
         "results": [
           "Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).",
@@ -603,6 +608,7 @@
     },
     "ai": {
       "title": "AI engineering",
+      "anchor": "ai-engineering",
       "groups": [
         {
           "k": "Oblasti použití",
@@ -658,6 +664,63 @@
       }
     ],
     "cvLabel": "CV v PDF"
+  },
+  "hints": {
+    "mff": {
+      "text": "Bakalářský obor Finanční matematika na MFF UK od září 2026. První semestr: analýza, lineární algebra, účetnictví a programování.",
+      "link": "Vzdělání",
+      "href": "#mff"
+    },
+    "sw": {
+      "text": "Vlastní produkt Božííí, aplikace a weby pro klienty i osobní nástroje, většinou v Next.js a TypeScriptu.",
+      "link": "Projekty",
+      "href": "#projekty"
+    },
+    "alg": {
+      "text": "Dijkstra, průchody grafem, minimální kostra a třídicí algoritmy v C#, z programovacího semináře a přípravy na maturitu.",
+      "link": "Algoritmy v Projektech",
+      "href": "#algoritmy"
+    },
+    "fin": {
+      "text": "Black–Scholes s citlivostmi, Monte Carlo s VaR a expected shortfall a Markowitzova efektivní hranice. Všechno běží přímo v prohlížeči.",
+      "link": "Otevřít nástroje",
+      "href": "/nastroje/"
+    },
+    "ai": {
+      "text": "Jak AI napojuji: model posuzuje, rozhoduje deterministický kód a selhání řeší člověk. Výstup podle schématu, limity nákladů.",
+      "link": "AI engineering v Dovednostech",
+      "href": "#ai-engineering"
+    },
+    "proc": {
+      "text": "Automatizace pro klienty i vlastní projekty: tvorba obsahu pro sociální sítě, personalizace e-mailů a sběr dat.",
+      "link": "Freelance ve Zkušenostech",
+      "href": "#freelance"
+    },
+    "map": {
+      "text": "Průvodce svátostmi a katalog farností; zapojené farnosti Dejvice, Hlubočepy a Chodov.",
+      "link": "boziii.com",
+      "href": "https://boziii.com"
+    },
+    "edu": {
+      "text": "Platforma pro přípravu na přijímací zkoušky SCIO. Jako spoluzakladatel jsem měl na starosti obchod a strategii.",
+      "link": "Freio ve Zkušenostech",
+      "href": "#freio"
+    },
+    "pipe": {
+      "text": "Od ledna 2026 pro klienty: scrapovací a datové pipeline, napojení na LLM API a automatizace tvorby obsahu.",
+      "link": "Freelance ve Zkušenostech",
+      "href": "#freelance"
+    },
+    "ets": {
+      "text": "Ročníková práce hodnocená výborně: vlastní model, jak se cena povolenek promítne do cen paliv.",
+      "link": "Ročníková práce ve Vzdělání",
+      "href": "#gymnazium"
+    },
+    "port": {
+      "text": "Portfolio 1 000 000 Kč v šesti fondech: TER, durace, likvidita, rizika a scénáře sazeb, zpracované jako klientská prezentace.",
+      "link": "Analýza v Projektech",
+      "href": "#analyza-portfolia"
+    }
   },
   "footer": {
     "left": "© 2026 Adam Zikmund",

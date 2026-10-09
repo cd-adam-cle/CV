@@ -20,19 +20,38 @@ const magic = (s) => esc(s).split(' ').map((w) => `<span class="w">${w}</span>`)
 // the words light up. Everywhere else the markers are removed.
 const plain = (s) => String(s).replace(/\{\w+\}|\{\/\}/g, '');
 const figIds = (s) => [...new Set([...String(s).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].filter((id) => !figMod || figMod.FIGS[id]);
+// Notes on tagged phrases (variant C): content.hints[id] = { text, link, href }. The phrase becomes a link to href with a dotted
+// underline under its words, text becomes its accessible description, and assets/js/hints.js shows text and link in a small note
+// on hover, keyboard focus or a first tap. Without the script the phrase is an ordinary link.
+let HINTS = {};
+const attr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const markIds = (s) => [...new Set([...String(s).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))];
+const hintNotes = (s, indent) => {
+  const list = markIds(s).filter((id) => HINTS[id]);
+  return list.length ? `\n${indent}<div class="hint-notes" hidden>${list.map((id) => `<span id="hint-${id}">${esc(HINTS[id].text)}</span>`).join('')}</div>` : '';
+};
 // Like magic(), plus data-fig on tagged words; lit0 marks the words up to the end of the first tagged phrase as lit from the start.
+// A tagged phrase with a note in HINTS is wrapped in a link; only its words are underlined (span.u), not a preposition that a
+// non-breaking space glues to the first word, nor the punctuation after the last one. Inside the phrase the space after a word
+// sits in that word's span.u, so the underline runs through the phrase and fades with the words as they light up.
 function magicFig(s, lit0) {
   let cur = null, firstId = null, lastOfFirst = -1;
   const toks = esc(s).split(' ').map((w, i) => {
-    const open = /\{(\w+)\}/.exec(w);
-    if (open) { cur = open[1]; if (!firstId) firstId = cur; w = w.replace(open[0], ''); }
-    const fig = cur, close = w.includes('{/}');
-    if (close) w = w.replace('{/}', '');
+    let pre = '', post = '', open = false, close = false;
+    const m = /\{(\w+)\}/.exec(w);
+    if (m) { cur = m[1]; if (!firstId) firstId = cur; pre = w.slice(0, m.index); w = w.slice(m.index + m[0].length); open = true; }
+    const fig = cur, c = w.indexOf('{/}');
+    if (c >= 0) { post = w.slice(c + 3); w = w.slice(0, c); close = true; }
     if (fig && fig === firstId) lastOfFirst = i;
     if (close) cur = null;
-    return { w, fig };
+    return { pre, w, post, fig, open, close };
   });
-  return toks.map((t, i) => `<span class="w${lit0 && i <= lastOfFirst ? ' l0' : ''}"${t.fig ? ` data-fig="${t.fig}"` : ''}>${t.w}</span>`).join(' ');
+  return toks.map((t, i) => {
+    const h = t.fig && HINTS[t.fig], inside = h && !t.close && i < toks.length - 1; // a word followed by another word of the phrase
+    const span = `<span class="w${lit0 && i <= lastOfFirst ? ' l0' : ''}"${t.fig ? ` data-fig="${t.fig}"` : ''}>${t.pre}${h ? `<span class="u">${t.w}${inside ? ' ' : ''}</span>` : t.w}${t.post}</span>`;
+    const open = h && t.open ? `<a class="hint" href="${attr(h.href)}"${ext(h.href)} data-hint="${t.fig}" data-hint-link="${esc(h.link)}" aria-describedby="hint-${t.fig}">` : '';
+    return `${open}${span}${h && t.close ? '</a>' : ''}${i < toks.length - 1 && !inside ? ' ' : ''}`;
+  }).join('');
 }
 const maskWords = (s) => esc(s).split(' ').map((w) => `<span class="mw"><span>${w}</span></span>`).join(' ');
 const fill = (tpl, vals) => tpl.replace(/\{(\w+)\}/g, (m, k) => (vals[k] != null ? vals[k] : m));
@@ -57,7 +76,7 @@ function head(c, pg) {
   const colour = blocks
     ? `<meta name="color-scheme" content="light dark">\n<meta name="theme-color" content="${V.themeColor}" media="(prefers-color-scheme: light)">\n<meta name="theme-color" content="${V.themeColorDark}" media="(prefers-color-scheme: dark)">`
     : `<meta name="color-scheme" content="light">\n<meta name="theme-color" content="${V.themeColor}">`;
-  const scripts = blocks ? ['site.js', pg.kind === 'tools' ? 'quant.js' : 'skyline.js', 'motion.js'] : ['site.js', 'quant.js'];
+  const scripts = blocks ? ['site.js', pg.kind === 'tools' ? 'quant.js' : 'skyline.js', 'motion.js', ...(pg.kind === 'home' ? ['hints.js'] : [])] : ['site.js', 'quant.js'];
   return `<!doctype html>
 <html lang="${c.lang}">
 <head>
@@ -143,7 +162,7 @@ function heroBlocks(c) {
   const ids = figIds(h.title.join(' '));
   return `<section class="hero-track" data-hero>
   <div class="hero-pin">
-    <h1 id="hero-title" class="hero-title" data-magic="hero"${ids.length ? ' data-art="art-hero"' : ''}>${h.title.map((t) => `<span class="hero-sentence">${magicFig(t, true)}</span>`).join(' ')}</h1>${ids.length ? `
+    <h1 id="hero-title" class="hero-title" data-magic="hero"${ids.length ? ' data-art="art-hero"' : ''}>${h.title.map((t) => `<span class="hero-sentence">${magicFig(t, true)}</span>`).join(' ')}</h1>${hintNotes(h.title.join(' '), '    ')}${ids.length ? `
     <div class="fig-art fig-art-hero" id="art-hero" aria-hidden="true">${drawFigs(ids)}</div>` : ''}
     <p class="hero-hint" aria-hidden="true">${esc(h.scrollHint)}</p>
   </div>
@@ -189,7 +208,7 @@ function kv(title, rows, id) {
 }
 let EXIT_LABEL = '';
 function ledger(items, extra) {
-  const row = (e) => `<li class="row" data-reveal="row">
+  const row = (e) => `<li class="row"${e.anchor ? ` id="${e.anchor}"` : ''} data-reveal="row">
         <div class="row-date"><span>${esc(e.period)}</span></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
@@ -208,7 +227,7 @@ function profile(c) {
   const ids = isBlocks() ? figIds(p.lead) : [];
   const lead = isBlocks()
     ? `<div class="lead-row">
-      <p class="lead" data-magic${ids.length ? ' data-art="art-profile"' : ''}>${magicFig(p.lead)}</p>${ids.length ? `
+      <p class="lead" data-magic${ids.length ? ' data-art="art-profile"' : ''}>${magicFig(p.lead)}</p>${hintNotes(p.lead, '      ')}${ids.length ? `
       <div class="fig-art fig-art-profile" id="art-profile" aria-hidden="true">${drawFigs(ids)}</div>` : ''}
     </div>`
     : `<p class="lead">${esc(plain(p.lead))}</p>`;
@@ -281,7 +300,7 @@ function skills(c) {
 function aiFrame(a) {
   if (!a) return '';
   return `
-    <div class="card-frame ai-frame"${isBlocks() ? ' data-reveal="panel"' : ''}>
+    <div class="card-frame ai-frame"${a.anchor ? ` id="${a.anchor}"` : ''}${isBlocks() ? ' data-reveal="panel"' : ''}>
       <h3 class="card-title">${esc(a.title)}</h3>
       <dl class="ai-grid">
         ${a.groups.map((g) => `<div class="skill"><dt>${esc(g.k)}</dt><dd>${esc(g.v)}</dd></div>`).join('\n        ')}
@@ -475,6 +494,7 @@ function toolsPage(c) {
 
 export function renderSite(c) {
   const m = c.meta; const blocks = isBlocks();
+  HINTS = blocks && c.hints ? c.hints : {};
   const pg = { kind: 'home', title: m.title, description: m.description, path: m.path, altPath: m.altLang.path };
   return `${head(c, pg)}
 <body>
