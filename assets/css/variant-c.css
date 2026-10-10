@@ -5,7 +5,7 @@
   --line: #dddbd5; --line-strong: #c6c4bd; --grid: #ebeae5; --rule: #121212;
   --navy: #1b2d4f; --on-accent: #ffffff; --oxide: #b4472b; --cloud: #8c8a84; --chart-bg: var(--surface);
   --card-border: transparent;
-  --c-orange: #c9552f; --c-green: #30a14e; --c-blue: #2a4a8a; --hint-ul: #2a4a8a;
+  --c-orange: #c9552f; --c-green: #30a14e; --c-blue: #2a4a8a; --hint-ul: #2760b7;
   --sky-empty: #ebe9e4; --sky-1: #9be9a8; --sky-2: #40c463; --sky-3: #30a14e; --sky-4: #216e39;
   --font-text: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -15,7 +15,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --bg: #121211; --c-orange: #e6805a; --c-green: #26a641; --c-blue: #9db5e3; --hint-ul: #9db5e3; --surface: #1c1c1a; --ink: #f2f0ea; --ink-2: #a8a69e;
+  --bg: #121211; --c-orange: #e6805a; --c-green: #26a641; --c-blue: #9db5e3; --hint-ul: #7fa8ff; --surface: #1c1c1a; --ink: #f2f0ea; --ink-2: #a8a69e;
   --line: #2d2d2a; --line-strong: #44443f; --grid: #252523; --rule: #e7e5de;
   --navy: #9db5e3; --on-accent: #101214; --oxide: #e6805a; --cloud: #6c6b66;
   --card-border: #2a2a27;
@@ -24,7 +24,7 @@
   }
 }
 :root[data-theme="dark"] {
-  --bg: #121211; --c-orange: #e6805a; --c-green: #26a641; --c-blue: #9db5e3; --hint-ul: #9db5e3; --surface: #1c1c1a; --ink: #f2f0ea; --ink-2: #a8a69e;
+  --bg: #121211; --c-orange: #e6805a; --c-green: #26a641; --c-blue: #9db5e3; --hint-ul: #7fa8ff; --surface: #1c1c1a; --ink: #f2f0ea; --ink-2: #a8a69e;
   --line: #2d2d2a; --line-strong: #44443f; --grid: #252523; --rule: #e7e5de;
   --navy: #9db5e3; --on-accent: #101214; --oxide: #e6805a; --cloud: #6c6b66;
   --card-border: #2a2a27;
@@ -164,7 +164,7 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 /* notes on tagged phrases (hero and profile): the phrase is a link with a dotted underline under its words; assets/js/hints.js
    shows a small note with a link on hover, keyboard focus or a first tap, placed inside the pinned hero or the profile row */
 .hint { color: inherit; text-decoration: none; }
-.hint .u { text-decoration: underline dotted; text-decoration-thickness: max(1px, 0.03em); text-underline-offset: 0.16em; text-decoration-color: color-mix(in srgb, var(--hint-ul) 75%, transparent); }
+.hint .u { text-decoration: underline dotted; text-decoration-thickness: max(2px, 0.05em); text-underline-offset: 0.15em; text-decoration-color: var(--hint-ul); }
 .hint:hover, .hint:focus-visible { color: inherit; }
 .hint.is-open .u, .hint:focus-visible .u { text-decoration-style: solid; text-decoration-color: var(--hint-ul); }
 @media (hover: hover) { .hint:hover .u { text-decoration-style: solid; text-decoration-color: var(--hint-ul); } }
