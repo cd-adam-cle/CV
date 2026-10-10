@@ -31,9 +31,10 @@ const hintNotes = (s, indent) => {
   return list.length ? `\n${indent}<div class="hint-notes" hidden>${list.map((id) => `<span id="hint-${id}">${esc(HINTS[id].text)}</span>`).join('')}</div>` : '';
 };
 // Like magic(), plus data-fig on tagged words; lit0 marks the words up to the end of the first tagged phrase as lit from the start.
-// A tagged phrase with a note in HINTS is wrapped in a link; only its words are underlined (span.u), not a preposition that a
-// non-breaking space glues to the first word, nor the punctuation after the last one. Inside the phrase the space after a word
-// sits in that word's span.u, so the underline runs through the phrase and fades with the words as they light up.
+// A tagged phrase with a note in HINTS is wrapped in a link that holds exactly the tagged words: a preposition that a non-breaking
+// space glues to the first word, and punctuation after the last word, go into their own spans outside the link (data-sat="next" or
+// "prev": motion.js lights them together with that word, they do not count as words). The words are underlined (span.u); inside the
+// phrase the space after a word sits in that word's span.u, so the underline runs through the phrase and fades with the words.
 function magicFig(s, lit0) {
   let cur = null, firstId = null, lastOfFirst = -1;
   const toks = esc(s).split(' ').map((w, i) => {
@@ -48,9 +49,12 @@ function magicFig(s, lit0) {
   });
   return toks.map((t, i) => {
     const h = t.fig && HINTS[t.fig], inside = h && !t.close && i < toks.length - 1; // a word followed by another word of the phrase
-    const span = `<span class="w${lit0 && i <= lastOfFirst ? ' l0' : ''}"${t.fig ? ` data-fig="${t.fig}"` : ''}>${t.pre}${h ? `<span class="u">${t.w}${inside ? ' ' : ''}</span>` : t.w}${t.post}</span>`;
-    const open = h && t.open ? `<a class="hint" href="${attr(h.href)}"${ext(h.href)} data-hint="${t.fig}" data-hint-link="${esc(h.link)}" aria-describedby="hint-${t.fig}">` : '';
-    return `${open}${span}${h && t.close ? '</a>' : ''}${i < toks.length - 1 && !inside ? ' ' : ''}`;
+    const cls = `w${lit0 && i <= lastOfFirst ? ' l0' : ''}`, gap = i < toks.length - 1 && !inside ? ' ' : '';
+    if (!h) return `<span class="${cls}"${t.fig ? ` data-fig="${t.fig}"` : ''}>${t.pre}${t.w}${t.post}</span>${gap}`;
+    const pre = t.open && t.pre ? `<span class="${cls}" data-sat="next">${t.pre}</span>` : '';
+    const open = t.open ? `<a class="hint" href="${attr(h.href)}"${ext(h.href)} data-hint="${t.fig}" data-hint-link="${esc(h.link)}" aria-describedby="hint-${t.fig}">` : '';
+    const post = t.close ? `</a>${t.post ? `<span class="${cls}" data-sat="prev">${t.post}</span>` : ''}` : '';
+    return `${pre}${open}<span class="${cls}" data-fig="${t.fig}"><span class="u">${t.w}${inside ? ' ' : ''}</span></span>${post}${gap}`;
   }).join('');
 }
 const maskWords = (s) => esc(s).split(' ').map((w) => `<span class="mw"><span>${w}</span></span>`).join(' ');

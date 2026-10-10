@@ -501,7 +501,7 @@
         "stack": "C#, .NET"
       }
     ],
-    "intro": "Věci, které jsem postavil a které běží. Většina vznikla pro skutečné klienty a uživatele.",
+    "intro": "Věci, které jsem postavil. Většina vznikla pro skutečné klienty a uživatele.",
     "activity": {
       "labels": {
         "aria": "Commity v mých repozitářích za posledních pět týdnů, po dnech",
@@ -672,7 +672,7 @@
       "href": "#mff"
     },
     "sw": {
-      "text": "Vlastní produkt Božííí, aplikace a weby pro klienty i osobní nástroje, většinou v Next.js a TypeScriptu.",
+      "text": "Vlastní produkt Božííí, klientské aplikace a weby i osobní nástroje, většinou v Next.js a TypeScriptu.",
       "link": "Projekty",
       "href": "#projekty"
     },

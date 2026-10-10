@@ -501,7 +501,7 @@
         "stack": "C#, .NET"
       }
     ],
-    "intro": "Things I have built that are running. Most of them were made for real clients and users.",
+    "intro": "Things I have built. Most of them were made for real clients and users.",
     "activity": {
       "labels": {
         "aria": "Commits in my repositories over the last five weeks, by day",
@@ -666,12 +666,12 @@
       "href": "#mff"
     },
     "sw": {
-      "text": "My own product Božííí, apps and websites for clients and personal tools, mostly in Next.js and TypeScript.",
+      "text": "My own product Božííí, apps and websites for clients, plus personal tools, mostly in Next.js and TypeScript.",
       "link": "Projects",
       "href": "#projects"
     },
     "alg": {
-      "text": "Dijkstra, graph search, minimum spanning trees and sorting algorithms in C#, from a programming seminar and maturita preparation.",
+      "text": "Dijkstra, graph search, minimum spanning trees and sorting algorithms in C#, from a programming seminar and preparation for the maturita (school-leaving exam).",
       "link": "Algorithms in Projects",
       "href": "#algorithms"
     },

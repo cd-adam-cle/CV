@@ -13,13 +13,20 @@
 
   /* ---------- words that light up ---------- */
   const magics = Array.from(document.querySelectorAll('[data-magic]')).map((el) => {
-    let spans = Array.from(el.querySelectorAll('.w'));
+    let spans = Array.from(el.querySelectorAll('.w:not([data-sat])'));
     if (!spans.length) { // markup without server-rendered words: wrap them now (plain spaces only, so non-breaking spaces stay inside words)
       const words = el.textContent.trim().split(/ +/);
       el.textContent = '';
       spans = words.map((w, i) => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; el.appendChild(s); if (i < words.length - 1) el.appendChild(document.createTextNode(' ')); return s; });
     }
-    return { el, spans, hero: el.dataset.magic === 'hero', last: new Float32Array(spans.length).fill(-1) };
+    // a glued preposition or punctuation kept outside a phrase's link (data-sat) lights up with the word next to it
+    const sats = Array.from(el.querySelectorAll('.w[data-sat]')).map((s) => {
+      const next = s.dataset.sat === 'next';
+      let i = next ? spans.findIndex((w) => s.compareDocumentPosition(w) & Node.DOCUMENT_POSITION_FOLLOWING) : -1;
+      if (!next) for (let k = spans.length - 1; k >= 0 && i < 0; k--) if (s.compareDocumentPosition(spans[k]) & Node.DOCUMENT_POSITION_PRECEDING) i = k;
+      return { s, i, last: -1 };
+    }).filter((x) => x.i >= 0);
+    return { el, spans, sats, hero: el.dataset.magic === 'hero', last: new Float32Array(spans.length).fill(-1) };
   });
   /* figures beside the lit words (hero and profile): the latest tagged phrase whose first word is at least half lit picks one */
   magics.forEach((m) => {
@@ -37,12 +44,12 @@
   });
   const showFig = (m, lit) => {
     if (!m.figs) return;
-    let cur = m.figs.hover || null; // a phrase whose note is open (hints.js) shows its drawing
-    if (!cur) {
-      for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
-      const act = m.figs.active; // a little hysteresis: scrolling back a word does not flip the drawing back and forth
-      if (act && cur !== act && (!cur || cur.first < act.first) && lit >= act.first - 0.5) cur = act;
-    }
+    let cur = null;
+    for (const f of m.figs.list) if (lit >= f.first + 0.5) cur = f;
+    const held = m.figs.scroll; // a little hysteresis: scrolling back a word does not flip the drawing back and forth
+    if (held && cur !== held && (!cur || cur.first < held.first) && lit >= held.first - 0.5) cur = held;
+    m.figs.scroll = cur; // the scroll choice is kept apart, so closing a note returns exactly to it
+    if (m.figs.hover) cur = m.figs.hover; // a phrase whose note is open (hints.js) shows its drawing
     if (cur === m.figs.active) return;
     if (m.figs.active) m.figs.active.el.classList.remove('on');
     if (cur) cur.el.classList.add('on', 'drawn'); // drawn stays, so a figure draws itself once and later only fades
@@ -61,6 +68,7 @@
       const o = FLOOR + (1 - FLOOR) * clamp(lit - i);
       if (Math.abs(o - m.last[i]) > 0.004) { m.spans[i].style.opacity = o.toFixed(3); m.last[i] = o; }
     }
+    for (const x of m.sats) { const o = m.last[x.i]; if (o !== x.last) { x.s.style.opacity = o.toFixed(3); x.last = o; } }
     showFig(m, lit);
   };
   const paintMagic = () => {
@@ -85,13 +93,13 @@
   const hero = document.querySelector('[data-hero]');
   const pin = hero && hero.querySelector('.hero-pin');
   const heroM = magics.find((m) => m.hero);
-  const titleWords = heroM ? heroM.el.querySelectorAll('.w.l0').length : 0; // words marked l0 (up to the first tagged phrase) are lit from the start
+  const titleWords = heroM ? heroM.el.querySelectorAll('.w.l0:not([data-sat])').length : 0; // words marked l0 (up to the first tagged phrase) are lit from the start
   const paintHero = () => {
     if (!hero || !pin || !heroM) return;
     const navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 56;
     const dist = Math.max(1, hero.offsetHeight - pin.offsetHeight);
     const p = clamp((navH - hero.getBoundingClientRect().top) / dist);
-    const q = clamp(p / 0.8); // the last fifth of the distance holds the finished headline
+    const q = clamp(p / 0.88); // the last 12 % of the distance holds the finished headline
     const base = titleWords || Math.round(heroM.spans.length * 0.2);
     setWords(heroM, base + (heroM.spans.length - base) * q);
     hero.style.setProperty('--hero-hint', (1 - smooth(0, 0.06, p)).toFixed(3));

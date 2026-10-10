@@ -55,7 +55,8 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .scrollbar { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform-origin: left; transform: scaleX(var(--p, 0)); pointer-events: none; }
 
 /* ---------- hero: the headline is pinned while its words light up with the scroll ---------- */
-.hero-track { position: relative; height: calc(100svh + 85svh - var(--nav-h)); }
+/* the pinned distance gives every drawing at least about one wheel notch (100 px) of scroll, also on short screens */
+.hero-track { position: relative; height: calc(100svh + max(95svh, 960px) - var(--nav-h)); }
 .hero-pin { position: sticky; top: var(--nav-h); height: calc(100svh - var(--nav-h)); box-sizing: border-box; max-width: var(--max); margin-inline: auto; padding: 24px var(--gutter) 96px; display: flex; flex-direction: column; justify-content: center; }
 .hero-title { word-spacing: 0.06em; font-weight: 800; font-size: clamp(30px, min(4.1vw, 6.8svh), 64px); line-height: 1.04; letter-spacing: -0.03em; max-width: 24ch; text-wrap: pretty; }
 @media (min-width: 1100px) and (min-height: 560px) {
@@ -215,11 +216,12 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 @media (min-width: 640px) { .pgrid { grid-template-columns: 1fr 1fr; gap: 20px; } .pcard-wide { grid-column: 1 / -1; } .pcard-wide h3 { font-size: 40px; } .pcard { padding: 32px 30px 34px; } }
 @media (min-width: 1024px) { .pgrid { grid-template-columns: repeat(3, 1fr); } .pcard-wide { grid-column: 1 / span 2; } }
 /* a last card that would stand alone in its row (the first card spans two columns, so that is a count divisible by three) takes
-   the whole row: title on the left, points on the right */
+   the whole row: tag and period across the top as on every card, then the title on the left and the points on the right */
 @media (min-width: 1024px) {
   .pgrid > .pcard:not(.pcard-wide):last-child:nth-child(3n) { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-content: start; column-gap: 48px; row-gap: 10px; }
   .pgrid > .pcard:not(.pcard-wide):last-child:nth-child(3n) > * { grid-column: 1; }
-  .pgrid > .pcard:not(.pcard-wide):last-child:nth-child(3n) > .results { grid-column: 2; grid-row: 1 / span 4; margin-top: 0; }
+  .pgrid > .pcard:not(.pcard-wide):last-child:nth-child(3n) > .pcard-meta { grid-column: 1 / -1; }
+  .pgrid > .pcard:not(.pcard-wide):last-child:nth-child(3n) > .results { grid-column: 2; grid-row: 2 / span 3; margin-top: 0; }
 }
 
 /* ---------- tools: teaser on the home page, full tools on their own page ---------- */
