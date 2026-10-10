@@ -9,7 +9,7 @@
    - class "dot":  a filled dot that fades in.   class "ring": an outlined node that fades in.
    - style="--t:Nms" staggers an element.
    Figures: hero  mff (Matfyz, financial mathematics), sw (building software), alg (classic algorithms), fin (financial algorithms), ai (AI systems), proc (AI in processes);
-            profile  map (Božííí), edu (Freio), pipe (automation and scraping), ets (EU ETS 2 model), port (portfolio). */
+            profile  map (Božííí), edu (Freio), pipe (automation and scraping), ets (EU ETS 2 paper: cost against the Social Climate Fund), port (portfolio). */
 
 const r = (v) => String(Math.round(v * 10) / 10);
 const pts = (a) => a.map(([x, y], i) => `${i ? 'L' : 'M'}${r(x)} ${r(y)}`).join('');
@@ -200,21 +200,20 @@ function pipe() {
   return svg('pipe', 400, 300, body);
 }
 
-// EU ETS 2: the allowance price starts in 2027 and rises in steps; the household fuel cost follows with a lag.
+// EU ETS 2 (the research paper): the extra yearly heating cost of an older coal-heated family house in the paper's two allowance
+// price scenarios, 55 and 100 EUR/t (18 000 and 32 700 Kč, open bars), against the fixed Social Climate Fund support of about
+// 4 000 Kč a year (filled, the same in both): it covers about 22 % of the first and 12 % of the second. An arrow marks the price rise.
 function ets() {
-  const X0 = 46, X1 = 372, Y0 = 250, Y1 = 40;
-  const xt = (yr) => X0 + (X1 - X0) * (yr - 2024) / 8, yp = (v) => Y0 - v * 1.75;
-  let body = G(pts([[X0, Y0], [X1, Y0]])) + G(pts([[X0, Y0], [X0, Y1]]));
-  const steps = [[2027, 45], [2028, 45], [2028, 55], [2029, 55], [2029, 70], [2030, 70], [2030, 85], [2032, 85]];
-  body += D(pts(steps.map(([a, v]) => [xt(a), yp(v)])), 0, ' stroke-width="2.2"');
-  const price = (t) => (t < 2027 ? 0 : t < 2028 ? 45 : t < 2029 ? 55 : t < 2030 ? 70 : 85);
-  const cost = [];
-  for (let i = 0; i <= 80; i++) {
-    const t = 2024 + i / 10;
-    const pass = 1 - Math.exp(-Math.max(0, t - 2027) / 0.9);
-    cost.push([xt(t), yp(14 + 0.55 * price(t - 0.35) * pass)]);
-  }
-  body += D(pts(cost), 700);
+  const base = 262, k = 196 / 32700, w = 70, xs = [112, 222], fund = 4000;
+  let body = G(pts([[72, base], [332, base]]));
+  [18000, 32700].forEach((c, i) => {
+    const x = xs[i], top = base - c * k, t = i * 420;
+    body += D(pts([[x, base], [x, top], [x + w, top], [x + w, base]]), t, ' stroke-width="2"');
+    body += `<rect class="dot" x="${r(x)}" y="${r(base - fund * k)}" width="${w}" height="${r(fund * k)}"${st(t + 900)}/>`;
+  });
+  body += G(pts([[xs[0] + w, base - fund * k], [xs[1], base - fund * k]]));   // the support stays flat
+  const t1 = base - 18000 * k, t2 = base - 32700 * k;
+  body += arrow(xs[0] + w / 2, t1 - 16, xs[1] - 14, t2 + 16, 600);      // the allowance price rises, the bill follows
   return svg('ets', 400, 300, body);
 }
 

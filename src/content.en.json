@@ -558,10 +558,11 @@
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "anchor": "grammar-school",
+        "link": { "text": "The impact of EU ETS 2 on ordinary people", "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf" },
         "role": "Mathematics, physics and computer science",
         "results": [
           "Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).",
-          "Final-year research paper “The impact of EU ETS 2 on ordinary people” (top grade): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households."
+          "Final-year research paper “The impact of EU ETS 2 on ordinary people” (top grade, written in Czech): a mathematical model of allowance-cost pass-through to fuel prices, analysis of the LRF, MSR and front‑loading; the Social Climate Fund covers only about 22% of the real price increase for vulnerable households."
         ],
         "stack": ""
       }
@@ -706,9 +707,9 @@
       "href": "#freelance"
     },
     "ets": {
-      "text": "Final-year research paper, top grade: my own model of how the allowance price passes through to fuel prices.",
-      "link": "Research paper in Education",
-      "href": "#grammar-school"
+      "text": "Final-year research paper, top grade. My own model shows an older coal-heated family house paying about CZK 18,000 more a year in the base scenario, with the Social Climate Fund covering only about 22% of it.",
+      "link": "Read the paper (PDF, in Czech)",
+      "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf"
     },
     "port": {
       "text": "A CZK 1,000,000 portfolio across six funds: TER, duration, liquidity, risks and rate scenarios, delivered as a client presentation.",

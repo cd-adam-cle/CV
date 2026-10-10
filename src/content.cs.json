@@ -564,6 +564,7 @@
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "anchor": "gymnazium",
+        "link": { "text": "Dopad EU ETS 2 na běžného člověka", "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf" },
         "role": "Matematika, fyzika a informatika",
         "results": [
           "Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).",
@@ -712,9 +713,9 @@
       "href": "#freelance"
     },
     "ets": {
-      "text": "Ročníková práce hodnocená výborně: vlastní model, jak se cena povolenek promítne do cen paliv.",
-      "link": "Ročníková práce ve Vzdělání",
-      "href": "#gymnazium"
+      "text": "Ročníková práce hodnocená výborně. Vlastní model ukazuje, že starší rodinný dům vytápěný uhlím zaplatí v základním scénáři ročně asi o 18 000 Kč víc a Sociální klimatický fond z toho pokryje jen asi 22 %.",
+      "link": "Přečíst práci (PDF)",
+      "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf"
     },
     "port": {
       "text": "Portfolio 1 000 000 Kč v šesti fondech: TER, durace, likvidita, rizika a scénáře sazeb, zpracované jako klientská prezentace.",

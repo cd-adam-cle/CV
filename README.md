@@ -14,6 +14,7 @@ Statický web (úvodní stránka a stránka s nástroji, čeština + `/en/`) ve 
 | `build.mjs` | generuje obě stránky z obsahu; `--cv` navíc vyrobí PDF |
 | `src/cv.mjs` | šablona CV (A4, EB Garamond, konvence investment-banking CV) |
 | `cv/Adam-Zikmund-CV-EN.pdf`, `cv/Adam-Zikmund-CV-CZ.pdf` | hotová CV, na která web odkazuje |
+| `cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf` | ročníková práce o EU ETS 2; odkazuje na ni řádek gymnázia ve Vzdělání (pole `link` položky) a poznámka u slov o EU ETS 2 |
 | `assets/css/site.css` | společná struktura (mřížka, řádky, nástroje), bez písem a barev |
 | `assets/css/variant-c.css` | C: blokové rozvržení ve stylu VC fondů, Archivo (titulky) + Source Sans 3 (text), scroll animace |
 | `assets/css/variant-a.css`, `variant-b.css` | A: teplý papír a Source Sans 3; B: bílá a Literata |
@@ -42,7 +43,7 @@ Je v obsahu pod `skills.ai` (nadpis, skupiny `k` a `v` ve stejné podobě jako o
 
 ## Kresby u rozsvěcených slov (hero a Profil)
 
-V textu hero (`hero.title`) a profilu (`profile.lead`) značka `{id}slova{/}` určí slova, u kterých se při scrollování vpravo objeví černobílá čárová kresba `id` ze `src/figs.mjs` (počítaná, ne kreslená ručně: odmocnina z dílků se svíčkovým grafem u Matfyzu, okno aplikace s grafem u softwaru, náhodné cesty a hustota pro finanční matematiku, graf s nejkratší cestou, neuronová síť, proces s AI krokem, mapa farností, záznamový arch, scraping do modelu, model EU ETS 2 a rozložení portfolia). Ukazuje se vždy kresba k poslední rozsvícené značce. Připnutá vzdálenost hero (`.hero-track`, nejméně 960 px) dává každé kresbě aspoň jeden krok kolečka myši (asi 100 px), takže se při scrollování kolečkem žádná nepřeskočí. Kresby jsou jen na širokých obrazovkách od 1100 px a jen když běží pohyb; při omezeném pohybu, bez JavaScriptu nebo při vysokém kontrastu zůstane čistý text. Ve variantách A a B a všude jinde se značky z textu odstraní.
+V textu hero (`hero.title`) a profilu (`profile.lead`) značka `{id}slova{/}` určí slova, u kterých se při scrollování vpravo objeví černobílá čárová kresba `id` ze `src/figs.mjs` (počítaná, ne kreslená ručně: odmocnina z dílků se svíčkovým grafem u Matfyzu, okno aplikace s grafem u softwaru, náhodné cesty a hustota pro finanční matematiku, graf s nejkratší cestou, neuronová síť, proces s AI krokem, mapa farností, záznamový arch, scraping do modelu, zdražení proti podpoře Sociálního klimatického fondu z ročníkové práce o EU ETS 2 a rozložení portfolia). Ukazuje se vždy kresba k poslední rozsvícené značce. Připnutá vzdálenost hero (`.hero-track`, nejméně 960 px) dává každé kresbě aspoň jeden krok kolečka myši (asi 100 px), takže se při scrollování kolečkem žádná nepřeskočí. Od 1100 px jsou kresby vpravo vedle textu; v hero na užších obrazovkách (telefon, tablet) je nadpis nahoře a kresba pod ním, Profil tam zůstává bez kreseb. Kresby se ukazují jen když běží pohyb; při omezeném pohybu, bez JavaScriptu nebo při vysokém kontrastu zůstane čistý text. Ve variantách A a B a všude jinde se značky z textu odstraní.
 
 ## Poznámky u označených slov (hero a Profil)
 

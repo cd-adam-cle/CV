@@ -211,12 +211,18 @@ function kv(title, rows, id) {
     </div>`;
 }
 let EXIT_LABEL = '';
+// e.link = { text, href }: those words of a result become a link (for example the title of a paper)
+const linked = (r, l) => {
+  if (!l || !r.includes(l.text)) return esc(r);
+  const i = r.indexOf(l.text);
+  return `${esc(r.slice(0, i))}<a href="${attr(l.href)}"${ext(l.href)}>${esc(l.text)}</a>${esc(r.slice(i + l.text.length))}`;
+};
 function ledger(items, extra) {
   const row = (e) => `<li class="row"${e.anchor ? ` id="${e.anchor}"` : ''} data-reveal="row">
         <div class="row-date"><span>${esc(e.period)}</span></div>
         <div class="row-head"><h3>${e.href ? `<a href="${e.href}"${ext(e.href)}>${esc(e.org)}</a>` : esc(e.org)}</h3><p class="row-role">${esc(e.role)}</p></div>
         <div class="row-body">
-          <ul class="results">${e.results.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+          <ul class="results">${e.results.map((r) => `<li>${linked(r, e.link)}</li>`).join('')}</ul>
           ${e.exit ? `<p class="row-exit"><span class="row-exit-k">${esc(EXIT_LABEL)}</span> ${esc(e.exit)}</p>` : ''}
           ${e.stack ? `<p class="row-stack">${esc(e.stack)}</p>` : ''}
         </div>

@@ -143,6 +143,13 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .fig.drawn .d { stroke-dashoffset: 0; }
 .fig.drawn .dot, .fig.drawn .ring { opacity: 1; }
 @media (min-width: 1100px) and (min-height: 560px) and (prefers-reduced-motion: no-preference) { :root.js:not(.motion-fail) .fig-art { display: block; } }
+/* below 1100 px the headline sits higher and its drawing comes under it (the profile keeps plain text there) */
+@media (max-width: 1099px) and (min-height: 560px) {
+  .hero-pin { justify-content: flex-start; padding-top: clamp(28px, 7svh, 72px); }
+  .fig-art-hero { width: min(100%, 34svh, 380px); margin-top: clamp(20px, 4svh, 40px); }
+  :root.js:not(.motion-fail) .fig-art-hero { display: block; }
+}
+@media (max-width: 1099px) and (prefers-reduced-motion: reduce) { .fig-art-hero { display: none !important; } }
 @media (forced-colors: active), (prefers-contrast: more) { .fig-art { display: none !important; } }
 /* notes on tagged phrases (hero and profile): the phrase is a link with a dotted underline under its words; assets/js/hints.js
    shows a small note with a link on hover, keyboard focus or a first tap, placed inside the pinned hero or the profile row */
