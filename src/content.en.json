@@ -60,7 +60,9 @@
     "theme": "Dark mode"
   },
   "hero": {
-    "photo": { "alt": "Adam Zikmund" },
+    "photo": {
+      "alt": "Adam Zikmund"
+    },
     "title": [
       "I study {mff}financial mathematics at Charles University in Prague{/} and bring experience in {sw}building software{/}, in {alg}algorithms from the classics{/} {fin}to finance{/}, and in {ai}AI systems{/} that I {proc}build into processes{/}."
     ],
@@ -559,7 +561,10 @@
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "anchor": "grammar-school",
-        "link": { "text": "The impact of EU ETS 2 on ordinary people", "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf" },
+        "link": {
+          "text": "The impact of EU ETS 2 on ordinary people",
+          "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf"
+        },
         "role": "Mathematics, physics and computer science",
         "results": [
           "Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).",
@@ -626,7 +631,9 @@
     }
   },
   "contact": {
-    "photo": { "alt": "Adam Zikmund" },
+    "photo": {
+      "alt": "Adam Zikmund"
+    },
     "id": "contact",
     "title": "Contact",
     "email": "zikmundi@proton.me",
@@ -740,17 +747,17 @@
         "degree": "BSc in Financial Mathematics",
         "period": "Sep 2026 – Jun 2029 (expected)",
         "bullets": [
-          "First-semester coursework: Mathematical Analysis, Linear Algebra, Accounting, Programming, Mathematical Proseminar; year-one elective Practical Aspects of Financial Risk Measurement and Management (NMFP463, taught by practitioners)."
+          "First semester: mathematical analysis, linear algebra, accounting, programming. Also the elective Practical Aspects of Financial Risk Measurement and Management (NMFP463), taught by practitioners."
         ]
       },
       {
         "school": "Gymnázium Christiána Dopplera",
         "place": "Prague",
-        "degree": "Mathematics, physics and computer science track",
+        "degree": "Mathematics, physics and computer science",
         "period": "Sep 2022 – Jun 2026",
         "bullets": [
-          "Maturita with distinction in Mathematics, Programming and English; Cambridge CAE (C1).",
-          "Final-year research paper (top grade): quantitative model of EU ETS 2 allowance-cost pass-through to fuel prices (LRF, MSR, front‑loading); showed the Social Climate Fund offsets only ~22% of the real price increase for vulnerable households."
+          "Maturita (school-leaving exam) with distinction in mathematics, programming and English; Cambridge CAE (C1).",
+          "Final-year paper (top grade): my own model of how the EU ETS 2 allowance price passes into fuel prices and household budgets. Result: a coal-heated house pays about CZK 18,000 more a year, and the Social Climate Fund covers about 22% of it."
         ]
       }
     ],
@@ -761,48 +768,45 @@
         "role": "Trainee, Financial Advisory",
         "period": "Jun 2026 – Sep 2026",
         "bullets": [
-          "Modelled client financial plans (insurance and investment products) and household budgets; prepared materials for and joined client meetings.",
-          "Analysed a CZK 1m six-fund portfolio (50% bonds / 34% real estate / 16% equities) fund by fund: weighted TER ~1.35% p.a., duration, liquidity, risk types and rate scenarios; delivered as an interactive client presentation.",
-          "Built the firm's content engine: JSON-driven Python (PIL) carousels with automated QA and Remotion videos."
-        ]
-      },
-      {
-        "org": "Cloudinfrastack",
-        "place": "Prague",
-        "role": "DevOps & Infrastructure (contract)",
-        "period": "Apr 2026 – May 2026",
-        "bullets": [
-          "Supported hardware and cloud virtualisation operations, CI/CD automation and Linux server administration."
-        ]
-      },
-      {
-        "org": "Freio (freio.cz)",
-        "place": "Prague",
-        "role": "Co-Founder, Business & Strategy",
-        "period": "Feb 2026 – Jul 2026",
-        "bullets": [
-          "Co-founded an EdTech platform for Czech university admission (SCIO) test preparation; owned business strategy, market validation and customer segmentation.",
-          "Built the first MVP website and led initial marketing; exited by mutual agreement with an equity settlement."
+          "Modelled client financial plans (insurance, investments, household budget), prepared meeting materials and joined client meetings.",
+          "Analysed a CZK 1m portfolio of six funds (50% bonds, 34% real estate, 16% equities): fees (TER 1.35% p.a.), duration, liquidity, risks and rate scenarios. Delivered as a client presentation.",
+          "For advisers: a trainer for the Czech National Bank professional exams (3,300 questions with explanations, mock exams). For marketing: a generator of carousels and videos from a JSON brief."
         ]
       },
       {
         "org": "Freelance",
         "place": "Prague",
-        "role": "Software & AI Automation",
+        "role": "Software and Automation",
         "period": "Jan 2026 – Present",
         "bullets": [
-          "Delivered scraping and data pipelines (Playwright, BeautifulSoup) and LLM API integrations (OpenAI, Anthropic).",
-          "Automated content and e-mail personalisation workflows, cutting manual preparation time by over 60%."
+          "For clients: web data collection (Playwright), language-model integrations (Anthropic API) and automation of content production and e-mail personalisation that replaced most of the manual work."
+        ]
+      },
+      {
+        "org": "Freio (freio.cz)",
+        "place": "Prague",
+        "role": "Co-Founder, Business and Strategy",
+        "period": "Feb 2026 – Jul 2026",
+        "bullets": [
+          "EdTech platform for Czech university admission (SCIO) test preparation: business strategy, market validation, customer segmentation, the first website and first customers. Left by agreement with my partner, with a buyout of my share."
+        ]
+      },
+      {
+        "org": "Cloudinfrastack",
+        "place": "Prague",
+        "role": "DevOps and Infrastructure (contract)",
+        "period": "Apr 2026 – May 2026",
+        "bullets": [
+          "Linux server administration, cloud virtualisation and CI/CD."
         ]
       },
       {
         "org": "Božííí (boziii.com)",
         "place": "Prague",
-        "role": "Founder & Full-Stack Developer",
+        "role": "Founder and Developer",
         "period": "Sep 2025 – Present",
         "bullets": [
-          "Designed, built and launched a community platform connecting Prague parishes with people arranging sacraments; automated enquiry routing (Resend, Redis) cut response waiting time by over 58%.",
-          "Onboarded three parishes (Dejvice, Hlubočepy, Chodov), replies under 24 hours; Next.js 15, React 19, TypeScript."
+          "A site connecting Prague parishes with people arranging baptism, confirmation or first communion. Enquiries are routed to the right parish automatically; Dejvice, Hlubočepy and Chodov parishes on board. Next.js, TypeScript."
         ]
       },
       {
@@ -811,38 +815,45 @@
         "role": "Shift Supervisor (part-time)",
         "period": "Oct 2024 – Present",
         "bullets": [
-          "Managed cash on site, ran daily closings and till reconciliation; led the shift team."
+          "Cash handling, daily closings and till reconciliation; leading the shift."
         ]
       }
     ],
     "projects": [
       {
-        "name": "Quantitative tools (web, vanilla JS)",
+        "name": "Financial models in the browser",
         "period": "2026",
         "bullets": [
-          "Black–Scholes option pricer with Greeks; Monte Carlo GBM path simulator with a Merton jump-diffusion (crash) mode, 5% VaR and expected shortfall; Markowitz efficient frontier with an estimation-error sensitivity view."
+          "Three implementations of my own: option pricing (Black–Scholes with Greeks), Monte Carlo price simulation with jumps, 5% VaR and expected shortfall, and the Markowitz efficient frontier with its sensitivity to estimation error. Vanilla JS, no libraries."
         ]
       },
       {
-        "name": "Training operations PWA",
+        "name": "Algorithms in C#",
+        "period": "2025 – 2026",
+        "bullets": [
+          "Programming seminar and exam preparation: Dijkstra, graph search, minimum spanning trees, sorting algorithms, backtracking, dynamic programming, minimax."
+        ]
+      },
+      {
+        "name": "Training app",
         "period": "2026",
         "bullets": [
-          "Built a private Next.js 15 / Postgres (Drizzle) PWA that syncs Garmin Connect telemetry via cron, computes training load (ACWR, CTL/ATL) and fuelling needs, and uses the Anthropic API for adaptive weekly plans."
+          "My own web app: daily sync of Garmin watch data, training-load calculations (ACWR, CTL/ATL) and a daily recommendation via the Anthropic API. Next.js, Postgres."
         ]
       }
     ],
     "skills": [
       {
         "k": "Programming",
-        "v": "Python, TypeScript/JavaScript, C#, SQL, Next.js/React, FastAPI, Git, Linux; LLM APIs; web scraping"
+        "v": "Python, TypeScript, C#, SQL; Next.js and React, Git, Linux"
       },
       {
-        "k": "AI engineering",
-        "v": "Integrating LLMs into applications and automations (Anthropic API, schema-constrained output, prompt-injection defence, cost limits, testing), agentic development (Claude Code, Claude Cowork, Google Antigravity, Model Context Protocol); Anthropic Claude Academy certificates of completion planned"
+        "k": "Working with AI",
+        "v": "Integrating language models into applications (Anthropic API, schema-constrained output, cost limits, tests); daily development with Claude Code and Google Antigravity"
       },
       {
-        "k": "Quantitative",
-        "v": "Black–Scholes, Monte Carlo, Markowitz optimisation, VaR and expected shortfall; probability and statistics, linear algebra"
+        "k": "Finance and mathematics",
+        "v": "Option pricing, Monte Carlo, Markowitz, VaR; accounting; probability and statistics, linear algebra"
       },
       {
         "k": "Languages",

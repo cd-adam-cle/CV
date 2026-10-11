@@ -60,7 +60,9 @@
     "theme": "Tmavý režim"
   },
   "hero": {
-    "photo": { "alt": "Adam Zikmund" },
+    "photo": {
+      "alt": "Adam Zikmund"
+    },
     "title": [
       "Studuji {mff}finanční matematiku na Matfyzu{/} a přináším zkušenosti se {sw}stavěním softwaru{/}, s {alg}algoritmy od klasických{/} {fin}po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
@@ -565,7 +567,10 @@
         "period": "09/2022 – 06/2026",
         "org": "Gymnázium Christiána Dopplera",
         "anchor": "gymnazium",
-        "link": { "text": "Dopad EU ETS 2 na běžného člověka", "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf" },
+        "link": {
+          "text": "Dopad EU ETS 2 na běžného člověka",
+          "href": "/cv/Adam-Zikmund-Rocnikova-prace-EU-ETS-2.pdf"
+        },
         "role": "Matematika, fyzika a informatika",
         "results": [
           "Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).",
@@ -632,7 +637,9 @@
     }
   },
   "contact": {
-    "photo": { "alt": "Adam Zikmund" },
+    "photo": {
+      "alt": "Adam Zikmund"
+    },
     "id": "kontakt",
     "title": "Kontakt",
     "email": "zikmundi@proton.me",
@@ -746,7 +753,7 @@
         "degree": "Bc. Finanční matematika",
         "period": "09/2026 – 06/2029 (předpoklad)",
         "bullets": [
-          "Předměty 1. semestru: Matematická analýza, Lineární algebra, Účetnictví, Programování, Matematický proseminář; už v 1. ročníku volitelný předmět Praktické aspekty měření a řízení finančních rizik (NMFP463, vyučující z praxe)."
+          "1. semestr: matematická analýza, lineární algebra, účetnictví, programování. Navíc volitelný předmět Praktické aspekty měření a řízení finančních rizik (NMFP463), vedený lidmi z praxe."
         ]
       },
       {
@@ -756,7 +763,7 @@
         "period": "09/2022 – 06/2026",
         "bullets": [
           "Maturita s vyznamenáním z matematiky, programování a angličtiny; Cambridge CAE (C1).",
-          "Ročníková práce (výborně): kvantitativní model přenosu nákladů povolenek EU ETS 2 do cen paliv (LRF, MSR, front‑loading); Sociální klimatický fond pokryje jen ~22 % reálného zdražení u zranitelných domácností."
+          "Ročníková práce (výborně): vlastní model, jak se cena povolenky EU ETS 2 promítne do cen paliv a do rozpočtu domácnosti. Výsledek: u domu vytápěného uhlím zdražení asi 18 000 Kč ročně, Sociální klimatický fond pokryje asi 22 %."
         ]
       }
     ],
@@ -767,9 +774,27 @@
         "role": "Trainee, finanční poradenství",
         "period": "06/2026 – 09/2026",
         "bullets": [
-          "Modelování klientských finančních plánů (zajištění a investiční produkty), příprava podkladů a účast na jednáních s klienty; rozbor rodinných rozpočtů.",
-          "Analýza portfolia 1 mil. Kč v šesti fondech (50 % dluhopisy / 34 % nemovitosti / 16 % akcie): vážený TER ~1,35 % p. a., durace, likvidita, typy rizik a scénáře sazeb; zpracováno jako interaktivní klientská prezentace.",
-          "Content engine firmy: karusely v Pythonu (PIL) řízené JSON s automatickou QA kontrolou a videa v Remotion."
+          "Modelování finančních plánů klientů (pojištění, investice, rodinný rozpočet), příprava podkladů a účast na schůzkách s klienty.",
+          "Rozbor portfolia 1 mil. Kč v šesti fondech (50 % dluhopisy, 34 % nemovitosti, 16 % akcie): poplatky (TER 1,35 % p. a.), durace, likvidita, rizika a scénáře sazeb. Výstup jako klientská prezentace.",
+          "Pro poradce: trenažér odborných zkoušek ČNB (3 300 otázek s odůvodněním, zkouška nanečisto). Pro marketing: generátor karuselů a videí ze zadání v JSON."
+        ]
+      },
+      {
+        "org": "Freelance",
+        "place": "Praha",
+        "role": "Software a automatizace",
+        "period": "01/2026 – dosud",
+        "bullets": [
+          "Pro klienty: sběr dat z webu (Playwright), napojení na jazykové modely (Anthropic API) a automatizace tvorby obsahu a personalizace e-mailů, které nahradily většinu ruční přípravy."
+        ]
+      },
+      {
+        "org": "Freio (freio.cz)",
+        "place": "Praha",
+        "role": "Spoluzakladatel, obchod a strategie",
+        "period": "02/2026 – 07/2026",
+        "bullets": [
+          "EdTech platforma pro přípravu na přijímací zkoušky SCIO: obchodní strategie, ověření zájmu trhu, segmentace zákazníků, první web a získávání prvních zákazníků. Odchod po dohodě se společníkem, s odkupem podílu."
         ]
       },
       {
@@ -778,37 +803,16 @@
         "role": "DevOps a infrastruktura (kontrakt)",
         "period": "04/2026 – 05/2026",
         "bullets": [
-          "Správa hardwaru a cloudové virtualizace, CI/CD automatizace a administrace linuxových serverů."
-        ]
-      },
-      {
-        "org": "Freio (freio.cz)",
-        "place": "Praha",
-        "role": "Co-founder, obchod a strategie",
-        "period": "02/2026 – 07/2026",
-        "bullets": [
-          "Spoluzaložení EdTech platformy pro přípravu na SCIO přijímací zkoušky; obchodní strategie, ověření trhu a segmentace zákazníků.",
-          "První funkční web (MVP) a počáteční marketing; po ověření na trhu odchod dohodou s vyrovnáním podílů."
-        ]
-      },
-      {
-        "org": "Freelance",
-        "place": "Praha",
-        "role": "Software a AI automatizace",
-        "period": "01/2026 – dosud",
-        "bullets": [
-          "Scrapovací a datové pipeline (Playwright, BeautifulSoup) a integrace LLM API (OpenAI, Anthropic) pro klienty.",
-          "Automatizace tvorby obsahu a personalizace e-mailů s úsporou přes 60 % času manuální přípravy."
+          "Správa serverů (Linux), cloudová virtualizace a CI/CD."
         ]
       },
       {
         "org": "Božííí (boziii.com)",
         "place": "Praha",
-        "role": "Founder a full-stack developer",
+        "role": "Zakladatel a vývojář",
         "period": "09/2025 – dosud",
         "bullets": [
-          "Návrh, vývoj a provoz komunitní platformy propojující pražské farnosti s lidmi, kteří vyřizují svátosti; automatické směrování dotazů (Resend, Redis) zkrátilo čekání na odpověď o více než 58 %.",
-          "Zapojení tří farností (Dejvice, Hlubočepy, Chodov), odezva pod 24 hodin; Next.js 15, React 19, TypeScript."
+          "Web, který propojuje pražské farnosti s lidmi, kteří vyřizují křest, biřmování nebo svaté přijímání. Dotaz jde automaticky správné farnosti; zapojené farnosti Dejvice, Hlubočepy a Chodov. Next.js, TypeScript."
         ]
       },
       {
@@ -817,38 +821,45 @@
         "role": "Vedoucí směny (part-time)",
         "period": "10/2024 – dosud",
         "bullets": [
-          "Odpovědnost za hotovost na provozu, denní uzávěrky a kontrolu pokladny; vedení týmu na směně."
+          "Hotovost na provozu, denní uzávěrky a kontrola pokladny; vedení směny."
         ]
       }
     ],
     "projects": [
       {
-        "name": "Kvantitativní nástroje (web, vanilla JS)",
+        "name": "Finanční modely v prohlížeči",
         "period": "2026",
         "bullets": [
-          "Black–Scholes oceňovač opcí s Greeks; Monte Carlo simulátor cest (GBM) s Mertonovým modelem skoků, 5% VaR a expected shortfall; Markowitzova efektivní hranice s ukázkou citlivosti na chybu odhadu."
+          "Tři vlastní implementace: ocenění opce (Black–Scholes s citlivostmi), Monte Carlo simulace cen se skoky, 5% VaR a expected shortfall, Markowitzova efektivní hranice a její citlivost na chybu odhadu. Vanilla JS, bez knihoven."
         ]
       },
       {
-        "name": "Tréninkové operační středisko (PWA)",
+        "name": "Algoritmy v C#",
+        "period": "2025 – 2026",
+        "bullets": [
+          "Programovací seminář a příprava na maturitu: Dijkstra, prohledávání grafu, minimální kostra, třídicí algoritmy, backtracking, dynamické programování, minimax."
+        ]
+      },
+      {
+        "name": "Tréninková aplikace",
         "period": "2026",
         "bullets": [
-          "Privátní PWA (Next.js 15, Postgres, Drizzle): synchronizace telemetrie z Garmin Connect přes cron, výpočet zátěže (ACWR, CTL/ATL) a energetických potřeb, adaptivní týdenní plány přes Anthropic API."
+          "Vlastní webová aplikace: denní synchronizace dat z hodinek Garmin, výpočet tréninkové zátěže (ACWR, CTL/ATL) a denní doporučení přes Anthropic API. Next.js, Postgres."
         ]
       }
     ],
     "skills": [
       {
         "k": "Programování",
-        "v": "Python, TypeScript/JavaScript, C#, SQL, Next.js/React, FastAPI, Git, Linux; LLM API; web scraping"
+        "v": "Python, TypeScript, C#, SQL; Next.js a React, Git, Linux"
       },
       {
-        "k": "AI engineering",
-        "v": "Integrace LLM do aplikací a automatizací (Anthropic API, výstup podle schématu, ochrana před prompt injection, limity nákladů, testy), agentní vývoj (Claude Code, Claude Cowork, Google Antigravity, Model Context Protocol); v plánu certifikáty o dokončení kurzů Claude Academy (Anthropic)"
+        "k": "Práce s AI",
+        "v": "Napojení jazykových modelů do aplikací (Anthropic API, výstup podle schématu, limity nákladů, testy); denní vývoj s Claude Code a Google Antigravity"
       },
       {
-        "k": "Kvantitativní",
-        "v": "Black–Scholes, Monte Carlo, Markowitzova optimalizace, VaR a expected shortfall; pravděpodobnost a statistika, lineární algebra"
+        "k": "Finance a matematika",
+        "v": "Oceňování opcí, Monte Carlo, Markowitz, VaR; účetnictví; pravděpodobnost a statistika, lineární algebra"
       },
       {
         "k": "Jazyky",
