@@ -23,7 +23,7 @@ Statický web (úvodní stránka a stránka s nástroji, čeština + `/en/`) ve 
 | `assets/js/hints.js` | jen varianta C, úvodní stránka: poznámky u označených slov v hero a Profilu (najetí myší, fokus z klávesnice, první klepnutí) |
 | `assets/js/skyline.js`, `assets/css/skyline.css` | jen varianta C: graf příspěvků ve stylu GitHubu (2D mřížka a 3D panorama), čistý JS + canvas |
 | `src/contributions.json`, `scripts/build-contributions.mjs` | počty commitů po dnech za poslední rok pro graf; obnova je v části Graf commitů níže |
-| `assets/img/` | portréty pro hero a Kontakt (`adam-hero`, `adam-contact`, 640 a 1280 px, poměr 4:5); v obsahu `hero.photo.alt` a `contact.photo.alt`, zdroj je složka Downloads/adam_jpg |
+| `assets/img/` | portréty pro hero a Kontakt (`adam-hero`, `adam-contact`, 640 a 1280 px, poměr 4:5); v obsahu `hero.photo.alt` a `contact.photo.alt`, zdroj je složka Downloads/adam_jpg (hero = A.jpg, Kontakt = DSC01663.jpg) |
 | `src/thumbs.mjs` | SVG náhledy tří modelů na kartách nástrojů (skutečné výpočty, žádné obrázky) |
 | `assets/js/quant.js` | tři interaktivní modely (Black–Scholes, Monte Carlo se skoky podle Mertona, Markowitz), čistý JS + canvas |
 | `src/typo.mjs` | česká typografie (nezlomitelné mezery) pro web i CV |
