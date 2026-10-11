@@ -154,6 +154,8 @@ function footer(c, pg) {
 }
 
 /* ---------- hero ---------- */
+// a portrait from assets/img (640 and 1280 px wide, 4:5), used in the hero and in the contact section of variant C
+const photo = (name, alt, cls) => `<img class="${cls}" src="/assets/img/adam-${name}-640.jpg" srcset="/assets/img/adam-${name}-640.jpg 640w, /assets/img/adam-${name}-1280.jpg 1280w" sizes="(min-width: 1024px) 25vw, 60vw" width="640" height="800" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 function links(arr) { return arr.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(', '); }
 const sheet = (h) => `<aside class="sheet" aria-labelledby="sheet-title"${isBlocks() ? ' data-reveal="rise"' : ''}>
     <h2 id="sheet-title" class="visually-hidden">${esc(h.sheetTitle)}</h2>
@@ -171,7 +173,8 @@ function heroBlocks(c) {
     <p class="hero-hint" aria-hidden="true">${esc(h.scrollHint)}</p>
   </div>
 </section>
-<section class="hero hero-rest">
+<section class="hero hero-rest">${h.photo ? `
+  <div class="hero-photo" data-reveal="rise">${photo('hero', h.photo.alt, 'photo')}</div>` : ''}
   <div class="hero-text">
     <p class="deck" data-magic>${magic(h.deck)}</p>
     <p class="actions" data-reveal="rise"><a class="btn-fill" href="${h.actions.cvHref}">${esc(h.actions.cv)}</a><a class="email-link" href="mailto:${h.actions.email}">${esc(h.actions.email)}</a></p>
@@ -323,10 +326,16 @@ function contact(c) {
   const items = s.rows.map((r) => r.links
     ? `<li${blocks ? ' data-reveal="rise"' : ''}>${esc(s.cvLabel)}: ${links(r.links)}</li>`
     : `<li${blocks ? ' data-reveal="rise"' : ''}><a href="${r.href}"${ext(r.href)}>${esc(/^https?:/.test(r.href) ? r.k : r.v)}</a></li>`).join('\n      ');
-  return section(s, `    <p class="contact-email"${blocks ? ' data-reveal="rise"' : ''}><a href="mailto:${s.email}">${esc(s.email)}</a></p>
+  const body = `    <p class="contact-email"${blocks ? ' data-reveal="rise"' : ''}><a href="mailto:${s.email}">${esc(s.email)}</a></p>
     <ul class="contact-list">
       ${items}
-    </ul>`, 'section-contact');
+    </ul>`;
+  return section(s, blocks && s.photo ? `    <div class="contact-row">
+    <div class="contact-text">
+${body}
+    </div>
+    <div class="contact-photo" data-reveal="rise">${photo('contact', s.photo.alt, 'photo')}</div>
+    </div>` : body, 'section-contact');
 }
 
 /* ---------- quant tools ---------- */

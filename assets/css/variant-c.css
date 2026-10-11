@@ -80,9 +80,19 @@ h1, h2, h3, .pcard-tag, .btn-fill, .brand, .page-title { font-family: var(--font
 .sheet-rows { border-top: 1px solid var(--rule); }
 .sheet-row dt { font-weight: 600; color: var(--ink); }
 @media (min-width: 640px) { .deck { font-size: 22px; } }
+/* portraits: plain photos with the card radius, 4:5, no frame; in the hero beside the deck, in the contact section beside the e-mail */
+.photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; background: var(--grid); }
+.hero-photo { max-width: 240px; margin-bottom: 28px; }
+.contact-row { display: grid; gap: 32px; }
+.contact-photo { max-width: 240px; }
 @media (min-width: 1024px) {
   .hero-rest { padding-top: 24px; padding-bottom: 96px; }
-  .hero-text { grid-column: 1 / span 8; } .sheet { grid-column: 9 / span 4; padding-top: 8px; }
+  .hero-photo { grid-column: 1 / span 3; max-width: none; margin-bottom: 0; }
+  .hero-text { grid-column: 4 / span 5; } .sheet { grid-column: 9 / span 4; padding-top: 8px; }
+  .hero-rest:not(:has(.hero-photo)) .hero-text { grid-column: 1 / span 8; }
+  .contact-row { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .contact-text { grid-column: 1 / span 8; }
+  .contact-photo { grid-column: 10 / span 3; max-width: none; }
 }
 @media (prefers-reduced-motion: reduce), (prefers-contrast: more), (forced-colors: active) {
   .hero-track { height: auto; }

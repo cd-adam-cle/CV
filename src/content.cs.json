@@ -60,6 +60,7 @@
     "theme": "Tmavý režim"
   },
   "hero": {
+    "photo": { "alt": "Adam Zikmund" },
     "title": [
       "Studuji {mff}finanční matematiku na Matfyzu{/} a přináším zkušenosti se {sw}stavěním softwaru{/}, s {alg}algoritmy od klasických{/} {fin}po finanční{/} a s {ai}AI systémy{/}, které {proc}zapojuji do procesů{/}."
     ],
@@ -631,6 +632,7 @@
     }
   },
   "contact": {
+    "photo": { "alt": "Adam Zikmund" },
     "id": "kontakt",
     "title": "Kontakt",
     "email": "zikmundi@proton.me",

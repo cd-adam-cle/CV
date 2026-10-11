@@ -60,6 +60,7 @@
     "theme": "Dark mode"
   },
   "hero": {
+    "photo": { "alt": "Adam Zikmund" },
     "title": [
       "I study {mff}financial mathematics at Charles University in Prague{/} and bring experience in {sw}building software{/}, in {alg}algorithms from the classics{/} {fin}to finance{/}, and in {ai}AI systems{/} that I {proc}build into processes{/}."
     ],
@@ -625,6 +626,7 @@
     }
   },
   "contact": {
+    "photo": { "alt": "Adam Zikmund" },
     "id": "contact",
     "title": "Contact",
     "email": "zikmundi@proton.me",
